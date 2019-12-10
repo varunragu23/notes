@@ -2,7 +2,7 @@
  
  
 ## Easy (153)
-** 0. [Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Hamming%20Distance.java) ** Level: Easy Tags: []
+###  0. [Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Hamming%20Distance.java)   Level: Easy Tags: []
       
 bit: XOR, &, shift >>
 
@@ -10,7 +10,7 @@ bit: XOR, &, shift >>
 
 ---
 
-** 1. [Happy Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Happy%20Number.java) ** Level: Easy Tags: []
+###  1. [Happy Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Happy%20Number.java)   Level: Easy Tags: []
       
 Basic Implementation of the requirements.
 
@@ -20,14 +20,14 @@ Use HashSet to save the viewed values. If repeated, return false.
 
 ---
 
-** 2. [HashWithArray.java] (https://github.com/awangdev/LintCode/blob/master/Java/HashWithArray.java) ** Level: Easy Tags: []
+###  2. [HashWithArray.java] (https://github.com/awangdev/LintCode/blob/master/Java/HashWithArray.java)   Level: Easy Tags: []
       
 
 
 
 ---
 
-** 3. [Heaters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Heaters.java) ** Level: Easy Tags: []
+###  3. [Heaters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Heaters.java)   Level: Easy Tags: []
       
 first step:
 Question type, it takes time to understand the meaning of the question:
@@ -47,7 +47,7 @@ http://www.cnblogs.com/grandyang/p/6181626.html
 
 ---
 
-** 4. [IndexMatch.java] (https://github.com/awangdev/LintCode/blob/master/Java/IndexMatch.java) ** Level: Easy Tags: []
+###  4. [IndexMatch.java] (https://github.com/awangdev/LintCode/blob/master/Java/IndexMatch.java)   Level: Easy Tags: []
       
 Ordered, suppose there is such a number: target.        
 The number to the left of target must not be greater than index, and the number to the right of target must be greater than index.     
@@ -57,7 +57,7 @@ This allows binary search.O (logn)
 
 ---
 
-** 5. [Insert Node in a Binary Search Tree .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Node%20in%20a%20Binary%20Search%20Tree%20. java) ** Level: Easy Tags: [BST]
+###  5. [Insert Node in a Binary Search Tree .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Node%20in%20a%20Binary%20Search%20Tree%20. java)   Level: Easy Tags: [BST]
       
 
 Add something to the Binary Search Tree and you will definitely find a suitable leaf to add.
@@ -70,7 +70,7 @@ Find that someNode according to the normal Binary Search Tree law.
 
 ---
 
-** 6. [Jewels and Stones.java] (https://github.com/awangdev/LintCode/blob/master/Java/Jewels%20and%20Stones.java) ** Level: Easy Tags: [Hash Table]
+###  6. [Jewels and Stones.java] (https://github.com/awangdev/LintCode/blob/master/Java/Jewels%20and%20Stones.java)   Level: Easy Tags: [Hash Table]
       
 1524017454
 
@@ -82,7 +82,7 @@ Give J and S two strings. The character in J is unique jewelry, the character in
 
 ---
 
-** 7. [Longest Univalue Path.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Univalue%20Path.java) ** Level: Easy Tags: []
+###  7. [Longest Univalue Path.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Univalue%20Path.java)   Level: Easy Tags: []
       
 Figure out what path means: connect the edge of a node.
 To find MAX, you can define a max variable in the class scope.
@@ -93,7 +93,7 @@ Use the minimum amount of code to summarize several different situations: left =
 
 ---
 
-** 8. [Matrix Zigzag Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Matrix%20Zigzag%20Traversal.java) ** Level: Easy Tags: []
+###  8. [Matrix Zigzag Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Matrix%20Zigzag%20Traversal.java)   Level: Easy Tags: []
       
 Analyze 4 steps: right, left-bottom, down, right-up    
 Pay attention to the index when implementing. A little patience
@@ -102,7 +102,7 @@ Pay attention to the index when implementing. A little patience
 
 ---
 
-** 9. [Minimum Absolute Difference in BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Absolute%20Difference%20in%20BST.java) ** Level: Easy Tags : [BST]
+###  9. [Minimum Absolute Difference in BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Absolute%20Difference%20in%20BST.java)   Level: Easy Tags : [BST]
       
 
 BST: inorder-traversal: first left node (adding to stack till left leav), then process stack.peek (mid node), then add rightNode && dive to rightNode.left leaf
@@ -111,14 +111,14 @@ BST: inorder-traversal: first left node (adding to stack till left leav), then p
 
 ---
 
-** 10. [O (1) Check Power of 2.java] (https://github.com/awangdev/LintCode/blob/master/Java/O (1)% 20Check% 20Power% 20of% 202.java) ** Level: Easy Tags: [Bit Manipulation]
+###  10. [O (1) Check Power of 2.java] (https://github.com/awangdev/LintCode/blob/master/Java/O (1)% 20Check% 20Power% 20of% 202.java)   Level: Easy Tags: [Bit Manipulation]
       
 
 
 
 ---
 
-** 11. [Partition Array by Odd and Even.java] (https://github.com/awangdev/LintCode/blob/master/Java/Partition%20Array%20by%20Odd%20and%20Even.java) ** Level : Easy Tags: [Array, Two Pointers]
+###  11. [Partition Array by Odd and Even.java] (https://github.com/awangdev/LintCode/blob/master/Java/Partition%20Array%20by%20Odd%20and%20Even.java)   Level : Easy Tags: [Array, Two Pointers]
       
 
 -More normal start / end partition pointer is similar to: when condition meet, swap
@@ -128,7 +128,7 @@ BST: inorder-traversal: first left node (adding to stack till left leav), then p
 
 ---
 
-** 12. [Pascal's Triangle II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Pascal's%20Triangle%20II.java) ** Level: Easy Tags: []
+###  12. [Pascal's Triangle II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Pascal's%20Triangle%20II.java)   Level: Easy Tags: []
       
 Simple processing of array list.
 
@@ -136,7 +136,7 @@ Simple processing of array list.
 
 ---
 
-** 13. [Permutation Index.java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutation%20Index.java) ** Level: Easy Tags: []
+###  13. [Permutation Index.java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutation%20Index.java)   Level: Easy Tags: []
       
 The opposite of Permutation Sequence. Thoughts are similar.
 
@@ -175,7 +175,7 @@ My explanation is too vivid. Because it took so long to think ...
 
 ---
 
-** 14. [Recover Rotated Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Recover%20Rotated%20Sorted%20Array.java) ** Level: Easy Tags: [Array ]
+###  14. [Recover Rotated Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Recover%20Rotated%20Sorted%20Array.java)   Level: Easy Tags: [Array ]
       
 
 The meaning of rotate is that there is a point break, and the array from one side is selected and placed on the other side.
@@ -189,7 +189,7 @@ Note that the breakpoint is found first.
 
 ---
 
-** 15. [Reshape the Matrix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reshape%20the%20Matrix.java) ** Level: Easy Tags: []
+###  15. [Reshape the Matrix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reshape%20the%20Matrix.java)   Level: Easy Tags: []
       
 Read the examples to understand the meaning of the questions.
 Sort out counter case. Basic implementation
@@ -198,7 +198,7 @@ Sort out counter case. Basic implementation
 
 ---
 
-** 16. [Reverse String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20String.java) ** Level: Easy Tags: []
+###  16. [Reverse String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20String.java)   Level: Easy Tags: []
       
 Similar to Reverse Integer.
 Can use StringBuffer or two pointer reverse head / tail
@@ -207,7 +207,7 @@ Can use StringBuffer or two pointer reverse head / tail
 
 ---
 
-** 17. [Search Insert Position.java] (https://github.com/awangdev/LintCode/blob/master/Java/Search%20Insert%20Position.java) ** Level: Easy Tags: []
+###  17. [Search Insert Position.java] (https://github.com/awangdev/LintCode/blob/master/Java/Search%20Insert%20Position.java)   Level: Easy Tags: []
       
 General binary search.
 At the end, determine which position to return.
@@ -215,7 +215,7 @@ At the end, determine which position to return.
 
 ---
 
-** 18. [Shortest Word Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Word%20Distance.java) ** Level: Easy Tags: []
+###  18. [Shortest Word Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Word%20Distance.java)   Level: Easy Tags: []
       
 Find short distance, wordB can be before and after wordA; at the same time, you only need to calculate the distance of a recent up to date.
 Greedy constantly changes the A / B index and then compares it.
@@ -224,7 +224,7 @@ Greedy constantly changes the A / B index and then compares it.
 
 ---
 
-** 19. [Single Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Single%20Number.java) ** Level: Easy Tags: []
+###  19. [Single Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Single%20Number.java)   Level: Easy Tags: []
       
 Bit XOR: When two bits are different, return 1. 
 The title is about to extinguish all recurring numbers and leave the one that appears once.
@@ -233,7 +233,7 @@ The title is about to extinguish all recurring numbers and leave the one that ap
 
 ---
 
-** 20. [String Permutation.java] (https://github.com/awangdev/LintCode/blob/master/Java/String%20Permutation.java) ** Level: Easy Tags: []
+###  20. [String Permutation.java] (https://github.com/awangdev/LintCode/blob/master/Java/String%20Permutation.java)   Level: Easy Tags: []
       
 Store #of occurrences in HashMap, add the first string and subtract the second string. Finally, see if there is any judgment that is not equal to 0.
 
@@ -241,14 +241,14 @@ Store #of occurrences in HashMap, add the first string and subtract the second s
 
 ---
 
-** 21. [Trailing Zeros.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trailing%20Zeros.java) ** Level: Easy Tags: [Math]
+###  21. [Trailing Zeros.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trailing%20Zeros.java)   Level: Easy Tags: [Math]
       
 
 
 
 ---
 
-** 22. [Two Strings Are Anagrams.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Strings%20Are%20Anagrams.java) ** Level: Easy Tags: []
+###  22. [Two Strings Are Anagrams.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Strings%20Are%20Anagrams.java)   Level: Easy Tags: []
       
 Method 1: char ascii with count [256]   
 Pit: don't imagine this is a 26letter lowercase. May not be true.
@@ -260,7 +260,7 @@ Then continue to do it with strings
 
 ---
 
-** 23. [Valid Sudoku.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Sudoku.java) ** Level: Easy Tags: [Enumeration, Hash Table]
+###  23. [Valid Sudoku.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Sudoku.java)   Level: Easy Tags: [Enumeration, Hash Table]
       
 
 #### Hash Set
@@ -279,7 +279,7 @@ Then continue to do it with strings
 
 ---
 
-** 24. [Word Pattern.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Pattern.java) ** Level: Easy Tags: []
+###  24. [Word Pattern.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Pattern.java)   Level: Easy Tags: []
       
 Each char represents a pattern. Use HashMap <char, str>.
 But that's not enough. If a also matches dog, b also matches dog. For example, pattern = "abba", str = "dog dog dog dog".
@@ -290,7 +290,7 @@ Make sure that pattern and str correspond one-to-one.
 
 ---
 
-** 25. [Find Anagram Mappings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20Anagram%20Mappings.java) ** Level: Easy Tags: [Hash Table]
+###  25. [Find Anagram Mappings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20Anagram%20Mappings.java)   Level: Easy Tags: [Hash Table]
       
 
 It is relatively simple. Use HashMap to store the index list. Finally, iterate through the array A again, and enumerate all the elements.
@@ -300,7 +300,7 @@ O (n)
 
 ---
 
-** 26. [Judge Route Circle.java] (https://github.com/awangdev/LintCode/blob/master/Java/Judge%20Route%20Circle.java) ** Level: Easy Tags: [String]
+###  26. [Judge Route Circle.java] (https://github.com/awangdev/LintCode/blob/master/Java/Judge%20Route%20Circle.java)   Level: Easy Tags: [String]
       
 
 Simple character checking. In all directions, plus, minus or minus.
@@ -309,7 +309,7 @@ Simple character checking. In all directions, plus, minus or minus.
 
 ---
 
-** 27. [Island Perimeter.java] (https://github.com/awangdev/LintCode/blob/master/Java/Island%20Perimeter.java) ** Level: Easy Tags: [Hash Table]
+###  27. [Island Perimeter.java] (https://github.com/awangdev/LintCode/blob/master/Java/Island%20Perimeter.java)   Level: Easy Tags: [Hash Table]
       
 
 #### Brutle
@@ -328,7 +328,7 @@ Simple character checking. In all directions, plus, minus or minus.
 
 ---
 
-** 28. [Power of Three.java] (https://github.com/awangdev/LintCode/blob/master/Java/Power%20of%20Three.java) ** Level: Easy Tags: [Math]
+###  28. [Power of Three.java] (https://github.com/awangdev/LintCode/blob/master/Java/Power%20of%20Three.java)   Level: Easy Tags: [Math]
       
 
 method 1:
@@ -345,7 +345,7 @@ Ingenious idea. The largest 3 ^ x integer is 3 ^ 19. Then find this number, it m
 
 ---
 
-** 29. [Plus One.java] (https://github.com/awangdev/LintCode/blob/master/Java/Plus%20One.java) ** Level: Easy Tags: [Array, Math]
+###  29. [Plus One.java] (https://github.com/awangdev/LintCode/blob/master/Java/Plus%20One.java)   Level: Easy Tags: [Array, Math]
       
 
 Simple implementation, add 1, carry. The only tricky place, if you want one more last, it must be 10000 ... This mode, you can take a shortcut, directly come to an array of +1 size, and then the first bit = 1.
@@ -354,7 +354,7 @@ Note that converting to long is not reasonable, too much memory is used.
 
 ---
 
-** 30. [Power of Two.java] (https://github.com/awangdev/LintCode/blob/master/Java/Power%20of%20Two.java) ** Level: Easy Tags: [Bit Manipulation, Math ]
+###  30. [Power of Two.java] (https://github.com/awangdev/LintCode/blob/master/Java/Power%20of%20Two.java)   Level: Easy Tags: [Bit Manipulation, Math ]
       
 
 Same as powerOfThree: you can loop, check mod; you can also use binary search to find the appropriate number.
@@ -363,7 +363,7 @@ Same as powerOfThree: you can loop, check mod; you can also use binary search to
 
 ---
 
-** 31. [Reverse Vowels of a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Vowels%20of%20a%20String.java) ** Level: Easy Tags : [String, Two Pointers]
+###  31. [Reverse Vowels of a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Vowels%20of%20a%20String.java)   Level: Easy Tags : [String, Two Pointers]
       
 
 vowels: vowels. All reverse vowels are required.
@@ -381,7 +381,7 @@ Take out all vowels, put them in reverse. O (n)
 
 ---
 
-** 32. [Guess Number Higher or Lower.java] (https://github.com/awangdev/LintCode/blob/master/Java/Guess%20Number%20Higher%20or%20Lower.java) ** Level: Easy Tags : [Binary Search]
+###  32. [Guess Number Higher or Lower.java] (https://github.com/awangdev/LintCode/blob/master/Java/Guess%20Number%20Higher%20or%20Lower.java)   Level: Easy Tags : [Binary Search]
       
 
 binary search formula
@@ -390,7 +390,7 @@ binary search formula
 
 ---
 
-** 33. [Trim a Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trim%20a%20Binary%20Search%20Tree.java) ** Level: Easy Tags : [BST, Tree]
+###  33. [Trim a Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trim%20a%20Binary%20Search%20Tree.java)   Level: Easy Tags : [BST, Tree]
       
 
 method 1:
@@ -405,7 +405,7 @@ Method 2: Use iteration, not written yet.
 
 ---
 
-** 34. [Array Partition I.java] (https://github.com/awangdev/LintCode/blob/master/Java/Array%20Partition%20I.java) ** Level: Easy Tags: [Array]
+###  34. [Array Partition I.java] (https://github.com/awangdev/LintCode/blob/master/Java/Array%20Partition%20I.java)   Level: Easy Tags: [Array]
       
 
 Give a string of numbers, size = 2n, find pairs, and then need to sum of min (pair) max.
@@ -423,7 +423,7 @@ Give a string of numbers, size = 2n, find pairs, and then need to sum of min (pa
 
 ---
 
-** 35. [1-bit and 2-bit Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java/1-bit%20and%202-bit%20Characters.java) * * Level: Easy Tags: [Array]
+###  35. [1-bit and 2-bit Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java/1-bit%20and%202-bit%20Characters.java) * * Level: Easy Tags: [Array]
       
 
 method 1:
@@ -440,7 +440,7 @@ I did it with DP hard:
 
 ---
 
-** 36. [Non-decreasing Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Non-decreasing%20Array.java) ** Level: Easy Tags: [Array]
+###  36. [Non-decreasing Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Non-decreasing%20Array.java)   Level: Easy Tags: [Array]
       
 
 When comparing ascending order, three digits i-1, i, i + 1 must be estimated.
@@ -452,7 +452,7 @@ You need to really fix the array, because loop through will use the number after
 
 ---
 
-** 37. [Max Consecutive Ones.java] (https://github.com/awangdev/LintCode/blob/master/Java/Max%20Consecutive%20Ones.java) ** Level: Easy Tags: [Array]
+###  37. [Max Consecutive Ones.java] (https://github.com/awangdev/LintCode/blob/master/Java/Max%20Consecutive%20Ones.java)   Level: Easy Tags: [Array]
       
 
 Basic. Math.max track results.
@@ -462,7 +462,7 @@ Remember to clear the result object after there is a loop for external operation
 
 ---
 
-** 38. [Find All Numbers Disappeared in an Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20All%20Numbers%20Disappeared%20in%20an%20Array.java) ** Level: Easy Tags: [Array]
+###  38. [Find All Numbers Disappeared in an Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20All%20Numbers%20Disappeared%20in%20an%20Array.java)   Level: Easy Tags: [Array]
       
 
 method 1:
@@ -485,7 +485,7 @@ Although the method of marking is fast, it is relatively hacky. It is probably n
 
 ---
 
-** 39. [Maximum Average Subarray I.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Average%20Subarray%20I.java) ** Level: Easy Tags: [Array , Subarray]
+###  39. [Maximum Average Subarray I.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Average%20Subarray%20I.java)   Level: Easy Tags: [Array , Subarray]
       
 time: O (n)
 space: O (1)
@@ -496,7 +496,7 @@ Simply find sum of fixed window k, and at the same time max avg, and the remaind
 
 ---
 
-** 40. [Largest Number At Least Twice of Others.java] (https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Number%20At%20Least%20Twice%20of%20Others.java) ** Level: Easy Tags: [Array]
+###  40. [Largest Number At Least Twice of Others.java] (https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Number%20At%20Least%20Twice%20of%20Others.java)   Level: Easy Tags: [Array]
       
 
 Find the maximum value, and the second largest value, and see if it fits the question.
@@ -507,7 +507,7 @@ But in fact, as a counterexample: if one is not satisfied, it is enough to oppos
 
 ---
 
-** 41. [Toeplitz Matrix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Toeplitz%20Matrix.java) ** Level: Easy Tags: [Array]
+###  41. [Toeplitz Matrix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Toeplitz%20Matrix.java)   Level: Easy Tags: [Array]
       
 
 It seems that there are no algorithmic features, that is, the basic operation of array, and then split into a helper function to do repeated calculations and cut the code.
@@ -517,7 +517,7 @@ Pay attention to the boundary of check MxN.
 
 ---
 
-** 42. [Sum of Two Integers.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sum%20of%20Two%20Integers.java) ** Level: Easy Tags: [Bit Manipulation]
+###  42. [Sum of Two Integers.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sum%20of%20Two%20Integers.java)   Level: Easy Tags: [Bit Manipulation]
       
 
 a ^ b is: incomplete addition.
@@ -545,7 +545,7 @@ Steps:
 
 ---
 
-** 43. [Swap Bits.java] (https://github.com/awangdev/LintCode/blob/master/Java/Swap%20Bits.java) ** Level: Easy Tags: [Bit Manipulation]
+###  43. [Swap Bits.java] (https://github.com/awangdev/LintCode/blob/master/Java/Swap%20Bits.java)   Level: Easy Tags: [Bit Manipulation]
       
 
 Simple, but a lot of knowledge:
@@ -557,7 +557,7 @@ Simple, but a lot of knowledge:
 
 ---
 
-** 44. [Intersection of Two Arrays II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Intersection%20of%20Two%20Arrays%20II.java) ** Level: Easy Tags : [Binary Search, Hash Table, Sort, Two Pointers]
+###  44. [Intersection of Two Arrays II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Intersection%20of%20Two%20Arrays%20II.java)   Level: Easy Tags : [Binary Search, Hash Table, Sort, Two Pointers]
       
 
 method 1:
@@ -571,7 +571,7 @@ Binary search? Requires array sorted. Otherwise time O (nlogn) is not worth it.
 
 ---
 
-** 45. [Majority Element.java] (https://github.com/awangdev/LintCode/blob/master/Java/Majority%20Element.java) ** Level: Easy Tags: [Array, Bit Manipulation, Divide and Conquer]
+###  45. [Majority Element.java] (https://github.com/awangdev/LintCode/blob/master/Java/Majority%20Element.java)   Level: Easy Tags: [Array, Bit Manipulation, Divide and Conquer]
       
 
 #### Vote count
@@ -593,7 +593,7 @@ Binary search? Requires array sorted. Otherwise time O (nlogn) is not worth it.
 
 ---
 
-** 46. [Nested List Weight Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Nested%20List%20Weight%20Sum.java) ** Level: Easy Tags: [BFS , DFS]
+###  46. [Nested List Weight Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Nested%20List%20Weight%20Sum.java)   Level: Easy Tags: [BFS , DFS]
       
 
 Give a list of integers, the list may have a nest list. Calculate the total sum. The rule, if it is a nested list, each depth is a depth, sum must be multiplied by depth.
@@ -615,7 +615,7 @@ Give a list of integers, the list may have a nest list. Calculate the total sum.
 
 ---
 
-** 47. [Same Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Same%20Tree.java) ** Level: Easy Tags: [DFS, Tree]
+###  47. [Same Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Same%20Tree.java)   Level: Easy Tags: [DFS, Tree]
       
 
 Give two binary trees to see if the two trees are identified.
@@ -632,7 +632,7 @@ Give two binary trees to see if the two trees are identified.
 
 ---
 
-** 48. [Convert Sorted Array to Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree.java) ** Level: Easy Tags: [DFS, Divide and Conquer, Tree]
+###  48. [Convert Sorted Array to Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree.java)   Level: Easy Tags: [DFS, Divide and Conquer, Tree]
       
 
 As the title, build balanced BST from sorted array
@@ -648,7 +648,7 @@ As the title, build balanced BST from sorted array
 
 ---
 
-** 49. [Add Digits.java] (https://github.com/awangdev/LintCode/blob/master/Java/Add%20Digits.java) ** Level: Easy Tags: [Math]
+###  49. [Add Digits.java] (https://github.com/awangdev/LintCode/blob/master/Java/Add%20Digits.java)   Level: Easy Tags: [Math]
       
 
 Method 1: The common practice is to add the numbers according to the intent, double-while loop. The first layer of loop is O (n), and then the second layer of loop is a lot less digits, overall O (n)
@@ -659,7 +659,7 @@ Method 2: Find the mathematical rule. Every 9 digits, the mod will start to repe
 
 ---
 
-** 50. [Valid Anagram.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Anagram.java) ** Level: Easy Tags: [Hash Table, Sort]
+###  50. [Valid Anagram.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Anagram.java)   Level: Easy Tags: [Hash Table, Sort]
       
 
 HashMap
@@ -668,7 +668,7 @@ HashMap
 
 ---
 
-** 51. [Binary Tree Paths.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Paths.java) ** Level: Easy Tags: [Backtracking, Binary Tree , DFS]
+###  51. [Binary Tree Paths.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Paths.java)   Level: Easy Tags: [Backtracking, Binary Tree , DFS]
       
 
 Give a binary tree, return all root-to-leaf path
@@ -694,7 +694,7 @@ Give a binary tree, return all root-to-leaf path
 
 ---
 
-** 52. [Linked List Cycle.java] (https://github.com/awangdev/LintCode/blob/master/Java/Linked%20List%20Cycle.java) ** Level: Easy Tags: [Linked List, Two Pointers]
+###  52. [Linked List Cycle.java] (https://github.com/awangdev/LintCode/blob/master/Java/Linked%20List%20Cycle.java)   Level: Easy Tags: [Linked List, Two Pointers]
       
 
 #### Two Pointer: Slow Fast Pointer
@@ -708,7 +708,7 @@ Give a binary tree, return all root-to-leaf path
 
 ---
 
-** 53. [Min Stack.java] (https://github.com/awangdev/LintCode/blob/master/Java/Min%20Stack.java) ** Level: Easy Tags: [Design, Stack]
+###  53. [Min Stack.java] (https://github.com/awangdev/LintCode/blob/master/Java/Min%20Stack.java)   Level: Easy Tags: [Design, Stack]
       
 
 Double Stack: One normal stack, and the other minStack stores the current minimum level. Note the maintenance of changes in minStack
@@ -719,7 +719,7 @@ In addition, if you want maxStack, it is similar
 
 ---
 
-** 54. [Implement Queue using Stacks.java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Queue%20using%20Stacks.java) ** Level: Easy Tags: [Design , Stack]
+###  54. [Implement Queue using Stacks.java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Queue%20using%20Stacks.java)   Level: Easy Tags: [Design , Stack]
       
 
 #### Double Stack
@@ -737,7 +737,7 @@ Write an example to know that if you backfill early, stack.peek () is not the he
 
 ---
 
-** 55. [Reverse Integer.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Integer.java) ** Level: Easy Tags: [Math]
+###  55. [Reverse Integer.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Integer.java)   Level: Easy Tags: [Math]
       
 
 #### method 1
@@ -753,7 +753,7 @@ Space O (n), time O (n)
 
 ---
 
-** 56. [Sqrt (x) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Sqrt (x) .java) ** Level: Easy Tags: [Binary Search, Math ]
+###  56. [Sqrt (x) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Sqrt (x) .java)   Level: Easy Tags: [Binary Search, Math ]
       
 
 #### s- qrt (int x)
@@ -770,7 +770,7 @@ Space O (n), time O (n)
 
 ---
 
-** 57. [First Bad Version.java] (https://github.com/awangdev/LintCode/blob/master/Java/First%20Bad%20Version.java) ** Level: Easy Tags: [Binary Search]
+###  57. [First Bad Version.java] (https://github.com/awangdev/LintCode/blob/master/Java/First%20Bad%20Version.java)   Level: Easy Tags: [Binary Search]
       
 
 Binary Search
@@ -782,7 +782,7 @@ isBadVersion is directional. One point is wrong, and the other is wrong.
 
 ---
 
-** 58. [Meeting Rooms.java] (https://github.com/awangdev/LintCode/blob/master/Java/Meeting%20Rooms.java) ** Level: Easy Tags: [PriorityQueue, Sort, Sweep Line]
+###  58. [Meeting Rooms.java] (https://github.com/awangdev/LintCode/blob/master/Java/Meeting%20Rooms.java)   Level: Easy Tags: [PriorityQueue, Sort, Sweep Line]
       
 
 -Pay attention to the joint points to take into account the situation of all meetings, do not accidentally miss the joint points
@@ -799,7 +799,7 @@ Find if there is an overlap. PriorityQueue After sorting according to start time
 
 ---
 
-** 59. [Binary Tree Inorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Inorder%20Traversal.java) ** Level: Easy Tags: [Hash Table, Stack, Tree]
+###  59. [Binary Tree Inorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Inorder%20Traversal.java)   Level: Easy Tags: [Hash Table, Stack, Tree]
       
 
 Inorder traverse Binary Tree
@@ -827,7 +827,7 @@ How?
 
 ---
 
-** 60. [Change to Anagram.java] (https://github.com/awangdev/LintCode/blob/master/Java/Change%20to%20Anagram.java) ** Level: Easy Tags: [String]
+###  60. [Change to Anagram.java] (https://github.com/awangdev/LintCode/blob/master/Java/Change%20to%20Anagram.java)   Level: Easy Tags: [String]
       
 
 Random title in HackerRank: Give a string, everything in half, see how many characters the two halves will change, can become anagram.
@@ -842,7 +842,7 @@ Random title in HackerRank: Give a string, everything in half, see how many char
 
 ---
 
-** 61. [Classical Binary Search.java] (https://github.com/awangdev/LintCode/blob/master/Java/Classical%20Binary%20Search.java) ** Level: Easy Tags: [Binary Search]
+###  61. [Classical Binary Search.java] (https://github.com/awangdev/LintCode/blob/master/Java/Classical%20Binary%20Search.java)   Level: Easy Tags: [Binary Search]
       
 
 #### Binary Search Template
@@ -856,7 +856,7 @@ Random title in HackerRank: Give a string, everything in half, see how many char
 
 ---
 
-** 62. [Climbing Stairs.java] (https://github.com/awangdev/LintCode/blob/master/Java/Climbing%20Stairs.java) ** Level: Easy Tags: [DP, Memoization, Sequence DP]
+###  62. [Climbing Stairs.java] (https://github.com/awangdev/LintCode/blob/master/Java/Climbing%20Stairs.java)   Level: Easy Tags: [DP, Memoization, Sequence DP]
       
 
 Each step can take 1 or 2 steps, find out how many ways to climb the ladder in total.
@@ -885,7 +885,7 @@ Each step can take 1 or 2 steps, find out how many ways to climb the ladder in t
 
 ---
 
-** 63. [Closest Binary Search Tree Value.java] (https://github.com/awangdev/LintCode/blob/master/Java/Closest%20Binary%20Search%20Tree%20Value.java) ** Level: Easy Tags : [BST, Binary Search, Tree]
+###  63. [Closest Binary Search Tree Value.java] (https://github.com/awangdev/LintCode/blob/master/Java/Closest%20Binary%20Search%20Tree%20Value.java)   Level: Easy Tags : [BST, Binary Search, Tree]
       
 
 Give a BST, and a double target, and find the closest number.
@@ -904,7 +904,7 @@ Give a BST, and a double target, and find the closest number.
 
 ---
 
-** 64. [Binary Tree Preorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Preorder%20Traversal.java) ** Level: Easy Tags: [BFS , DFS, Stack, Tree]
+###  64. [Binary Tree Preorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Preorder%20Traversal.java)   Level: Easy Tags: [BFS , DFS, Stack, Tree]
       
 
 #### Recursive
@@ -920,7 +920,7 @@ Give a BST, and a double target, and find the closest number.
 
 ---
 
-** 65. [Closest Number in Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Closest%20Number%20in%20Sorted%20Array.java) ** Level: Easy Tags : [Binary Search]
+###  65. [Closest Number in Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Closest%20Number%20in%20Sorted%20Array.java)   Level: Easy Tags : [Binary Search]
       
 
 -A variant of Binary Search, LintCode can't run any further.
@@ -931,7 +931,7 @@ Give a BST, and a double target, and find the closest number.
 
 ---
 
-** 66. [Complete Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Complete%20Binary%20Tree.java) ** Level: Easy Tags: [BFS, Tree]
+###  66. [Complete Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Complete%20Binary%20Tree.java)   Level: Easy Tags: [BFS, Tree]
       
 
 A complete binary tree is a binary tree in which every level, except possibly the last,
@@ -948,7 +948,7 @@ is completely filled, and all nodes are as far left as possible
 
 ---
 
-** 67. [Compare Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Compare%20Strings.java) ** Level: Easy Tags: [String]
+###  67. [Compare Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Compare%20Strings.java)   Level: Easy Tags: [String]
       
 
 See if StringA includes all StringB characters.
@@ -963,7 +963,7 @@ See if StringA includes all StringB characters.
 
 ---
 
-** 68. [Contains Duplicate.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contains%20Duplicate.java) ** Level: Easy Tags: [Array, Hash Table]
+###  68. [Contains Duplicate.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contains%20Duplicate.java)   Level: Easy Tags: [Array, Hash Table]
       
 
 Unordered array, find if there are duplicate elements, return true / false.
@@ -980,7 +980,7 @@ Unordered array, find if there are duplicate elements, return true / false.
 
 ---
 
-** 69. [Contains Duplicate II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contains%20Duplicate%20II.java) ** Level: Easy Tags: [Array, Hash Table ]
+###  69. [Contains Duplicate II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contains%20Duplicate%20II.java)   Level: Easy Tags: [Array, Hash Table ]
       
 
 Unsorted array, find out if there are duplicate elemenets: the necessary condition is that the size of the index i, j of these two elements differ by at most k.
@@ -1007,7 +1007,7 @@ Unsorted array, find out if there are duplicate elemenets: the necessary conditi
 
 ---
 
-** 70. [Nim Game.java] (https://github.com/awangdev/LintCode/blob/master/Java/Nim%20Game.java) ** Level: Easy Tags: [Brainteaser, DP, Game Theory]
+###  70. [Nim Game.java] (https://github.com/awangdev/LintCode/blob/master/Java/Nim%20Game.java)   Level: Easy Tags: [Brainteaser, DP, Game Theory]
       
 
 #### Brainteaser
@@ -1024,7 +1024,7 @@ Unsorted array, find out if there are duplicate elemenets: the necessary conditi
 
 ---
 
-** 71. [Convert Integer A to Integer B.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Integer%20A%20to%20Integer%20B.java) ** Level : Easy Tags: [Bit Manipulation]
+###  71. [Convert Integer A to Integer B.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Integer%20A%20to%20Integer%20B.java)   Level : Easy Tags: [Bit Manipulation]
       
 
 How many bits do I need to change to convert Integer A to Integer B?
@@ -1039,7 +1039,7 @@ How many bits do I need to change to convert Integer A to Integer B?
 
 ---
 
-** 72. [Cosine Similarity.java] (https://github.com/awangdev/LintCode/blob/master/Java/Cosine%20Similarity.java) ** Level: Easy Tags: [Basic Implementation]
+###  72. [Cosine Similarity.java] (https://github.com/awangdev/LintCode/blob/master/Java/Cosine%20Similarity.java)   Level: Easy Tags: [Basic Implementation]
       
 
 According to the formula of Cosine Similarity, basic implementation
@@ -1048,7 +1048,7 @@ According to the formula of Cosine Similarity, basic implementation
 
 ---
 
-** 73. [Count 1 in Binary.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%201%20in%20Binary.java) ** Level: Easy Tags: [Bit Manipulation]
+###  73. [Count 1 in Binary.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%201%20in%20Binary.java)   Level: Easy Tags: [Bit Manipulation]
       
 
 count how many 1 in a 32-bit number binary format
@@ -1064,7 +1064,7 @@ You can put integer-> string-> char array.
 
 ---
 
-** 74. [Count and Say.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20and%20Say.java) ** Level: Easy Tags: [Basic Implementation, String ]
+###  74. [Count and Say.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20and%20Say.java)   Level: Easy Tags: [Basic Implementation, String ]
       
 
 Introduce a method of counting numbers, and then read the result of the previous line for each line, and calculate it line by line. Ask what is the nth line?
@@ -1077,7 +1077,7 @@ Introduce a method of counting numbers, and then read the result of the previous
 
 ---
 
-** 75. [Paint House.java] (https://github.com/awangdev/LintCode/blob/master/Java/Paint%20House.java) ** Level: Easy Tags: [DP, Sequence DP, Status DP ]
+###  75. [Paint House.java] (https://github.com/awangdev/LintCode/blob/master/Java/Paint%20House.java)   Level: Easy Tags: [DP, Sequence DP, Status DP ]
       
 time: O (nm), m = # of colors
 space: O (nm)
@@ -1100,7 +1100,7 @@ To paint n houses, and the cost [] [] of nx3. Find the minimum cost to paint all
 
 ---
 
-** 76. [Longest Continuous Increasing Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Continuous%20Increasing%20Subsequence.java) ** Level: Easy Tags: [Array , Coordinate DP, DP]
+###  76. [Longest Continuous Increasing Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Continuous%20Increasing%20Subsequence.java)   Level: Easy Tags: [Array , Coordinate DP, DP]
       
 
 Find the length of the continuous continuous rising subsequence.
@@ -1119,7 +1119,7 @@ Find the length of the continuous continuous rising subsequence.
 
 ---
 
-** 77. [House Robber.java] (https://github.com/awangdev/LintCode/blob/master/Java/House%20Robber.java) ** Level: Easy Tags: [DP, Sequence DP]
+###  77. [House Robber.java] (https://github.com/awangdev/LintCode/blob/master/Java/House%20Robber.java)   Level: Easy Tags: [DP, Sequence DP]
       
 time: O (n)
 space: O (n) or rolling array O (1)
@@ -1142,7 +1142,7 @@ Search for houses, the adjacent ones cannot touch. Each house has value, find ma
 
 ---
 
-** 78. [Find All Anagrams in a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20All%20Anagrams%20in%20a%20String.java) ** Level : Easy Tags: [Hash Table, Sliding Window]
+###  78. [Find All Anagrams in a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20All%20Anagrams%20in%20a%20String.java)   Level : Easy Tags: [Hash Table, Sliding Window]
       
 
 Much like Permutation in String. Give short string p, long string s.
@@ -1159,7 +1159,7 @@ Find the starting index of all p's anagram (permutation) in s.
 
 ---
 
-** 79. [Count Primes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20Primes.java) ** Level: Easy Tags: [Hash Table, Math]
+###  79. [Count Primes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20Primes.java)   Level: Easy Tags: [Hash Table, Math]
       
 
 Count: all prime numbers less than n.
@@ -1179,7 +1179,7 @@ Count: all prime numbers less than n.
 
 ---
 
-** 80. [Delete Node in a Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Delete%20Node%20in%20a%20Linked%20List.java) ** Level : Easy Tags: [Linked List]
+###  80. [Delete Node in a Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Delete%20Node%20in%20a%20Linked%20List.java)   Level : Easy Tags: [Linked List]
       
 
 Given Singlely linked list, delete an arbitrary node (cannot be a head node)
@@ -1192,7 +1192,7 @@ Given Singlely linked list, delete an arbitrary node (cannot be a head node)
 
 ---
 
-** 81. [Excel Sheet Column Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Excel%20Sheet%20Column%20Number.java) ** Level: Easy Tags: [Math ]
+###  81. [Excel Sheet Column Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Excel%20Sheet%20Column%20Number.java)   Level: Easy Tags: [Math ]
       
 
 #### Math
@@ -1205,7 +1205,7 @@ Given Singlely linked list, delete an arbitrary node (cannot be a head node)
 
 ---
 
-** 82. [Excel Sheet Column Title.java] (https://github.com/awangdev/LintCode/blob/master/Java/Excel%20Sheet%20Column%20Title.java) ** Level: Easy Tags: [Math ]
+###  82. [Excel Sheet Column Title.java] (https://github.com/awangdev/LintCode/blob/master/Java/Excel%20Sheet%20Column%20Title.java)   Level: Easy Tags: [Math ]
       
 
 #### Basic Conversion
@@ -1219,7 +1219,7 @@ Given Singlely linked list, delete an arbitrary node (cannot be a head node)
 
 ---
 
-** 83. [Flip Game.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flip%20Game.java) ** Level: Easy Tags: [String]
+###  83. [Flip Game.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flip%20Game.java)   Level: Easy Tags: [String]
       
 
 #### String
@@ -1232,7 +1232,7 @@ Given Singlely linked list, delete an arbitrary node (cannot be a head node)
 
 ---
 
-** 84. [Implement strStr () .java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20strStr () .java) ** Level: Easy Tags: [String, Two Pointers]
+###  84. [Implement strStr () .java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20strStr () .java)   Level: Easy Tags: [String, Two Pointers]
       
 
 Give two strings A, B, find one B at the beginning of A.
@@ -1248,7 +1248,7 @@ Give two strings A, B, find one B at the beginning of A.
 
 ---
 
-** 85. [Last Position of Target.java] (https://github.com/awangdev/LintCode/blob/master/Java/Last%20Position%20of%20Target.java) ** Level: Easy Tags: [Binary Search]
+###  85. [Last Position of Target.java] (https://github.com/awangdev/LintCode/blob/master/Java/Last%20Position%20of%20Target.java)   Level: Easy Tags: [Binary Search]
       
 
 Give a sorted integer array, find the last index where the target appears. There are duplicate numbers in the array
@@ -1259,7 +1259,7 @@ There are duplicates, not the end point, continue binary search
 
 ---
 
-** 86. [Length of Last Word.java] (https://github.com/awangdev/LintCode/blob/master/Java/Length%20of%20Last%20Word.java) ** Level: Easy Tags: [String ]
+###  86. [Length of Last Word.java] (https://github.com/awangdev/LintCode/blob/master/Java/Length%20of%20Last%20Word.java)   Level: Easy Tags: [String ]
       
 
 Give a String with lower case character and ''. Find the length of the last single word
@@ -1272,7 +1272,7 @@ Give a String with lower case character and ''. Find the length of the last sing
 
 ---
 
-** 87. [Longest Increasing Continuous subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Continuous%20subsequence.java) ** Level: Easy Tags: [Array , Coordinate DP, DP]
+###  87. [Longest Increasing Continuous subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Continuous%20subsequence.java)   Level: Easy Tags: [Array , Coordinate DP, DP]
       
 
 https://leetcode.com/problems/longest-continuous-increasing-subsequence/description/
@@ -1285,7 +1285,7 @@ Features: One run back, the ans will continue to be compared with the left ans; 
 
 ---
 
-** 88. [Maximum Subarray.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray.java) ** Level: Easy Tags: [Array, DFS, DP, Divide and Conquer, PreSum, Sequence DP, Subarray]
+###  88. [Maximum Subarray.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray.java)   Level: Easy Tags: [Array, DFS, DP, Divide and Conquer, PreSum, Sequence DP, Subarray]
       
 time: O (n)
 space: O (n), O (1) rolling array
@@ -1310,7 +1310,7 @@ Give a list of arrays, unsorted, can have negative / positive num. Find the maxi
 
 ---
 
-** 89. [Median.java] (https://github.com/awangdev/LintCode/blob/master/Java/Median.java) ** Level: Easy Tags: [Array, Quick Select, Quick Sort]
+###  89. [Median.java] (https://github.com/awangdev/LintCode/blob/master/Java/Median.java)   Level: Easy Tags: [Array, Quick Select, Quick Sort]
       
 
 Given an unordered array, find median (the number in the middle after sort).
@@ -1328,7 +1328,7 @@ Given an unordered array, find median (the number in the middle after sort).
 
 ---
 
-** 90. [Middle of Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Middle%20of%20Linked%20List.java) ** Level: Easy Tags: [Linked List]
+###  90. [Middle of Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Middle%20of%20Linked%20List.java)   Level: Easy Tags: [Linked List]
       
 
 Find the middle node of the Linked List
@@ -1341,7 +1341,7 @@ Find the middle node of the Linked List
 
 ---
 
-** 91. [Singleton.java] (https://github.com/awangdev/LintCode/blob/master/Java/Singleton.java) ** Level: Easy Tags: [Design]
+###  91. [Singleton.java] (https://github.com/awangdev/LintCode/blob/master/Java/Singleton.java)   Level: Easy Tags: [Design]
       
 
 Let a class be a singleton
@@ -1350,7 +1350,7 @@ Let a class be a singleton
 
 ---
 
-** 92. [Remove Linked List Elements.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Linked%20List%20Elements.java) ** Level: Easy Tags: [Linked List]
+###  92. [Remove Linked List Elements.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Linked%20List%20Elements.java)   Level: Easy Tags: [Linked List]
       
 
 Remove all targets from the linked list
@@ -1363,7 +1363,7 @@ Remove all targets from the linked list
 
 ---
 
-** 93. [Fibonacci.java] (https://github.com/awangdev/LintCode/blob/master/Java/Fibonacci.java) ** Level: Easy Tags: [DP, Math, Memoization]
+###  93. [Fibonacci.java] (https://github.com/awangdev/LintCode/blob/master/Java/Fibonacci.java)   Level: Easy Tags: [DP, Math, Memoization]
       
 
 #### Memoization
@@ -1380,7 +1380,7 @@ Remove all targets from the linked list
 
 ---
 
-** 94. [Palindrome Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Linked%20List.java) ** Level: Easy Tags: [Linked List, Two Pointers]
+###  94. [Palindrome Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Linked%20List.java)   Level: Easy Tags: [Linked List, Two Pointers]
       
 
 #### Reverse Linked List
@@ -1397,7 +1397,7 @@ Remove all targets from the linked list
 
 ---
 
-** 95. [Reverse Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List.java) ** Level: Easy Tags: [Linked List]
+###  95. [Reverse Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List.java)   Level: Easy Tags: [Linked List]
       
 
 #### Reverse List
@@ -1410,7 +1410,7 @@ Remove all targets from the linked list
 
 ---
 
-** 96. [Intersection of Two Linked Lists.java] (https://github.com/awangdev/LintCode/blob/master/Java/Intersection%20of%20Two%20Linked%20Lists.java) ** Level: Easy Tags : [Linked List]
+###  96. [Intersection of Two Linked Lists.java] (https://github.com/awangdev/LintCode/blob/master/Java/Intersection%20of%20Two%20Linked%20Lists.java)   Level: Easy Tags : [Linked List]
       
 
 For two linked lists, ask which node starts, and the two linked lists start to overlap?
@@ -1425,7 +1425,7 @@ For two linked lists, ask which node starts, and the two linked lists start to o
 
 ---
 
-** 97. [Palindrome Permutation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Permutation.java) ** Level: Easy Tags: [Hash Table]
+###  97. [Palindrome Permutation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Permutation.java)   Level: Easy Tags: [Hash Table]
       
 
 For String, see if the permutation can be Palindrome
@@ -1440,7 +1440,7 @@ For String, see if the permutation can be Palindrome
 
 ---
 
-** 98. [Valid Palindrome.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Palindrome.java) ** Level: Easy Tags: [String, Two Pointers]
+###  98. [Valid Palindrome.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Palindrome.java)   Level: Easy Tags: [String, Two Pointers]
       
 
 Verify that the string is palendrome. Only alphanumeric is considered, other characters can be ignored
@@ -1457,7 +1457,7 @@ Verify that the string is palendrome. Only alphanumeric is considered, other cha
 
 ---
 
-** 99. [Implement Stack using Queues.java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Stack%20using%20Queues.java) ** Level: Easy Tags: [Design , Stack]
+###  99. [Implement Stack using Queues.java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Stack%20using%20Queues.java)   Level: Easy Tags: [Design , Stack]
       
 
 As the title.
@@ -1482,7 +1482,7 @@ As the title.
 
 ---
 
-** 100. [Implement Stack.java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Stack.java) ** Level: Easy Tags: [Stack]
+###  100. [Implement Stack.java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Stack.java)   Level: Easy Tags: [Stack]
       
 
 Just use a data structure, implement stack.
@@ -1495,7 +1495,7 @@ Just use a data structure, implement stack.
 
 ---
 
-** 101. [Invert Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Invert%20Binary%20Tree.java) ** Level: Easy Tags: [BFS, DFS, Tree]
+###  101. [Invert Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Invert%20Binary%20Tree.java)   Level: Easy Tags: [BFS, DFS, Tree]
       
 
 #### DFS
@@ -1511,7 +1511,7 @@ Just use a data structure, implement stack.
 
 ---
 
-** 102. [Maximum Depth of Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Depth%20of%20Binary%20Tree.java) ** Level: Easy Tags : [DFS, Tree]
+###  102. [Maximum Depth of Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Depth%20of%20Binary%20Tree.java)   Level: Easy Tags : [DFS, Tree]
       
 
 Give a binary tree, find the deepest depth
@@ -1529,7 +1529,7 @@ Give a binary tree, find the deepest depth
 
 ---
 
-** 103. [Minimum Depth of Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Depth%20of%20Binary%20Tree.java) ** Level: Easy Tags : [BFS, DFS, Tree]
+###  103. [Minimum Depth of Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Depth%20of%20Binary%20Tree.java)   Level: Easy Tags : [BFS, DFS, Tree]
       
 
 #### BFS
@@ -1549,7 +1549,7 @@ Give a binary tree, find the deepest depth
 
 ---
 
-** 104. [Symmetric Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Symmetric%20Tree.java) ** Level: Easy Tags: [BFS, DFS, Tree]
+###  104. [Symmetric Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Symmetric%20Tree.java)   Level: Easy Tags: [BFS, DFS, Tree]
       
 
 Check if tree is symmetric
@@ -1569,7 +1569,7 @@ Note the example and definition of Symmetric Binary Tree: mirror-like symmetry. 
 
 ---
 
-** 105. [Tweaked Identical Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Tweaked%20Identical%20Binary%20Tree.java) ** Level: Easy Tags: [DFS , Tree]
+###  105. [Tweaked Identical Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Tweaked%20Identical%20Binary%20Tree.java)   Level: Easy Tags: [DFS , Tree]
       
 
 Check if the binary tree is identified. 
@@ -1583,7 +1583,7 @@ Features: If the subtree has rotation, as long as the tree node values ​​are
 
 ---
 
-** 106. [Merge Two Binary Trees.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Two%20Binary%20Trees.java) ** Level: Easy Tags: [DFS , Tree]
+###  106. [Merge Two Binary Trees.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Two%20Binary%20Trees.java)   Level: Easy Tags: [DFS , Tree]
       
 
 #### DFS
@@ -1593,7 +1593,7 @@ Features: If the subtree has rotation, as long as the tree node values ​​are
 
 ---
 
-** 107. [Subtree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subtree.java) ** Level: Easy Tags: [DFS, Tree]
+###  107. [Subtree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subtree.java)   Level: Easy Tags: [DFS, Tree]
       
 
 Give a binary tree s, and a binary tree t, check if t is a subtree of s.
@@ -1609,7 +1609,7 @@ Give a binary tree s, and a binary tree t, check if t is a subtree of s.
 
 ---
 
-** 108. [Lowest Common Ancestor II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20II.java) ** Level: Easy Tags: [Hash Table, Tree]
+###  108. [Lowest Common Ancestor II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20II.java)   Level: Easy Tags: [Hash Table, Tree]
       
 
 Give a Binary Tree root, and two nodes A, B. Features: The parent pointer is stored in the node. Find the lowest common ancestor
@@ -1631,7 +1631,7 @@ Give a Binary Tree root, and two nodes A, B. Features: The parent pointer is sto
 
 ---
 
-** 109. [Hash Function.java] (https://github.com/awangdev/LintCode/blob/master/Java/Hash%20Function.java) ** Level: Easy Tags: [Hash Table]
+###  109. [Hash Function.java] (https://github.com/awangdev/LintCode/blob/master/Java/Hash%20Function.java)   Level: Easy Tags: [Hash Table]
       
 
 #### Hash Function
@@ -1653,7 +1653,7 @@ Give a Binary Tree root, and two nodes A, B. Features: The parent pointer is sto
 
 ---
 
-** 110. [Merge Two Sorted Lists.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Two%20Sorted%20Lists.java) ** Level: Easy Tags: [Linked List]
+###  110. [Merge Two Sorted Lists.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Two%20Sorted%20Lists.java)   Level: Easy Tags: [Linked List]
       
 
 As the title
@@ -1667,7 +1667,7 @@ As the title
 
 ---
 
-** 111. [Missing Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Missing%20Number.java) ** Level: Easy Tags: [Array, Bit Manipulation, Math]
+###  111. [Missing Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Missing%20Number.java)   Level: Easy Tags: [Array, Bit Manipulation, Math]
       
 
 Give a string of unique numbers, the numbers are taken from [0 ~ n], unordered, find the first skipped number.
@@ -1695,7 +1695,7 @@ Give a string of unique numbers, the numbers are taken from [0 ~ n], unordered, 
 
 ---
 
-** 112. [Remove Duplicates from Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20Array.java) ** Level: Easy Tags : [Array, Two Pointers]
+###  112. [Remove Duplicates from Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20Array.java)   Level: Easy Tags : [Array, Two Pointers]
       
 
 Give a sorted array and remove the duplicates: that is, paste the non-repeating in order, the extra positions at the end of the array don't matter.
@@ -1722,7 +1722,7 @@ return unique item length.
 
 ---
 
-** 113. [Remove Duplicates from Sorted List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20List.java) ** Level: Easy Tags : [Linked List]
+###  113. [Remove Duplicates from Sorted List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20List.java)   Level: Easy Tags : [Linked List]
       
 
 Remove duplicate elements from the Linked list, leaving only unique elements.
@@ -1742,7 +1742,7 @@ Remove duplicate elements from the Linked list, leaving only unique elements.
 
 ---
 
-** 114. [Longest Word in Dictionary.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Word%20in%20Dictionary.java) ** Level: Easy Tags: [Hash Table, Trie]
+###  114. [Longest Word in Dictionary.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Word%20in%20Dictionary.java)   Level: Easy Tags: [Hash Table, Trie]
       
 
 Give the string word [], find the longest Word, meet the conditions: This Word can be built from word [] letter by letter.
@@ -1774,7 +1774,7 @@ If multiple answers, respect smallest lexicographical order.
 
 ---
 
-** 115. [Path Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum.java) ** Level: Easy Tags: [DFS, Tree]
+###  115. [Path Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum.java)   Level: Easy Tags: [DFS, Tree]
       
 
 Give an inputSum, then dfs, find if there is a path, and the resulting path sum is the same as inputSum.
@@ -1789,7 +1789,7 @@ Give an inputSum, then dfs, find if there is a path, and the resulting path sum 
 
 ---
 
-** 116. [Path Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20II.java) ** Level: Easy Tags: [Backtracking, DFS, Tree]
+###  116. [Path Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20II.java)   Level: Easy Tags: [Backtracking, DFS, Tree]
       
 
 Give an inputSum, then dfs, find all paths, satisfy: path sum is the same as inputSum.
@@ -1811,7 +1811,7 @@ Give an inputSum, then dfs, find all paths, satisfy: path sum is the same as inp
 
 ---
 
-** 117. [Path Sum III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20III.java) ** Level: Easy Tags: [DFS, Double Recursive , Tree]
+###  117. [Path Sum III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20III.java)   Level: Easy Tags: [DFS, Double Recursive , Tree]
       
 
 Count all existing path sum == target sum. It can start at any point. But only parent-> child.
@@ -1832,7 +1832,7 @@ Count all existing path sum == target sum. It can start at any point. But only p
 
 ---
 
-** 118. [Rotate String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rotate%20String.java) ** Level: Easy Tags: [String]
+###  118. [Rotate String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rotate%20String.java)   Level: Easy Tags: [String]
       
 
 Give two Strings to see if A rotates into B
@@ -1853,7 +1853,7 @@ Give two Strings to see if A rotates into B
 
 ---
 
-** 119. [Longest Common Prefix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Common%20Prefix.java) ** Level: Easy Tags: [String]
+###  119. [Longest Common Prefix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Common%20Prefix.java)   Level: Easy Tags: [String]
       
 
 Find the longest public prefix in a string.
@@ -1872,7 +1872,7 @@ Find the longest public prefix in a string.
 
 ---
 
-** 120. [Reverse Words in a String III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String%20III.java) ** Level : Easy Tags: [String]
+###  120. [Reverse Words in a String III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String%20III.java)   Level : Easy Tags: [String]
       
 
 Give a String, the Word inside is separated by single space, the purpose is to reverse all Word, but preserve Word and space order.
@@ -1884,7 +1884,7 @@ Give a String, the Word inside is separated by single space, the purpose is to r
 
 ---
 
-** 121. [Merge Sorted Array II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Sorted%20Array%20II.java) ** Level: Easy Tags: [Array ]
+###  121. [Merge Sorted Array II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Sorted%20Array%20II.java)   Level: Easy Tags: [Array ]
       
 
 As the title, merge two sorted array into new sorted array
@@ -1896,7 +1896,7 @@ As the title, merge two sorted array into new sorted array
 
 ---
 
-** 122. [Nth to Last Node in List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Nth%20to%20Last%20Node%20in%20List.java) ** Level : Easy Tags: [Linked List]
+###  122. [Nth to Last Node in List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Nth%20to%20Last%20Node%20in%20List.java)   Level : Easy Tags: [Linked List]
       
 
 #### Linked List
@@ -1908,7 +1908,7 @@ As the title, merge two sorted array into new sorted array
 
 ---
 
-** 123. [Two Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Sum.java) ** Level: Easy Tags: [Array, Hash Table]
+###  123. [Two Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Sum.java)   Level: Easy Tags: [Array, Hash Table]
       
 
 #### HashMap <value, index>
@@ -1927,7 +1927,7 @@ As the title, merge two sorted array into new sorted array
 
 ---
 
-** 124. [Max Area of ​​Island.java] (https://github.com/awangdev/LintCode/blob/master/Java/Max%20Area%20of%20Island.java) ** Level: Easy Tags: [Array , DFS]
+###  124. [Max Area of ​​Island.java] (https://github.com/awangdev/LintCode/blob/master/Java/Max%20Area%20of%20Island.java)   Level: Easy Tags: [Array , DFS]
       
 
 #### DFS
@@ -1944,7 +1944,7 @@ As the title, merge two sorted array into new sorted array
 
 ---
 
-** 125. [Subarray Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum.java) ** Level: Easy Tags: [Array, Hash Table, PreSum, Subarray]
+###  125. [Subarray Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum.java)   Level: Easy Tags: [Array, Hash Table, PreSum, Subarray]
       
 time: O (n)
 space: O (n)
@@ -1964,7 +1964,7 @@ To a string of numbers, to find a subarray therein [start, end] index, condition
 
 ---
 
-** 126. [Range Sum Query-Immutable.java] (https://github.com/awangdev/LintCode/blob/master/Java/Range%20Sum%20Query%20-%20Immutable.java) ** Level: Easy Tags: [DP, PreSum]
+###  126. [Range Sum Query-Immutable.java] (https://github.com/awangdev/LintCode/blob/master/Java/Range%20Sum%20Query%20-%20Immutable.java)   Level: Easy Tags: [DP, PreSum]
       
 
 Given a string of numbers, find sumRange.
@@ -1978,7 +1978,7 @@ Given a string of numbers, find sumRange.
 
 ---
 
-** 127. [Longest Words.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Words.java) ** Level: Easy Tags: [Hash Table, String]
+###  127. [Longest Words.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Words.java)   Level: Easy Tags: [Hash Table, String]
       
 
 Give a string of Strings, find the longest length, and return the longest Strings all
@@ -1991,7 +1991,7 @@ Give a string of Strings, find the longest length, and return the longest String
 
 ---
 
-** 128. [Unique Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Unique%20Characters.java) ** Level: Easy Tags: [Array, String]
+###  128. [Unique Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Unique%20Characters.java)   Level: Easy Tags: [Array, String]
       
 
 determine if characters are unique in string
@@ -2010,7 +2010,7 @@ determine if characters are unique in string
 
 ---
 
-** 129. [Binary Gap.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Gap.java) ** Level: Easy Tags: [Bit Manipulation]
+###  129. [Binary Gap.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Gap.java)   Level: Easy Tags: [Bit Manipulation]
       
 time: O (n), n = # of bits
 space: O (1)
@@ -2023,7 +2023,7 @@ space: O (1)
 
 ---
 
-** 130. [Maximize Distance to Closest Person.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximize%20Distance%20to%20Closest%20Person.java) ** Level: Easy Tags : [Array]
+###  130. [Maximize Distance to Closest Person.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximize%20Distance%20to%20Closest%20Person.java)   Level: Easy Tags : [Array]
       
 time: O (n)
 space: O (1)
@@ -2044,7 +2044,7 @@ It's the same concept of Exam Room, to simplify the problem: just consider one p
 
 ---
 
-** 131. [Paint Fence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Paint%20Fence.java) ** Level: Easy Tags: [DP, Sequence DP]
+###  131. [Paint Fence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Paint%20Fence.java)   Level: Easy Tags: [DP, Sequence DP]
       
 time: O (n)
 space: O (n)
@@ -2068,7 +2068,7 @@ space: O (n)
 
 ---
 
-** 132. [Best Time to Buy and Sell Stock.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock.java) ** Level: Easy Tags: [Array, DP, Sequence DP]
+###  132. [Best Time to Buy and Sell Stock.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock.java)   Level: Easy Tags: [Array, DP, Sequence DP]
       
 
 Give an array of stock prices, limit one round of trading (buy / buy), and ask how to find the maximum profit.
@@ -2097,7 +2097,7 @@ Give an array of stock prices, limit one round of trading (buy / buy), and ask h
 
 ---
 
-** 133. [Best Time to Buy and Sell Stock II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II .java) ** Level: Easy Tags: [Array, DP, Greedy, Sequence DP, Status DP]
+###  133. [Best Time to Buy and Sell Stock II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II .java)   Level: Easy Tags: [Array, DP, Greedy, Sequence DP, Status DP]
       
 time: O (n)
 space: O (1) greedy, O (n) dp
@@ -2140,7 +2140,7 @@ Difference from Stock I: You can buy and sell multiple times, and find the maxim
 
 ---
 
-** 134. [Minimum Subarray.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Subarray.java) ** Level: Easy Tags: [Array, DP, Greedy, Sequence DP, Subarray]
+###  134. [Minimum Subarray.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Subarray.java)   Level: Easy Tags: [Array, DP, Greedy, Sequence DP, Subarray]
       
 time: O (m)
 space: O (1)
@@ -2158,7 +2158,7 @@ Give a list of arrays, unsorted, can have negative / positive num. Find the mini
 
 ---
 
-** 135. [Subtree of Another Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subtree%20of%20Another%20Tree.java) ** Level: Easy Tags: [DFS , Divide and Conquer, Tree]
+###  135. [Subtree of Another Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subtree%20of%20Another%20Tree.java)   Level: Easy Tags: [DFS , Divide and Conquer, Tree]
       
 
 #### Tree 
@@ -2169,7 +2169,7 @@ Give a list of arrays, unsorted, can have negative / positive num. Find the mini
 
 ---
 
-** 136. [Two Sum IV-Input is a BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Sum%20IV%20-%20Input%20is%20a% 20BST.java) ** Level: Easy Tags: [Tree]
+###  136. [Two Sum IV-Input is a BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Sum%20IV%20-%20Input%20is%20a% 20BST.java)   Level: Easy Tags: [Tree]
       
 
 HashSet to store visited items. Same old 2 sum trick.
@@ -2178,7 +2178,7 @@ HashSet to store visited items. Same old 2 sum trick.
 
 ---
 
-** 137. [Read N Characters Given Read4.java] (https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4.java) ** Level: Easy Tags : [Enumeration, String]
+###  137. [Read N Characters Given Read4.java] (https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4.java)   Level: Easy Tags : [Enumeration, String]
       
 
 Read4 title. Understanding title: There is an input object buff, which will be populated with data.
@@ -2191,7 +2191,7 @@ Read4 title. Understanding title: There is an input object buff, which will be p
 
 ---
 
-** 138. [Merge Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Sorted%20Array.java) ** Level: Easy Tags: [Array, Two Pointers ]
+###  138. [Merge Sorted Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Sorted%20Array.java)   Level: Easy Tags: [Array, Two Pointers ]
       
 
 Give two sorted arrays, merge. One of the arrays nums1 has extra positions
@@ -2204,7 +2204,7 @@ Give two sorted arrays, merge. One of the arrays nums1 has extra positions
 
 ---
 
-** 139. [Valid Palindrome II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Palindrome%20II.java) ** Level: Easy Tags: [String]
+###  139. [Valid Palindrome II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Palindrome%20II.java)   Level: Easy Tags: [String]
       
 
 #### Palindrome String
@@ -2215,7 +2215,7 @@ Give two sorted arrays, merge. One of the arrays nums1 has extra positions
 
 ---
 
-** 140. [Moving Average from Data Stream.java] (https://github.com/awangdev/LintCode/blob/master/Java/Moving%20Average%20from%20Data%20Stream.java) ** Level: Easy Tags : [Design, Queue, Sliding Window]
+###  140. [Moving Average from Data Stream.java] (https://github.com/awangdev/LintCode/blob/master/Java/Moving%20Average%20from%20Data%20Stream.java)   Level: Easy Tags : [Design, Queue, Sliding Window]
       
 
 Give an interface, design a structure, and be able to calculate the moving window average.
@@ -2228,7 +2228,7 @@ Give an interface, design a structure, and be able to calculate the moving windo
 
 ---
 
-** 141. [Move Zeroes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Move%20Zeroes.java) ** Level: Easy Tags: [Array, Two Pointers]
+###  141. [Move Zeroes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Move%20Zeroes.java)   Level: Easy Tags: [Array, Two Pointers]
       
 
 Move non-zero elements to front of array; preseve order.
@@ -2241,7 +2241,7 @@ Move non-zero elements to front of array; preseve order.
 
 ---
 
-** 142. [Flood Fill.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flood%20Fill.java) ** Level: Easy Tags: [DFS]
+###  142. [Flood Fill.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flood%20Fill.java)   Level: Easy Tags: [DFS]
       
 
 Same as MS Paint
@@ -2253,7 +2253,7 @@ Same as MS Paint
 
 ---
 
-** 143. [Diameter of Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Diameter%20of%20Binary%20Tree.java) ** Level: Easy Tags: [Tree ]
+###  143. [Diameter of Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Diameter%20of%20Binary%20Tree.java)   Level: Easy Tags: [Tree ]
       
 
 Find longest path (include or not include root)
@@ -2269,14 +2269,14 @@ Same idea as Binary Tree Maximum Path Sum: handle single path, or combined path 
 
 ---
 
-** 144. [Backspace String Compare.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backspace%20String%20Compare.java) ** Level: Easy Tags: [Stack, Two Pointers ]
+###  144. [Backspace String Compare.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backspace%20String%20Compare.java)   Level: Easy Tags: [Stack, Two Pointers ]
       
 
 
 
 ---
 
-** 145. [Roman to Integer.java] (https://github.com/awangdev/LintCode/blob/master/Java/Roman%20to%20Integer.java) ** Level: Easy Tags: [Math, String]
+###  145. [Roman to Integer.java] (https://github.com/awangdev/LintCode/blob/master/Java/Roman%20to%20Integer.java)   Level: Easy Tags: [Math, String]
       
 
 #### String 
@@ -2291,7 +2291,7 @@ https://en.wikipedia.org/wiki/Roman_numerals
 
 ---
 
-** 146. [Intersection of Two Arrays.java] (https://github.com/awangdev/LintCode/blob/master/Java/Intersection%20of%20Two%20Arrays.java) ** Level: Easy Tags: [Binary Search, Hash Table, Sort, Two Pointers]
+###  146. [Intersection of Two Arrays.java] (https://github.com/awangdev/LintCode/blob/master/Java/Intersection%20of%20Two%20Arrays.java)   Level: Easy Tags: [Binary Search, Hash Table, Sort, Two Pointers]
       
 
 -Method 1: Use hashset to find unique && duplicate: O (m + n)
@@ -2301,7 +2301,7 @@ https://en.wikipedia.org/wiki/Roman_numerals
 
 ---
 
-** 147. [Strobogrammatic Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Strobogrammatic%20Number.java) ** Level: Easy Tags: [Enumeration, Hash Table, Math]
+###  147. [Strobogrammatic Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Strobogrammatic%20Number.java)   Level: Easy Tags: [Enumeration, Hash Table, Math]
       
 
 Enumerate according to the topic, and then follow the basic implementation rules
@@ -2314,7 +2314,7 @@ Enumerate according to the topic, and then follow the basic implementation rules
 
 ---
 
-** 148. [Valid Parentheses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Parentheses.java) ** Level: Easy Tags: [Stack, String]
+###  148. [Valid Parentheses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Parentheses.java)   Level: Easy Tags: [Stack, String]
       
 
 Peeling process. The trouble should end it   
@@ -2325,7 +2325,7 @@ The right skin should correspond to the left skin on the top of the stack.
 
 ---
 
-** 149. [First Unique Character in a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/First%20Unique%20Character%20in%20a%20String.java) ** Level : Easy Tags: [Hash Table, String]
+###  149. [First Unique Character in a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/First%20Unique%20Character%20in%20a%20String.java)   Level : Easy Tags: [Hash Table, String]
       
 
 Method 1: According to the meaning of the title, find the first letter of first index == last index.
@@ -2336,7 +2336,7 @@ Method 2: Use a hashmap to store the index of the letter, and the index of some 
 
 ---
 
-** 150. [Add Binary.java] (https://github.com/awangdev/LintCode/blob/master/Java/Add%20Binary.java) ** Level: Easy Tags: [Math, String, Two Pointers]
+###  150. [Add Binary.java] (https://github.com/awangdev/LintCode/blob/master/Java/Add%20Binary.java)   Level: Easy Tags: [Math, String, Two Pointers]
       
 
 #### Two pointers
@@ -2353,7 +2353,7 @@ Method 2: Use a hashmap to store the index of the letter, and the index of some 
 
 ---
 
-** 151. [Isomorphic Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Isomorphic%20Strings.java) ** Level: Easy Tags: [Hash Table]
+###  151. [Isomorphic Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Isomorphic%20Strings.java)   Level: Easy Tags: [Hash Table]
       
 
 #### HashMap
@@ -2371,7 +2371,7 @@ Method 2: Use a hashmap to store the index of the letter, and the index of some 
 
 ---
 
-** 152. [Next Greater Element I.java] (https://github.com/awangdev/LintCode/blob/master/Java/Next%20Greater%20Element%20I.java) ** Level: Easy Tags: [Hash Table, Stack]
+###  152. [Next Greater Element I.java] (https://github.com/awangdev/LintCode/blob/master/Java/Next%20Greater%20Element%20I.java)   Level: Easy Tags: [Hash Table, Stack]
       
 
 #### stack?
