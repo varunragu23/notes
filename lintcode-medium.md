@@ -101,687 +101,162 @@
     - [94. [House Robber III.java] (https : //github.com/awangdev/LintCode/blob/master/Java/House%20Robber%20III.java)   Level: Medium Tags: [DFS, DP, Status DP, Tree]](#94-house-robber-iiijava-https--githubcomawangdevlintcodeblobmasterjavahouserobberiiijava---level-medium-tags-dfs-dp-status-dp-tree)
   - [## DP, DFS](#-dp-dfs)
     - [95. Permutation in String.java   Level: Medium Tags: [Two Pointers]](#95-permutation-in-stringjava---level-medium-tags-two-pointers)
-- [<h3 id="two-pointer-118">Two Pointer</h3>](#h3-id%22two-pointer-118%22two-pointerh3)
-      - [Backtracking](#backtracking)
-    - [<ol start="96">
-<li>[Permutations II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutations%20II.java) Level: Medium Tags: [Backtracking]</li>
-</ol>](#ol-start%2296%22-lipermutations-iijava-httpsgithubcomawangdevlintcodeblobmasterjavapermutations20iijava-level-medium-tags-backtrackingli-ol)
-        - [Background 1](#background-1)
-        - [Background 2](#background-2)
-        - [Note](#note-6)
-      - [Non-recursive, manuall swap](#non-recursive-manuall-swap)
-      - [Queue](#queue)
-    - [<ol start="97">
-<li>[Shuffle an Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Shuffle%20an%20Array.java) * * Level: Medium Tags: [Permutation]</li>
-</ol>](#ol-start%2297%22-lishuffle-an-arrayjava-httpsgithubcomawangdevlintcodeblobmasterjavashuffle20an20arrayjava---level-medium-tags-permutationli-ol)
-      - [Permutation](#permutation)
-        - [Note](#note-7)
-    - [<ol start="98">
-<li>[Group Anagrams.java] (https://github.com/awangdev/LintCode/blob /master/Java/Group%20Anagrams.java)### Level: Medium Tags: [Hash Table, String]</li>
-</ol>](#ol-start%2298%22-ligroup-anagramsjava-httpsgithubcomawangdevlintcodeblob-masterjavagroup20anagramsjava-level-medium-tags-hash-table-stringli-ol)
-      - [Hash Table, key is character frequency](#hash-table-key-is-character-frequency)
-      - [Hash Table, key is a sorted string](#hash-table-key-is-a-sorted-string)
-    - [<ol start="99">
-<li>[Backpack.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Backpack.java) Level: Medium Tags: [Backpack DP, DP]</li>
-</ol>](#ol-start%2299%22-libackpackjava-httpsgithubcomawangdevlintcodeblobmaster-java--backpackjava-level-medium-tags-backpack-dp-dpli-ol)
-      - [Backpack DP 1](#backpack-dp-1)
-      - [Backpack DP 2](#backpack-dp-2)
-        - [Practice](#practice)
-        - [Polynomial law](#polynomial-law)
-        - [End](#end)
-    - [<ol start="100">
-<li>[Backpack II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20II.java) Level: Medium Tags: [Backpack DP, DP]</li>
-</ol>](#ol-start%22100%22-libackpack-iijava-httpsgithubcomawangdevlintcodeblobmasterjavabackpack20iijava-level-medium-tags-backpack-dp-dpli-ol)
-      - [Backpack DP](#backpack-dp-1)
-      - [Previous DP Solution](#previous-dp-solution)
-    - [<ol start="101">
-<li>[Backpack V.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20V.java) Level: Medium Tags: [Backpack DP, DP]</li>
-</ol>](#ol-start%22101%22-libackpack-vjava-httpsgithubcomawangdevlintcodeblobmasterjavabackpack20vjava-level-medium-tags-backpack-dp-dpli-ol)
-  - [<h2 id="backpack-dp-118">Backpack DP</h2>](#h2-id%22backpack-dp-118%22backpack-dph2)
-      - [dimensionality reduction, ultimate optimization](#dimensionality-reduction-ultimate-optimization)
-    - [<ol start="102">
-<li>[Evaluate Reverse Polish Notation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Evaluate%20Reverse%20Polish%20Notation.java) Level: Medium Tags: [Stack ]</li>
-</ol>](#ol-start%22102%22-lievaluate-reverse-polish-notationjava-httpsgithubcomawangdevlintcodeblobmasterjavaevaluate20reverse20polish20notationjava-level-medium-tags-stack-li-ol)
-      - [Stack](#stack-1)
-    - [<ol start="103">
-<li>[Insertion Sort List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Insertion%20Sort%20List. java) Level: Medium Tags: [Linked List, Sort]</li>
-</ol>](#ol-start%22103%22-liinsertion-sort-listjava-httpsgithubcomawangdevlintcodeblobmasterjavainsertion20sort20list-java-level-medium-tags-linked-list-sortli-ol)
-      - [Linked List](#linked-list)
-        - [Thinking method](#thinking-method)
-    - [<ol start="104">
-<li>[Interleaving Positive and Negative Numbers.java] (https://github.com/awangdev/LintCode/blob/master/Java/Interleaving%20Positive%20and%20Negative%20Numbers.java) Level : Medium Tags: [Two Pointers]</li>
-</ol>](#ol-start%22104%22-liinterleaving-positive-and-negative-numbersjava-httpsgithubcomawangdevlintcodeblobmasterjavainterleaving20positive20and20negative20numbersjava-level--medium-tags-two-pointersli-ol)
-      - [Two pointer](#two-pointer-1)
-      - [extra space](#extra-space)
-    - [<ol start="105">
-<li>[Largest Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Number.java) Level: Medium Tags: [Sort]</li>
-</ol>](#ol-start%22105%22-lilargest-numberjava-httpsgithubcomawangdevlintcodeblobmasterjavalargest20numberjava-level-medium-tags-sortli-ol)
-      - [Sort, Comparator](#sort-comparator)
-    - [<ol start="106">
-<li>[Longest Common Substring.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Common%20Substring.java) Level: Medium Tags: [DP, Double Sequence DP, Sequence DP, String]</li>
-</ol>](#ol-start%22106%22-lilongest-common-substringjava-httpsgithubcomawangdevlintcodeblobmasterjavalongest20common20substringjava-level-medium-tags-dp-double-sequence-dp-sequence-dp-stringli-ol)
-      - [Double Sequence DP](#double-sequence-dp-1)
-        - [Rolling array](#rolling-array-1)
-      - [String](#string)
-    - [<ol start="107">
-<li>[Longest Increasing Continuous subsequence II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Continuous%20subsequence%20II.java) Level: Medium Tags : [Array, Coordinate DP, DP, Memoization]</li>
-</ol>](#ol-start%22107%22-lilongest-increasing-continuous-subsequence-iijava-httpsgithubcomawangdevlintcodeblobmasterjavalongest20increasing20continuous20subsequence20iijava-level-medium-tags--array-coordinate-dp-dp-memoizationli-ol)
-      - [Coordinate DP](#coordinate-dp-1)
-      - [Memoization](#memoization-1)
-  - [-O (mn) space for dp and flag. -](#o-mn-space-for-dp-and-flag)
-    - [<ol start="108">
-<li>[Maximum Subarray II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray%20II.java) Level: Medium Tags: [Array, DP, Greedy, PreSum, Sequence DP, Subarray]</li>
-</ol>](#ol-start%22108%22-limaximum-subarray-iijava-httpsgithubcomawangdevlintcodeblobmasterjavamaximum20subarray20iijava-level-medium-tags-array-dp-greedy-presum-sequence-dp-subarrayli-ol)
-      - [DP](#dp-8)
-      - [preSum, minPreSum](#presum-minpresum)
-    - [<ol start="109">
-<li>[Reverse Linked List II .java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List% 20II% 20.java) Level: Medium Tags: [Linked List]</li>
-</ol>](#ol-start%22109%22-lireverse-linked-list-ii-java-httpsgithubcomawangdevlintcodeblobmasterjavareverse20linked20list-20ii-20java-level-medium-tags-linked-listli-ol)
-      - [Reverse linked list](#reverse-linked-list)
-        - [Note](#note-8)
-      - [Previous notes](#previous-notes-1)
-    - [<ol start="110">
-<li>[Lowest Common Ancestor of a Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree .java) Level: Medium Tags: [DFS, Tree]</li>
-</ol>](#ol-start%22110%22-lilowest-common-ancestor-of-a-binary-treejava-httpsgithubcomawangdevlintcodeblobmasterjavalowest20common20ancestor20of20a20binary20tree-java-level-medium-tags-dfs-treeli-ol)
-      - [DFS](#dfs-11)
-    - [<ol start="111">
-<li>[ Lowest Common Ancestor of a Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.java) Level: Medium Tags: [BST, DFS, Tree]</li>
-</ol>](#ol-start%22111%22-li-lowest-common-ancestor-of-a-binary-search-treejava-httpsgithubcomawangdevlintcodeblobmasterjavalowest20common20ancestor20of20a20binary20search20treejava-level-medium-tags-bst-dfs-treeli-ol)
-      - [Find path with BST](#find-path-with-bst)
-      - [DFS](#dfs-12)
-    - [<ol start="112">
-<li>[Remove Duplicates from Sorted Array II. java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20Array%20II.java) Level: Medium Tags: [Array, Two Pointers]</li>
-</ol>](#ol-start%22112%22-liremove-duplicates-from-sorted-array-ii-java-httpsgithubcomawangdevlintcodeblobmasterjavaremove20duplicates20from20sorted20array20iijava-level-medium-tags-array-two-pointersli-ol)
-      - [Two Pointers](#two-pointers)
-    - [<ol start="113">
-<li>[Remove Duplicates from Sorted List II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates% 20from% 20Sorted% 20List% 20II.java) Level: Medium Tags: [Linked List]</li>
-</ol>](#ol-start%22113%22-liremove-duplicates-from-sorted-list-iijava-httpsgithubcomawangdevlintcodeblobmasterjavaremove20duplicates-20from-20sorted-20list-20iijava-level-medium-tags-linked-listli-ol)
-  - [<h2 id="linked-list-118">Linked List</h2>](#h2-id%22linked-list-118%22linked-listh2)
-        - [Note the use of DummyHead](#note-the-use-of-dummyhead)
-        - [Previous Note](#previous-note-1)
-    - [<ol start="114">
-<li>[QuickSort.java] (https://github.com/awangdev/LintCode/blob/master/Java/QuickSort.java ) Level: Medium Tags: [Quick Sort, Sort]</li>
-</ol>](#ol-start%22114%22-liquicksortjava-httpsgithubcomawangdevlintcodeblobmasterjavaquicksortjava--level-medium-tags-quick-sort-sortli-ol)
-      - [Quick Sort](#quick-sort)
-    - [<ol start="115">
-<li>[MergeSort.java] (https: // github. com / awangdev / LintCode / blob / master / Java / MergeSort.java) Level: Medium Tags: [Merge Sort, Sort]</li>
-</ol>](#ol-start%22115%22-limergesortjava-https--github-com--awangdev--lintcode--blob--master--java--mergesortjava-level-medium-tags-merge-sort-sortli-ol)
-      - [Merge Sort](#merge-sort)
-    - [<ol start="116">
-<li>[Binary Tree Level Order Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Level%20Order%20Traversal.java) Level: Medium Tags : [BFS, DFS, Tree]</li>
-</ol>](#ol-start%22116%22-libinary-tree-level-order-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavabinary20tree20level20order20traversaljava-level-medium-tags--bfs-dfs-treeli-ol)
-      - [BFS](#bfs-5)
-      - [BFS](#bfs-6)
-      - [DFS](#dfs-13)
-    - [<ol start="117">
-<li>[Binary Tree Level Order Traversal II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Level%20Order%20Traversal%20II.java) Level: Medium Tags: [BFS, Tree]</li>
-</ol>](#ol-start%22117%22-libinary-tree-level-order-traversal-iijava-httpsgithubcomawangdevlintcodeblobmasterjavabinary20tree20level20order20traversal20iijava-level-medium-tags-bfs-treeli-ol)
+- [### Two Pointer](#-two-pointer)
+    - [96. Permutations II.java   Level: Medium Tags: [Backtracking]](#96-permutations-iijava---level-medium-tags-backtracking)
+    - [97. Shuffle an Array.java * * Level: Medium Tags: [Permutation]](#97-shuffle-an-arrayjava---level-medium-tags-permutation)
+    - [98. [Group Anagrams.java] (https://github.com/awangdev/LintCode/blob /master/Java/Group%20Anagrams.java)###  Level: Medium Tags: [Hash Table, String]](#98-group-anagramsjava-httpsgithubcomawangdevlintcodeblob-masterjavagroupanagramsjava--level-medium-tags-hash-table-string)
+    - [99. [Backpack.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Backpack.java)   Level: Medium Tags: [Backpack DP, DP]](#99-backpackjava-httpsgithubcomawangdevlintcodeblobmaster-java--backpackjava---level-medium-tags-backpack-dp-dp)
+    - [100. Backpack II.java   Level: Medium Tags: [Backpack DP, DP]](#100-backpack-iijava---level-medium-tags-backpack-dp-dp)
+    - [101. Backpack V.java   Level: Medium Tags: [Backpack DP, DP]](#101-backpack-vjava---level-medium-tags-backpack-dp-dp)
+  - [## Backpack DP](#-backpack-dp)
+    - [102. Evaluate Reverse Polish Notation.java   Level: Medium Tags: [Stack ]](#102-evaluate-reverse-polish-notationjava---level-medium-tags-stack-)
+    - [103. [Insertion Sort List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Insertion%20Sort%20List. java)   Level: Medium Tags: [Linked List, Sort]](#103-insertion-sort-listjava-httpsgithubcomawangdevlintcodeblobmasterjavainsertionsortlist-java---level-medium-tags-linked-list-sort)
+    - [104. Interleaving Positive and Negative Numbers.java   Level : Medium Tags: [Two Pointers]](#104-interleaving-positive-and-negative-numbersjava---level--medium-tags-two-pointers)
+    - [105. Largest Number.java   Level: Medium Tags: [Sort]](#105-largest-numberjava---level-medium-tags-sort)
+    - [106. Longest Common Substring.java   Level: Medium Tags: [DP, Double Sequence DP, Sequence DP, String]](#106-longest-common-substringjava---level-medium-tags-dp-double-sequence-dp-sequence-dp-string)
+    - [107. Longest Increasing Continuous subsequence II.java   Level: Medium Tags : [Array, Coordinate DP, DP, Memoization]](#107-longest-increasing-continuous-subsequence-iijava---level-medium-tags--array-coordinate-dp-dp-memoization)
+  - [-O (mn) space for dp and flag. -](#-o-mn-space-for-dp-and-flag--)
+    - [108. Maximum Subarray II.java   Level: Medium Tags: [Array, DP, Greedy, PreSum, Sequence DP, Subarray]](#108-maximum-subarray-iijava---level-medium-tags-array-dp-greedy-presum-sequence-dp-subarray)
+    - [109. [Reverse Linked List II .java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List% 20II% 20.java)   Level: Medium Tags: [Linked List]](#109-reverse-linked-list-ii-java-httpsgithubcomawangdevlintcodeblobmasterjavareverselinkedlist%25-20ii%25-20java---level-medium-tags-linked-list)
+    - [110. [Lowest Common Ancestor of a Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree .java)   Level: Medium Tags: [DFS, Tree]](#110-lowest-common-ancestor-of-a-binary-treejava-httpsgithubcomawangdevlintcodeblobmasterjavalowestcommonancestorofabinarytree-java---level-medium-tags-dfs-tree)
+    - [111.  Lowest Common Ancestor of a Binary Search Tree.java   Level: Medium Tags: [BST, DFS, Tree]](#111--lowest-common-ancestor-of-a-binary-search-treejava---level-medium-tags-bst-dfs-tree)
+    - [112. Remove Duplicates from Sorted Array II. java   Level: Medium Tags: [Array, Two Pointers]](#112-remove-duplicates-from-sorted-array-ii-java---level-medium-tags-array-two-pointers)
+    - [113. [Remove Duplicates from Sorted List II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates% 20from% 20Sorted% 20List% 20II.java)   Level: Medium Tags: [Linked List]](#113-remove-duplicates-from-sorted-list-iijava-httpsgithubcomawangdevlintcodeblobmasterjavaremoveduplicates%25-20from%25-20sorted%25-20list%25-20iijava---level-medium-tags-linked-list)
+  - [## Linked List](#-linked-list)
+    - [114. QuickSort.java   Level: Medium Tags: [Quick Sort, Sort]](#114-quicksortjava---level-medium-tags-quick-sort-sort)
+    - [115. [MergeSort.java] (https: // github. com / awangdev / LintCode / blob / master / Java / MergeSort.java)   Level: Medium Tags: [Merge Sort, Sort]](#115-mergesortjava-https--github-com--awangdev--lintcode--blob--master--java--mergesortjava---level-medium-tags-merge-sort-sort)
+    - [116. Binary Tree Level Order Traversal.java   Level: Medium Tags : [BFS, DFS, Tree]](#116-binary-tree-level-order-traversaljava---level-medium-tags--bfs-dfs-tree)
+    - [117. Binary Tree Level Order Traversal II.java   Level: Medium Tags: [BFS, Tree]](#117-binary-tree-level-order-traversal-iijava---level-medium-tags-bfs-tree)
   - [As the title, but the output must be](#as-the-title-but-the-output-must-be)
-      - [DFS](#dfs-14)
-    - [<ol start="118">
-<li>[Binary Tree Longest Consecutive Sequence II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Longest%20Consecutive%20Sequence%20II.java) Level : Medium Tags: [DFS, Divide and Conquer, Double Recursive, Tree]</li>
-</ol>](#ol-start%22118%22-libinary-tree-longest-consecutive-sequence-iijava-httpsgithubcomawangdevlintcodeblobmasterjavabinary20tree20longest20consecutive20sequence20iijava-level--medium-tags-dfs-divide-and-conquer-double-recursive-treeli-ol)
-      - [DFS, Divide and Conquer](#dfs-divide-and-conquer)
-        - [Note](#note-9)
-        - [Double Recursive functions](#double-recursive-functions)
-    - [<ol start="119">
-<li>[Combinations.java] (https://github.com/awangdev/ LintCode / blob / master / Java / Combinations.java) Level: Medium Tags: [Backtracking, Combination, DFS]</li>
-</ol>](#ol-start%22119%22-licombinationsjava-httpsgithubcomawangdev-lintcode--blob--master--java--combinationsjava-level-medium-tags-backtracking-combination-dfsli-ol)
-  - [<h2 id="dfs-backtracking-118">DFS, Backtracking</h2>](#h2-id%22dfs-backtracking-118%22dfs-backtrackingh2)
-    - [<ol start="120">
-<li>[Combination Sum IV.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20IV.java) Level: Medium Tags: [Array, Backpack DP , DP]</li>
-</ol>](#ol-start%22120%22-licombination-sum-ivjava-httpsgithubcomawangdevlintcodeblobmasterjavacombination20sum20ivjava-level-medium-tags-array-backpack-dp--dpli-ol)
-      - [Backpack DP](#backpack-dp-2)
-      - [DFS, backtracking](#dfs-backtracking)
-    - [<ol start="121">
-<li>[Binary Tree Right Side View.java] (https: // github .com / awangdev / LintCode / blob / master / Java / Binary% 20Tree% 20Right% 20Side% 20View.java) Level: Medium Tags: [BFS, DFS, Tree]</li>
-</ol>](#ol-start%22121%22-libinary-tree-right-side-viewjava-https--github-com--awangdev--lintcode--blob--master--java--binary-20tree-20right-20side-20viewjava-level-medium-tags-bfs-dfs-treeli-ol)
-      - [BFS](#bfs-7)
-      - [DFS](#dfs-15)
-    - [<ol start="122">
-<li>[Binary Tree Maximum Path Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum%20II.java) Level : Medium Tags: [DFS, Tree]</li>
-</ol>](#ol-start%22122%22-libinary-tree-maximum-path-sum-iijava-httpsgithubcomawangdevlintcodeblobmasterjavabinary20tree20maximum20path20sum20iijava-level--medium-tags-dfs-treeli-ol)
-      - [DFS](#dfs-16)
-    - [<ol start="123">
-<li>[Rotate List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rotate%20List.java) * * Level: Medium Tags: [Linked List, Two Pointers]</li>
-</ol>](#ol-start%22123%22-lirotate-listjava-httpsgithubcomawangdevlintcodeblobmasterjavarotate20listjava---level-medium-tags-linked-list-two-pointersli-ol)
-      - [Linked List basics](#linked-list-basics)
-    - [124 [Binary Tree Longest the Consecutive Sequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/. binary% 20Tree% 20Longest% 20Consecutive% 20Sequence.java) Level: Medium Tags: [DFS, Divide and Conquer, Tree]](#124-binary-tree-longest-the-consecutive-sequencejava-httpsgithubcomawangdevlintcodeblobmasterjava-binary-20tree-20longest-20consecutive-20sequencejava-level-medium-tags-dfs-divide-and-conquer-tree)
-      - [the DFS](#the-dfs)
-    - [<ol start="125">
-<li>[Number of Connected Components in an Undirected Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.java) Level: Medium Tags: [BFS, DFS, Graph, Union Find]</li>
-</ol>](#ol-start%22125%22-linumber-of-connected-components-in-an-undirected-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavanumber20of20connected20components20in20an20undirected20graphjava-level-medium-tags-bfs-dfs-graph-union-findli-ol)
-      - [Union Find](#union-find-2)
-      - [DFS](#dfs-17)
-    - [<ol start="126">
-<li>[Next Closest Time.java] (https://github.com/awangdev/LintCode/blob/master/Java/Next%20Closest%20Time.java) Level: Medium Tags: [Basic Implementation, Enumeration , String]</li>
-</ol>](#ol-start%22126%22-linext-closest-timejava-httpsgithubcomawangdevlintcodeblobmasterjavanext20closest20timejava-level-medium-tags-basic-implementation-enumeration--stringli-ol)
-  - [<h2 id="string-235">String</h2>](#h2-id%22string-235%22stringh2)
-      - [Two Pointer](#two-pointer)
-    - [<ol start="127">
-<li>[Partition Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Partition%20Array.java) Level: Medium Tags: [Array, Quick Sort, Sort, Two Pointers]</li>
-</ol>](#ol-start%22127%22-lipartition-arrayjava-httpsgithubcomawangdevlintcodeblobmasterjavapartition20arrayjava-level-medium-tags-array-quick-sort-sort-two-pointersli-ol)
-    - [<ol start="128">
-<li>[Word Ladder.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder.java) Level : Medium Tags: [BFS]</li>
-</ol>](#ol-start%22128%22-liword-ladderjava-httpsgithubcomawangdevlintcodeblobmasterjavaword20ladderjava-level--medium-tags-bfsli-ol)
-      - [BFS](#bfs-8)
-      - [Trie](#trie-1)
-    - [<ol start="129">
-<li>[Unique Word Abbreviation.java ] (https://github.com/awangdev/LintCode/blob/master/Java/Unique%20Word%20Abbreviation.java) Level: Medium Tags: [Design, Hash Table]</li>
-</ol>](#ol-start%22129%22-liunique-word-abbreviationjava--httpsgithubcomawangdevlintcodeblobmasterjavaunique20word20abbreviationjava-level-medium-tags-design-hash-tableli-ol)
-      - [HashMap &lt;string, Set&gt;](#hashmap-ltstring-setgt)
-    - [<ol start="130">
-<li>[Unique Binary Search Tree II.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Unique% 20Binary% 20Search% 20Tree% 20II.java) Level: Medium Tags: [BST, DP, Divide and Conquer, Tree]</li>
-</ol>](#ol-start%22130%22-liunique-binary-search-tree-iijava-httpsgithubcomawangdevlintcodeblobmasterjava-unique-20binary-20search-20tree-20iijava-level-medium-tags-bst-dp-divide-and-conquer-treeli-ol)
-      - [BST](#bst)
-  - [<h2 id="dp-memoization-118">DP? Memoization?</h2>](#h2-id%22dp-memoization-118%22dp-memoizationh2)
-    - [<ol start="131">
-<li>[Ugly Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Ugly%20Number.java) Level: Medium Tags : [Math]</li>
-</ol>](#ol-start%22131%22-liugly-numberjava-httpsgithubcomawangdevlintcodeblobmasterjavaugly20numberjava-level-medium-tags--mathli-ol)
-      - [Math](#math)
-    - [<ol start="132">
-<li>[Top K Frequent Words.java] (https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent% 20Words.java) Level: Medium Tags: [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue, Trie]</li>
-</ol>](#ol-start%22132%22-litop-k-frequent-wordsjava-httpsgithubcomawangdevlintcodeblobmasterjavatop20k20frequent-20wordsjava-level-medium-tags-hash-table-heap-maxheap-minheap-priorityqueue-trieli-ol)
-  - [<h2 id="priorityqueue-min-heap-118">PriorityQueue-Min Heap</h2>](#h2-id%22priorityqueue-min-heap-118%22priorityqueue-min-heaph2)
-      - [PriorityQueue-Max Heap](#priorityqueue-max-heap)
-      - [Trie &amp;&amp; MinHeap 屌 炸 天-Can](#trie-ampamp-minheap-%e5%b1%8c-%e7%82%b8-%e5%a4%a9-can)
-      - [HashMap + collections.sort ()](#hashmap--collectionssort)
-      - [Segment Tree definition](#segment-tree-definition)
-      - [Segemnt Tree](#segemnt-tree)
-    - [<ol start="135">
-<li>[Segment Tree Query.java] (https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Query.java) Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]</li>
-</ol>](#ol-start%22135%22-lisegment-tree-queryjava-httpsgithubcomawangdevlintcodeblobmasterjavasegment20tree20queryjava-level-medium-tags-binary-tree-dfs-divide-and-conquer-lint-segment-treeli-ol)
-      - [Segment Tree, Divide and Conquer](#segment-tree-divide-and-conquer)
-    - [<ol start="136">
-<li>[Segment Tree Modify.java] (https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Modify.java) Level: Medium Tags: [ Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]</li>
-</ol>](#ol-start%22136%22-lisegment-tree-modifyjava-httpsgithubcomawangdevlintcodeblobmasterjavasegment20tree20modifyjava-level-medium-tags--binary-tree-dfs-divide-and-conquer-lint-segment-treeli-ol)
-      - [Segment Tree, Divide and Conquer](#segment-tree-divide-and-conquer-1)
-    - [<ol start="137">
-<li>[Segment Tree Query II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Query%20II.java) Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]</li>
-</ol>](#ol-start%22137%22-lisegment-tree-query-iijava-httpsgithubcomawangdevlintcodeblobmasterjavasegment20tree20query20iijava-level-medium-tags-binary-tree-dfs-divide-and-conquer-lint-segment-treeli-ol)
-      - [Segment Tree](#segment-tree)
-    - [<ol start="138">
-<li>[ColorGrid.java] (https: // github .com / awangdev / LintCode / blob / master / Java / ColorGrid.java) Level: Medium Tags: [Design, Hash Table]</li>
-</ol>](#ol-start%22138%22-licolorgridjava-https--github-com--awangdev--lintcode--blob--master--java--colorgridjava-level-medium-tags-design-hash-tableli-ol)
-      - [basic implementation](#basic-implementation)
-    - [<ol start="139">
-<li>[Container With Most Water.java] (https://github.com/awangdev/LintCode/blob/master/Java /Container%20With%20Most%20Water.java)### Level: Medium Tags: [Array, Two Pointers]</li>
-</ol>](#ol-start%22139%22-licontainer-with-most-waterjava-httpsgithubcomawangdevlintcodeblobmasterjava-container20with20most20waterjava-level-medium-tags-array-two-pointersli-ol)
-      - [Two Pointers](#two-pointers-1)
-    - [<ol start="140">
-<li>[Copy List with Random Pointer.java] (https://github.com/awangdev/LintCode/blob/master/Java/Copy%20List%20with%20Random%20Pointer.java) Level: Medium Tags : [Hash Table, Linked List]</li>
-</ol>](#ol-start%22140%22-licopy-list-with-random-pointerjava-httpsgithubcomawangdevlintcodeblobmasterjavacopy20list20with20random20pointerjava-level-medium-tags--hash-table-linked-listli-ol)
-    - [<ol start="141">
-<li>[Encode and Decode Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Encode%20and%20Decode%20Strings.java) Level: Medium Tags: [String ]</li>
-</ol>](#ol-start%22141%22-liencode-and-decode-stringsjava-httpsgithubcomawangdevlintcodeblobmasterjavaencode20and20decode20stringsjava-level-medium-tags-string-li-ol)
-      - [String](#string-1)
-    - [<ol start="142">
-<li>[Fast Power.java] (https://github.com/awangdev /LintCode/blob/master/Java/Fast%20Power.java)### Level: Medium Tags: [DFS, Divide and Conquer]</li>
-</ol>](#ol-start%22142%22-lifast-powerjava-httpsgithubcomawangdev-lintcodeblobmasterjavafast20powerjava-level-medium-tags-dfs-divide-and-conquerli-ol)
-- [<h3 id="divide-and-conquer-118">Divide and Conquer</h3>](#h3-id%22divide-and-conquer-118%22divide-and-conquerh3)
-      - [DFS](#dfs-18)
-    - [<ol start="143">
-<li>[Find the Connected Component in the Undirected Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Connected%20Component%20in%20the% 20Undirected% 20Graph.java) Level: Medium Tags: [BFS, DFS]</li>
-</ol>](#ol-start%22143%22-lifind-the-connected-component-in-the-undirected-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavafind20the20connected20component20in20the-20undirected-20graphjava-level-medium-tags-bfs-dfsli-ol)
-      - [BFS](#bfs-9)
-      - [Hash Table](#hash-table-1)
-    - [<ol start="145">
-<li>[Interval Minimum Number.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Interval%20Minimum%20Number.java)### Level: Medium Tags: [Binary Search, Divide and Conquer, Lint, Segment Tree]</li>
-</ol>](#ol-start%22145%22-liinterval-minimum-numberjava-https--githubcomawangdevlintcodeblobmasterjavainterval20minimum20numberjava-level-medium-tags-binary-search-divide-and-conquer-lint-segment-treeli-ol)
-      - [Segment Tree](#segment-tree-1)
-    - [<ol start="146">
-<li>[Interval Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Interval%20Sum.java) * * Level: Medium Tags: [Binary Search, Lint, Segment Tree]</li>
-</ol>](#ol-start%22146%22-liinterval-sumjava-httpsgithubcomawangdevlintcodeblobmasterjavainterval20sumjava---level-medium-tags-binary-search-lint-segment-treeli-ol)
-      - [Segment Tree + Binary Search](#segment-tree--binary-search)
-    - [<ol start="147">
-<li>[Kth Smallest Element in a BST.java] (https://github.com/awangdev/LintCode/blob/master /Java/Kth%20Smallest%20Element%20in%20a%20BST.java)### Level: Medium Tags: [BST, DFS, Stack, Tree]</li>
-</ol>](#ol-start%22147%22-likth-smallest-element-in-a-bstjava-httpsgithubcomawangdevlintcodeblobmaster-javakth20smallest20element20in20a20bstjava-level-medium-tags-bst-dfs-stack-treeli-ol)
-      - [Iterative + stack: inorder traversal](#iterative--stack-inorder-traversal)
-      - [Recursive + DFS](#recursive--dfs)
-    - [<ol start="148">
-<li>[Majority Element II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Majority%20Element%20II.java) Level: Medium Tags: [Array]</li>
-</ol>](#ol-start%22148%22-limajority-element-iijava-httpsgithubcomawangdevlintcodeblobmasterjavamajority20element20iijava-level-medium-tags-arrayli-ol)
-  - [<h2 id="sort--count-118">Sort + count</h2>](#h2-id%22sort--count-118%22sort--counth2)
-      - [Two counters](#two-counters)
-    - [<ol start="149">
-<li>[Partition List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Partition%20List.java) Level: Medium Tags: [Linked List, Two Pointers]</li>
-</ol>](#ol-start%22149%22-lipartition-listjava-httpsgithubcomawangdevlintcodeblobmasterjavapartition20listjava-level-medium-tags-linked-list-two-pointersli-ol)
-      - [Linked List](#linked-list-1)
-    - [<ol start="150">
-<li>[Peeking Iterator.java] (https://github.com/awangdev/LintCode/blob/master/Java/Peeking%20Iterator.java) Level: Medium Tags: [Design]</li>
-</ol>](#ol-start%22150%22-lipeeking-iteratorjava-httpsgithubcomawangdevlintcodeblobmasterjavapeeking20iteratorjava-level-medium-tags-designli-ol)
-  - [<h2 id="use-concept-pre-cache-118">Use concept pre cache</h2>](#h2-id%22use-concept-pre-cache-118%22use-concept-pre-cacheh2)
-      - [Previous notes](#previous-notes-2)
-    - [<ol start="151">
-<li>[Rehashing.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rehashing.java) Level: Medium Tags: [Hash Table]</li>
-</ol>](#ol-start%22151%22-lirehashingjava-httpsgithubcomawangdevlintcodeblobmasterjavarehashingjava-level-medium-tags-hash-tableli-ol)
-      - [Hash Table](#hash-table-2)
-      - [Linked List](#linked-list-2)
-    - [<ol start="153">
-<li>[Restore IP Addresses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Restore%20IP%20Addresses.java) Level: Medium Tags: [Backtracking , DFS, String]</li>
-</ol>](#ol-start%22153%22-lirestore-ip-addressesjava-httpsgithubcomawangdevlintcodeblobmasterjavarestore20ip20addressesjava-level-medium-tags-backtracking--dfs-stringli-ol)
-      - [Backtracking](#backtracking-1)
-    - [<ol start="154">
-<li>[Reverse Words in a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String.java) Level: Medium Tags : [String]</li>
-</ol>](#ol-start%22154%22-lireverse-words-in-a-stringjava-httpsgithubcomawangdevlintcodeblobmasterjavareverse20words20in20a20stringjava-level-medium-tags--stringli-ol)
-      - [In-place reverse](#in-place-reverse)
-      - [Break by space, then flip](#break-by-space-then-flip)
-      - [Other methods](#other-methods)
-    - [<ol start="155">
-<li>[Reverse Words in a String II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String%20II.java) * * Level: Medium Tags: [String]</li>
-</ol>](#ol-start%22155%22-lireverse-words-in-a-string-iijava-httpsgithubcomawangdevlintcodeblobmasterjavareverse20words20in20a20string20iijava---level-medium-tags-stringli-ol)
-    - [<ol start="156">
-<li>[Search a 2D Matrix.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix.java) Level: Medium Tags: [Array, Binary Search]</li>
-</ol>](#ol-start%22156%22-lisearch-a-2d-matrixjava-https--githubcomawangdevlintcodeblobmasterjavasearch20a202d20matrixjava-level-medium-tags-array-binary-searchli-ol)
-      - [2D matrix to 1D array](#2d-matrix-to-1d-array)
-      - [Binary Search](#binary-search-2)
-      - [Divide and Conquer?](#divide-and-conquer)
-    - [158 [Search for A Range.java] (https://github.com/awangdev/. LintCode / blob / master / Java / Search% 20for% 20a% 20Range.java) Level: Medium Tags: [Array, Binary Search]](#158-search-for-a-rangejava-httpsgithubcomawangdev-lintcode--blob--master--java--search-20for-20a-20rangejava-level-medium-tags-array-binary-search)
-    - [<h1 id="binary-search-118">Binary Search</h1>](#h1-id%22binary-search-118%22binary-searchh1)
-    - [<ol start="159">
-<li>[Search Range in Binary Search Tree .java] (https://github.com/awangdev /LintCode/blob/master/Java/Search%20Range%20in%20Binary%20Search%20Tree%20.java)### Level: Medium Tags: [BST, Binary Tree]</li>
-</ol>](#ol-start%22159%22-lisearch-range-in-binary-search-tree-java-httpsgithubcomawangdev-lintcodeblobmasterjavasearch20range20in20binary20search20tree20java-level-medium-tags-bst-binary-treeli-ol)
-      - [BST](#bst-1)
-    - [<ol start="160">
-<li>[Sort List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20List.java) Level: Medium Tags: [Divide and Conquer, Linked List, Merge Sort, Sort]</li>
-</ol>](#ol-start%22160%22-lisort-listjava-httpsgithubcomawangdevlintcodeblobmasterjavasort20listjava-level-medium-tags-divide-and-conquer-linked-list-merge-sort-sortli-ol)
-      - [Merge sort](#merge-sort)
-      - [Quick sort](#quick-sort)
-      - [Basic implementation](#basic-implementation)
-    - [<ol start="162">
-<li>[Topological Sorting.java] (https://github.com/awangdev/LintCode/blob/master/Java/Topological%20Sorting.java) Level: Medium Tags: [BFS, DFS, Topological Sort]</li>
-</ol>](#ol-start%22162%22-litopological-sortingjava-httpsgithubcomawangdevlintcodeblobmasterjavatopological20sortingjava-level-medium-tags-bfs-dfs-topological-sortli-ol)
-      - [Topological Sort BFS](#topological-sort-bfs)
-      - [Basics about graph](#basics-about-graph)
-    - [<ol start="163">
-<li>[Spiral Matrix.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Spiral% 20Matrix.java) Level: Medium Tags: [Array, Enumeration]</li>
-</ol>](#ol-start%22163%22-lispiral-matrixjava-httpsgithubcom-awangdev--lintcode--blob--master--java--spiral-20matrixjava-level-medium-tags-array-enumerationli-ol)
-    - [<h1 id="dx-dy-118">DX, DY</h1>](#h1-id%22dx-dy-118%22dx-dyh1)
-    - [<ol start="164">
-<li>[Construct Binary Tree from Inorder and Postorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal .java) Level: Medium Tags: [Array, DFS, Divide and Conquer, Tree]</li>
-</ol>](#ol-start%22164%22-liconstruct-binary-tree-from-inorder-and-postorder-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavaconstruct20binary20tree20from20inorder20and20postorder20traversal-java-level-medium-tags-array-dfs-divide-and-conquer-treeli-ol)
-      - [DFS, Divide and Conquer](#dfs-divide-and-conquer-1)
-      - [Improvement](#improvement)
-    - [<ol start="165">
-<li>[Generate Parentheses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Generate%20Parentheses.java) Level : Medium Tags: [Backtracking, DFS, Sequence DFS, String]</li>
-</ol>](#ol-start%22165%22-ligenerate-parenthesesjava-httpsgithubcomawangdevlintcodeblobmasterjavagenerate20parenthesesjava-level--medium-tags-backtracking-dfs-sequence-dfs-stringli-ol)
-      - [DFS](#dfs-19)
-      - [bottom-&gt;up DFS](#bottom-gtup-dfs)
-      - [DFS](#dfs-20)
-    - [<ol start="167">
-<li>[Flip Game II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flip%20Game%20II.java) Level: Medium Tags: [Backtracking, DFS , DP]</li>
-</ol>](#ol-start%22167%22-liflip-game-iijava-httpsgithubcomawangdevlintcodeblobmasterjavaflip20game20iijava-level-medium-tags-backtracking-dfs--dpli-ol)
-      - [Backtracking](#backtracking-2)
-        - [iterate based on &quot;++&quot;](#iterate-based-on-quotquot)
-        - [Game theory](#game-theory)
-      - [DP of O (N ^ 2) -Requires](#dp-of-o-n--2--requires)
-    - [<ol start="168">
-<li>[Palindrome Partitioning.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning.java) Level: Medium Tags: [Backtracking, DFS]</li>
-</ol>](#ol-start%22168%22-lipalindrome-partitioningjava-httpsgithubcomawangdevlintcodeblobmasterjavapalindrome20partitioningjava-level-medium-tags-backtracking-dfsli-ol)
-      - [DFS](#dfs-21)
-      - [DFS Top-&gt; Bottom](#dfs-top-gt-bottom)
-      - [Optimization](#optimization-1)
-- [<h3 id="complexity-118">Complexity</h3>](#h3-id%22complexity-118%22complexityh3)
-    - [<ol start="169">
-<li>[Submatrix Sum.java] (https: // github. com / awangdev / LintCode / blob / master / Java / Submatrix% 20Sum.java) Level: Medium Tags: [Array, Hash Table, PreSum]</li>
-</ol>](#ol-start%22169%22-lisubmatrix-sumjava-https--github-com--awangdev--lintcode--blob--master--java--submatrix-20sumjava-level-medium-tags-array-hash-table-presumli-ol)
-      - [The idea of ​​PreSum](#the-idea-of-%e2%80%8b%e2%80%8bpresum)
-    - [<ol start="170">
-<li>[Longest Palindromic Substring.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Longest% 20Palindromic% 20Substring.java) Level: Medium Tags: [DP, String]</li>
-</ol>](#ol-start%22170%22-lilongest-palindromic-substringjava-httpsgithubcomawangdevlintcodeblobmaster-java--longest-20palindromic-20substringjava-level-medium-tags-dp-stringli-ol)
-      - [String, Palindrome definition](#string-palindrome-definition)
-      - [DP: isPalin [] []-Exhaustive](#dp-ispalin---exhaustive)
-      - [O (n)](#o-n)
-    - [<ol start="171">
-<li>[Longest Palindromic Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Palindromic%20Subsequence.java) Level: Medium Tags: [DFS, DP, Interval DP, Memoization]</li>
-</ol>](#ol-start%22171%22-lilongest-palindromic-subsequencejava-httpsgithubcomawangdevlintcodeblobmasterjavalongest20palindromic20subsequencejava-level-medium-tags-dfs-dp-interval-dp-memoizationli-ol)
-      - [Interval DP](#interval-dp)
-      - [Memoization](#memoization-2)
-    - [<ol start="172">
-<li>[Gas Station.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Gas% 20Station.java) Level: Medium Tags: [Greedy]</li>
-</ol>](#ol-start%22172%22-ligas-stationjava-httpsgithubcomawangdevlintcode-blob--master--java--gas-20stationjava-level-medium-tags-greedyli-ol)
-      - [Greedy](#greedy)
-      - [NOT DP](#not-dp)
-      - [DFS + Memoization](#dfs--memoization)
-      - [DP](#dp-9)
-      - [DP + O (n) space](#dp--o-n-space)
-    - [<ol start="174">
-<li>[Merge Intervals.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Intervals.java) Level: Medium Tags: [Array, PriorityQueue, Sort , Sweep Line]</li>
-</ol>](#ol-start%22174%22-limerge-intervalsjava-httpsgithubcomawangdevlintcodeblobmasterjavamerge20intervalsjava-level-medium-tags-array-priorityqueue-sort--sweep-lineli-ol)
-      - [Sweep Line with Priority Queue](#sweep-line-with-priority-queue)
-      - [Sort Interval](#sort-interval)
-      - [Sort Intervals and append end logically](#sort-intervals-and-append-end-logically)
-    - [<ol start="175">
-<li>[H-Index.java] (https://github.com/awangdev/LintCode/blob/master/Java/H-Index.java) Level: Medium Tags: [Bucket Sort, Hash Table, Sort]</li>
-</ol>](#ol-start%22175%22-lih-indexjava-httpsgithubcomawangdevlintcodeblobmasterjavah-indexjava-level-medium-tags-bucket-sort-hash-table-sortli-ol)
-      - [Sort, find h from end](#sort-find-h-from-end)
-        - [Forward thinking](#forward-thinking)
-        - [Thinking backwards](#thinking-backwards)
-      - [Bucket count / Bucket Sort](#bucket-count--bucket-sort)
-    - [<ol start="176">
-<li>[H-Index II. java] (https://github.com/awangdev/LintCode/blob/master/Java/H-Index%20II.java) Level: Medium Tags: [Binary Search]</li>
-</ol>](#ol-start%22176%22-lih-index-ii-java-httpsgithubcomawangdevlintcodeblobmasterjavah-index20iijava-level-medium-tags-binary-searchli-ol)
-      - [Binary Search](#binary-search-3)
-    - [<ol start="177">
-<li>[Sort Colors.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Colors.java) Level: Medium Tags: [Array, Partition, Quick Sort, Sort, Two Pointers]</li>
-</ol>](#ol-start%22177%22-lisort-colorsjava-httpsgithubcomawangdevlintcodeblobmasterjavasort20colorsjava-level-medium-tags-array-partition-quick-sort-sort-two-pointersli-ol)
-      - [Array partition, the Base of Quick Sort](#array-partition-the-base-of-quick-sort)
-      - [One pass](#one-pass)
-      - [Counting sort](#counting-sort)
-    - [<ol start="178">
-<li>[Sort Colors II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Colors%20II.java) Level: Medium Tags: [Partition, Quick Sort , Sort, Two Pointers]</li>
-</ol>](#ol-start%22178%22-lisort-colors-iijava-httpsgithubcomawangdevlintcodeblobmasterjavasort20colors20iijava-level-medium-tags-partition-quick-sort--sort-two-pointersli-ol)
-      - [Quick Sort](#quick-sort-1)
-    - [<ol start="179">
-<li>[Sort Letters by Case.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Letters%20by%20Case.java ) Level: Medium Tags: [Partition, Sort, String, Two Pointers]</li>
-</ol>](#ol-start%22179%22-lisort-letters-by-casejava-httpsgithubcomawangdevlintcodeblobmasterjavasort20letters20by20casejava--level-medium-tags-partition-sort-string-two-pointersli-ol)
-      - [Partition + Two pointers](#partition--two-pointers)
-      - [Two pointers](#two-pointers-1)
-    - [<ol start="180">
-<li>[Subarray Sum Closest.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Closest.java)### Level: Medium Tags: [PreSum, PriorityQueue, Sort, Subarray]</li>
-</ol>](#ol-start%22180%22-lisubarray-sum-closestjava-https-githubcomawangdevlintcodeblobmasterjavasubarray20sum20closestjava-level-medium-tags-presum-priorityqueue-sort-subarrayli-ol)
-      - [PreSum + index in class](#presum--index-in-class)
-      - [Why didn't you use map &lt;preSum, index&gt;?](#why-didnt-you-use-map-ltpresum-indexgt)
-    - [<ol start="181">
-<li>[Task Scheduler.java] (https://github.com/awangdev/LintCode/blob/master/Java/Task% 20Scheduler.java) Level: Medium Tags: [Array, Enumeration, Greedy, PriorityQueue, Queue]</li>
-</ol>](#ol-start%22181%22-litask-schedulerjava-httpsgithubcomawangdevlintcodeblobmasterjavatask-20schedulerjava-level-medium-tags-array-enumeration-greedy-priorityqueue-queueli-ol)
-      - [Array, count frequency, enumerate](#array-count-frequency-enumerate)
-      - [PriorityQueue](#priorityqueue-2)
-    - [<ol start="182">
-<li>[Exam Room.java] (https://github.com/awangdev/LintCode/blob/master/Java/Exam%20Room.java) Level: Medium Tags: [PriorityQueue, Sort]</li>
-</ol>](#ol-start%22182%22-liexam-roomjava-httpsgithubcomawangdevlintcodeblobmasterjavaexam20roomjava-level-medium-tags-priorityqueue-sortli-ol)
-      - [PriorityQueue](#priorityqueue-3)
-        - [Trick: Constructing a virtual boundary](#trick-constructing-a-virtual-boundary)
-      - [TreeSet](#treeset-1)
-        - [distance](#distance)
-      - [Map](#map)
-    - [<ol start="183">
-<li>[ Anagrams.java] (https://github.com/awangdev/LintCode/blob/master/Java/Anagrams.java) Level: Medium Tags: [Array, Hash Table]</li>
-</ol>](#ol-start%22183%22-li-anagramsjava-httpsgithubcomawangdevlintcodeblobmasterjavaanagramsjava-level-medium-tags-array-hash-tableli-ol)
-      - [HashMap](#hashmap)
-      - [HashMap + Sort](#hashmap--sort)
-      - [Previous Notes](#previous-notes-1)
-    - [<ol start="184">
-<li>[Path Sum IV.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20IV.java) Level: Medium Tags: [DFS, Hash Table , Tree]</li>
-</ol>](#ol-start%22184%22-lipath-sum-ivjava-httpsgithubcomawangdevlintcodeblobmasterjavapath20sum20ivjava-level-medium-tags-dfs-hash-table--treeli-ol)
-      - [DFS, Hash Table](#dfs-hash-table)
-      - [basic thinking + Math](#basic-thinking--math)
-      - [DP](#dp-10)
-    - [<ol start="186">
-<li>[Palindromic Substrings.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Palindromic% 20Substrings.java) Level: Medium Tags: [DP, String]</li>
-</ol>](#ol-start%22186%22-lipalindromic-substringsjava-httpsgithubcomawangdevlintcode-blob--master--java--palindromic-20substringsjava-level-medium-tags-dp-stringli-ol)
-      - [isPalin [] []-build](#ispalin---build)
-      - [odd / even split check](#odd--even-split-check)
-    - [<ol start="187">
-<li>[Multiply Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Multiply%20Strings.java) Level: Medium Tags: [Math, String]</li>
-</ol>](#ol-start%22187%22-limultiply-stringsjava-httpsgithubcomawangdevlintcodeblobmasterjavamultiply20stringsjava-level-medium-tags-math-stringli-ol)
-      - [String calculation, basic implementation](#string-calculation-basic-implementation)
-      - [Previous notes.](#previous-notes)
-    - [<ol start="188">
-<li>[Subsets.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subsets.java) Level: Medium Tags: [Array, BFS , Backtracking, Bit Manipulation, DFS]</li>
-</ol>](#ol-start%22188%22-lisubsetsjava-httpsgithubcomawangdevlintcodeblobmasterjavasubsetsjava-level-medium-tags-array-bfs--backtracking-bit-manipulation-dfsli-ol)
-      - [DFS](#dfs-22)
-      - [Bit Manipulation](#bit-manipulation)
-      - [Iterative, BFS](#iterative-bfs)
-    - [<ol start="189">
-<li>[Subsets II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subsets%20II. java) Level: Medium Tags: [Array, BFS, Backtracking, DFS]</li>
-</ol>](#ol-start%22189%22-lisubsets-iijava-httpsgithubcomawangdevlintcodeblobmasterjavasubsets20ii-java-level-medium-tags-array-bfs-backtracking-dfsli-ol)
-      - [DFS](#dfs-23)
-    - [<h1 id="bfs-118">BFS</h1>](#h1-id%22bfs-118%22bfsh1)
-      - [Previous notes:](#previous-notes)
-      - [Note](#note-10)
-    - [<ol start="190">
-<li>[Combination Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum.java) Level: Medium Tags: [Array, Backtracking , Combination, DFS]</li>
-</ol>](#ol-start%22190%22-licombination-sumjava-httpsgithubcomawangdevlintcodeblobmasterjavacombination20sumjava-level-medium-tags-array-backtracking--combination-dfsli-ol)
-      - [DFS, Backtracking](#dfs-backtracking)
-        - [Time complexity for Combination (reuse-candidate)](#time-complexity-for-combination-reuse-candidate)
-        - [Combination DFS idea](#combination-dfs-idea)
-    - [<ol start="191">
-<li>[Combination Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20II.java) Level: Medium Tags: [Array, Backtracking, Combination, DFS]</li>
-</ol>](#ol-start%22191%22-licombination-sum-iijava-httpsgithubcomawangdevlintcodeblobmasterjavacombination20sum20iijava-level-medium-tags-array-backtracking-combination-dfsli-ol)
-      - [DFS, Backtracking](#dfs-backtracking-1)
-        - [Time complexity](#time-complexity)
-    - [<ol start="192">
-<li>[Combination Sum III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination% 20Sum% 20III.java) Level: Medium Tags: [Array, Backtracking, Combination, DFS]</li>
-</ol>](#ol-start%22192%22-licombination-sum-iiijava-httpsgithubcomawangdevlintcodeblobmasterjavacombination-20sum-20iiijava-level-medium-tags-array-backtracking-combination-dfsli-ol)
-      - [the DFS, backtracking](#the-dfs-backtracking)
-        - [Time Complexity](#time-complexity)
-      - [Array, PreProduct](#array-preproduct)
-    - [<ol start="194">
-<li>[Total Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Total%20Hamming%20Distance. java) Level: Medium Tags: [Bit Manipulation]</li>
-</ol>](#ol-start%22194%22-litotal-hamming-distancejava-httpsgithubcomawangdevlintcodeblobmasterjavatotal20hamming20distance-java-level-medium-tags-bit-manipulationli-ol)
-      - [Bit Manipulation](#bit-manipulation-1)
-        - [Pay attention to the thunder point](#pay-attention-to-the-thunder-point)
-    - [<ol start="195">
-<li>[Smallest Subtree with all the Deepest Nodes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.java) Level: Medium Tags: [DFS, Divide and Conquer, Tree]</li>
-</ol>](#ol-start%22195%22-lismallest-subtree-with-all-the-deepest-nodesjava-httpsgithubcomawangdevlintcodeblobmasterjavasmallest20subtree20with20all20the20deepest20nodesjava-level-medium-tags-dfs-divide-and-conquer-treeli-ol)
-      - [DFS on tree](#dfs-on-tree)
-      - [BFS](#bfs-10)
-    - [<ol start="196">
-<li>[Subarray Sum Equals K. java] (https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Equals%20K.java) Level: Medium Tags: [Array, Hash Table, PreSum, Subarray]</li>
-</ol>](#ol-start%22196%22-lisubarray-sum-equals-k-java-httpsgithubcomawangdevlintcodeblobmasterjavasubarray20sum20equals20kjava-level-medium-tags-array-hash-table-presum-subarrayli-ol)
-      - [Hash Table + PreSum](#hash-table--presum)
-        - [Detailed explanation](#detailed-explanation)
-      - [PreSum, O(n^2)](#presum-on2)
-    - [<ol start="197">
-<li>[Simplify Path.java] (https://github.com/awangdev/LintCode/blob/master/Java/Simplify%20Path.java) Level: Medium Tags: [Stack, String]</li>
-</ol>](#ol-start%22197%22-lisimplify-pathjava-httpsgithubcomawangdevlintcodeblobmasterjavasimplify20pathjava-level-medium-tags-stack-stringli-ol)
-      - [Stack](#stack-2)
-    - [<ol start="198">
-<li>[Convert Binary Search Tree to Sorted Doubly Linked List (extra space) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to% 20Sorted% 20Doubly% 20Linked% 20List% 20 (extra% 20space) .java) Level: Medium Tags: [Linked List, Stack, Tree]</li>
-</ol>](#ol-start%22198%22-liconvert-binary-search-tree-to-sorted-doubly-linked-list-extra-space-java-httpsgithubcomawangdevlintcodeblobmasterjavaconvert20binary20search20tree20to-20sorted-20doubly-20linked-20list-20-extra-20space-java-level-medium-tags-linked-list-stack-treeli-ol)
-      - [Inorder Traversal, Linked List](#inorder-traversal-linked-list)
-      - [<h1 id="iterative-inorder-traversal-118">Iterative inorder traversal</h1>](#h1-id%22iterative-inorder-traversal-118%22iterative-inorder-traversalh1)
-    - [<ol start="199">
-<li>[Binary Tree Zigzag Level Order Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.java) Level: Medium Tags: [BFS, Stack, Tree]</li>
-</ol>](#ol-start%22199%22-libinary-tree-zigzag-level-order-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavabinary20tree20zigzag20level20order20traversaljava-level-medium-tags-bfs-stack-treeli-ol)
-      - [Queue](#queue-1)
-    - [<ol start="200">
-<li>[Word Break.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Word% 20Break.java) Level: Medium Tags: [DP, Hash Table, Sequence DP]</li>
-</ol>](#ol-start%22200%22-liword-breakjava-httpsgithubcom-awangdev--lintcode--blob--master--java--word-20breakjava-level-medium-tags-dp-hash-table-sequence-dpli-ol)
-      - [Sequence DP](#sequence-dp-1)
-      - [Previous notes](#previous-notes-3)
-        - [Method 2 (attempt4 code)](#method-2-attempt4-code)
-        - [Method 1: (attempt3 code)-function](#method-1-attempt3-code-function)
-    - [<ol start="201">
-<li>[Longest Increasing Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Subsequence.java) Level: Medium Tags: [Binary Search, Coordinate DP, DP, Memoization]</li>
-</ol>](#ol-start%22201%22-lilongest-increasing-subsequencejava-httpsgithubcomawangdevlintcodeblobmasterjavalongest20increasing20subsequencejava-level-medium-tags-binary-search-coordinate-dp-dp-memoizationli-ol)
-      - [DP, double for loop, O (n ^ 2) -When](#dp-double-for-loop-o-n--2--when)
-  - [<h2 id="o-nlogn-maintain-118">O (nLogN)-Maintain</h2>](#h2-id%22o-nlogn-maintain-118%22o-nlogn-maintainh2)
-    - [<ol start="202">
-<li>[Best Time to Buy and Sell Stock with Transaction Fee.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock % 20with% 20Transaction% 20Fee.java) Level: Medium Tags: [Array, DP, Greedy, Sequence DP, Status DP]</li>
-</ol>](#ol-start%22202%22-libest-time-to-buy-and-sell-stock-with-transaction-feejava-httpsgithubcomawangdevlintcodeblobmasterjavabest20time20to20buy20and20sell20stock--20with-20transaction-20feejava-level-medium-tags-array-dp-greedy-sequence-dp-status-dpli-ol)
-      - [Sequence DP](#sequence-dp-2)
-      - [Reservior sampling](#reservior-sampling)
-      - [Knowledge](#knowledge)
-      - [Understand the property](#understand-the-property)
-        - [Thinking logic](#thinking-logic)
-    - [<ol start="205">
-<li>[Sparse Matrix Multiplication.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sparse%20Matrix%20Multiplication.java) Level: Medium Tags: [Hash Table]</li>
-</ol>](#ol-start%22205%22-lisparse-matrix-multiplicationjava-httpsgithubcomawangdevlintcodeblobmasterjavasparse20matrix20multiplicationjava-level-medium-tags-hash-tableli-ol)
-      - [Hash Table](#hash-table-3)
-      - [Hash Table](#hash-table-4)
-      - [the Matrices](#the-matrices)
-    - [<ol start="206">
-<li>[Brick Wall.java] (https://github.com/awangdev/LintCode/blob/master/Java/Brick%20Wall.java) Level: Medium Tags: [Hash Table]</li>
-</ol>](#ol-start%22206%22-librick-walljava-httpsgithubcomawangdevlintcodeblobmasterjavabrick20walljava-level-medium-tags-hash-tableli-ol)
-        - [思想](#%e6%80%9d%e6%83%b3)
-      - [Stack](#stack-3)
-    - [<ol start="208">
-<li>[Friends Of Appropriate Ages.java] (https://github.com/awangdev/LintCode/blob/master/Java/Friends%20Of%20Appropriate%20Ages.java) Level: Medium Tags : [Array, Math]</li>
-</ol>](#ol-start%22208%22-lifriends-of-appropriate-agesjava-httpsgithubcomawangdevlintcodeblobmasterjavafriends20of20appropriate20agesjava-level-medium-tags--array-mathli-ol)
-      - [Array, Math](#array-math)
-    - [<ol start="209">
-<li>[Target Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Target%20Sum.java) Level: Medium Tags: [DFS, DP]</li>
-</ol>](#ol-start%22209%22-litarget-sumjava-httpsgithubcomawangdevlintcodeblobmasterjavatarget20sumjava-level-medium-tags-dfs-dpli-ol)
-      - [Map&lt;preSumValue, index&gt;](#mapltpresumvalue-indexgt)
-    - [<ol start="211">
-<li>[Contiguous Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contiguous%20Array.java) Level: Medium Tags: [Hash Table]</li>
-</ol>](#ol-start%22211%22-licontiguous-arrayjava-httpsgithubcomawangdevlintcodeblobmasterjavacontiguous20arrayjava-level-medium-tags-hash-tableli-ol)
-    - [<ol start="212">
-<li>[Line Reflection.java] (https://github.com/awangdev/LintCode/blob/master/Java/Line%20Reflection.java) Level: Medium Tags : [Hash Table, Math]</li>
-</ol>](#ol-start%22212%22-liline-reflectionjava-httpsgithubcomawangdevlintcodeblobmasterjavaline20reflectionjava-level-medium-tags--hash-table-mathli-ol)
-      - [Hash Table](#hash-table-5)
-    - [<ol start="213">
-<li>[Insert Delete GetRandom O (1) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert% 20Delete% 20GetRandom% 20O (1) .java) Level: Medium Tags: [Array, Design, Hash Table]</li>
-</ol>](#ol-start%22213%22-liinsert-delete-getrandom-o-1-java-httpsgithubcomawangdevlintcodeblobmasterjavainsert-20delete-20getrandom-20o-1-java-level-medium-tags-array-design-hash-tableli-ol)
-      - [Hash Table](#hash-table-6)
-    - [<ol start="214">
-<li>[Number of Longest Increasing Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Longest%20Increasing%20Subsequence.java) Level: Medium Tags : [Coordinate DP, DP]</li>
-</ol>](#ol-start%22214%22-linumber-of-longest-increasing-subsequencejava-httpsgithubcomawangdevlintcodeblobmasterjavanumber20of20longest20increasing20subsequencejava-level-medium-tags--coordinate-dp-dpli-ol)
-      - [Coordinate DP](#coordinate-dp-2)
-      - [Related -Both are the originator of Coordiate DP, DP:-Longest](#related--both-are-the-originator-of-coordiate-dp-dp-longest)
-    - [<ol start="215">
-<li>[Minimum Swaps To Make Sequences Increasing.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Minimum%20Swaps%20To%20Make%20Sequences%20Increasing.java)### Level: Medium Tags: [Coordinate DP, DP, Status DP]</li>
-</ol>](#ol-start%22215%22-liminimum-swaps-to-make-sequences-increasingjava-https-githubcomawangdevlintcodeblobmasterjavaminimum20swaps20to20make20sequences20increasingjava-level-medium-tags-coordinate-dp-dp-status-dpli-ol)
-      - [DP](#dp-11)
-    - [<ol start="216">
-<li>[Binary Tree Vertical Order Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Vertical%20Order%20Traversal.java) Level: Medium Tags : [BFS, DFS, Hash Table, Tree]</li>
-</ol>](#ol-start%22216%22-libinary-tree-vertical-order-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavabinary20tree20vertical20order20traversaljava-level-medium-tags--bfs-dfs-hash-table-treeli-ol)
-      - [BFS](#bfs-11)
-      - [DFS](#dfs-24)
-    - [<ol start="217">
-<li>[Populating Next Right Pointers in Each Node II.java] (https://github.com/awangdev/LintCode/blob/master/Java /Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.java)### Level: Medium Tags: [DFS, Tree]</li>
-</ol>](#ol-start%22217%22-lipopulating-next-right-pointers-in-each-node-iijava-httpsgithubcomawangdevlintcodeblobmasterjava-populating20next20right20pointers20in20each20node20iijava-level-medium-tags-dfs-treeli-ol)
-      - [DFS](#dfs-25)
-      - [Binary Search](#binary-search-4)
-- [<h3 id="trick-118">Trick</h3>](#h3-id%22trick-118%22trickh3)
-    - [<ol start="218">
-<li>[Search in Rotated Sorted Array.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20in%20Rotated%20Sorted%20Array.java) Level: Medium Tags: [Array, Binary Search]</li>
-</ol>](#ol-start%22218%22-lisearch-in-rotated-sorted-arrayjava-https--githubcomawangdevlintcodeblobmasterjavasearch20in20rotated20sorted20arrayjava-level-medium-tags-array-binary-searchli-ol)
-      - [binary search break point, then continue to binary search target](#binary-search-break-point-then-continue-to-binary-search-target)
-    - [<ol start="219">
-<li>[Find the Weak Connected Component in the Directed Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Weak%20Connected%20Component%20in%20the% 20Directed% 20Graph.java) Level: Medium Tags: [Union Find]</li>
-</ol>](#ol-start%22219%22-lifind-the-weak-connected-component-in-the-directed-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavafind20the20weak20connected20component20in20the-20directed-20graphjava-level-medium-tags-union-findli-ol)
-      - [Union Find](#union-find-3)
-      - [Identify this is a union-find problem](#identify-this-is-a-union-find-problem)
-    - [<ol start="220">
-<li>[Accounts Merge.java] (https://github.com/awangdev/LintCode/blob/master/Java/Accounts%20Merge.java) Level: Medium Tags: [DFS, Hash Table, Hash Table , Union Find]</li>
-</ol>](#ol-start%22220%22-liaccounts-mergejava-httpsgithubcomawangdevlintcodeblobmasterjavaaccounts20mergejava-level-medium-tags-dfs-hash-table-hash-table--union-findli-ol)
-      - [Union Find](#union-find-4)
-      - [Hash Table solution, passed but very slow](#hash-table-solution-passed-but-very-slow)
-    - [<ol start="221">
-<li>[Count of Smaller Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number.java) Level: Medium Tags: [Binary Search, Lint, Segment Tree]</li>
-</ol>](#ol-start%22221%22-licount-of-smaller-numberjava-httpsgithubcomawangdevlintcodeblobmasterjavacount20of20smaller20numberjava-level-medium-tags-binary-search-lint-segment-treeli-ol)
-      - [Segment Tree](#segment-tree-2)
-        - [right use of modify () -build](#right-use-of-modify---build)
-        - [query trick](#query-trick)
-        - [About other basic segment tree setup](#about-other-basic-segment-tree-setup)
-    - [<ol start="222">
-<li>[My Calendar I.java] (https://github.com/awangdev/LintCode/blob/master/Java/My%20Calendar%20I.java) Level: Medium Tags: [Array , TreeMap]</li>
-</ol>](#ol-start%22222%22-limy-calendar-ijava-httpsgithubcomawangdevlintcodeblobmasterjavamy20calendar20ijava-level-medium-tags-array--treemapli-ol)
-      - [Simply O(n) check on array](#simply-on-check-on-array)
-      - [TreeMap](#treemap)
-        - [About TreeMap](#about-treemap)
-      - [Sweep line](#sweep-line)
-      - [Merge Sort](#merge-sort-1)
-      - [Segment tree](#segment-tree)
-      - [BST](#bst-2)
-      - [O(n^2)](#on2)
-      - [PriorityQueue, MinHeap](#priorityqueue-minheap)
-- [<h3 id="quick-sort-118">Quick Sort</h3>](#h3-id%22quick-sort-118%22quick-sorth3)
-    - [<ol start="225">
-<li>[Merge k Sorted Lists.java] (https://github.com/awangdev/LintCode /blob/master/Java/Merge%20k%20Sorted%20Lists.java)### Level: Medium Tags: [Divide and Conquer, Heap, Linked List, PriorityQueue]</li>
-</ol>](#ol-start%22225%22-limerge-k-sorted-listsjava-httpsgithubcomawangdevlintcode-blobmasterjavamerge20k20sorted20listsjava-level-medium-tags-divide-and-conquer-heap-linked-list-priorityqueueli-ol)
-      - [PriorityQueue](#priorityqueue-4)
-      - [Divide and Conquer -always merge 2 list at a time](#divide-and-conquer--always-merge-2-list-at-a-time)
-      - [Followup](#followup)
-    - [<ol start="226">
-<li>[Merge k Sorted Arrays.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20k%20Sorted%20Arrays.java) Level: Medium Tags : [Heap, MinHeap, PriorityQueue]</li>
-</ol>](#ol-start%22226%22-limerge-k-sorted-arraysjava-httpsgithubcomawangdevlintcodeblobmasterjavamerge20k20sorted20arraysjava-level-medium-tags--heap-minheap-priorityqueueli-ol)
-      - [Priority Queue](#priority-queue)
-    - [<ol start="227">
-<li>[Heapify.java] (https://github.com/awangdev/LintCode/blob/master/Java/Heapify.java) Level: Medium Tags: [Heap, MinHeap]</li>
-</ol>](#ol-start%22227%22-liheapifyjava-httpsgithubcomawangdevlintcodeblobmasterjavaheapifyjava-level-medium-tags-heap-minheapli-ol)
-  - [<h2 id="heap-118">Heap</h2>](#h2-id%22heap-118%22heaph2)
-      - [What does Heapify / SiftDown do?-For](#what-does-heapify--siftdown-do-for)
-      - [Min-heap's judgment rules:](#min-heaps-judgment-rules)
-    - [<ol start="228">
-<li>[Top K Frequent Elements.java] (https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent%20Elements.java) Level: Medium Tags : [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue]</li>
-</ol>](#ol-start%22228%22-litop-k-frequent-elementsjava-httpsgithubcomawangdevlintcodeblobmasterjavatop20k20frequent20elementsjava-level-medium-tags--hash-table-heap-maxheap-minheap-priorityqueueli-ol)
-      - [HashMap + bucket List []](#hashmap--bucket-list)
-      - [PriorityQueue, MinHeap -Use regualr priorityQueue to sort by frequency ascendingly](#priorityqueue-minheap--use-regualr-priorityqueue-to-sort-by-frequency-ascendingly)
-  - [<h2 id="priorityqueue-maxheap-118">PriorityQueue, MaxHeap</h2>](#h2-id%22priorityqueue-maxheap-118%22priorityqueue-maxheaph2)
-    - [<ol start="229">
-<li>[Ugly Number II.java ] (https://github.com/awangdev/LintCode/blob/master/Java/Ugly%20Number%20II.java) Level: Medium Tags: [DP, Enumeration, Heap, Math, PriorityQueue]</li>
-</ol>](#ol-start%22229%22-liugly-number-iijava--httpsgithubcomawangdevlintcodeblobmasterjavaugly20number20iijava-level-medium-tags-dp-enumeration-heap-math-priorityqueueli-ol)
-      - [DP](#dp-12)
-      - [PriorityQueue, DP](#priorityqueue-dp)
-    - [<ol start="230">
-<li>[Inorder Successor in BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Inorder%20Successor%20in%20BST.java) Level: Medium Tags: [BST , Tree]</li>
-</ol>](#ol-start%22230%22-liinorder-successor-in-bstjava-httpsgithubcomawangdevlintcodeblobmasterjavainorder20successor20in20bstjava-level-medium-tags-bst--treeli-ol)
-      - [Short Recursive and Iterative without Stack](#short-recursive-and-iterative-without-stack)
-      - [Previous Iterative + stack](#previous-iterative--stack)
-      - [Previous Recursive + Stack](#previous-recursive--stack)
-    - [<ol start="231">
-<li>[Walls and Gates.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Walls%20and%20Gates.java)### Level: Medium Tags: [BFS, DFS]</li>
-</ol>](#ol-start%22231%22-liwalls-and-gatesjava-https-githubcomawangdevlintcodeblobmasterjavawalls20and20gatesjava-level-medium-tags-bfs-dfsli-ol)
-      - [DFS](#dfs-26)
-      - [BFS](#bfs-12)
-    - [<ol start="232">
-<li>[Convert Binary Search Tree to Sorted Doubly Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List.java)### Level: Medium Tags: [BST, DFS , Divide and Conquer, Linked List, Tree]</li>
-</ol>](#ol-start%22232%22-liconvert-binary-search-tree-to-sorted-doubly-linked-listjava-httpsgithubcomawangdevlintcodeblobmasterjavaconvert20binary20search20tree20to20sorted20doubly20linked20listjava-level-medium-tags-bst-dfs--divide-and-conquer-linked-list-treeli-ol)
-  - [<h2 id="tree-in-order-traversal-118">Tree, In-order traversal</h2>](#h2-id%22tree-in-order-traversal-118%22tree-in-order-traversalh2)
-        - [Topic special features](#topic-special-features)
-    - [<ol start="233">
-<li>[String to Integer (atoi) .java] (https: // github .com / awangdev / LintCode / blob / master / Java / String% 20to% 20Integer% 20 (atoi) .java) Level: Medium Tags: [Math, String]</li>
-</ol>](#ol-start%22233%22-listring-to-integer-atoi-java-https--github-com--awangdev--lintcode--blob--master--java--string-20to-20integer-20-atoi-java-level-medium-tags-math-stringli-ol)
-      - [String](#string-2)
-      - [regular expression](#regular-expression)
-      - [Idea](#idea)
-      - [DFS](#dfs-27)
-      - [BFS](#bfs-13)
-    - [<ol start="235">
-<li>[Permutations. java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutations.java) Level: Medium Tags: [Backtracking, DFS, Permutation]</li>
-</ol>](#ol-start%22235%22-lipermutations-java-httpsgithubcomawangdevlintcodeblobmasterjavapermutationsjava-level-medium-tags-backtracking-dfs-permutationli-ol)
-      - [Recursive: Backtracking](#recursive-backtracking)
-      - [the Iterative: insertion](#the-iterative-insertion)
-      - [Previous Notes](#previous-notes-2)
-    - [<ol start="236">
-<li>[One Edit Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/One%20Edit%20Distance.java ) Level: Medium Tags: [String]</li>
-</ol>](#ol-start%22236%22-lione-edit-distancejava-httpsgithubcomawangdevlintcodeblobmasterjavaone20edit20distancejava--level-medium-tags-stringli-ol)
-      - [Edit: Delete, add, and replace](#edit-delete-add-and-replace)
-    - [<ol start="237">
-<li>[4Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/4Sum.java) Level: Medium Tags: [Hash Table]</li>
-</ol>](#ol-start%22237%22-li4sumjava-httpsgithubcomawangdevlintcodeblobmasterjava4sumjava-level-medium-tags-hash-tableli-ol)
-      - [Based on 2sum](#based-on-2sum)
+    - [118. Binary Tree Longest Consecutive Sequence II.java   Level : Medium Tags: [DFS, Divide and Conquer, Double Recursive, Tree]](#118-binary-tree-longest-consecutive-sequence-iijava---level--medium-tags-dfs-divide-and-conquer-double-recursive-tree)
+    - [119. [Combinations.java] (https://github.com/awangdev/ LintCode / blob / master / Java / Combinations.java)   Level: Medium Tags: [Backtracking, Combination, DFS]](#119-combinationsjava-httpsgithubcomawangdev-lintcode--blob--master--java--combinationsjava---level-medium-tags-backtracking-combination-dfs)
+  - [## DFS, Backtracking](#-dfs-backtracking)
+    - [120. Combination Sum IV.java   Level: Medium Tags: [Array, Backpack DP , DP]](#120-combination-sum-ivjava---level-medium-tags-array-backpack-dp--dp)
+    - [121. [Binary Tree Right Side View.java] (https: // github .com / awangdev / LintCode / blob / master / Java / Binary% 20Tree% 20Right% 20Side% 20View.java)   Level: Medium Tags: [BFS, DFS, Tree]](#121-binary-tree-right-side-viewjava-https--github-com--awangdev--lintcode--blob--master--java--binary%25-20tree%25-20right%25-20side%25-20viewjava---level-medium-tags-bfs-dfs-tree)
+    - [122. Binary Tree Maximum Path Sum II.java   Level : Medium Tags: [DFS, Tree]](#122-binary-tree-maximum-path-sum-iijava---level--medium-tags-dfs-tree)
+    - [123. Rotate List.java * * Level: Medium Tags: [Linked List, Two Pointers]](#123-rotate-listjava---level-medium-tags-linked-list-two-pointers)
+    - [124 [Binary Tree Longest the Consecutive Sequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/. binary% 20Tree% 20Longest% 20Consecutive% 20Sequence.java)   Level: Medium Tags: [DFS, Divide and Conquer, Tree]](#124-binary-tree-longest-the-consecutive-sequencejava-httpsgithubcomawangdevlintcodeblobmasterjava-binary%25-20tree%25-20longest%25-20consecutive%25-20sequencejava---level-medium-tags-dfs-divide-and-conquer-tree)
+    - [125. Number of Connected Components in an Undirected Graph.java   Level: Medium Tags: [BFS, DFS, Graph, Union Find]](#125-number-of-connected-components-in-an-undirected-graphjava---level-medium-tags-bfs-dfs-graph-union-find)
+    - [126. Next Closest Time.java   Level: Medium Tags: [Basic Implementation, Enumeration , String]](#126-next-closest-timejava---level-medium-tags-basic-implementation-enumeration--string)
+  - [## String](#-string)
+    - [127. Partition Array.java   Level: Medium Tags: [Array, Quick Sort, Sort, Two Pointers]](#127-partition-arrayjava---level-medium-tags-array-quick-sort-sort-two-pointers)
+    - [128. Word Ladder.java   Level : Medium Tags: [BFS]](#128-word-ladderjava---level--medium-tags-bfs)
+    - [129. Unique Word Abbreviation.java    Level: Medium Tags: [Design, Hash Table]](#129-unique-word-abbreviationjava----level-medium-tags-design-hash-table)
+    - [130. [Unique Binary Search Tree II.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Unique% 20Binary% 20Search% 20Tree% 20II.java)   Level: Medium Tags: [BST, DP, Divide and Conquer, Tree]](#130-unique-binary-search-tree-iijava-httpsgithubcomawangdevlintcodeblobmasterjava-unique%25-20binary%25-20search%25-20tree%25-20iijava---level-medium-tags-bst-dp-divide-and-conquer-tree)
+  - [## DP? Memoization?](#-dp-memoization)
+    - [131. Ugly Number.java   Level: Medium Tags : [Math]](#131-ugly-numberjava---level-medium-tags--math)
+    - [132. [Top K Frequent Words.java] (https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent% 20Words.java)   Level: Medium Tags: [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue, Trie]](#132-top-k-frequent-wordsjava-httpsgithubcomawangdevlintcodeblobmasterjavatopkfrequent%25-20wordsjava---level-medium-tags-hash-table-heap-maxheap-minheap-priorityqueue-trie)
+  - [## PriorityQueue-Min Heap](#-priorityqueue-min-heap)
+    - [135. Segment Tree Query.java   Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]](#135-segment-tree-queryjava---level-medium-tags-binary-tree-dfs-divide-and-conquer-lint-segment-tree)
+    - [136. Segment Tree Modify.java   Level: Medium Tags: [ Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]](#136-segment-tree-modifyjava---level-medium-tags--binary-tree-dfs-divide-and-conquer-lint-segment-tree)
+    - [137. Segment Tree Query II.java   Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]](#137-segment-tree-query-iijava---level-medium-tags-binary-tree-dfs-divide-and-conquer-lint-segment-tree)
+    - [138. [ColorGrid.java] (https: // github .com / awangdev / LintCode / blob / master / Java / ColorGrid.java)   Level: Medium Tags: [Design, Hash Table]](#138-colorgridjava-https--github-com--awangdev--lintcode--blob--master--java--colorgridjava---level-medium-tags-design-hash-table)
+    - [139. [Container With Most Water.java] (https://github.com/awangdev/LintCode/blob/master/Java /Container%20With%20Most%20Water.java)###  Level: Medium Tags: [Array, Two Pointers]](#139-container-with-most-waterjava-httpsgithubcomawangdevlintcodeblobmasterjava-containerwithmostwaterjava--level-medium-tags-array-two-pointers)
+    - [140. Copy List with Random Pointer.java   Level: Medium Tags : [Hash Table, Linked List]](#140-copy-list-with-random-pointerjava---level-medium-tags--hash-table-linked-list)
+    - [141. Encode and Decode Strings.java   Level: Medium Tags: [String ]](#141-encode-and-decode-stringsjava---level-medium-tags-string-)
+    - [142. [Fast Power.java] (https://github.com/awangdev /LintCode/blob/master/Java/Fast%20Power.java)###  Level: Medium Tags: [DFS, Divide and Conquer]](#142-fast-powerjava-httpsgithubcomawangdev-lintcodeblobmasterjavafastpowerjava--level-medium-tags-dfs-divide-and-conquer)
+- [### Divide and Conquer](#-divide-and-conquer)
+    - [143. [Find the Connected Component in the Undirected Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Connected%20Component%20in%20the% 20Undirected% 20Graph.java)   Level: Medium Tags: [BFS, DFS]](#143-find-the-connected-component-in-the-undirected-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavafindtheconnectedcomponentinthe%25-20undirected%25-20graphjava---level-medium-tags-bfs-dfs)
+    - [145. [Interval Minimum Number.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Interval%20Minimum%20Number.java)###  Level: Medium Tags: [Binary Search, Divide and Conquer, Lint, Segment Tree]](#145-interval-minimum-numberjava-https--githubcomawangdevlintcodeblobmasterjavaintervalminimumnumberjava--level-medium-tags-binary-search-divide-and-conquer-lint-segment-tree)
+    - [146. Interval Sum.java * * Level: Medium Tags: [Binary Search, Lint, Segment Tree]](#146-interval-sumjava---level-medium-tags-binary-search-lint-segment-tree)
+    - [147. [Kth Smallest Element in a BST.java] (https://github.com/awangdev/LintCode/blob/master /Java/Kth%20Smallest%20Element%20in%20a%20BST.java)###  Level: Medium Tags: [BST, DFS, Stack, Tree]](#147-kth-smallest-element-in-a-bstjava-httpsgithubcomawangdevlintcodeblobmaster-javakthsmallestelementinabstjava--level-medium-tags-bst-dfs-stack-tree)
+    - [148. Majority Element II.java   Level: Medium Tags: [Array]](#148-majority-element-iijava---level-medium-tags-array)
+  - [## Sort + count](#-sort--count)
+    - [149. Partition List.java   Level: Medium Tags: [Linked List, Two Pointers]](#149-partition-listjava---level-medium-tags-linked-list-two-pointers)
+    - [150. Peeking Iterator.java   Level: Medium Tags: [Design]](#150-peeking-iteratorjava---level-medium-tags-design)
+  - [## Use concept pre cache](#-use-concept-pre-cache)
+    - [151. Rehashing.java   Level: Medium Tags: [Hash Table]](#151-rehashingjava---level-medium-tags-hash-table)
+    - [153. Restore IP Addresses.java   Level: Medium Tags: [Backtracking , DFS, String]](#153-restore-ip-addressesjava---level-medium-tags-backtracking--dfs-string)
+    - [154. Reverse Words in a String.java   Level: Medium Tags : [String]](#154-reverse-words-in-a-stringjava---level-medium-tags--string)
+    - [155. Reverse Words in a String II.java * * Level: Medium Tags: [String]](#155-reverse-words-in-a-string-iijava---level-medium-tags-string)
+    - [156. [Search a 2D Matrix.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix.java)   Level: Medium Tags: [Array, Binary Search]](#156-search-a-2d-matrixjava-https--githubcomawangdevlintcodeblobmasterjavasearcha2dmatrixjava---level-medium-tags-array-binary-search)
+    - [158 [Search for A Range.java] (https://github.com/awangdev/. LintCode / blob / master / Java / Search% 20for% 20a% 20Range.java)   Level: Medium Tags: [Array, Binary Search]](#158-search-for-a-rangejava-httpsgithubcomawangdev-lintcode--blob--master--java--search%25-20for%25-20a%25-20rangejava---level-medium-tags-array-binary-search)
+    - [# Binary Search](#-binary-search)
+    - [159. [Search Range in Binary Search Tree .java] (https://github.com/awangdev /LintCode/blob/master/Java/Search%20Range%20in%20Binary%20Search%20Tree%20.java)###  Level: Medium Tags: [BST, Binary Tree]](#159-search-range-in-binary-search-tree-java-httpsgithubcomawangdev-lintcodeblobmasterjavasearchrangeinbinarysearchtreejava--level-medium-tags-bst-binary-tree)
+    - [160. Sort List.java   Level: Medium Tags: [Divide and Conquer, Linked List, Merge Sort, Sort]](#160-sort-listjava---level-medium-tags-divide-and-conquer-linked-list-merge-sort-sort)
+    - [162. Topological Sorting.java   Level: Medium Tags: [BFS, DFS, Topological Sort]](#162-topological-sortingjava---level-medium-tags-bfs-dfs-topological-sort)
+    - [163. [Spiral Matrix.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Spiral% 20Matrix.java)   Level: Medium Tags: [Array, Enumeration]](#163-spiral-matrixjava-httpsgithubcom-awangdev--lintcode--blob--master--java--spiral%25-20matrixjava---level-medium-tags-array-enumeration)
+    - [# DX, DY](#-dx-dy)
+    - [164. [Construct Binary Tree from Inorder and Postorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal .java)   Level: Medium Tags: [Array, DFS, Divide and Conquer, Tree]](#164-construct-binary-tree-from-inorder-and-postorder-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavaconstructbinarytreefrominorderandpostordertraversal-java---level-medium-tags-array-dfs-divide-and-conquer-tree)
+    - [165. Generate Parentheses.java   Level : Medium Tags: [Backtracking, DFS, Sequence DFS, String]](#165-generate-parenthesesjava---level--medium-tags-backtracking-dfs-sequence-dfs-string)
+    - [167. Flip Game II.java   Level: Medium Tags: [Backtracking, DFS , DP]](#167-flip-game-iijava---level-medium-tags-backtracking-dfs--dp)
+    - [168. Palindrome Partitioning.java   Level: Medium Tags: [Backtracking, DFS]](#168-palindrome-partitioningjava---level-medium-tags-backtracking-dfs)
+- [### Complexity](#-complexity)
+    - [169. [Submatrix Sum.java] (https: // github. com / awangdev / LintCode / blob / master / Java / Submatrix% 20Sum.java)   Level: Medium Tags: [Array, Hash Table, PreSum]](#169-submatrix-sumjava-https--github-com--awangdev--lintcode--blob--master--java--submatrix%25-20sumjava---level-medium-tags-array-hash-table-presum)
+    - [170. [Longest Palindromic Substring.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Longest% 20Palindromic% 20Substring.java)   Level: Medium Tags: [DP, String]](#170-longest-palindromic-substringjava-httpsgithubcomawangdevlintcodeblobmaster-java--longest%25-20palindromic%25-20substringjava---level-medium-tags-dp-string)
+    - [171. Longest Palindromic Subsequence.java   Level: Medium Tags: [DFS, DP, Interval DP, Memoization]](#171-longest-palindromic-subsequencejava---level-medium-tags-dfs-dp-interval-dp-memoization)
+    - [172. [Gas Station.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Gas% 20Station.java)   Level: Medium Tags: [Greedy]](#172-gas-stationjava-httpsgithubcomawangdevlintcode-blob--master--java--gas%25-20stationjava---level-medium-tags-greedy)
+    - [174. Merge Intervals.java   Level: Medium Tags: [Array, PriorityQueue, Sort , Sweep Line]](#174-merge-intervalsjava---level-medium-tags-array-priorityqueue-sort--sweep-line)
+    - [175. H-Index.java   Level: Medium Tags: [Bucket Sort, Hash Table, Sort]](#175-h-indexjava---level-medium-tags-bucket-sort-hash-table-sort)
+    - [176. H-Index II. java   Level: Medium Tags: [Binary Search]](#176-h-index-ii-java---level-medium-tags-binary-search)
+    - [177. Sort Colors.java   Level: Medium Tags: [Array, Partition, Quick Sort, Sort, Two Pointers]](#177-sort-colorsjava---level-medium-tags-array-partition-quick-sort-sort-two-pointers)
+    - [178. Sort Colors II.java   Level: Medium Tags: [Partition, Quick Sort , Sort, Two Pointers]](#178-sort-colors-iijava---level-medium-tags-partition-quick-sort--sort-two-pointers)
+    - [179. Sort Letters by Case.java   Level: Medium Tags: [Partition, Sort, String, Two Pointers]](#179-sort-letters-by-casejava---level-medium-tags-partition-sort-string-two-pointers)
+    - [180. [Subarray Sum Closest.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Closest.java)###  Level: Medium Tags: [PreSum, PriorityQueue, Sort, Subarray]](#180-subarray-sum-closestjava-https-githubcomawangdevlintcodeblobmasterjavasubarraysumclosestjava--level-medium-tags-presum-priorityqueue-sort-subarray)
+    - [181. [Task Scheduler.java] (https://github.com/awangdev/LintCode/blob/master/Java/Task% 20Scheduler.java)   Level: Medium Tags: [Array, Enumeration, Greedy, PriorityQueue, Queue]](#181-task-schedulerjava-httpsgithubcomawangdevlintcodeblobmasterjavatask%25-20schedulerjava---level-medium-tags-array-enumeration-greedy-priorityqueue-queue)
+    - [182. Exam Room.java   Level: Medium Tags: [PriorityQueue, Sort]](#182-exam-roomjava---level-medium-tags-priorityqueue-sort)
+    - [183.  Anagrams.java   Level: Medium Tags: [Array, Hash Table]](#183--anagramsjava---level-medium-tags-array-hash-table)
+    - [184. Path Sum IV.java   Level: Medium Tags: [DFS, Hash Table , Tree]](#184-path-sum-ivjava---level-medium-tags-dfs-hash-table--tree)
+    - [186. [Palindromic Substrings.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Palindromic% 20Substrings.java)   Level: Medium Tags: [DP, String]](#186-palindromic-substringsjava-httpsgithubcomawangdevlintcode-blob--master--java--palindromic%25-20substringsjava---level-medium-tags-dp-string)
+    - [187. Multiply Strings.java   Level: Medium Tags: [Math, String]](#187-multiply-stringsjava---level-medium-tags-math-string)
+    - [188. Subsets.java   Level: Medium Tags: [Array, BFS , Backtracking, Bit Manipulation, DFS]](#188-subsetsjava---level-medium-tags-array-bfs--backtracking-bit-manipulation-dfs)
+    - [189. [Subsets II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subsets%20II. java)   Level: Medium Tags: [Array, BFS, Backtracking, DFS]](#189-subsets-iijava-httpsgithubcomawangdevlintcodeblobmasterjavasubsetsii-java---level-medium-tags-array-bfs-backtracking-dfs)
+    - [# BFS](#-bfs)
+    - [190. Combination Sum.java   Level: Medium Tags: [Array, Backtracking , Combination, DFS]](#190-combination-sumjava---level-medium-tags-array-backtracking--combination-dfs)
+    - [191. Combination Sum II.java   Level: Medium Tags: [Array, Backtracking, Combination, DFS]](#191-combination-sum-iijava---level-medium-tags-array-backtracking-combination-dfs)
+    - [192. [Combination Sum III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination% 20Sum% 20III.java)   Level: Medium Tags: [Array, Backtracking, Combination, DFS]](#192-combination-sum-iiijava-httpsgithubcomawangdevlintcodeblobmasterjavacombination%25-20sum%25-20iiijava---level-medium-tags-array-backtracking-combination-dfs)
+    - [194. [Total Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Total%20Hamming%20Distance. java)   Level: Medium Tags: [Bit Manipulation]](#194-total-hamming-distancejava-httpsgithubcomawangdevlintcodeblobmasterjavatotalhammingdistance-java---level-medium-tags-bit-manipulation)
+    - [195. Smallest Subtree with all the Deepest Nodes.java   Level: Medium Tags: [DFS, Divide and Conquer, Tree]](#195-smallest-subtree-with-all-the-deepest-nodesjava---level-medium-tags-dfs-divide-and-conquer-tree)
+    - [196. Subarray Sum Equals K. java   Level: Medium Tags: [Array, Hash Table, PreSum, Subarray]](#196-subarray-sum-equals-k-java---level-medium-tags-array-hash-table-presum-subarray)
+    - [197. Simplify Path.java   Level: Medium Tags: [Stack, String]](#197-simplify-pathjava---level-medium-tags-stack-string)
+    - [198. [Convert Binary Search Tree to Sorted Doubly Linked List (extra space) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to% 20Sorted% 20Doubly% 20Linked% 20List% 20 (extra% 20space) .java)   Level: Medium Tags: [Linked List, Stack, Tree]](#198-convert-binary-search-tree-to-sorted-doubly-linked-list-extra-space-java-httpsgithubcomawangdevlintcodeblobmasterjavaconvertbinarysearchtreeto%25-20sorted%25-20doubly%25-20linked%25-20list%25-20-extra%25-20space-java---level-medium-tags-linked-list-stack-tree)
+    - [199. Binary Tree Zigzag Level Order Traversal.java   Level: Medium Tags: [BFS, Stack, Tree]](#199-binary-tree-zigzag-level-order-traversaljava---level-medium-tags-bfs-stack-tree)
+    - [200. [Word Break.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Word% 20Break.java)   Level: Medium Tags: [DP, Hash Table, Sequence DP]](#200-word-breakjava-httpsgithubcom-awangdev--lintcode--blob--master--java--word%25-20breakjava---level-medium-tags-dp-hash-table-sequence-dp)
+    - [201. Longest Increasing Subsequence.java   Level: Medium Tags: [Binary Search, Coordinate DP, DP, Memoization]](#201-longest-increasing-subsequencejava---level-medium-tags-binary-search-coordinate-dp-dp-memoization)
+  - [## O (nLogN)-Maintain](#-o-nlogn-maintain)
+    - [202. [Best Time to Buy and Sell Stock with Transaction Fee.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock % 20with% 20Transaction% 20Fee.java)   Level: Medium Tags: [Array, DP, Greedy, Sequence DP, Status DP]](#202-best-time-to-buy-and-sell-stock-with-transaction-feejava-httpsgithubcomawangdevlintcodeblobmasterjavabesttimetobuyandsellstock-%25-20with%25-20transaction%25-20feejava---level-medium-tags-array-dp-greedy-sequence-dp-status-dp)
+    - [205. Sparse Matrix Multiplication.java   Level: Medium Tags: [Hash Table]](#205-sparse-matrix-multiplicationjava---level-medium-tags-hash-table)
+    - [206. Brick Wall.java   Level: Medium Tags: [Hash Table]](#206-brick-walljava---level-medium-tags-hash-table)
+    - [208. Friends Of Appropriate Ages.java   Level: Medium Tags : [Array, Math]](#208-friends-of-appropriate-agesjava---level-medium-tags--array-math)
+    - [209. Target Sum.java   Level: Medium Tags: [DFS, DP]](#209-target-sumjava---level-medium-tags-dfs-dp)
+    - [211. Contiguous Array.java   Level: Medium Tags: [Hash Table]](#211-contiguous-arrayjava---level-medium-tags-hash-table)
+    - [212. Line Reflection.java   Level: Medium Tags : [Hash Table, Math]](#212-line-reflectionjava---level-medium-tags--hash-table-math)
+    - [213. [Insert Delete GetRandom O (1) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert% 20Delete% 20GetRandom% 20O (1) .java)   Level: Medium Tags: [Array, Design, Hash Table]](#213-insert-delete-getrandom-o-1-java-httpsgithubcomawangdevlintcodeblobmasterjavainsert%25-20delete%25-20getrandom%25-20o-1-java---level-medium-tags-array-design-hash-table)
+    - [214. Number of Longest Increasing Subsequence.java   Level: Medium Tags : [Coordinate DP, DP]](#214-number-of-longest-increasing-subsequencejava---level-medium-tags--coordinate-dp-dp)
+    - [215. [Minimum Swaps To Make Sequences Increasing.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Minimum%20Swaps%20To%20Make%20Sequences%20Increasing.java)###  Level: Medium Tags: [Coordinate DP, DP, Status DP]](#215-minimum-swaps-to-make-sequences-increasingjava-https-githubcomawangdevlintcodeblobmasterjavaminimumswapstomakesequencesincreasingjava--level-medium-tags-coordinate-dp-dp-status-dp)
+    - [216. Binary Tree Vertical Order Traversal.java   Level: Medium Tags : [BFS, DFS, Hash Table, Tree]](#216-binary-tree-vertical-order-traversaljava---level-medium-tags--bfs-dfs-hash-table-tree)
+    - [217. [Populating Next Right Pointers in Each Node II.java] (https://github.com/awangdev/LintCode/blob/master/Java /Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.java)###  Level: Medium Tags: [DFS, Tree]](#217-populating-next-right-pointers-in-each-node-iijava-httpsgithubcomawangdevlintcodeblobmasterjava-populatingnextrightpointersineachnodeiijava--level-medium-tags-dfs-tree)
+- [### Trick](#-trick)
+    - [218. [Search in Rotated Sorted Array.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20in%20Rotated%20Sorted%20Array.java)   Level: Medium Tags: [Array, Binary Search]](#218-search-in-rotated-sorted-arrayjava-https--githubcomawangdevlintcodeblobmasterjavasearchinrotatedsortedarrayjava---level-medium-tags-array-binary-search)
+    - [219. [Find the Weak Connected Component in the Directed Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Weak%20Connected%20Component%20in%20the% 20Directed% 20Graph.java)   Level: Medium Tags: [Union Find]](#219-find-the-weak-connected-component-in-the-directed-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavafindtheweakconnectedcomponentinthe%25-20directed%25-20graphjava---level-medium-tags-union-find)
+    - [220. Accounts Merge.java   Level: Medium Tags: [DFS, Hash Table, Hash Table , Union Find]](#220-accounts-mergejava---level-medium-tags-dfs-hash-table-hash-table--union-find)
+    - [221. Count of Smaller Number.java   Level: Medium Tags: [Binary Search, Lint, Segment Tree]](#221-count-of-smaller-numberjava---level-medium-tags-binary-search-lint-segment-tree)
+    - [222. My Calendar I.java   Level: Medium Tags: [Array , TreeMap]](#222-my-calendar-ijava---level-medium-tags-array--treemap)
+- [### Quick Sort](#-quick-sort)
+    - [225. [Merge k Sorted Lists.java] (https://github.com/awangdev/LintCode /blob/master/Java/Merge%20k%20Sorted%20Lists.java)###  Level: Medium Tags: [Divide and Conquer, Heap, Linked List, PriorityQueue]](#225-merge-k-sorted-listsjava-httpsgithubcomawangdevlintcode-blobmasterjavamergeksortedlistsjava--level-medium-tags-divide-and-conquer-heap-linked-list-priorityqueue)
+    - [226. Merge k Sorted Arrays.java   Level: Medium Tags : [Heap, MinHeap, PriorityQueue]](#226-merge-k-sorted-arraysjava---level-medium-tags--heap-minheap-priorityqueue)
+    - [227. Heapify.java   Level: Medium Tags: [Heap, MinHeap]](#227-heapifyjava---level-medium-tags-heap-minheap)
+  - [## Heap](#-heap)
+    - [228. Top K Frequent Elements.java   Level: Medium Tags : [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue]](#228-top-k-frequent-elementsjava---level-medium-tags--hash-table-heap-maxheap-minheap-priorityqueue)
+  - [## PriorityQueue, MaxHeap](#-priorityqueue-maxheap)
+    - [229. Ugly Number II.java    Level: Medium Tags: [DP, Enumeration, Heap, Math, PriorityQueue]](#229-ugly-number-iijava----level-medium-tags-dp-enumeration-heap-math-priorityqueue)
+    - [230. Inorder Successor in BST.java   Level: Medium Tags: [BST , Tree]](#230-inorder-successor-in-bstjava---level-medium-tags-bst--tree)
+    - [231. [Walls and Gates.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Walls%20and%20Gates.java)###  Level: Medium Tags: [BFS, DFS]](#231-walls-and-gatesjava-https-githubcomawangdevlintcodeblobmasterjavawallsandgatesjava--level-medium-tags-bfs-dfs)
+    - [232. Convert Binary Search Tree to Sorted Doubly Linked List.java###  Level: Medium Tags: [BST, DFS , Divide and Conquer, Linked List, Tree]](#232-convert-binary-search-tree-to-sorted-doubly-linked-listjava--level-medium-tags-bst-dfs--divide-and-conquer-linked-list-tree)
+  - [## Tree, In-order traversal](#-tree-in-order-traversal)
+    - [233. [String to Integer (atoi) .java] (https: // github .com / awangdev / LintCode / blob / master / Java / String% 20to% 20Integer% 20 (atoi) .java)   Level: Medium Tags: [Math, String]](#233-string-to-integer-atoi-java-https--github-com--awangdev--lintcode--blob--master--java--string%25-20to%25-20integer%25-20-atoi-java---level-medium-tags-math-string)
+    - [235. Permutations. java   Level: Medium Tags: [Backtracking, DFS, Permutation]](#235-permutations-java---level-medium-tags-backtracking-dfs-permutation)
+    - [236. One Edit Distance.java   Level: Medium Tags: [String]](#236-one-edit-distancejava---level-medium-tags-string)
+    - [237. 4Sum.java   Level: Medium Tags: [Hash Table]](#237-4sumjava---level-medium-tags-hash-table)
   - [http://lifexplorer.me/leetcode-3sum-4sum-and-k-sum/-Add](#httplifexplorermeleetcode-3sum-4sum-and-k-sum-add)
-    - [<ol start="238">
-<li>[Redundant Connection.java] (https://github.com/awangdev/LintCode/blob/master/Java/Redundant % 20Connection.java) Level: Medium Tags: [BFS, DFS, Graph, Tree, Union Find]</li>
-</ol>](#ol-start%22238%22-liredundant-connectionjava-httpsgithubcomawangdevlintcodeblobmasterjavaredundant--20connectionjava-level-medium-tags-bfs-dfs-graph-tree-union-findli-ol)
-      - [unionFind](#unionfind)
-      - [Graph, DFS](#graph-dfs)
-      - [BFS](#bfs-14)
-    - [<ol start="239">
-<li>[Graph Valid Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Graph%20Valid%20Tree.java) Level: Medium Tags: [BFS, DFS, Graph, Union Find]</li>
-</ol>](#ol-start%22239%22-ligraph-valid-treejava-httpsgithubcomawangdevlintcodeblobmasterjavagraph20valid20treejava-level-medium-tags-bfs-dfs-graph-union-findli-ol)
-      - [Union Find](#union-find-5)
-      - [BFS-](#bfs)
-    - [<ol start="240">
-<li>[The Maze.java] (https://github.com/awangdev/LintCode/blob /master/Java/The%20Maze.java)### Level: Medium Tags: [BFS, DFS]</li>
-</ol>](#ol-start%22240%22-lithe-mazejava-httpsgithubcomawangdevlintcodeblob-masterjavathe20mazejava-level-medium-tags-bfs-dfsli-ol)
-      - [BFS](#bfs-15)
-      - [BFS](#bfs-16)
-      - [Priority Queue](#priority-queue-1)
-    - [<ol start="243">
-<li>[Group Shifted Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Group%20Shifted%20Strings.java) Level: Medium Tags: [Hash Table, String ]</li>
-</ol>](#ol-start%22243%22-ligroup-shifted-stringsjava-httpsgithubcomawangdevlintcodeblobmasterjavagroup20shifted20stringsjava-level-medium-tags-hash-table-string-li-ol)
-      - [Convert to orginal string](#convert-to-orginal-string)
-      - [Previous notes](#previous-notes-4)
-    - [<ol start="244">
-<li>[Delete Digits.java] (https://github.com/awangdev/LintCode/blob/master/Java/Delete%20Digits.java) Level: Medium Tags: [Greedy, Priority Queue ]</li>
-</ol>](#ol-start%22244%22-lidelete-digitsjava-httpsgithubcomawangdevlintcodeblobmasterjavadelete20digitsjava-level-medium-tags-greedy-priority-queue-li-ol)
-      - [Greedy](#greedy-1)
-    - [<ol start="245">
-<li>[Flatten 2D Vector.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flatten%202D%20Vector.java) Level: Medium Tags: [Design ]</li>
-</ol>](#ol-start%22245%22-liflatten-2d-vectorjava-httpsgithubcomawangdevlintcodeblobmasterjavaflatten202d20vectorjava-level-medium-tags-design-li-ol)
-      - [Basic Implementation using x, y corrdinate](#basic-implementation-using-x-y-corrdinate)
-      - [Always return item at index 0, and remove from list?](#always-return-item-at-index-0-and-remove-from-list)
-    - [<ol start="246">
-<li>[The Spiral Matrix II.java] (https://github.com/awangdev/LintCode/blob/master/Java/The%20Spiral%20Matrix%20II.java) Level: Medium Tags: [Array ]</li>
-</ol>](#ol-start%22246%22-lithe-spiral-matrix-iijava-httpsgithubcomawangdevlintcodeblobmasterjavathe20spiral20matrix20iijava-level-medium-tags-array-li-ol)
-      - [Move forward till end](#move-forward-till-end)
-  
+    - [238. [Redundant Connection.java] (https://github.com/awangdev/LintCode/blob/master/Java/Redundant % 20Connection.java)   Level: Medium Tags: [BFS, DFS, Graph, Tree, Union Find]](#238-redundant-connectionjava-httpsgithubcomawangdevlintcodeblobmasterjavaredundant-%25-20connectionjava---level-medium-tags-bfs-dfs-graph-tree-union-find)
+    - [239. Graph Valid Tree.java   Level: Medium Tags: [BFS, DFS, Graph, Union Find]](#239-graph-valid-treejava---level-medium-tags-bfs-dfs-graph-union-find)
+    - [240. [The Maze.java] (https://github.com/awangdev/LintCode/blob /master/Java/The%20Maze.java)###  Level: Medium Tags: [BFS, DFS]](#240-the-mazejava-httpsgithubcomawangdevlintcodeblob-masterjavathemazejava--level-medium-tags-bfs-dfs)
+    - [243. Group Shifted Strings.java   Level: Medium Tags: [Hash Table, String ]](#243-group-shifted-stringsjava---level-medium-tags-hash-table-string-)
+    - [244. Delete Digits.java   Level: Medium Tags: [Greedy, Priority Queue ]](#244-delete-digitsjava---level-medium-tags-greedy-priority-queue-)
+    - [245. Flatten 2D Vector.java   Level: Medium Tags: [Design ]](#245-flatten-2d-vectorjava---level-medium-tags-design-)
+    - [246. The Spiral Matrix II.java   Level: Medium Tags: [Array ]](#246-the-spiral-matrix-iijava---level-medium-tags-array-)
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
