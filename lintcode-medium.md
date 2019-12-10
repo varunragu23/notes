@@ -1417,1253 +1417,1253 @@ Take the chess piece game, each person can take 1 or 2 and take away the loss of
 
 Game Theory: If I want to win, the situation I get back must be 'possible to lose'.
 
-#### DP, Game Theory
--To win, it must be guaranteed that when the opponent gets the board, in all cases where he can go, it is 'possible to lose', that is enough.
--Design dp [i]: indicates whether I can win when i face the situation of coins, depending on whether I can lose one or two, can the opponent lose?
--dp [i] =! dp [i-1] ||! dp [i-2]
--Time: O (n), space O (n)
-- 博弈问题, 常从'我的第一步'角度分析, 因为此时局面最简单.
+#### DP, Game Theory 
+-To win, it must be guaranteed that when the opponent gets the board, in all cases where he can go, it is 'possible to lose', that is enough. 
+-Design dp [i] : indicates whether I can win when i face the situation of coins, depending on whether I can lose one or two, can the opponent lose? 
+-dp [i] =! dp [i-1] ||! dp [i-2 ] 
+-Time: O (n), space O (n)-Game 
+problems, often analyzed from the perspective of 'my first step', because the situation is the simplest at this time. 
 
-#### Rolling Array
-空间优化O(1). Rolling array, %2
+#### Rolling Array 
+space optimization O (1). Rolling array,% 2 
 
 
 
----
+--- 
 
-**80. [Coins in a Line II.java](https://github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20II.java)**      Level: Medium      Tags: [Array, DP, Game Theory, Memoization, MiniMax]
+** 80. [Coins in a Line II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20II. java) ** Level: Medium Tags: [Array, DP, Game Theory, Memoization, MiniMax] 
       
 
-给一串coins, 用values[]表示; 每个coin有自己的value. 先手/后手博弈,
-每次只能 按照从左到右的顺序, 拿1个或者2个棋子, 最后看谁拿的总值最大.
+Give a string of coins, represented by values ​​[]; each coin has its own value. First hand / second hand game, 
+Only one or two pieces can be taken in order from left to right at a time, and finally who 
 
-MiniMax的思考方法很神奇, 最后写出来的表达式很简单
-
-#### DP, Game Theory 自考过程比较长
-- 跟Coins in a line I 不一样: 每个coin的value不同.
-- 用到MiniMax的思想, 这里其实是MaxiMin. Reference: http://www.cnblogs.com/grandyang/p/5864323.html
-- Goal: 使得player拿到的coins value 最大化.
-- 设定dp[i]: 从index i 到 index n的最大值. 所以dp[0]就是我们先手在[0 ~ n]的最大取值 
-- 于此同时, 你的对手playerB也想最大化, 而你的选择又不得不被对手的选择所牵制.
-- 用MaxiMin的思想, 我们假设一个当下的状态, 假想对手playerB会做什么反应(从对手角度, 如何让我输)
-- 在劣势中(对手让我输的目标下)找到最大的coins value sum
-
-
-##### 推算表达式
-- Reference里面详细介绍了表达式如何推到出来, 简而言之:
-- 如果我选了i, 那么对手就只能选(i+1), (i+2) 两个位置, 而我在对方掌控时的局面就是min(dp[i+2], dp[i+3])
-- 如果我选了i和(i+1), 那么对手就只能选(i+2), (i+3) 两个位置, 而我在对方掌控时的局面就是min(dp[i+3], dp[i+4])
-- 大家都是可选1个或者2个coins
-- 目标是maximize上面两个最坏情况中的最好结果
-
-##### 简化表达式
-- 更加简化一点: 如果我是先手, dp[i]代表我的最大值.
-- 取决于我拿了[i], 还是[i] + [i+1], 对手可能是dp[i + 1], 或者是dp[i+2]
-- 其实dp[i] = Math.max(sum - dp[i + 1], sum - dp[i + 2]);
-- 这里的sum[i] = [i ~ n] 的sum, 减去dp[i+1], 剩下就是dp[i]的值没错了
-
-##### Initialization
-- 这个做法是从最后往前推的, 注意initialize dp末尾的值.
-- dp = new int[n + 1]; dp[n] = 0; // [n ~ n]啥也不选的时候, 为0.
-- sum = new int[n + 1]; sum[n] = 0; // 啥也不选的时候, 自然等于0
-- 然后记得initialize (n-1), (n-2)
-
-##### 时间/空间
-Time O(n)
-Space O(n): dp[], sum[]
+sees the largest total value. MiniMax's thinking method is very magical, and finally The written expression is simple
+ 
+#### DP, Game Theory The self-study process is relatively long 
+-not the same as Coins in a line I : The value of each coin is different. 
+-Using the idea of ​​MiniMax, here is actually MaxiMin. Reference: http://www.cnblogs.com/grandyang/p/5864323.html-Goal 
+: Make the maximum value of coins that the player gets of. 
+- set dp [i]:. the maximum value from index i to index n so dp [0] is what we just get in [0 ~ n] of the maximum value 
+- the same time, you also want the biggest opponent playerB 
+Change , and your choice has to be constrained by your opponent's choice.-Using MaxiMin's thinking, we assume a current state, imagine what the opponent playerB will react (from the opponent's perspective, how to let me lose)-in 
+the disadvantage (Under the goal that the opponent let me lose) Find the largest coins value sum 
 
 
+##### Estimation expression 
+-Reference details how expressions are pushed out, in short:-If 
+I choose i, then the opponent I can only choose two positions (i + 1) and (i + 2), and my situation under the control of the other party is min (dp [i + 2], dp [i +3]) 
+-If I choose i and (i + 1), the opponent can only choose two positions (i + 2) and (i + 3), and my position under the opponent's control is min (dp [i + 3], dp [i + 4]) 
+-Everyone can choose 1 or 2 coins 
+- The above objective is maximize the best result in the two worst-case 
 
+##### simplified expression
+-Simplify a bit more: if I'm the first player, dp [i] represents my maximum value. 
+-Depending on whether I take [i], or [i] + [i + 1], the opponent may be dp [i + 1] , Or dp [i + 2] 
+-Actually dp [i] = Math.max (sum-dp [i + 1], sum-dp [i + 2]); 
+-here sum [i] = [i ~ n] 's sum, minus dp [i + 1], the rest is the value of dp [i]. 
+
+##### Initialization 
+-This method is pushed forward from the end, pay attention to initialize the value at the end of dp. 
+-dp = new int [n + 1]; dp [n] = 0; // [n ~ n] when nothing is selected, it is 0. 
+-sum = new int [n + 1]; sum [n] = 0; // when nothing is selected, it is naturally equal to 0 
+-then remember to initialize (n-1), (n-2) 
+
+##### 
+Time O (n) 
+Space O (n): dp [], sum [] 
+
+
+
+--- 
+
+** 81. [Binary Tree Postorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Postorder%20Traversal.java) ** Level: Medium Tags: [Stack, Tree, Two Stacks]
+      
+ 
+As the title, POST-ORDER traversal. 
+
+LeetCode gave hard, it should be difficult to think of the stack approach. 
+
+#### Recursive 
+trivial, first add left recursively, then add right recursively, and then form the head. 
+
+#### Stack 
+-The idea of ​​double stack, you need to draw on the drawing 
+-the original order is: leftChild, rightChild, currNode. 
+-Create a stack, reversely process: currNode, then rightChild, then leftChild 
+-this way The result is reverse, so it can be reversed. 
+-V1 uses stack1 and stack2, because it is based on the idea of ​​this dual stack 
+-v2 is simplified and can be placed in a stack, each time the result is recorded When: rst.add (0, item); 
+
+##### Take advantage of stack features
+-Each time you add an element to the stack, you want to process it in bottom / after, add it first 
+-you want to process it immediately in the next round, and finally push it into the stack. 
+
+##### Note 
+these binary tree traversal topics. Often There are multiple approaches: recursive or iterative 
+
+
+ 
 ---
 
-**81. [Binary Tree Postorder Traversal.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Postorder%20Traversal.java)**      Level: Medium      Tags: [Stack, Tree, Two Stacks]
+** 82. [Compare Version Numbers.java] (https://github.com/awangdev/LintCode/blob/master/Java/Compare%20Version%20Numbers.java) ** Level: Medium Tags: [String] 
       
 
-如题, POST-ORDER traversal.
+Give two strings of version number, composed of numbers and '.'. Compare the order. 
 
-LeetCode给了hard, 应该是觉得stack的做法比较难想到.
-
-#### Recursive
-trivial, 先加left recursively, 再加right recursively, 然后组成头部.
-
-#### Stack
-- 双stack的思想, 需要在图纸上画一画
-- 原本需要的顺序是: 先leftChild, rightChild, currNode.
-- 营造一个stack, reversely process: 先currNode, 再rightChild, 再leftChild
-- 这样出来的结果是reverse的, 那么翻转一下就可以了.
-- v1做的时候用了stack1, stack2, 因为根据这个双stack的思想而来
-- v2简化, 可以放在一个stack里面, 每次record result 的时候: rst.add(0, item);
-
-##### 利用stack的特点
-- 每次加element进stack的时候, 想要在 bottom/后process的, 先加
-- 想要下一轮立刻process的, 最后push进stack.
-
-##### 注意
-这些binary tree traversal的题目.常常有多个做法:recursive or iterative
-
-
-
----
-
-**82. [Compare Version Numbers.java](https://github.com/awangdev/LintCode/blob/master/Java/Compare%20Version%20Numbers.java)**      Level: Medium      Tags: [String]
-      
-
-给两串version number,  由数字和'.' 组成. 比较先后顺序. 
-
-If version1 > version2 return 1, if version1 < version2 return -1, otherwise return 0.
+If version1> version2 return 1, if version1 <version2 return -1, otherwise return 0. 
 
 #### divide and conquer 
-- 用 str.split("\\.") 分割string
-- Convert成integer, 逐个击破
+-Use str.split ("\\.") To split the string 
+-Convert to integer, and break them one by one 
 
-#### 注意
-- '1.0' 和 '0' 是相等的
-- 如果可以假设version integer都是valid, 直接Integer.parseInt()就可以了
-- 不然的话, 可以compare string
-
-
-
----
-
-**83. [Count Complete Tree Nodes.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20Complete%20Tree%20Nodes.java)**      Level: Medium      Tags: [Binary Search, Tree]
-      
-
-Complete Tree就是说, 最后一个level可能是缺node的(不是说最右下角缺node, 别忘了!)
-
-#### DFS + Optimization
-- 每次看最左left depth和最右leaf depth 是不是一样, 如果一样, 直接 2 ^ h - 1就好
-- 不一样的话, 再DFS
-
-##### Trick
-- 直接DFS会timeout, O(n), 其实可以optimize
-- to pass the test with O(h^2), 位运算: Math.pow(2, h) = 2 << (h - 1). 神奇!
-- 2 << 1就是把所有bits往左移动一位, 也就是 * 2 
-
-#### Iteratively
-- See details in comments inline. 要对tree非常理解
-- binary tree one child tree nodes # = 2 ^ h - 1; 所以一个child tree + root = 2 ^ h
+#### Note 
+- '1.0 ' and '0' are equal 
+-If you can assume that the version integers are both valid, directly Integer. parseInt () is fine 
+-otherwise, you can compare string 
 
 
 
 ---
 
-**84. [Course Schedule.java](https://github.com/awangdev/LintCode/blob/master/Java/Course%20Schedule.java)**      Level: Medium      Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]
+** 83. [Count Complete Tree Nodes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20Complete%20Tree%20Nodes.java) ** Level: Medium Tags: [Binary Search, Tree] 
       
 
-- 一堆课用int[2] pair 来表示. [1, 0] 表示要上课1的话, 必须先把课0上了. 
-- 每一个数字都是一个ndoe, 题目问是否能把所有的课排了
-- input是 numOfCourses, 还有这个prerequisites [[]]
+Complete Tree means that the last level may be missing nodes (not that the bottom right corner is missing nodes, don't forget!) 
 
-#### Topological Sort
-- 给一个graph of nodes
-- 至关重要: 用`List[] edges; edges[i] = new ArrayList<>();` 来表示graph: 就是每个node, to all its neighbors
-- 目标是根据edge 的 direction, 把这个graph 里面的 node sort 一个list
-- 如果有cycle, 这个item就不会被放在最后的list 里面. 
-- 比如: 如果两个课互相是dependency, 就变成了cyclic dependency, 这样不好.
+#### DFS + Optimization 
+-Look at the leftmost left depth and rightmost leaf each time The depth is not the same, if it is the same, directly 2 ^ h-1 is fine 
+-if it is different, then DFS 
 
+##### Trick 
+-Direct DFS will timeout, O (n), in fact, you can optimize 
+-to pass the test with O (h ^ 2), bit operation: Math.pow (2, h) = 2 << (h-1). Amazing! 
+-2 << 1 is to move all bits one bit to the left, which is * 2 
 
-#### BFS
-- Kahn algorithem:
-- 先build一个graph map: <node, list of nodes >; or `List[] edges; edges[i] = new ArrayList<>();`
-- count in-degree: inDegree就是每个node上面, **有多少个走进来的edge**?
-- **IMPORTANT**: always initialize inDegree map/array with 0
-- 那些没有 in-coming-edge的, indegree 其实就 等于 0, 那么他们就应该在final result list里面
-- 对这些 indegree == 0 的 nodes BFS, add to queue.
-- visit queue 上每个 node: count++, also add this curr node to sorted list
-- Check all neighbors/edges of curr node: 如果visit过了, 这个node上的 indegree--
-- 如果 indegree == 0, add this node to queue.
-
-##### Indegree 原理
-- Note: 如果有cycle, 这个node上面会多一些inDegree, 也就无法清0, 它也无法进入 queue && sorted list. 
-- Remember: **indegree是周围的node到我这里的次数count**
-- 如果周围所有node的连线, 都意义切除后, 我的indegree还不等于0, 那么肯定有某些node间接地有重复连线, 也就是有cycle
-- Topological problem: almost always care about cycle case (if detecting cycle is not goal)
-
-#### DFS
-- 这道题没有要求作出final list, 相对简单, 只要visit每个nodes, 最后确认没有cycle就好了
-- 用 visited int[] 来确认是否有cycle. 1 代表 paretNode visited, -1 代表在DFS上一行的标记
-- 如果遇到-1, 说明这个node在上一级或者以上的同一个dfs path里面已经走过, 那么证明有cycle, return false.
-- 走完一个node的所有neighbor, 都没有fail, 那么backtracking, set visited[i] = 1
-- 真的topo sort会在DFS的底端, 把record放进一个stack, 最后reverse, 就是真的sort order.
-
-#### Notes:
-- 还有 List[] arrayOfList = new ArrayList[]; 这样的操作啊, 代替了map<integer, integerList>
-- List[]的list, 其实是default  List<Object>
-
-#### Previous notes
-有点绕，但是做过一次就明白一点。    
-是topological sort的题目。一般都是给有dependency的东西排序。    
-
-最终都会到一个sink node， 再不会有向后的dependency, 在那个点截止。    
-我就已这样子的点为map的key, 然后value是以这个node为prerequisite的 list of courses.    
-
-画个图的话，prerequisite都是指向那个sink node， 然后我们在组成map的时候，都是从sink node 发散回来到dependent nodes.    
-
-在DFS里面，我们是反向的， 然后，最先完全visited的那个node, 肯定是最左边的node了，它被mark的seq也是最高的。    
-
-而我们的sink node，当它所有的支线都visit完了，seq肯定都已经减到最小了，也就是0，它就是第一个被visit的。   
+## ## Iteratively 
+-See details in comments inline. To understand the tree very well 
+-binary tree one child tree nodes # = 2 ^ h-1; so a child tree + root = 2 ^ h 
 
 
-最终结果：
-每个有pre-requisit的node都trace上去（自底向上），并且都没有发现cycle.也就说明schedule可以用了。
+
+---
+ 
+** 84. [Course Schedule.java] ( https://github.com/awangdev/LintCode/blob/master/Java/Course%20Schedule.java)** Level: Medium Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]
+      
+
+-A pile of lessons is represented by an int [2] pair. [1, 0] means that if you want to take lesson 1, you must first take lesson 0. 
+-Each number is an ndoe. The question asks if you can arrange all the lessons. the 
+- input is numOfCourses, there is this the Prerequisites [[]] 
+
+#### Topological the Sort 
+- to Nodes of a Graph 
+- critical: List [] edges with `; edges [i] = new ArrayList <> (); `expressed graph: each is the Node, the ITS to All neighbors 
+- the goal is based on the direction edge of this graph inside the node sort a list 
+. - If there are cycle, this item will not be on the final list inside 
+- For example: if two lessons are dependent on each other, it becomes a cyclic dependency, which is not good. 
+
+
+#### BFS  
+-Kahn algorithem:
+-first build a graph map: <node, list of nodes>; or `List [] edges; edges [ i) = new ArrayList <> (); ` 
+-count in-degree: inDegree is on each node, ** how many edges are there ** 
+--** IMPORTANT **: always initialize inDegree map / array with 0
+-For those without in-coming-edge, indegree is actually equal to 0, then they should be in the final result list 
+-For those nodes BFS with indegree == 0, add to queue. 
+-Each node on the visit queue: count ++, also add this curr node to sorted list 
+-Check all neighbors / edges of curr node: if visit has passed, indegree on this node 
+--if indegree == 0, add this node to queue. 
+
+##### Indegree Principle 
+-Note: If there is a cycle, there will be more inDegree on this node, it cannot be cleared to 0, and it cannot enter the queue && sorted list. 
+-Remember: ** indegree is the number of times the surrounding nodes have counted to me ** 
+-If After the connection of all the surrounding nodes is cut off, my indegree is not equal to 0, so there must be some nodes that have repeated connections indirectly, that is, cycle 
+-Topological problem: almost always care about cycle case (if detecting cycle is not goal) 
+
+#### DFS 
+-This question does not require a final list, which is relatively simple, as long as you visit each node and finally confirm that there is no cycle
+-Use visited int [] to confirm whether there is a cycle. 1 represents paretNode visited, -1 represents the mark on the DFS line. 
+-If -1 is encountered, it means that the node has gone in the same dfs path of the previous level or above. Then, it turns out that there is cycle, return false. 
+-After all the neighbors of a node have walked, there is no fail, then backtracking, set visited [i] = 1 
+-Topo sort will really be at the bottom of the DFS, and the record will be placed in a stack, finally reverse, is really sort order. 
+
+#### Notes: 
+-and List [] arrayOfList = new ArrayList []; This operation, instead of map <integer, integerList>-List 
+[] list, In fact, the default List <Object> 
+
+#### Previous notes is 
+a bit confusing, but once you do it, you will understand a little.    
+Is the topic of topological sort. Usually sort things that have dependencies.    
+
+In the end, it will be a sink node, there will be no backward dependency, and it will end at that point.    
+I already have the point as the key of the map, and the value is a list of courses with this node as the prerequisite.    
+
+When drawing a picture, prerequisites all point to the sink node, and when we compose the map, we all diverge back from the sink node to the dependent nodes.     
+
+In DFS, we are the reverse, and then, the one that is completely visited first node, it must be the leftmost node, and it has the highest mark seq.    
+
+For our sink node, when all its branches have been visited, seq must have been reduced to a minimum, which is 0, and it is the first to be visited.   
+
+
+The end result: 
+every node with pre-requisit traces (bottom-up), and no cycle is found. This means that schedule can be used. 
+
+
+
+--- 
+
+** 85. [Course Schedule II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Course%20Schedule%20II.java) ** Level: Medium Tags: [BFS , DFS, Graph, Topological Sort]-A 
+      
+
+bunch of lessons are represented by int [2] pair. [1, 0] means that if you want to take lesson 1, you must first take lesson 0. 
+-Each number is an ndoe, title Find the list of the last scheduled courses 
+-if the ranking is not good, just 
+leave it empty -the input is numOfCourses, and this prerequisites [[]] 
+-The approach is very similar to Course Schedule I, you can refer to it.
+
+#### Topological Sort, Indegree, BFS 
+-Use `List [] edges; edges [i] = new ArrayList <> ();` to represent graph: each node, to all its neighbors 
+-each without inDegree = = 0 node, can be added to the final list. For example, those nodes with inDegree = 0 found at the beginning 
+-Note that if prerequisites = [], it means that these lessons are independent, open an int [0 ~ n- 1] arrays and assignments 
+are fine.-If there is a cycle, topological sort cannot be performed in a strict sense, and all nodes cannot be covered, then return [] 
+
+#### DFS 
+-Modify according to DFS in Course Schedule 
+-Maintain visited int [] Global variables 
+-maintain sortedList int [] global variables, note that when added, add (0, node) is added at the beginning 
+-every time after all DFS children of a node have been walked, you can add him to final In the list 
+-if there is a cycle, that is, when dfs returns false, the problem is judged to be a failure, and return new int [] {} 
 
 
 
 ---
 
-**85. [Course Schedule II.java](https://github.com/awangdev/LintCode/blob/master/Java/Course%20Schedule%20II.java)**      Level: Medium      Tags: [BFS, DFS, Graph, Topological Sort]
+. ** 86 [Contains Duplicate III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contains%20Duplicate%20III.java) ** Level: Medium Tags: [BST] 
       
 
-- 一堆课用int[2] pair 来表示. [1, 0] 表示要上课1的话, 必须先把课0上了. 
-- 每一个数字都是一个ndoe, 题目求这个最后排好的课的list
-- 如果排不好, 就给个空就好
-- input是 numOfCourses, 还有这个prerequisites [[]]
-- 做法跟Course Schedule I 非常像, 可以参考.
+to a unsorted array, ask, if there are two elements, the difference between the value is t, and the index difference between the two elements is k. 
 
-#### Topological Sort, Indegree, BFS
-- 用`List[] edges; edges[i] = new ArrayList<>();` 来表示graph: 就是每个node, to all its neighbors
-- 每个没有 inDegree==0 node, 都是可以加进 final list里面的. 比如一开始找到的那些 inDegree = 0的 node
-- 注意, 如果 prerequisites = [], 那么就是说这些课都independent, 开个int[0 ~ n-1]的数组并赋值就好.
-- 如果有cycle, 严格意义上就做不了topological sort, 也无法涵盖所有nodes,  那么return [ ]
+Note: Although the title name is Contains Duplicate, the two elements you are looking for are not duplicates, but Math.abs (value1-value2) <= t. 
 
-#### DFS
-- 根据 Course Schedule 里面的DFS 修改
-- 维持visited int[]全局变量
-- 维持sortedList int[] 全局变量, 注意加进去的时候是 add(0, node) 加在开头这样
-- 每次到一个node的children全部DFS走完之后, 就可以把他加进final list里面
-- 如果有cycle, 也就是dfs return false的时候, 这个题目判定排课失败, return new int[] { }
+#### TreeSet 
+-TreeSet is still a set, which we use to hold items that have been visited 
+-if the window size exceeds K, then remove nums [i-k-1] And add the new element 
+-here is a formula to calculate: (Math.abs (AB) <= t) = >>>>> (-t <= A-B <= t) = >>>>>> A> = B-t, A <= B + t 
+-That is, if for B = nums [i], you can find a target A that satisfies the above formula, then you can return true. 
+-Time O (nLogk), the size of treeSet will not exceed k, and treeSet.ceiling (), treeSet.add (), treeSet.remove () are both O (logK) 
+-Space O (k)
+
+#### Note 
+-Similar concept to Containers Duplicate II. TreeSet has BST so you can use it directly without building BST yourself 
+-Simplify the important conditions in the question Math.abs (AB) <= t and infer A> = B- t, A <= B + t 
+-and need to use TreeSet.ceiling (x): return number greater or equal to x. Remember this usage, there is no shortcut. 
 
 
 
----
+--- 
 
-**86. [Contains Duplicate III.java](https://github.com/awangdev/LintCode/blob/master/Java/Contains%20Duplicate%20III.java)**      Level: Medium      Tags: [BST]
+** 87. [Jump Game .java] (https://github.com/awangdev/LintCode/blob/master/Java/Jump%20Game.java) ** Level: Medium Tags: [Array, DP, Greedy] 
       
 
-给一个unsorted array, 问, 是否有两个element, value相差最大为t,  而两个element的index 相差最大为k.
+Give the number of steps, see if you can jump to end. 
 
-Note: 虽然题目名字是Contains Duplicate, 但其实要找的两个element不是duplicate, 而是Math.abs(value1 - value2) <= t.
+#### Greedy-start from index = 0 
+-Keep track of farest can go 
+-Once farest> = nums.length-1, that is, when it reaches the end, you can stop, return 
+true.- Once farest <= i, that is, at point i, I have already taken steps and ca n’t jump forward, so return false 
+-This can be done using DP. However, greedy algorithm is fast in this particular problem.
 
-#### TreeSet
-- TreeSet还是一个set, 我们用来装已经visit过得item
-- 如果window大小超过K, 那么把nums[i - k - 1] 去掉, 并且加上新的element
-- 这里有个公式推算: (Math.abs(A-B) <= t) =>>>>> (-t <= A - B <= t) =>>>>>> A >= B - t, A <= B + t
-- 也就是说, 如果对于 B = nums[i], 来说, 能找到一个target A, 满足上面的公式, 那么就可以 return true.
-- Time O(nLogk), treeSet的大小不会超过k,  而 treeSet.ceiling(), treeSet.add(), treeSet.remove() 都是 O(logK)
-- Space O(k)
+#### Greedy-start from index = n-1 
+-greedy: start from end, and mark last index 
+-loop from i = [n-2-> 0], where i + nums [i] should always> = last index 
+-check if last == 0 when returning. It means: can we jump from index = 0 to the end? 
+-Time: O (n), beat 100% 
 
-#### Note
-- 与Contains Duplicate II 类似概念. TreeSet有BST 因此可以直接用, 而不用自己构建BST
-- 简化题目里面的重要条件 Math.abs(A-B) <= t 而推断出 A >= B - t, A <= B + t
-- 并且需要需要用 TreeSet.ceiling(x): return number greater or equal to x. 这个用法要记住吧, 没别的捷径.
+#### DP 
+-DP [i]: at point i Record, can the number of steps before point i go to point i? True of false. 
+-In fact, only one of j in [0 ~ i) can reach i 
+-Function: DP [i] = DP [j] && (A [j]> = i-j), for all j in [0 ~ i) 
+-Return: DP [dp.length-1]; 
+-Time: O (n ^ 2) 
 
 
 
----
 
-**87. [Jump Game.java](https://github.com/awangdev/LintCode/blob/master/Java/Jump%20Game.java)**      Level: Medium      Tags: [Array, DP, Greedy]
+--- 
+
+** 88. [Coin Change 2.java] (https://github.com /awangdev/LintCode/blob/master/Java/Coin%20Change%202.java)** Level: Medium Tags: [Backpack DP, DP] 
       
 
-给出步数，看能不能jump to end.
+Give a string of numbers, target amount, how many ways can you reach the amount.
 
-#### Greedy - start from index = 0
-- Keep track of farest can go
-- 一旦 farest >= nums.length - 1, 也就是到了头, 就可以停止, return true.
-- 一旦 farest <= i, 也就是说, 在i点上, 已经走过了步数, 不能再往前跳, 于是 return false
-- This can be done using DP. However, greedy algorithm is fast in this particular problem.
+#### DP 
+-O (MN): M, total target amount; N: size of coins 
+-Similar to: 2 ways in grid dp, unique path: top to bottom, left to right 
+-state : dp [i]: sum of ways that coins can add up to i. 
+-Function: dp [j] + = dp [j-coins [i]]; 
+-Init: dp [0] = 1 for ease of calculation; other dp [i] = 0 by default 
+-note: Avoid repeated counts, so j = coins [i] as start 
+-Note that coins need to be placed outside the for loop, and dominate the process of changing coins. Each coin can be used countless times, so Try to use each coin on each sum value 
 
-#### Greedy - start from index = n - 1
-- greedy: start from end, and mark last index
-- loop from i = [n - 2 -> 0], where i + nums[i] should always >= last index
-- check if last == 0 when returning. It means: can we jump from index=0 to the end?
-- Time: O(n), beat 100%
-
-#### DP
-- DP[i]: 在i点记录，i点之前的步数是否可以走到i点？ True of false.
-- 其实j in [0~i)中间只需要一个能到达i 就好了
-- Function: DP[i] = DP[j] && (A[j] >= i - j), for all j in [0 ~ i)
-- Return: DP[dp.length - 1];
-- Time: O(n^2)
+#### knapsack problem: backpack problem 
 
 
 
+--- 
 
----
-
-**88. [Coin Change 2.java](https://github.com/awangdev/LintCode/blob/master/Java/Coin%20Change%202.java)**      Level: Medium      Tags: [Backpack DP, DP]
+** 89. [Decode Ways.java] (https://github.com/awangdev/LintCode/blob/ master / Java / Decode% 20Ways.java) ** Level: Medium Tags: [DP, Partition DP, String] 
       
+time: O (n) 
+space: O (n)
 
-给串数字, target amount, 求总共多少种方式可以reach the amount.
+Given a string of numbers, it should be decoded into English letters. [1 ~ 26] Corresponding English letters. Find out how many methods can be decoded. 
 
-#### DP
-- O(MN): M, total target amount; N: size of coins
-- 类似于: 网格dp, unique path 里面的2种走法: 从上到下, 从左到右
-- 状态: dp[i]: sum of ways that coins can add up to i.
-- Function: dp[j] += dp[j - coins[i]];
-- Init: dp[0] = 1 for ease of calculation; other dp[i] = 0 by default
-- note: 避免重复count, 所以 j = coins[i] as start
-- 注意 coins 需要放在for loop 外面, 主导换coin的流程, 每个coin可以用无数次, 所以在每一个sum value上都尝试用一次每个coin
+#### Partition DP 
+-Addition principle: According to the intent, there is range [1, 9] of = 1 and [10 ~ 26] of range = 2 as the partition. 
+-Determine the two states at the end: single letter or combos. Then calculate the case of a single letter, and the case of a double number 
+-Definition `dp [i] = How many decoding methods are available for the first i digits? new dp [n + 1] 
+.-Addition principle: add up the different cases, single-digit, double-digit cases 
+-dp [ i] + = dp [i-x], where x = 1, 2 
+-note: calculate number from characters, need to-'0' to get the correct integer mapping. 
+-Note: check value! = '0', because '0' is not in the condition (AZ) 
+-Space, Time O (n) 
 
-#### knapsack problem: backpack problem
-
-
-
----
-
-**89. [Decode Ways.java](https://github.com/awangdev/LintCode/blob/master/Java/Decode%20Ways.java)**      Level: Medium      Tags: [DP, Partition DP, String]
-      
-time: O(n)
-space: O(n)
-
-给出一串数字, 要翻译(decode)成英文字母. [1 ~ 26] 对应相对的英文字母. 求有多少种方法可以decode.
-
-#### Partition DP
-- 加法原理: 根据题意, 有 range = 1 的 [1, 9], range = 2 的 [10~26] 来作为partition.
-- 确定末尾的2种状态: single letter or combos. 然后计算出单个letter的情况, 和双数的情况
-- 定义`dp[i] = 前i个digits最多有多少种decode的方法`. new dp[n + 1].
-- 加法原理: 把不同的情况, single-digit, double-digit 的情况加起来
-- dp[i] += dp[i - x], where x = 1, 2
-- note: calculate number from characters, need to - '0' to get the correct integer mapping.
-- 注意: check value != '0', 因为'0' 不在条件之中(A-Z)
-- Space, Time O(n)
-
-#### 引申
-- 这里只有两种partition的情况 range=1, range =2.  如果有更多partition的种类, 就可能多一层for loop做循环
+#### Extension 
+-There are only two cases of range = 1, range = 2. If there are more types of partitions, there may be more A layer of for loop to do the loop 
 
 
 
 
 ---
 
-**90. [Minimum Path Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Path%20Sum.java)**      Level: Medium      Tags: [Array, Coordinate DP, DP]
+** 90. [Minimum Path Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Path%20Sum.java) ** Level: Medium Tags: [Array, Coordinate DP , DP] 
       
 
-#### DP
-- Time, Space O(MN)
-- 往右下角走, 计算最短的 path sum. 典型的坐标型.
-- 注意: init 第一行的时候, 要accumulate dp[0][j - 1] + grid[i][j], 而不是单纯assign grid[i][j]
+#### DP 
+-Time, Space O (MN) 
+-Go to the bottom right corner and calculate the shortest path sum. Typical coordinate type. 
+-Note: When init the first line, accumulate dp [0] [ j-1] + grid [i] [j], not just assign grid [i] [j] 
 
-#### Rolling Array
-- Time O(MN), Space O(1)
-- 需要在同一个for loop里面完成initialization, 和使用dp[i][j]
-- 原因: dp[i % 2][j] 在被计算出来的时候, 是几乎马上在下一轮是要被用的; 被覆盖前不备用,就白算
-- 如果按照第一种方法, 在开始initialize dp, 看起来固然简单, 但是不方便空间优化
+#### Rolling Array 
+-Time O (MN), Space O (1) 
+-need to be in the same for loop Complete initialization and use dp [i] [j] 
+-Reason: dp [i% 2] [j] is calculated almost immediately in the next round; it is not used until it is overwritten. White calculation 
+-If you follow the first method, initializing the dp at the beginning, it looks simple, but it is not convenient for space optimization 
+
+
+
+--- 
+
+** 91. [Counting Bits.java] (https://github.com/awangdev/LintCode /blob/master/Java/Counting%20Bits.java)** Level: Medium Tags: [Bit Manipulation, Bitwise DP, DP]
+      
+
+Give an array, calculate how many bits there are 
+
+#### Bitwise DP 
+-For each number, it is actually very simple to calculate: every time >> 1, then & 1 can count 1s. Time: a number can >> 1 O (logN) times 
+-Now calculate all [0 ~ num], that is N numbers, time complexity: O (nLogN).- 
+Use DP to optimize, find 1s count of the number, store 
+Go down in dp [number].- Calculate your order from 0-> num, count can be reused. 
+-Bit title uses the value of num itself to indicate the status of 
+DP.-Here, dp [i] is not and dp [i-1] has a logical relationship; instead, dp [i] and dp [i >> 1] have a direct relationship from the binary representation. 
+
+
+
+--- 
+
+** 92. [Continuous Subarray Sum.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Continuous%20Subarray%20Sum.java) ** Level: Medium Tags: [Coordinate DP, DP, Math, Subarray] 
+      
+
+gives a non-negative sequence and number k (can be positive or negative, can be 0). Find continuous subsequences (length greater than 2), so that the sum of this subarray is a multiple of k. Q: Is it possible? 
+
+#### DP 
+-O (n ^ 2)
+-Sum, coordinate type dynamic programming needs to be recorded at 0 ~ i (including nums [i], ending with nums [i].) 
+-Dp [i] = dp [i-1] + nums [i]; 
+-Finally Move, make comparison 
+
+#### Calculate results directly 
+-from sum = all cases of [i ~ j] each time 
+-verification 
+
+
+
+--- 
+
+** 93. [House Robber II.java] (https://github.com/ awangdev / LintCode / blob / master / Java / House% 20Robber% 20II.java) ** Level: Medium Tags: [DP, Sequence DP, Status DP] 
+      
+
+Similar to House Robber I, search for houses, and neighbors cannot move. The characteristic is : Now nums are arranged in a circle, end to end. 
+
+#### Sequence DP 
+-dp [i] [status]: under status = [0,1], the max rob gain obtained by the first i house. Status = 0, 1st house robbed; status = 1, 1st house skipped 
+-dp [i]: dp [i] = Math.max (dp [i-1], dp [i -2] + nums [i-1]); 
+-In particular, the last house at the end is connected to the first house. Here we need to discuss two cases: the first house is searched, or the first house is not searched. 
+- Edge Case BE careful with the nums = [0],. 1 only with Element. 
+- Time, space: O (n) 
+
+#### Two states 
+-whether the first house has been searched and two branches are divided, which can be regarded as two states.
+-You can consider using two DP arrays; you can also add a dp dimension to supplement this 
+state.-Two dimensions represent two states (1st house being robbed or not); these two states are two states of the parallel world , Not related to each other. 
+
+#### Rolling array 
+-Like House Robber I, you can use% 2 to operate rolling array, space reduced to O (1) 
+
+
+
+--- 
+
+** 94. [House Robber III.java] (https : //github.com/awangdev/LintCode/blob/master/Java/House%20Robber%20III.java) ** Level: Medium Tags: [DFS, DP, Status DP, Tree] 
+      
+
+Houses have been transformed into binary trees, The rules are still the same, consecutively connected houses cannot be copied at the same time. 
+
+Find out how much Binary Tree neighbor max can copy. 
+
+#### DFS 
+-Determine whether the current node is adopted and use a boolean.  
+it.-If the curr node is adopted, the child below must not be adopted.
+-If the curr node is not adopted, then The following children may be used, but they may also be skipped, so use Math.max () to compare the two possible dfs results. 
+-dfs repeated calculation: each root has 4 possibilities of dive in, assuming level height is h, then time O (4 ^ (h)), where h = logN, which is O (n ^ 2) 
+
+## ## DP, DFS
+-Not just DP, but after finding that DFS is strenuous, can you replace some repeated calculations? 
+-The basic idea is that the dfs solution is the same: take root to find the maximum value, or not take root to find the maximum value 
+-DFS on root, Do not fork before dfs enters; each level 
+stores the corresponding value according to the state: dp [0] root not picked, dp [1] root picked.-Optimization: In DP, find leftDP [] in one breath and dfs to the lowest level , And then do the calculation from the bottom up 
+-in this process, because there is no dfs () forking outside, the calculations will not overlap, and you will not have to go back to visit most-left-leaf, it will be done after one calculation. 
+-However, Ordinary dfs without dp, after calculating visited dfs, you need to dfs again! Visited case. 
+-Space O (h), time O (n), or O (2 ^ h), where h = log (n) 
+
+#### DP Features 
+-Forking dfs without state-Modeling 
+different states into dp  
+-Each dfs a dp array based on status.
+-equal to one-time dfs calculation to the end, and then back track to calculate each layer at the top. 
+-DP does not Be sure to use n as the base. It can also go to the memory state-> value. 
 
 
 
 ---
 
-**91. [Counting Bits.java](https://github.com/awangdev/LintCode/blob/master/Java/Counting%20Bits.java)**      Level: Medium      Tags: [Bit Manipulation, Bitwise DP, DP]
+** 95. [Permutation in String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutation%20in%20String.java) ** Level: Medium Tags: [Two Pointers] 
       
 
-给一个数组, 算里面有多少bit 1. 
-
-#### Bitwise DP
-- 对于每一个数字, 其实很简单就能算出来: 每次 >>1, 然后 & 1 就可以count 1s. Time: 一个数字可以 >>1 O(logN) 次
-- 现在要对[0 ~ num] 都计算, 也就是N个数字, 时间复杂度: O(nLogN).
-- 用DP来优化, 查找过的number的1s count, 存下来在 dp[number]里面.
-- 计算你顺序从 0 -> num, count过的数字就可以重复利用.
-- Bit题目 用num的数值本身表示DP的状态.
-- 这里, dp[i] 并不是和 dp[i-1]有逻辑关系; 而是dp[i] 和dp[i>>1], 从binary representation看出有直接关系.
+# ### Two Pointer 
+-If you do s1's permudation, the time complexity is O (n!) Definitely not possible 
+-here is the practice of HashTable (because of 26 letters, so use int [26] to simplify) to record the character count in the window 
+- If the character in the window is equal to COUNT, then that permudation 
+- further optimization: find two map correspond to each other, as with a int [26]: s1 make additions to character encountered, s2 subtraction of the character encountered 
+- Two pointers are used in the control of n1, n2; and the step of s2.charAt (i-n1) 
 
 
 
----
-
-**92. [Continuous Subarray Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Continuous%20Subarray%20Sum.java)**      Level: Medium      Tags: [Coordinate DP, DP, Math, Subarray]
-      
-
-给一个非负数的数列和数字k(可正负, 可为0). 找到连续子序列(长度超过2), 使得这个subarray的sum 是 k的倍数. 问: 是否可能?
-
-#### DP
-- O(n^2)
-- 需要记录在0 ~ i点(包括nums[i], 以nums[i]结尾)的sum, 坐标型动态规划.
-- dp[i] = dp[i - 1] + nums[i];
-- 最后移动, 作比较
-
-#### 直接算结果
-- 从sum = 每次[i ~ j]的所有情况
-- 验证
-
-
-
----
-
-**93. [House Robber II.java](https://github.com/awangdev/LintCode/blob/master/Java/House%20Robber%20II.java)**      Level: Medium      Tags: [DP, Sequence DP, Status DP]
-      
-
-和House Robber I 类似, 搜刮房子, 相邻不能动. 特点是: 现在nums排成了圈, 首尾相连.
-
-#### Sequence DP
-- dp[i][status]: 在 status=[0,1] 情况下, 前i个 房子拿到的 max rob gain. status=0, 1st house robbed; status=1, 1st house skipped
-- 根据dp[i-1]是否被rob来讨论dp[i]: dp[i] = Math.max(dp[i-1], dp[i - 2] + nums[i - 1]);
-- 特别的是，末尾的last house 和 first house相连. 这里就需要分别讨论两种情况: 第一个房子被搜刮, 或者第一个房子没被搜刮
-- be careful with edge case nums = [0], only with 1 element.
-- Time,space: O(n)
-
-#### 两个状态
-- 是否搜刮了第一个房子, 分出两个branch, 可以看做两种状态.
-- 可以考虑用两个DP array; 也可以加一dp维度, 补充这个状态.
-- 连个维度表示的是2种状态(1st house being robbed or not); 这两种状态是平行世界的两种状态, 互不相关.
-
-#### Rolling array
-- 与House Robber I一样, 可以用%2 来操作rolling array, space reduced to O(1)
-
-
-
----
-
-**94. [House Robber III.java](https://github.com/awangdev/LintCode/blob/master/Java/House%20Robber%20III.java)**      Level: Medium      Tags: [DFS, DP, Status DP, Tree]
-      
-
-Houses被arrange成了binary tree, 规则还是一样, 连续相连的房子不能同时抄.
-
-求Binary Tree neighbor max 能抄多少.
-
-#### DFS
-- 判断当下的node是否被采用，用一个boolean来表示. 
-- 如果curr node被采用，那么下面的child一定不能被采用.
-- 如果curr node不被采用，那么下面的children有可能被采用，但也可能略过，所以这里用Math.max() 比较一下两种可能有的dfs结果。
-- dfs重复计算:每个root都有4种dive in的可能性, 假设level高度是h, 那么时间O(4^(h)), where h = logN, 也就是O(n^2)
-
-#### DP, DFS
-- 并不是单纯的DP, 是在发现DFS很费劲后, 想能不能代替一些重复计算?
-- 基本思想是dfs解法一致: 取root找最大值, 或者不取root找最大值
-- 在root上DFS, 不在dfs进入前分叉; 每一个level按照状态来存相应的值: dp[0] root not picked, dp[1] root picked.
-- Optimization: DP里面, 一口气找leftDP[]会dfs到最底层, 然后自下向上做计算
-- 这个过程里面, 因为没有在外面给dfs()分叉, 计算就不会重叠, 再也不用回去visit most-left-leaf了, 算过一遍就完事.
-- 然而, 普通没有dp的dfs, 在算完visited的情况下的dfs, 还要重新dfs一遍!visited的情况.
-- Space O(h), time O(n), 或者说是O(2^h), where h = log(n)
-
-#### DP 特点
-- 不为状态而分叉dfs
-- 把不同状态model成dp
-- 每一个dfs都return一个based on status的 dp array.
-- 等于一次性dfs计算到底, 然后back track, 计算顶部的每一层.
-- DP 并不一定要是以n为base的. 也可以是局部的去memorize状态->value.
-
-
-
----
-
-**95. [Permutation in String.java](https://github.com/awangdev/LintCode/blob/master/Java/Permutation%20in%20String.java)**      Level: Medium      Tags: [Two Pointers]
-      
-
-#### Two Pointer
-- 如果做s1的permudation, 时间复杂度是O(n!) 肯定不可以
-- 这里用HashTable的做法 (因为26字母, 所以用int[26]简化) 来记录window内的 character count
-- 如果window内的character count 相等, 那么就是permudation
-- 更进一步优化: 找两个map相互对应, 不如用一个 int[26]: s1对遇到的character做加法, s2对遇到的character做减法
-- two pointer 运用在 n1, n2 的把控; 以及 s2.charAt(i - n1) 这一步
-
-
-
----
-
-**96. [Permutations II.java](https://github.com/awangdev/LintCode/blob/master/Java/Permutations%20II.java)**      Level: Medium      Tags: [Backtracking]
-      
-
-给一串数组, 找出所有permutation数组. 注意: 给出的nums里面有重复数字, 而permutation的结果需要无重复.
-
+--- 
 #### Backtracking
-- 排序, 
-- Mark visited. 通过permutation规律查看是否排出了重复结果
-- 并且要检查上一层recursive时有没有略过重复element
-- time O(n!)
 
-##### 背景1
-- 在recursive call里面有for loop, 每次从i=0开始, 试着在当下list上加上nums里面的每一个。    
-- 从i=0开始，所以会依次recursive每一个nums：
-- 因此，例如i=2,肯定比i=3先被访问。也就是:取i=2的那个list permutation肯定先排出来。   
-
-##### 背景2
-- 重复的例子：给出Input[x, y1, y2], 假设y的值是一样的。那么，{x,y1,y2}和{x,y2,y1}是相同结果。
-
-##### Note
-- 综上，y1肯定比y2先被访问,{x,y1,y2}先出。 紧随其后，在另一个recursive循环里，{x,y2...}y2被先访问，跳过了y1。    
-- 重点:规律在此，如果跳过y1，也就是visited[y1] == false, 而num[y2] == num[y1]，那么这就是一个重复的结果，没必要做，越过。
-- 结果:那么，我们需要input像{x,y1,y2}这样数值放一起，那么必须排序。
-
-#### Non-recursive, manuall swap
-- Idea from: https://www.sigmainfy.com/blog/leetcode-permutations-i-and-ii.html
-- 用到 sublist sort
-- 用 swap function, 在原数组上调节出来新的permutation
-- 注意: 每次拿到新的candidate, 都要把没有permutate的数位sort, 然后再开始swap.
-- 这是为了确保, [j]和[j-1]在重复时候, 不用重新记录.
-
-#### Queue
-- 给一个visited queue
-- 和queue在所有的地方一同populate. 
-- 然后visited里面存得时visited indexes。 (Not efficient code. check again)
-
-
-
----
-
-**97. [Shuffle an Array.java](https://github.com/awangdev/LintCode/blob/master/Java/Shuffle%20an%20Array.java)**      Level: Medium      Tags: [Permutation]
+** 96. [Permutations II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutations%20II.java) ** Level: Medium Tags: [Backtracking] 
       
 
-像shuffle music 一样, 做一套shuffle array的functions: 
+Give a list of arrays, Find all permutation arrays. Note: The given nums have duplicate numbers, and the results of permutation need to be non-repeating. 
 
-shuffle() 给出random的permutation
+-Sorting, 
+-Mark visited. Check whether the duplicate results are discharged by the permutation rule 
+-and check the previous recursive level Have you skipped repeating element 
+-time O (n!) 
 
-reset() 给出最初的nums
+##### Background 1 
+-There is a for loop in the recursive call, each time starting from i = 0, try to add each of the nums to the current list .    
+-Since i = 0, every nums will be recursive in turn:-For 
+example, if i = 2, it must be accessed before i = 3. That is: the list permutation with i = 2 must be discharged first.   
 
-#### Permutation
-- Permutation 实际上就是在list/array/... 上面给元素换位置
-- 硬换位置, 每次换的位置不同, 用random来找到要换的index
-- 维持同一个random seed
-- O(n)
+##### Background 2 
+-repeated example: Given Input [x, y1, y2], assuming that the value of y is the same. Then, {x, y1, y2} and {x, y2, y1} are the same result. 
 
-##### Note
-- compute all permutations 太慢, 不可行.
+##### Note 
+-In summary, y1 must be accessed before y2, and {x, y1, y2} comes out first. Immediately after that, in another recursive loop, {x, y2 ...} y2 is accessed first, skipping y1.    
+-Important: The rule is here. If you skip y1, that is, visited [y1] == false, and num [y2] == num [y1], then this is a duplicate result. There is no need to do it. 
+-Result: Then, we need to input values ​​like {x, y1, y2} and put them together, then we must sort. 
+
+#### Non-recursive, manuall swap 
+-Idea from: https://www.sigmainfy.com/blog/leetcode-permutations-i-and-ii.html-use 
+sublist sort
+-Use swap function to adjust the new permutation on the original array 
+-Note: Every time you get a new candidate, you must sort the digits without permutate, and then start swap. 
+-This is to ensure that [j] and [j -1] When repeating, do not need to re-record. 
+
+#### Queue 
+-give a visited queue 
+-populate with queue in all places. 
+-And then visited indexes are stored in visited. (Not efficient code. Check again) 
 
 
 
----
+--- 
 
-**98. [Group Anagrams.java](https://github.com/awangdev/LintCode/blob/master/Java/Group%20Anagrams.java)**      Level: Medium      Tags: [Hash Table, String]
+** 97. [Shuffle an Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Shuffle%20an%20Array.java) * * Level: Medium Tags: [Permutation] 
       
 
-给一串string, return list of list, 把anagram 放在一起.
+Like shuffle music, make a set of shuffle array functions: 
 
-#### Hash Table, key 是 character frequency
-- 存anagram
-- 用 character frequency 来做unique key
-- 用固定长度的char[26] arr 存每个字母的frequency; 然后再 new string(arr).   
-- 因为每个位子上的frequency的变化，就能构建一个unique的string
-- O(nk), k = max word length
+shuffle () gives random permutation 
+-O (n)
 
+reset () gives the initial nums. 
 
-#### Hash Table, key 是 sorted string
-- 和check anagram 想法一样：转化并sort char array，用来作为key。
-- 把所有anagram 存在一起。注意结尾Collections.sort().
-- O(NKlog(K)), N = string[] length, k = longest word length    
+#### Permutation 
+-Permutation is actually changing the position of the elements on the list / array / ...- 
+hard position, each time the position is different, use random to find the one to be replaced index 
+-Maintain the same random seed 
 
-
+##### Note 
+-compute all permutations is too slow to work. 
 
 
----
 
-**99. [Backpack.java](https://github.com/awangdev/LintCode/blob/master/Java/Backpack.java)**      Level: Medium      Tags: [Backpack DP, DP]
+--- 
+
+** 98. [Group Anagrams.java] (https://github.com/awangdev/LintCode/blob /master/Java/Group%20Anagrams.java)** Level: Medium Tags: [Hash Table, String] 
       
 
-给i本书, 每本书有自己的重量 int[] A, 背包有自己的大小M, 看最多能放多少重量的书?
+Give a string, return list of list, put anagram together. 
 
-#### Backpack DP 1
-- 简单直白的思考 dp[i][m]: 前i本书, 背包大小为M的时候, 最多能装多种的书?
-- **注意**: 背包问题, 重量weight一定要是一维.
-- dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - A[i - 1]] + A[i - 1]);
-- 每一步都track 最大值
-- 最后return dp[n][m]
-- 时间空间  O(mn)
-- Rolling array, 空间O(m)
+#### Hash Table, key is character frequency 
+-store anagram 
+-use character frequency to make unique key 
+-use fixed-length char [26] arr to store the frequency of each letter; then new string (arr).-    
+because the frequency of each seat changes, you can Construct a unique string 
+-O (nk), k = max word length
 
-#### Backpack DP 2
-- true/false求解, 稍微曲线救国: 重点是, 最后, 按照weight从大到小遍历, 第一个遇到true的, index就是最大值.  
-- 考虑: 用i个item (可跳过地取), 是否能装到weight w?
-- 需要从'可能性'的角度考虑, 不要搞成单一的最大值问题.
-- 1. 背包可装的物品大小和总承重有关.
-- 2. 不要去找dp[i]前i个物品的最大总重, 找的不是这个. 
-    dp[i]及时找到可放的最大sum, 但是i+1可能有更好的值, 把dp[i+1]变得更大更合适.
-
-##### 做法
-- boolean[][] dp[i][j]表示: 有前i个item, 用他们可否组成size为j的背包? true/false.
-- (反过来考虑了，不是想是否超过size j, 而是考虑是否能拼出exact size == j)
-- **注意**: 虽然dp里面一直存在i的位置, 实际上考虑的是在i位置的时候, 看前i-1个item.
-
-##### 多项式规律
-- 1. picked A[i-1]: 就是A[i-1]被用过, weight j 应该减去A[i-1]. 那么dp[i][j]就取决于dp[i-1][j-A[i-1]]的结果.
-- 2. did not pick A[i-1]: 那就是说, 没用过A[i-1], 那么dp[i][j]就取决于上一行d[i-1][j]
-- dp[i][j] = dp[i - 1][j] || dp[i - 1][j - A[i - 1]]
-
-##### 结尾
-- 跑一遍dp 最下面一个row. 从末尾开始找, 最末尾的一个j (能让dp[i][j] == true)的, 就是最多能装的大小 :)   
-- 时间，空间都是：O(mn)
+ 
+#### Hash Table, key is a sorted string 
+-the same idea as check anagram: transform and sort char array to use as key. 
+-Store all anagrams together. Notice the end of Collections.sort ().
+-O (NKlog (K)), N = string [] length, k = longest word length     
 
 
 
 
----
+--- 
 
-**100. [Backpack II.java](https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20II.java)**      Level: Medium      Tags: [Backpack DP, DP]
+** 99. [Backpack.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Backpack.java) ** Level: Medium Tags: [Backpack DP, DP] 
       
 
-给i本书, 每本书有自己的重量 int[] A, 每本书有value int[] V
+for i book, each book has its own weight int [] A, backpack has its own size M, see how much weight can be put at most Book? 
 
-背包有自己的大小M, 看最多能放多少value的书?
+#### Backpack DP 1 
+-Simple and straightforward thinking dp [i] [m]: For the previous book, when the size of the backpack is M, can you hold a variety of books? 
+-** Note **: The backpack problem, the weight must be one-dimensional. 
+-Dp [i] [j] = Math.max (dp [i] [j], dp [i-1] [j-A [i-1]] + A [ i-1]); 
+-maximum value for each step 
+-last return dp [n] [m] 
+-time and space O (mn) 
+-rolling array, space O (m) 
 
-#### Backpack DP
-- 做了Backpack I, 这个就如出一辙, 只不过: dp存的不是max weight, 而是 value的最大值.
-- 想法还是，选了A[i - 1] 或者没选A[i - 1]时候不同的value值.
-- 时间空间O(mn)
-- Rolling Array, 空间O(m)
+#### Backpack DP 2  
+-true / false solution, a little curve to save the country: the point is, finally, according to the weight from large to small, the first one that encounters true, the index is the maximum value.  
+-consider: use I item (skipable), can it be loaded to weight w?-It 
+needs to be considered from the perspective of 'possibility', not to make a single maximum problem. 
+-1 . The size and total load of the items that can be loaded in the backpack related. 
+-2. Do not look for the maximum total weight of the first i items in 
+    dp [i] , not this one. Dp [i] Find the maximum sum that can be put in time, but i + 1 may have a better value, making dp [i + 1] larger and more suitable. 
 
-#### Previous DP Solution
-- 如果无法达到的w, 应该mark as impossible. 一种简单做法是mark as -1 in dp. 
-- 如果有负数value, 就不能这样, 而是要开一个can[i][w]数组, 也就是backpack I 的原型.
-- 这样做似乎要多一些代码, 好像并不是非常需要
+##### Practice 
+-boolean [] [] dp [i] [ j] means: there are the first i items, can they be used to form a backpack of size j? true / false.- 
+(Considering it, we do n’t want to exceed the size j, but consider whether we can spell the exact size == j ) 
+-** Note **: Although the position of i always exists in the dp, the actual consideration is that at the i position, look at the first i-1 items. 
+
+##### Polynomial law 
+-1. picked A [i -1]: A [i-1] has been used, weight j should be subtracted from A [i-1]. Then dp [i] [j] depends on dp [i-1] [jA [i-1 ]] 
+.-2. did not pick A [i-1]: That is to say, A [i-1] has not been used, then dp [i] [j] depends on the previous line d [i-1 ] [j] 
+-dp [i] [j] = dp [i-1] [j] || dp [i-1] [j-A [i-1]] 
+
+##### End 
+-run over dp The bottom row. Find it from the end. The last j (which allows dp [i] [j] == true) is the largest one that can be installed. :)    
+- time and space are: O (Mn) 
 
 
 
 
 ---
 
-**101. [Backpack V.java](https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20V.java)**      Level: Medium      Tags: [Backpack DP, DP]
+** 100. [Backpack II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20II.java) ** Level: Medium Tags: [Backpack DP, DP] 
       
 
-#### Backpack DP
-- 与背包1不同: 这里不是check可能性(OR)或者最多能装的size是多少; 而是计算有多少种正好fill的可能性.
-- dp[i][w]: 用前i本书, 正好fill到 w weight的可能性.
-- 对于末尾, 还是两种情况:
-- 1. i-1位置没有加bag
-- 2. i-1位置加了bag
-- 两种情况可以fill满w的情况加起来, 就是我们要的结果.
-- 如常: dp[n + 1][w + 1]
-- 重点: dp[0][0] 表示0本书装满weight=0的包, 这里我们必须 dp[0][0] = 1, 给后面的 dp function 做base
-- Space, time: O(MN)
-- Rolling array, 空间优化, 滚动数组. Space: O(M)
+for i Books, each book has its own weight int [] A, each book has a value int [] V 
 
-#### 降维打击, 终极优化
-- 分析row(i-1)的规律, 发现所有row(i)的值, 都跟row(i-1)的左边element相关, 而右边element是没用的.
-- 所以可以被override.
-- Space: O(M), 真*一维啊!
-- Time: O(MN)
+backpack has its own size M, how many value books can I see? 
 
+#### Backpack DP 
+-Made Backpack I, this is exactly the same, except that dp does not store the maximum weight, but the maximum value. 
+-The idea is still different when A [i-1] is selected or A [i-1] is not selected. 
+-Time and Space O (mn) 
+-Rolling Array, Space O (m) 
 
-
----
-
-**102. [Evaluate Reverse Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Evaluate%20Reverse%20Polish%20Notation.java)**      Level: Medium      Tags: [Stack]
-      
-
-给一个 RPN string list, 根据这个list, 计算结果.
-
-#### Stack
-- stack 里面 存数字
-- 每次遇到operator, 都拿前2个数字计算
-- 计算结果存回到stack里面, 方便下一轮使用.
-- Time,Space O(n)
+#### Previous DP Solution 
+-If w cannot be reached, it should be marked as impossible. A simple way is to mark as -1 in dp. 
+-If there is Negative value, this is not the case, but to open an array of can [i] [w], which is the prototype of backpack I. 
+-This seems to require more code, it does not seem to be very necessary 
 
 
 
 
 ---
 
-**103. [Insertion Sort List.java](https://github.com/awangdev/LintCode/blob/master/Java/Insertion%20Sort%20List.java)**      Level: Medium      Tags: [Linked List, Sort]
+** 101. [Backpack V.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20V.java) ** Level: Medium Tags: [Backpack DP, DP] 
       
 
-input一串数字, 需要出sorted output. 每次insert一个数字时, 都要放到正确的sorted的位置
+## ## Backpack DP 
+-Different from Backpack 1: This is not the check possibility (OR) or the maximum size that can fit; it is the calculation of how many kinds of exactly fill possibilities. 
+-Dp [i] [w]: Before use I book, the possibility of filling up to w weight. 
+-For the end, there are two cases: 
+-1. i-1 position is not added with a bag 
+-2. i-1 position is added with a bag 
+-two cases can fill w Add up the situation, which is the result we 
+want.-As usual: dp [n + 1] [w + 1] 
+-Important: dp [0] [0] means 0 books filled with packages with weight = 0, here we must dp [0] [0] = 1, do base 
+-Space, time: O (MN) 
+-Rolling array, space optimization, rolling array for the following dp function . Space: O (M) 
 
-每次insertion的时候, 都从input里面减掉这个数字
+#### dimensionality reduction, ultimate optimization 
+- analysis row (i-1) of the law, found that the value of all the row (i), the related row (i-1) related element of the left and the right element is useless. 
+- it may be the override. 
+- Space: O (M), really one-dimensional!
+-Time: O (MN) 
+inserting -take out each element in the list, scan and insert it again
 
-#### Linked List
-- 把list里面每个元素都拿出来，scan and insert一遍
-- Time O(n^2), worst case, 每次放入n个数字里面的element, 刚好都是最大的
-- 所以每次要traverse n nodes, 然后走n次
 
-##### 思考方法
-- 如果已经有个sorted list, insert一个element进去。怎么做？
-- while 里面每个元素都小于 curr, keep going
-- 一旦curr在某个点小了，加进去当下这个空隙。
+ 
+---
+
+** 102. [Evaluate Reverse Polish Notation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Evaluate%20Reverse%20Polish%20Notation.java) ** Level: Medium Tags: [Stack ] 
+      
+
+Give an RPN string list, according to this list, calculate the result. 
+
+#### Stack 
+-stack stores numbers 
+-each time an operator is encountered, the first 2 numbers are calculated 
+-the calculation results are stored back in the stack, which is convenient for the next step Round 
+use.- 
+Time, Space O (n) 
+
+
+
+
+--- 
+** 103. [Insertion Sort List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Insertion%20Sort%20List. java) ** Level: Medium Tags: [Linked List, Sort] 
+      
+
+input a string of numbers, which needs to be sorted output. Each time a number is inserted, it must be placed in the correct sorted position 
+
+. Subtract this number inside 
+
+#### Linked List 
+-Time O (n ^ 2), worst case, each time the element in n numbers is placed, it just happens to be the largest 
+-so traverse n nodes each time, then walk n times 
+
+##### Thinking method 
+-if There is already a sorted list, insert an element into it. How to do it? 
+-Each element in while is less than curr, keep going 
+-Once the curr is small at a certain point, add it to the current gap. 
+
+
+
+--- 
+
+** 104. [Interleaving Positive and Negative Numbers.java] (https://github.com/awangdev/LintCode/blob/master/Java/Interleaving%20Positive%20and%20Negative%20Numbers.java) ** Level : Medium Tags: [Two Pointers] 
+      
+
+Give a string of arrays with positive and negative numbers. Rearrange them so that the positive and negative numbers in the array are separated. The original order does not matter 
+
+#### Two pointer 
+-You need to know the positive and negative positions, so Sort O (nlogN)-Consider 
+: the problem of more positive or negative numbers, you can see it by lifting chestnuts 
+-then Two Pointer, swap 
+-Time O (nlogn), space O (n) 
+
+#### extra space 
+-use extra O (n) space, split positive and negative into two lists
+-Then fill it back according to the index 
+-time O (n). Space O (n) 
+it is so useful to use Two pointer
+
+
+ 
+---
+
+** 105. [Largest Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Number.java) ** Level: Medium Tags: [Sort] 
+      
+
+Give a string of numbers, Non-negative numbers, concatenate all numbers to form the largest number. 
+
+Because the result is very large, so use string 
+
+#### Sort, Comparator 
+-Consider more significant spot should get a larger value 
+-if sort number, comparator will be more difficult Write: The weight of each digit is different, and single-digit and multi-digit numbers should be discussed separately. 
+-Goal: Let the larger combination number come first, and let the smaller combination number come after. 
+-Inferior: Combination of two cases, Use String to compare the size (you can also use integer to compare the number of combinations, but to ensure that it does not exceed Integer.MAX_VALUE, compare String here) 
+-String.compareTo () is arranged in lexicographically, lexicographic order 
+-use compareTo to sort the strings in reverse order , Just get the result we 
+want.-O (nlogn), sort 
 
 
 
 ---
 
-**104. [Interleaving Positive and Negative Numbers.java](https://github.com/awangdev/LintCode/blob/master/Java/Interleaving%20Positive%20and%20Negative%20Numbers.java)**      Level: Medium      Tags: [Two Pointers]
+** 106. [Longest Common Substring.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Common%20Substring.java) ** Level: Medium Tags: [DP, Double Sequence DP, Sequence DP, String] 
       
 
-给一串数组 有正负数. 重新排列, 让数组里面 正数 和 负数 相隔开. 原来的order无所谓
+#### Double Sequence DP 
+-two strings, find the highest value: longest common string length 
+-sequence type, and is a double sequence, find two sequences (some property of two dimensions) 
+-dp [i] [j]: For the first i letters of A and for the first j letters of B, find the length of the longest common substring 
+-dp = new int [m + 1] [n + 1] 
+-dp [i] [j] = dp [i-1] [j-1] + 1; only if A.charAt (i-1) == B.charAt (j-1)-note 
+track max, finally return 
+-space O (n ^ 2), time (n ^ 2) 
 
-#### Two pointer
-- 需要知道正负的位置, 所以排序 O(nlogN)
-- 考虑: 正数多还是负数多的问题, 举栗子就看出来端倪了
-- 然后Two Pointer, swap 
-- Time O(nlogn), space O(n)
+##### Rolling array 
+-space optimization, [i] is only related to [i-1], space optimization is O (n) 
 
-#### extra space
-- 用extra O(n) space, 把正负分成两个list
-- 然后分别按照index填回去
-- time O(n). space O(n)
-- 但是就么有用到Two pointer了
+#### String 
+-find all A's substring, then B.contains () 
+-track max substring length 
+-O (n ^ 2) time 
 
 
 
 ---
 
-**105. [Largest Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Number.java)**      Level: Medium      Tags: [Sort]
+** 107. [Longest Increasing Continuous subsequence II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Continuous%20subsequence%20II.java) ** Level: Medium Tags : [Array, Coordinate DP, DP, Memoization] 
       
 
-给一串数字, 非负数, 把所有数字串联起来, 组成最大数字.
+#### Coordinate DP 
+-due to access permission, not test 
+-dp [i] [j]: longest continuous subsequence length at coordinate (i, j) 
+-dp [i] [j] should come from (i-1, j) and (i, j-1) 
+.-dp [0] [0] = 1 
+-condition: from up / left, must be increasing 
+-return dp [m-1 ] [n-1] 
 
-因为结果很大, 所以用string表示 
-
-#### Sort, Comparator
-- 考虑 more significant spot 应该拿到更大的值
-- 如果sort number,  comparator 会比较难写: 每个digit的weight不同, 要分别讨论个位数和多位数.
-- goal: 让较大的组合数排在前面, 让较小的组合数排在后面
-- 不如: 组合两种情况, 用String比较一下大小 (也可以用 integer来比较组合数, 但是为保险不超Integer.MAX_VALUE, 这里比较String)
-- String.compareTo() 是按照 lexicographically, 字典顺序排列的
-- 利用compareTo, 来倒序排列 string, 刚好就得到我们要的结果.
-- O(nlogn), 排序
-
-
-
+#### Memoization 
+-O (mn) space for dp and flag. -
 ---
-
-**106. [Longest Common Substring.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Common%20Substring.java)**      Level: Medium      Tags: [DP, Double Sequence DP, Sequence DP, String]
-      
-
-#### Double Sequence DP
-- 两个string, 找最值: longest common string length
-- 序列型, 并且是双序列, 找两个序列 (两维的某种性质)
-- dp[i][j]: 对于 A 的前i个字母, 对于 B 的前j个字母, 找最长公共substring的长度
-- dp = new int[m + 1][n + 1]
-- dp[i][j] = dp[i - 1][j - 1] + 1; only if A.charAt(i - 1) == B.charAt(j - 1)
-- 注意track max, 最后return
-- space O(n^2), time(n^2)
-
-##### Rolling array
-- 空间优化, [i] 只有和 [i - 1] 相关, 空间优化成 O(n)
-
-#### String
-- 找所有A的substring, 然后B.contains()
-- track max substring length
-- O(n^2) time
-
-
-
----
-
-**107. [Longest Increasing Continuous subsequence II.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Continuous%20subsequence%20II.java)**      Level: Medium      Tags: [Array, Coordinate DP, DP, Memoization]
-      
-
-#### Coordinate DP
-- due to access permission, not test
-- dp[i][j]: longest continuous subsequence length at coordinate (i, j)
-- dp[i][j] should come from (i-1,j) and (i, j-1).
-- dp[0][0] = 1
-- condition: from up/left, must be increasing
-- return dp[m-1][n-1]
-
-#### Memoization
-- O(mn) space for dp and flag.
 - O(mn) runtime because each spot will be marked once visited. 
-- 这个题目的简单版本一个array的例子：从简单题目开始想DP会简单一点。每个位置，都是从其他位置（上下左右）来的dpValue +　１.　如果啥也没有的时候，init state 其实都是1， 就一个数字，不增不减嘛。
+-An example of an array of the simple version of this question: Thinking about DP from a simple question will be easier. Each position is a dpValue + 1 from the other positions (up, down, left, right). If there is nothing, the init state is actually 1, which is a number. It does not increase or decrease. 
 
 
 
 
----
 
-**108. [Maximum Subarray II.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray%20II.java)**      Level: Medium      Tags: [Array, DP, Greedy, PreSum, Sequence DP, Subarray]
+** 108. [Maximum Subarray II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray%20II.java) ** Level: Medium Tags: [Array, DP, Greedy, PreSum, Sequence DP, Subarray] 
       
 
-给一串数组, 找数组中间 两个不交互的 subarray 数字之和的最大值
+give a string of arrays, find the maximum of the sum of the numbers of the two non-interactive subarrays in the middle of the array 
 
-#### DP
-- 考虑两个方向的dp[i]: 包括i在内的subarray max sum. 
-- dp[i] 的特点是: 如果上一个 dp[i - 1] + nums[i - 1] 小于 nums[i-1], 那么就舍弃之前, 从头再来:
-- dp[i] = Math.max(dp[i - 1] + nums.get(i - 1), nums.get(i - 1));
-- 缺点: 无法track全局max, 需要记录max.
-- 因为我们现在要考虑从左边/右边来的所有max, 所以要记录maxLeft[] 和 maxRight[] 
-- maxLeft[i]: 前i个元素的最大sum是多少 (不断递增); maxRight反之, 从右边向左边
-- 最后比较maxLeft[i] + maxRight[i] 最大值
-- Space, Time O(n)
-- Rolling array, reduce some space, but can not reduce maxLeft/maxRight
-
+#### DP 
+-consider dp [i] in both directions: including i The subarray max sum. 
+-dp [i] is characterized by: If the previous dp [i-1] + nums [i-1] is less than nums [i-1], then discard it before starting again: 
+-dp [i] = Math.max (dp [i-1] + nums.get (i-1), nums.get (i-1)); 
+-Disadvantage: Unable to track global max, need to record max. 
+-Because we now need to consider from All max from the left / right, so record maxLeft [] and maxRight [] 
+-maxLeft [i]: What is the maximum sum of the first i elements (continuously increasing); maxRight otherwise, from right to left 
+-finally compare maxLeft [ i] + maxRight [i] maximum
+-Space 
+, Time O (n) -Rolling array, reduce some space, but can not reduce maxLeft / maxRight 
+- basic reverse linked list in the above multi-layer: found front node, the next [m ~ n] node needs to be reverse
+ 
 #### preSum, minPreSum
-- preSum是[0, i] 每个数字一次加起来的值
-- 如果维持一个minPreSum, 就是记录[0, i]sum的最小值(因为有可能有负数)
-- preSum - minPreSum 就是在 [0, i]里, subarray的最大sum值
-- 把这个最大subarray sum 记录在array, left[] 里面
-- right[] 是一样的道理
-- enumerate一下元素的排列顺位, 最后 max = Math.max(max, left[i] + right[i + 1])
+-preSum is the value of each 
+sum of [0, i]-if a minPreSum is maintained, the minimum value of [0, i] sum is recorded (because there may be negative numbers) 
+-preSum-minPreSum is at [0, i ], The maximum sum value of 
+subarray-record this maximum subarray sum in array, left []-right 
+[] is the same principle 
+-enumerate the order of the elements, and finally max = Math.max (max, left [ i] + right [i + 1]) 
 
 
 
----
+--- 
 
-**109. [Reverse Linked List II .java](https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List%20II%20.java)**      Level: Medium      Tags: [Linked List]
+** 109. [Reverse Linked List II .java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List% 20II% 20.java) ** Level: Medium Tags: [Linked List] 
       
 
-reverse 一个 linked list 中  [m ~ n] 的一部分.
+reverse A part of [m ~ n] in a linked list. 
 
-#### Reverse linked list
-- 在基本的reverse linked list 上面 多了一层: 找到front node,  接下来的 [m ~ n] node 需要被reverse
-- 只需要reverse中间的部分.
-- Reverse的时候: 用一个dummyNode, 这道题里面, 其实就用 nodeFront, 那么 dummy.next 就是整个reversed list.
+#### Reverse linked list 
+-Only the middle part of the reverse is required. 
+-When Reverse: Use a dummyNode. In this problem, actually use nodeFront, then dummy.next is the entire reversed list. 
 
-##### 注意
-- 一定要Mark开头的那个mth node, 最后用它接上 剩下node tail. 不然后面的node会断掉
+##### Note 
+-Be sure to use the mth node that begins with Mark, and use it to connect the remaining node tail. Otherwise The subsequent nodes will be broken
 
-#### Previous notes
-- 遍历到M前，
-- 存一下那个点，
-- 从M开始， for loop， reverse [m~n]。 然后把三段链接在一起。
-
+#### Previous notes 
+-traverse to M, 
+-save that point, 
+-start from M, for loop, reverse [m ~ n]. Then link the three paragraphs together. 
 
 
 
----
 
-**110. [Lowest Common Ancestor of a Binary Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)**      Level: Medium      Tags: [DFS, Tree]
+--- 
+
+** 110. [Lowest Common Ancestor of a Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree .java) ** Level: Medium Tags: [DFS, Tree] 
       
 
-给一个Binary Tree root, 以及两个node p, q. 找 p 和 q 的 lowest common ancestor
+Give a Binary Tree root, and two nodes p, q. Find the lowest common ancestor 
 
+#### DFS 
+-because it is a binary tree, so directly Blind search search path is not efficient, use extra space and waste time 
+-Use DFS to find the common ancestor of each  
+-Need the assumption: 1. unique nodes across tree; 2. must have a solution
+node.-When root == null or pq is found at the bottom of findLCA (root == A || root == B), then the root is returned. 
+-Three cases: -1.      
+A and B are found, then the node at this level is one of the ancestors: In fact, the one that is recursively returned is the bottom LCA parent.   
+-2. If A or B is found, then there is no public parent, and the return is not null.   
+-3. AB is null, then you find the wrong one, return null 
+-Worst case, visit all nodes to find pq at last level, last two leaves: time / space O (n) 
+
+
+
+--- 
+
+** 111. [ Lowest Common Ancestor of a Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.java) ** Level: Medium Tags: [BST, DFS, Tree] 
+      
+
+for binary search tree root, q node, p node. Find the lowest common ancestor of pq 
+
+#### Find path with BST 
+-Use the nature of BST to directly search the target node And make two lists that are not necessarily equal in length 
+-and then easily find LCA 
+-O (n) space, O (logn) time 
+ 
 #### DFS
-- 因为是 binary tree, 所以直接盲目搜索搜索path不efficient, use extra space and waste time
-- 巧用DFS来找每一个node的common ancestor. 
-- Need the assumption: 1. unique nodes across tree; 2. must have a solution
-- 当root == null或者 p q 任何一个在findLCA底部被找到了(root== A || root == B)，那么就return 这个root.     
-- 三种情况:
-- 1. A,B都找到，那么这个level的node就是其中一层的ancestor: 其实，最先recursively return到的那个，就是最底的LCA parent.   
-- 2. A 或者 B 找到，那就还没有公共parent, return 非null得那个。   
-- 3. A B 都null, 那就找错了没有呗, return null
-- Worst case, visit all nodes to find p q at last level, last two leaves: time/space O(n)
+-Brutly find common ancestor of p and q, then recursively drive left / right 
+-very clever, But it is also more limited; it is difficult to recursive if you change the conditions slightly.
+-Several cases: 
+-1. one of p, q in leaf, then the root at this time is actually the lowest common ancestor 
+-2. If p, q are on the left and right sides of root, this is the fork, then root is the lowest common ancestor 
+-3. If p, q are on the same side of the root (left, right), then continue with dfs 
+-O (1) extra space, O (logn) time 
 
 
 
----
+--- 
 
-**111. [Lowest Common Ancestor of a Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.java)**      Level: Medium      Tags: [BST, DFS, Tree]
+** 112. [Remove Duplicates from Sorted Array II. java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20Array%20II.java) ** Level: Medium Tags: [Array, Two Pointers] 
       
 
-给 binary search tree root, q node, p node. 找到p q 的lowest common ancestor
+to a Sorted array, remove duplicates: that is, paste the non-repeating in order, the extra position at the end of the array does not matter. The 
 
-#### Find path with BST
-- 利用 BST 的性质，可以直接搜到target node，而做成两个长度不一定相等的list
-- 然后很简单找到LCA 
-- O(n) space, O(logn) time
+number of elements that can be repeated is not more than 2. The length of the return unique item. 
 
-#### DFS
-- Brutly寻找p和q的common ancestor, 然后recursively drive left/right
-- 非常巧妙, 但是也比较局限; 稍微变条件, 就很难recursive.
-- 几种情况:
-- 1. one of p, q 在leaf, 那么此时的root其实就是lowest common ancestor
-- 2. 如果p, q 在root的左右两边, 这就是分叉口, 那么root就是lowest common ancestor
-- 3. 如果p,q 在root的同一边 (左,右), 那么继续dfs
-- O(1) extra space, O(logn) time
+#### Two Pointers  
+-sorted array, repeating elements are all together
+-Almost the same as `Remove Duplicates from Sorted Array`, except that unique index can now validate 2 digits
+-The rest is exactly the same, use index to track unique item; skip if duplicated for more than 2 times 
+-O (n) time, O (1) space 
+-You can really write a while loop with 2 pointers here, but it is not necessary, just Simply walking a for loop is actually enough. 
 
 
 
----
+--- 
 
-**112. [Remove Duplicates from Sorted Array II.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20Array%20II.java)**      Level: Medium      Tags: [Array, Two Pointers]
+** 113. [Remove Duplicates from Sorted List II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates% 20from% 20Sorted% 20List% 20II.java) ** Level: Medium Tags: [Linked List] 
       
 
-给一个sorted array, 把重复的去掉: 也就是把不重复的按照顺序贴上来, array末尾多余的位置无所谓.
+Remove duplicate elements from the Linked list: As long as they are repeated, all are deleted; One element that repeatedly appears is not left. 
 
-最多可重复出元素的数量不超过2个. return unique item 的长度.
+## ## Linked List 
+-sorted list, duplicate elements are all together 
+-using dummyHead: If you want to remove all duplicate elements, you must have a dummyHead as an outsider to match at the beginning 
+-as long as you find a node.val == node.next.val, then Make a note of this duplicated val, move forward,  
+-thought:
+and remove all the duplicated elements-use a second inner while loop, process all the duplicated elements, and then move forward
+-Advantages: outter while loop does not need to consider too many cases, and the main business logic is solved in the inner loop. 
 
-#### Two Pointers
-- sorted array, 重复元素都在一起
-- 跟 `Remove Duplicates from Sorted Array` 几乎一模一样, 只不过unique index现在可以 validate 2 位
-- 其余一模一样, use index to track unique item; skip if duplicated for more than 2 times
-- O(n) time, O(1) space
-- 这里也可以真的用2个pointers 写while loop, 但是没有必要, 只是单纯地走一个for loop其实就足够.
+##### Note the use of DummyHead 
+-When we have DummyHead as an external line head of the Linked List, it can actually Every time I encounter duplicate, I assign the later elements to dummyHead.next forcibly 
+-I also tried one method below: But there are too many edge cases to consider: keep moving the node, know not to repeat, assign prev.next = node. 
+-This method is relatively straightforward, but it needs to consider many edge cases, and it does not make good use of the dummy head. Be careful to avoid it. 
+
+##### Previous Note 
+-Cut off the roots. 
+-Multiple nodes, check node.next? = Node.next.next 
 
 
 
----
 
-**113. [Remove Duplicates from Sorted List II.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates%20from%20Sorted%20List%20II.java)**      Level: Medium      Tags: [Linked List]
+--- 
+
+** 114. [QuickSort.java] (https://github.com/awangdev/LintCode/blob/master/Java/QuickSort.java ) ** Level: Medium Tags: [Quick Sort, Sort] 
       
 
-从Linked list 里面摘掉重复元素: 只要重复过, 全部都删掉; 重复出现过得元素一个不留.
-
-#### Linked List
-- sorted list, 重复元素都在一起
-- 运用 dummyHead: 如果要去掉所有重复元素, 就要有个dummyHead作为局外人在开头牵线
-- 只要发现一个 node.val == node.next.val, 就记下这个duplicated val, move forward, 过掉所有重复过的元素
-- 思想:
-- 用第二个 inner while loop, 把所有的重复元素都处理干净, 然后再move forward
-- 优点: outter while loop 不需要考虑太多case, 在inner loop 都把主要的business logic 解决了.
-
-##### 注意DummyHead 的使用
-- 当我们有了DummyHead 作为Linked List 的局外线头, 其实可以选择每次遇到duplicate, 就把更加后面的元素 强行assign 给 dummyHead.next 
-- 下面还尝试过一种做法: 但是需要考虑的edge case 太多了: 不断移动node, 知道不重复, assign prev.next = node. 
-- 这样的做法比较直白, 但是需要考虑很多edge case, 而且并没有很好利用到 dummy head, 注意规避.
-
-##### Previous Note
-- 斩草除根。
-- 多个node，check node.next ?= node.next.next
-
-
-
-
----
-
-**114. [QuickSort.java](https://github.com/awangdev/LintCode/blob/master/Java/QuickSort.java)**      Level: Medium      Tags: [Quick Sort, Sort]
-      
-
-implement quick sort.
-
+implement quick sort. 
+-then split Two halves
+ 
 #### Quick Sort
-- 首先partition. 返还一个partition的那个中间点的位置: 这个时候, 所有小于nums[partitionIndex] 都应该在 partitionIndex左边
-- 然后劈开两半
-- 前后各自 quick sort, recursively
-- 注意：在partition里面, 比较的时候nums[start] < pivot, nums[end]>pivot, 如果写成了 <= 会 stack overflow.
-- Time O(nlogn), Space: O(1)
+-First partition. Return the position of the middle point of a partition: At this time, all less than nums [partitionIndex] should be to the left of partitionIndex 
+-Quick sort before and after, respectively, recursively 
+-Note: In partition, when comparing nums [start] < pivot, nums [end]> pivot, if written as <= will stack overflow. 
+-Time O (nlogn), Space: O (1) 
+
+
+
+--- 
+
+** 115. [MergeSort.java] (https: // github. com / awangdev / LintCode / blob / master / Java / MergeSort.java) ** Level: Medium Tags: [Merge Sort, Sort] 
+      
+
+#### Merge Sort 
+-Divide and conquer, recursively 
+-segment from the middle first, merge sort On the left (dfs), merge sort on the right 
+-finally merge it up 
+-since the merge is done as int [], there is no way to use O (n) space 
+-Time O (nlogn), Space O (n) 
 
 
 
 ---
 
-**115. [MergeSort.java](https://github.com/awangdev/LintCode/blob/master/Java/MergeSort.java)**      Level: Medium      Tags: [Merge Sort, Sort]
-      
-
-#### Merge Sort
-- Divide and conquer, recursively
-- 先从中间分段, merge sort 左边 (dfs), merge sort 右边
-- 最后merge起来
-- merge的时候因为是做int[], 所以没办法必须要O(n) space
-- Time O(nlogn), Space O(n)
-
-
-
----
-
-**116. [Binary Tree Level Order Traversal.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Level%20Order%20Traversal.java)**      Level: Medium      Tags: [BFS, DFS, Tree]
-      
-
-如题.
-
+** 116. [Binary Tree Level Order Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Level%20Order%20Traversal.java) ** Level: Medium Tags : [BFS, DFS, Tree] 
 #### BFS
-- 最普通,Non-recursive: BFS, queue, 用个queue.size()来end for loop:换行。   
-- 或者用两个queue. 当常规queue empty，把backup queue贴上去
-
-#### DFS
-- 每个level都应该有个ArrayList. 那么用一个int level来查看：是否每一层都有了相应的ArrayList。   
-- 如果没有，就加上一层。    
-- 之后每次都通过DFS在相应的level上面加数字。
-
-
-
-
----
-
-**117. [Binary Tree Level Order Traversal II.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Level%20Order%20Traversal%20II.java)**      Level: Medium      Tags: [BFS, Tree]
       
 
-如题, 但是output要倒序.
+Such as the title. 
 
-#### BFS
-- 跟Binary Tree Level Order Traversal一样,只不过存result一直存在存在0位.
+#### BFS 
+-the most common, Non-recursive: BFS, queue, use queue.size () to end for loop: newline.   
+-Or use two queues. When the regular queue is empty, paste the backup queue 
+
+#### DFS 
+-Each level should have an ArrayList. Then use an int level to see if each level has a corresponding ArrayList .   
+-If not, add a layer.    
+-Each time after that, the number is added to the corresponding level through DFS. 
 
 
-#### DFS
-- 根据level来append每个list
-- rst里面add(0,...)每次都add在list开头
 
 
+--- 
 
----
-
-**118. [Binary Tree Longest Consecutive Sequence II.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Longest%20Consecutive%20Sequence%20II.java)**      Level: Medium      Tags: [DFS, Divide and Conquer, Double Recursive, Tree]
+** 117. [Binary Tree Level Order Traversal II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Level%20Order%20Traversal%20II.java) ** Level: Medium Tags: [BFS, Tree] 
       
 
-找到binary tree 里的最长 consecutive sequence. Sequence可以递增递减, Sequence顺序可以回溯parent.
+As the title, but the output must be 
+---
 
-#### DFS, Divide and Conquer
-- Similar to Binary Tree Longest Consecutive Sequence I
-- 只不过可以递增递减, 还有连接上parent的方向.
-- 对于任何一个节点, 都可能: 
-- 1. 自己跟两个child链接, 成为一个sequence
-- 2. 左边孩子, 右边孩子各自是一个consecutive sequence, 但是不跟root相连
-- main function 一开始就divide成这三份, 然后dfs
-- dfs take diff == 1, diff == -1, 来做递增递减的校对.
-- dfs rules:
-- 1. if node == null, leaf depth = 0
-- 2. if not consecutive, reset the depth = 0 (same for both left child, and right child)
-- 3. compare the leftDepth && rightDepth to find the maximum
-- 4. diff is the same in the same dfs loop to maintain consistant increase/decrease
+-Same as Binary Tree Level Order Traversal, except that there are always 0 bits in the result. 
 
-##### 注意
-- dfs的结果很可能是0, 如果没有任何结果, 那么上一层的caller depth = dfs() + 1 = 1
-- 那么回归到root, dfs的结果很可能就是1.
-- 可能会问: 那么在tree里面的partial sequence (不连接到root)的被忽略了?
-- 这里 `longestConsecutive(root.left)` 就很重要了
-- 这一步特地忽略掉了root, 然后走下去一层: 因为是recursive, 所以还会继续divde && conquer
-- 最后, 任何一层的孩子都会被照顾到.
+
+#### DFS 
+-Append each list according to level 
+-add (0, ...) in rst is added at the beginning of the list each time 
+
+
+
+
+** 118. [Binary Tree Longest Consecutive Sequence II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Longest%20Consecutive%20Sequence%20II.java) ** Level : Medium Tags: [DFS, Divide and Conquer, Double Recursive, Tree] 
+      
+
+find the longest consecutive sequence in the binary tree. Sequence can be incremented and decremented, Sequence sequence can be traced back to parent. 
+
+#### DFS, Divide and Conquer 
+-Similar to Binary Tree Longest Consecutive Sequence I 
+-It can only be incremented and decremented, as well as the direction of the parent. 
+-For any node, it is possible: 
+-1. Link itself with two 
+children to become a sequence -2. Left child, right child Each is a consecutive sequence, but not connected to root
+-The main function divides into these three parts at the beginning, and then dfs 
+-dfs take diff == 1, diff == -1, to do an incrementally decreasing proofreading.- 
+-Handle the root node in two recursive ways 
+dfs rules: 
+if node == null, leaf depth = 0
+-2. if not consecutive, reset the depth = 0 (same for both left child, and right child) 
+-3. compare the leftDepth && rightDepth to find the maximum 
+-4. diff is the same in the same dfs loop to maintain consistant increase / decrease 
+
+##### Note 
+-the result of dfs is likely to be 0, if there is no result, then the caller depth of the previous layer = dfs () + 1 = 1 
+-then return to root, the result of dfs is likely to be 1. 
+-May ask: Then the partial sequence (not connected to root) in the tree is ignored? 
+-Here `longestConsecutive (root.left)` is very important 
+-this step specifically ignores the root, and then walks Next level: Because it is recursive, it will continue to divde && conquer 
+-Finally, children at any level will be taken care of. 
 
 ##### Double Recursive functions
-- 用两种recursive的方式handle skip root node的情况
-- Recursive using dfs(), basically build child + parent
-- Recursive using main function, but with value of child node: skipping root
+-Recursive using dfs (), basically build child + parent 
+-Recursive using main function, but with value of child node: skipping root 
+
+
+
+--- 
+
+** 119. [Combinations.java] (https://github.com/awangdev/ LintCode / blob / master / Java / Combinations.java) ** Level: Medium Tags: [Backtracking, Combination, DFS] 
+      
+
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n. 
+
+## ## DFS, Backtracking 
+-for loop, recursive (dfs) 
+.-Use once for each item, next level dfs (index + 1) 
+-Combination DFS. Draw a picture and think. Pick a number from 1 ~ n each time i 
+-Because the next layer can't go back to [0 ~ i] to choose, so the next layer of recursive should be chosen from i + 1. 
 
 
 
 ---
 
-**119. [Combinations.java](https://github.com/awangdev/LintCode/blob/master/Java/Combinations.java)**      Level: Medium      Tags: [Backtracking, Combination, DFS]
+** 120. [Combination Sum IV.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20IV.java) ** Level: Medium Tags: [Array, Backpack DP , DP] 
+-To find overall dp [i], make a for loop: dp [i] = sum {dp [i-num]}, where for ( num: nums)
+      
+ 
+gives a list of dates dates (no duplicates), and a target.
+
+Find all unique combinations int [], requiring the sum of each combination = target. 
+
+Note: The same candidate integer can be used any number of times. 
+
+#### Backpack DP 
+-counting problem, you can think of DP. In fact, it is Backpack VI. 
+-Find candidate from x numbers (you can use the same number repeatedly) to sum up to target. Find: # of ways to form the sequence. 
+-Backpack VI: give an array of nums, all positive numbers, none Repeat the numbers; find: # of the method of spelling out m 
+-dp [i]: # of ways to build up to target i 
+-consider last step: if the previous step was candidate A, then it should be added to dp [i] : 
+-dp [i] + = dp [i-A] 
+-Time: O (mn). m = size of nums, n = target 
+-If we optimize dp for loop, requires Sort nums. O (mlogm). will efficient If m is constant or relatively small. Overall: O (n) 
+
+#### DFS, backtracking 
+-although the way of thinking is right, but times out
+-When 
+numbers can be reused, for example, 1 is used to spell 999. Here, 1 can go to 999 dfs level, not efficient 
+
+
+
+--- 
+** 121. [Binary Tree Right Side View.java] (https: // github .com / awangdev / LintCode / blob / master / Java / Binary% 20Tree% 20Right% 20Side% 20View.java) ** Level: Medium Tags: [BFS, DFS, Tree] 
       
 
-Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+Give a binary tree, see it from the right, return all visible nodes 
 
-#### DFS, Backtracking
-- for loop, recursive (dfs).
-- 每个item用一次, 下一个level dfs(index + 1)
-- Combination DFS. 画个图想想. 每次从1~n里面pick一个数字i
-- 因为下一层不能重新回去 [0~i]选，所以下一层recursive要从i+1开始选。
+#### BFS 
+-rightmost: the end of each line of level traversal.    
+-BFS, queue to store the content of each line, save end node into list 
 
-
-
----
-
-**120. [Combination Sum IV.java](https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20IV.java)**      Level: Medium      Tags: [Array, Backpack DP, DP]
-      
-
-给一串数字candidates (no duplicates), 和一个target. 
-
-找到所有unique的 组合(combination) int[], 要求每个combination的和 = target.
-
-注意: 同一个candidate integer, 可以用任意多次.
-
-#### Backpack DP
-- 计数问题, 可以想到DP. 其实就是Backpack VI.
-- 从x个数字里面找candidate(可以重复用同一个数字), 来sum up to target. 找: # of ways to form the sequence.
-- Backpack VI: 给一个数组nums, 全正数, 无重复数字; 找: # of 拼出m的方法
-- dp[i]: # of ways to build up to target i
-- consider last step: 如果上一步取的是 candidate A, 那么就该加到dp[i]:
-- dp[i] += dp[i - A]
-- 要找overall dp[i], 就做一个for loop: dp[i] = sum{dp[i - num]}, where for (num: nums)
-- Time: O(mn). m = size of nums, n = target
-- If we optimize dp for loop, 需要Sort nums. O(mlogm). will efficient 如果m是constant或者relatively small. Overall: O(n)
-
-#### DFS, backtracking
-- 尽管思考方式是对的, 但是 times out
-- 可以重复使用数字的时候, 比如用1 来拼出 999, 这里用1就可以走999 dfs level, 不efficient
-
-
-
----
-
-**121. [Binary Tree Right Side View.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Right%20Side%20View.java)**      Level: Medium      Tags: [BFS, DFS, Tree]
-      
-
-给一个binary tree, 从右边看过来, return all visible nodes
-
-#### BFS
-- 最右:即level traversal每一行的最末尾.   
-- BFS, queue 来存每一行的内容, save end node into list
-
-#### DFS
-- Use Map<Level, Integer> 来存每一个level的结果
-- dfs function 里, 如果 input depth 不存在, 就add to map.
-- dfs function 里面先: dfs(node.right), 然后 dfs(node.left)
-- 由于always depth search on right side, 所以map会被right branch populate; 然后才是 leftChild.right
+#### DFS 
+-Use Map <Level, Integer> Store the results of each level  
+-in the dfs function, if the input depth does not exist, add to map.
+-dfs function first: dfs (node.right), then dfs (node.left)-because 
+always depth search on right side, the map will be populated by right branch; then leftChild.right 
 
 
 
 
 ---
 
-**122. [Binary Tree Maximum Path Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum%20II.java)**      Level: Medium      Tags: [DFS, Tree]
+** 122. [Binary Tree Maximum Path Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum%20II.java) ** Level : Medium Tags: [DFS, Tree] 
       
 
-找到从max path sum from root. 条件: 至少有一个node.
+find max path sum from root. Condition: There is at least one node. 
 
-#### DFS
-- 比Binary Tree Maximum Path Sum I 简单许多. 因为条件给的更多：at least 1 node + have to start from root
-- root一定用到
-- 3种情况: curr node, curr+left, curr+right
-- 因为一定包括root, 说以从 `dfs(root, sum=0)` 开始, 每个level先加root, sum += root.val
+#### DFS 
+-Much simpler than Binary Tree Maximum Path Sum I. Because conditions give more: at least 1 node + have to start from root 
+-root must be used 
+-3 cases: curr node, curr + left, curr + right 
+-because it must include root, say starting with `dfs (root, sum = 0)`, each First add root, sum + = root.val 
+
+
+
+--- 
+
+** 123. [Rotate List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rotate%20List.java) * * Level: Medium Tags: [Linked List, Two Pointers] 
+      
+
+give a single linked list, move k steps to the right. K non-negative. 
+
+#### Linked List basics 
+-Remember to use dummy.next to store the head. 
+-Special: Here k may be greater than the total length of the list. Write the number of steps the linked node moves, then k = k% n-. 
+- found newTail, newHead, then use dummy, Commutator 
+
+
+
+--- 
+
+** 124 [Binary Tree Longest the Consecutive Sequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/. binary% 20Tree% 20Longest% 20Consecutive% 20Sequence.java) ** Level: Medium Tags: [DFS, Divide and Conquer, Tree] 
+      
+
+to find the binary tree in the Sequence longest consecutive. 
+
+#### the DFS 
+- Divide and Conquer the DFS. 
+- Look left / right separately
+-If the left meets the continuous increasing rule, dfs (depth + 1), if the rule is not satisfied, dfs (depth = 1)-the 
+same is true 
+on the right -compare the result with max, return 
+
+
+ 
+-the ---
+
+** 125. [Number of Connected Components in an Undirected Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.java) ** Level: Medium Tags: [BFS, DFS, Graph, Union Find] 
+      
+
+Give a number n for n nodes, marked from 1 ~ n, and a string of undirected edge int [] []. 
+
+Count how many independent components there are in this graph. 
+
+#### Union Find 
+-almost the same as Graph Valid Tree 
+-build simple parent [] union find 
+-every edge is union 
+.-** Note ** When union, only union if rootA! = RootB 
+
+#### DFS 
+-build graph as adjacent list: Map <Integer, List <Integer >> 
+-dfs for all nodes of the graph, and mark visited node 
+-count every dfs trip and that will be the total unions 
 
 
 
 ---
 
-**123. [Rotate List.java](https://github.com/awangdev/LintCode/blob/master/Java/Rotate%20List.java)**      Level: Medium      Tags: [Linked List, Two Pointers]
+** 126. [Next Closest Time.java] (https://github.com/awangdev/LintCode/blob/master/Java/Next%20Closest%20Time.java) ** Level: Medium Tags: [Basic Implementation, Enumeration , String] 
       
 
-给一个single linked list, 右移k steps. k non-negative.
+Give a time string "12:09", use the 4 integers in it to combine other time strings, and find the smallest next time. 
 
-#### Linked List basics
-- 记得用dummy.next来存head.
-- 特殊: 这里k可能大于list总长. 写一写linked node 移动的步数, 然后 k = k % n.
-- 找到newTail, newHead, 然后利用dummy, 换位子
+If the combined time string is before input time, the default is + 24 hours. 
 
-
-
----
-
-**124. [Binary Tree Longest Consecutive Sequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Longest%20Consecutive%20Sequence.java)**      Level: Medium      Tags: [DFS, Divide and Conquer, Tree]
-      
-
-找到binary tree 里的最长 consecutive sequence.
-
-#### DFS
-- Divide and Conquer. dfs
-- 分开 看左边/右边
-- 如果左边满足连续递增的规则, dfs (depth + 1), 如果不满足规则, dfs(depth = 1)
-- 右边也是一样
-- 对结果跟max作比较, return
+## ## String 
+-enumerate all candidates and filter to keep the correct ones 
+-String.compareTo (string)-> gives lexicographical comparision 
 
 
 
----
-
-**125. [Number of Connected Components in an Undirected Graph.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph.java)**      Level: Medium      Tags: [BFS, DFS, Graph, Union Find]
-      
-
-给一个数字n代表n nodes, marked from 1 ~ n, 和一串undirected edge int[][]. 
-
-count这个graph里面有多少个独立的component.
-
-#### Union Find
-- 跟Graph Valid Tree 几乎一模一样
-- 建造简单的parent[] union find
-- 每个edge都union.
-- **注意** union 的时候, 只需要union if rootA != rootB
-
-#### DFS
-- build graph as adjacent list: Map<Integer, List<Integer>>
-- dfs for all nodes of the graph, and mark visited node
-- count every dfs trip and that will be the total unions
-
-
-
----
-
-**126. [Next Closest Time.java](https://github.com/awangdev/LintCode/blob/master/Java/Next%20Closest%20Time.java)**      Level: Medium      Tags: [Basic Implementation, Enumeration, String]
-      
-
-给一个时间string"12:09", 用里面的4个integer组合成其他时间string, 目标找最小的next time.
-
-如果组合出的time string 在input time之前, 默认 + 24 hours.
-
-#### String
-- enumerate all candidates and filter to keep the correct ones
-- String.compareTo(string) -> gives lexicographical comparision
-
-
-
----
-
-**127. [Partition Array.java](https://github.com/awangdev/LintCode/blob/master/Java/Partition%20Array.java)**      Level: Medium      Tags: [Array, Quick Sort, Sort, Two Pointers]
-      
-
-给一串数字, 和 int k. 根据k的值partition array, 找到第一个i, nums[i] >= k.
-
+--- 
 #### Two Pointer
-- Quick sort的基础. 
-- Partition Array根据pivot把array分成两半。
-- 从array两边开始缩进。while loop到遍历完。非常直白的implement。
-- 注意low/high,或者叫start/end不要越边界
-- O(n)
-- 注意: 这里第二个inner while `while(low <= high && nums[high] >= pivot) {..}` 采用了 `nums[high] >= pivot`
-- 原因是题目要找第一个nums[i] >= k, 也就是说, 即便是nums[i]==k也应该swap到前面去
-- 这个跟quick sort 原题有一点点不一样.
 
-
-
-
----
-
-**128. [Word Ladder.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder.java)**      Level: Medium      Tags: [BFS]
+** 127. [Partition Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Partition%20Array.java) ** Level: Medium Tags: [Array, Quick Sort, Sort, Two Pointers] 
       
 
-给一串string[], 需要找shortest distance to change from wordA -> wordB. (限制条件细节见原题)
+gives a string of numbers, and int k. According to the value of k partition array, find the first i, nums [i]> = 
 
-#### BFS
-- 通常, 给一个graph(这道题可以把beginWord看成一个graph的起始node), 找shortest path用BFS
-- 在start string基础上，string的每个字母都遍历所有26个字母
-- visited 过的 从wordList里去掉
-- time: word length m, there can be n candidates => O(mn)
-- 但是总是exceed time limit on LeetCode. However, it passes LintCode:
-- 原因是 LeetCode给的是list,  list.contains(), list.remove()  都是 O(logn) time!!!
-- convert to set first.
-
-#### Trie
-- timeout, overkill
+k.-The basis of Quick sort. 
+-Partition Array divides the array into two halves according to pivot. 
+-Indent from both sides of the array. while loop to iteration. Very straightforward implementation. 
+-Note that low / high, or start / end, do not cross the boundary. 
+-O (n) 
+-Note: Here the second inner while `while (low <= high && nums [high]> = pivot) {..}` uses `Nums [high]> = pivot` 
+-the reason is that the problem is to find the first nums [i]> = k, that is, even nums [i] == k should be swapped to the front 
+-this is the same as quick The sort original title is slightly different. 
 
 
 
----
 
-**129. [Unique Word Abbreviation.java](https://github.com/awangdev/LintCode/blob/master/Java/Unique%20Word%20Abbreviation.java)**      Level: Medium      Tags: [Design, Hash Table]
+--- 
+
+** 128. [Word Ladder.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder.java) ** Level : Medium Tags: [BFS]
+      
+
+For a string of string [], you need to find the shortest distance to change from wordA-> wordB. (See the original title for the details of the restrictions) 
+
+#### BFS 
+-Usually, give a graph (this question can Think of beginWord as the starting node of a graph), find the shortest path using BFS 
+-based on the start string, each letter of the string traverses all 26 letters
+-Visited removed from wordList 
+-time: word length m, there can be n candidates => O (mn) 
+-but always exceed time limit on LeetCode. However, it passes LintCode: 
+-The reason is that LeetCode gives a list , list.contains (), list.remove () are O (logn) time !!! 
+-convert to set first. 
+
+#### Trie 
+-timeout, overkill 
+
+
+
+--- 
+
+** 129. [Unique Word Abbreviation.java ] (https://github.com/awangdev/LintCode/blob/master/Java/Unique%20Word%20Abbreviation.java) ** Level: Medium Tags: [Design, Hash Table] 
       
 
 
-给一个string[] dict, 和一个word. 
+give a string [] dict, and a word. 
 
-每个word都可以缩写成固定的abbreviation `<first letter><number><last letter>`(详细看原题)
+Each word can be abbreviated to a fixed abbreviation `<first letter> <number> <last letter>` (see the original question in detail) to 
 
-检查input word是否满足unique
+check whether the input word meets unique 
 
-#### HashMap<string, Set>
-- 简单算出abbreviatioin
-- 检查abbr是否存在; 如果存在, 是不是input word本身.
+#### HashMap <string, Set> 
+-Simple calculation abbreviatioin
+-Check if abbr exists; if so, is it the input word itself. 
 
 
 
----
+--- 
 
-**130. [Unique Binary Search Tree II.java](https://github.com/awangdev/LintCode/blob/master/Java/Unique%20Binary%20Search%20Tree%20II.java)**      Level: Medium      Tags: [BST, DP, Divide and Conquer, Tree]
+** 130. [Unique Binary Search Tree II.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Unique% 20Binary% 20Search% 20Tree% 20II.java) ** Level: Medium Tags: [BST, DP, Divide and Conquer, Tree] 
       
 
-给一个数字n, 找到以(1...n)为node的所有unique BST.
+Give a number n, and find all unique BSTs with (1 ... n) as the node . 
 
-#### BST
-- 根据BST规则, divide and conquer
-- 取一个value, 然后分两半(start, value - 1), (value + 1, end) 分别dfs
-- 然后左右两边的结果cross match
+#### BST 
+- according to the rules of BST, Divide and Conquer 
+- take a value, then two and a half (start, value - 1), (value + 1, end) DFS respectively 
+- and both sides of the match results Cross 
 
-#### DP? Memoization?
+## ## DP? Memoization? 
 
 
 
----
+--- 
 
-**131. [Ugly Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Ugly%20Number.java)**      Level: Medium      Tags: [Math]
+** 131. [Ugly Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Ugly%20Number.java) ** Level: Medium Tags : [Math] 
       
 
-LeetCode: 判断数字是否是ugly number. (definition: factor only have 2, 3, 5)
+LeetCode: Determine whether the number is ugly number. (Definition: factor only have 2, 3, 5) 
+-See if it is divisible.
 
-#### Math
-- 看是否可以整除. 
-- 看整除最终结果是否== 1
+#### Math 
+-See if the final result of the division is == 1 
 
-LintCode: 找kth ugly number, 应该与 Ugly Number II是一样的
+LintCode: Find the kth ugly number, which should be the same as Ugly Number II 
 
-- 方法1: PriorityQueue排序。用ArrayList check 新的ugly Number是否出现过。
-- 方法1-1：(解释不通，不可取)用PriorityQueue排序。神奇的3，5，7走位：按照题目答案的出发，定了3，5，7以什么规律出现。但是题目并没有特殊表明。
-- 方法2: DP . Not Done yet.
-
-
+-Method 1: PriorityQueue sorting. Use ArrayList to check if the new ugly Number has appeared. 
+-Method 1-1: (Unexplained, not desirable) Sort by PriorityQueue. Magical 3, 5, and 7 positions: According to the starting point of the answer, determine the rules for 3, 5, and 7 to appear. But the title is not specifically stated. 
+-Method 
+2: DP. Not Done yet. 
 
 
----
 
-**132. [Top K Frequent Words.java](https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent%20Words.java)**      Level: Medium      Tags: [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue, Trie]
+
+--- 
+** 132. [Top K Frequent Words.java] (https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent% 20Words.java) ** Level: Medium Tags: [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue, Trie] 
       
-time: O(nlogk)
-space: O(n)
+time: O (nlogk) 
+space: O (n) 
 
-给一串String. 找到top k frequent words.
+gives a string of Strings. Find top k frequent words. 
 
-#### PriorityQueue - Min Heap
-- O(n) space of map, O(nlogk) to build queue.
-- limit minHeap queue size to k: add to queue if found suitable item; always reduce queue if size > k
+## ## PriorityQueue-Min Heap 
+-O (n) space of map, O (nlogk) to build queue. 
+-limit minHeap queue size to k: add to queue if found suitable item; always reduce queue if size> k 
 
-#### PriorityQueue - Max Heap
-- 用HashMap存frequency, 用ArrayList存lists of words
-- create一个Node class, 然后用PriorityQueue.   
-- PriorityQueue里面用到了 String.compareTo(another String).巧妙。
-- time: PQ uses O(nlogn), overall O(nlogn)
-- slower, because the maxHeap needs to add all candidates
+#### PriorityQueue-Max Heap
+-Use HashMap to store frequency, ArrayList to store lists of words 
+-Create a Node class, and then use PriorityQueue.    
+-PriorityQueue uses String.compareTo (another String). 
+-time: PQ uses O (nlogn), overall O (nlogn) 
+-slower, because the maxHeap needs to add all candidates 
 
-#### Trie && MinHeap屌炸天   
-- 可以做一下
-- http://www.geeksforgeeks.org/find-the-k-most-frequent-words-from-a-file/
+#### Trie && MinHeap 屌 炸 天-Can 
+do it 
+-http: //www.geeksforgeeks.org    / find-the-k-most-frequent-words-from-a-file / 
 
-#### HashMap + collections.sort()
-- 用HashMap存frequency, 用ArrayList存lists of words。最后返回从尾部向前数的k个。   
-- 注意排序时Collection.sort()的cost是O(nLogk)
-- not efficient
+#### HashMap + collections.sort () 
+-Use HashMap to store frequencies and ArrayList to store lists of words. Finally return k from the tail forward.   
+-Note that the cost of Collection.sort () is O (nLogk) when sorting 
+-not efficient 
 
 
 
@@ -2691,156 +2691,156 @@ space: O(n)
 
 每个treeNode 里面存这个range里的 max value, return root node.
 
-#### Segemnt Tree
-- 给的是Array. 注意找区间内的max, assign给区间. 其余和普通的segment tree build一样   
-- 注意, segment tree是根据array index range 排位: 根据index in [0, array.length - 1]割开区间, break到底
-- 最终start==end做结尾
-- 这道题要trackmax, 那么在leaf node assign max=A[start] or A[end]
-- 往上,parent一层的max:就是比较左右孩子,其实都是在两个sub-tree里面比较sub-tree的max。   
+#### Segemnt Tree 
+-Array is given. Pay attention to find the max in the interval, assign to the interval. The rest is the same as the ordinary segment tree build    
+-Note that the segment tree is ranked according to the array index range: according to index in [0, array.length-1] cut the interval, break to the end 
+-finally start == end to the end 
+-trackmax is required for this problem, then in leaf node assign max = A [start] or A [end]-go 
+up, parent layer Max: It is to compare the left and right children. In fact, the max of the sub-tree is compared in the two sub-trees.   
 
-- Devide and Conquer
-- 先分，找到left/right，比较max,在create current node,再append到当前node上面。
-- 实际上是depth-first, 自底向上建立起的。
+-Devide and Conquer 
+-Divide first, find left / right, compare max, then create current node, then append to the current node. 
+-It's actually depth-first, built from the bottom up. 
+
+
+
+--- 
+
+** 135. [Segment Tree Query.java] (https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Query.java) ** Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree] 
+      
+
+gave the Segment Tree, the node has Max value, find the max in [start, end]
+
+#### Segment Tree, Divide and Conquer 
+-Compare [start, end] with mid of (root.start, root.end): 
+-Simple 2 cases: [start, end] are all to the left of mid, or [start, end] is all to the right of mid 
+-a slightly more complicated 3rd case: [start, end] contains mid, then break into 2 
+queries-[start, node.left.end], [node.right.start, end ] 
+
+
+
+--- 
+
+** 136. [Segment Tree Modify.java] (https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Modify.java) ** Level: Medium Tags: [ Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree] 
+      
+
+Give max to a segmentTree, node. Write a modify function: modify (node, index, value). 
+
+#### Segment Tree, Divide and Conquer 
+-Recursively in In the segment tree, look for index, update it with value.    
+-For each iteration, it is possible (either left-handed or right-handed) that max has changed. So each time left.max and right.max compare 
+end of the round, the top of the head, including the top of the head, are all max 
+-Use HashMap to understand the rules of the problem, because repeated calculations can be used Cover, so it is an optimization problem. There is not much suspense and meaning.
+
+
+ 
+---
+
+** 137. [Segment Tree Query II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Query%20II.java) ** Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree] 
+      
+
+#### Segment Tree 
+-Similar to Segment Tree Query I and other Segment Trees: This SegmentTreeNode returns count of elements in range 
+-This topic has a valid input source: input start, end may exceed root [start, end].   
+-Then the first step is to clear it first: 1. Return 0 if it is not in range at all. 2. Regularize to the root range when range overlaps. 
+
+
+
+
+--- 
+
+** 138. [ColorGrid.java] (https: // github .com / awangdev / LintCode / blob / master / Java / ColorGrid.java) ** Level: Medium Tags: [Design, Hash Table] 
+      
+
+#### basic implementation 
+-Eliminate the coincidence point:        
+-If the current col is actually reduced, Been to the junction of all the added rows. . .     
+-Analyze again, that is, take a single point each time you encounter row, sumRow + = xxx.       
+-Then when the current process is col, sum + = colValue * N-sumRow. Is equivalent to subtracting the point that crosses all rows (rows that have been processed). very convenient. 
+-The last read in is O (P), and the process is also O (P). 
+
+
+
+
+--- 
+
+** 139. [Container With Most Water.java] (https://github.com/awangdev/LintCode/blob/master/Java /Container%20With%20Most%20Water.java)** Level: Medium Tags: [Array, Two Pointers] 
+      
+
+#### Two Pointers 
+- Wooden barrel theory. The highest level of water depends on the lowest wall. 
+-Run left and right to the middle. 
+-Another: If one wall is already smaller than the other, move it and replace the low wall (maybe the next higher or lower) 
+-but you must not replace the current high wall because the low wall The upper limit, if the high wall moves, causing the distance between the two walls to decrease, it is doomed to less water. (What's the matter, don't be indifferent) 
 
 
 
 ---
 
-**135. [Segment Tree Query.java](https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Query.java)**      Level: Medium      Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]
+** 140. [Copy List with Random Pointer.java] (https://github.com/awangdev/LintCode/blob/master/Java/Copy%20List%20with%20Random%20Pointer.java) ** Level: Medium Tags : [Hash Table, Linked List] 
       
+time: O (n) 
+space: O (1) 
 
-给了segment Tree, node里面有Max value, 找[start,end]里面的max
+deep copy linked list. 
 
-#### Segment Tree, Divide and Conquer
-- 根据[start,end]跟 mid of (root.start, root.end) 做比较:
-- 简单的2个case: [start,end]全在mid左, 或者[start, end]全在mid右
-- 稍微复杂的3rd case: [start, end]包含了mid, 那么就break into 2 queries
-- [start, node.left.end], [node.right.start, end]
+Linked list has random pointer to other nodes. #### HashMap, Linked List 
+-Basic Implementation of copy linked list : 
+-use node and dummy to hold new list, traverse head.next .... null.     
+-Map is used here: 1. avoid creating same node; 2. return the item if existing 
+-map keys are all old objects , The new keys are all newly created objects 
+-check whether there is a head in the map at each step. No? Plus 
+-check whether there is a head.random in the map at each step. No? Plus 
 
 
 
 ---
 
-**136. [Segment Tree Modify.java](https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Modify.java)**      Level: Medium      Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]
+** 141. [Encode and Decode Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Encode%20and%20Decode%20Strings.java) ** Level: Medium Tags: [String ] 
       
 
-给一个segmentTree, node里面存max. 写一个modify function: modify(node, index, value).
+如 题. 
 
-#### Segment Tree, Divide and Conquer
-- Recursively 在segment tree里面找index, update it with value.   
-- 每个iteration，很可能（要么左手，要么右手）max就变了。所以每次都left.max and right.max compare一下
-- 最后轮回到头顶，头顶一下包括头顶，就全部都是max了
+#### String 
+-'word.length () # word' This encoding can avoid encountering #-Based 
+on our own rules, there is no need to check error input too much in decode, assume all The input is     
+normal.-Decoding 
+is to find "#", and then use the number before "#" to intercept the subsequent string. 
 
 
 
----
 
-**137. [Segment Tree Query II.java](https://github.com/awangdev/LintCode/blob/master/Java/Segment%20Tree%20Query%20II.java)**      Level: Medium      Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]
+--- 
+** 142. [Fast Power.java] (https://github.com/awangdev /LintCode/blob/master/Java/Fast%20Power.java)** Level: Medium Tags: [DFS, Divide and Conquer] 
       
 
-#### Segment Tree
-- 和 Segment Tree Query I 以及其他Segment Tree类似: 这个SegmentTreeNode return count of elements in range
-- 这个题目考了validate input source：input 的start,end可能超出root[start,end]。   
-- 那么第一步就要先clear一下: 1. 完全不在range就return 0. 2. 有range重合就规整到root的range.
+As the title: Calculate the a ^ n% b where a, b and n are all 32bit integers. 
+
+# ### Divide and Conquer 
+-a ^ n can be disassembled into (a * a * a * a .... * a), which is an opportunity form, and% can mod each item. So take apart to take mod.
+-Here we use a dichotomous method, recursively dice until n / 2 is 0 or 1, and then treat them separately. 
+#### DFS 
+-Note 1: After the dichotom is conquered, the product may be greater than Integer.MAX_VALUE, so use a long.
+-Note 2: To deal with the case of n% 2 == 1, a part of a is automatically saved at two points, and it needs to be multiplied. 
 
 
 
 
----
+--- 
 
-**138. [ColorGrid.java](https://github.com/awangdev/LintCode/blob/master/Java/ColorGrid.java)**      Level: Medium      Tags: [Design, Hash Table]
+** 143. [Find the Connected Component in the Undirected Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Connected%20Component%20in%20the% 20Undirected% 20Graph.java) ** Level: Medium Tags: [BFS, DFS] 
       
 
-#### basic implementation
-- 用HashMap， 理解题目规律，因为重复的计算可以被覆盖，所以是个优化题。没有什么太大的悬念和意义.
-- 消灭重合点:       
-- 如果process当下col, 其实要减去过去所有加过的row的交接点。。。     
-- 再分析，就是每次碰到row 取一个单点, sumRow += xxx。       
-- 然后process当下col时候， sum += colValue * N - sumRow. 就等于把交叉所有row（曾经Process过的row）的点减去了。很方便。
-- 最后read in 是O(P),  process也是O(P).
+Give an undirected graph, return all the components. (This question is not found)   
 
+#### BFS 
+-BFS traversal, All neighbors are added. 
+-Be sure to mark the visited nodes. Because curr nodes will also be neighbors of others, they will loop indefinitely.      
+-Definition of Component: All nodes in Component must be connected in series via path (anyway here is undirected, as long as the link is fine)      
+-This question: In fact, the component is already given in the input, all can be visited in one go All of them are added to the queue, and they are in a component.     
+-And we don't need to judge whether they are Component 
 
-
-
----
-
-**139. [Container With Most Water.java](https://github.com/awangdev/LintCode/blob/master/Java/Container%20With%20Most%20Water.java)**      Level: Medium      Tags: [Array, Two Pointers]
-      
-
-#### Two Pointers
-- 木桶理论。盛水的最高取决于最低的那面墙。
-- 左右两墙，往中间跑动。
-- 另:若一面墙已经小于另外一面，就要移动，换掉矮墙（可能下一面更高，或更低)
-- 但决不能换掉当下的高墙，因为低墙已经limit的盛水的上限，若高墙移动，导致两墙之间距离减少，就注定水量更少了。（弄啥来，不能缺心眼啊）
-
-
-
----
-
-**140. [Copy List with Random Pointer.java](https://github.com/awangdev/LintCode/blob/master/Java/Copy%20List%20with%20Random%20Pointer.java)**      Level: Medium      Tags: [Hash Table, Linked List]
-      
-time: O(n)
-space: O(1)
-
-deep copy linked list. linked list 上有random pointer to other nodes.
-
-#### HashMap, Linked List
-- Basic Implementation of copy linked list:
-- use node and dummy to hold new list, 遍历head.next .... null.    
-- Map 在这里用来: 1. avoid creating same node; 2. return the item if existing
-- map 的 key全部是old object, 新的key全部是 newly created object
-- 每一步都check map里面有没有head. 没有? 加上
-- 每一步都check map里面有没有head.random. 没有? 加上
-
-
-
----
-
-**141. [Encode and Decode Strings.java](https://github.com/awangdev/LintCode/blob/master/Java/Encode%20and%20Decode%20Strings.java)**      Level: Medium      Tags: [String]
-      
-
-如题.
-
-#### String
-- 'word.length()#word' 这样encode, 可以避免遇到#
-- 基于我们自己定的规律, 在decode的里面不需要过多地去check error input, assume所有input都是规范的.    
-- decode就是找"#",然后用"#"前的数字截取后面的string.
-
-
-
-
----
-
-**142. [Fast Power.java](https://github.com/awangdev/LintCode/blob/master/Java/Fast%20Power.java)**      Level: Medium      Tags: [DFS, Divide and Conquer]
-      
-
-如题: Calculate the a^n % b where a, b and n are all 32bit integers.
-
-#### Divide and Conquer
-- a^n可以被拆解成(a*a*a*a....*a)， 是乘机形式，而%是可以把每一项都mod一下的。所以就拆开来take mod.
-- 这里用个二分的方法，recursively二分下去，直到n/2为0或者1，然后分别对待. 
-- 注意1: 二分后要conquer，乘积可能大于Integer.MAX_VALUE, 所以用个long.
-- 注意2: 要处理n%2==1的情况，二分时候自动省掉了一份 a，要乘一下。
-
-
-
-
----
-
-**143. [Find the Connected Component in the Undirected Graph.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Connected%20Component%20in%20the%20Undirected%20Graph.java)**      Level: Medium      Tags: [BFS, DFS]
-      
-
-给一个undirected graph, return 所有的component. (这道题找不到了)  
-
-#### BFS
-- BFS遍历，把每个node的neighbor都加进来. 
-- 一定注意要把visit过的node Mark一下。因为curr node也会是别人的neighbor，会无限循环。      
-- Component的定义：所有Component内的node必须被串联起来via path (反正这里是undirected, 只要链接上就好)     
-- 这道题：其实component在input里面都已经给好了，所有能一口气visit到的，全部加进queue里面，他们就是一个component里面的了。     
-- 而我们这里不需要判断他们是不是Component
-
-#### DFS
-- DFS 应该也可以 visit all nodes, mark visited.
+-DFS should also be able to visit all nodes, mark visited. 
 
 
 
@@ -2858,335 +2858,335 @@ deep copy linked list. linked list 上有random pointer to other nodes.
 - Handle collision:
 - 1. Check if duplicate (matching key), if so, replace and return
 - 2. Check through the linked list, find find duplicate (matching key), replace and return.
-- 3. If no duplicate, add the entry to the tail
-- Find item: compute hashKey -> find linked list -> iterate over list to find a matching key.
+-3 
+. If no duplicate, add the entry to the tail -Find item: compute hashKey-> find linked list-> iterate over list to find a matching key. 
 
 
 
 ---
 
-**145. [Interval Minimum Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Interval%20Minimum%20Number.java)**      Level: Medium      Tags: [Binary Search, Divide and Conquer, Lint, Segment Tree]
+** 145. [Interval Minimum Number.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Interval%20Minimum%20Number.java)** Level: Medium Tags: [Binary Search, Divide and Conquer, Lint, Segment Tree] 
       
 
-给一串数字 int[], 然后一个query Interval[], 每个interval是 [start, end], 找query 区间里的最小值.
+Give a string of numbers int [] , And then a query Interval [], each interval is [start, end], find the minimum value in the query interval. 
 
-#### Segment Tree
-- SegtmentTree, methods: Build, Query. 这题是在SegmentTreeNode里面存min.
-- 类似的有存:max, sum, min
+#### Segment Tree 
+-SegtmentTree, methods: Build, Query. This problem is to store min in SegmentTreeNode. 
+-Similar 
+existence: max, sum, min 
+
+
+
+--- 
+** 146. [Interval Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Interval%20Sum.java) * * Level: Medium Tags: [Binary Search, Lint, Segment Tree]
+      
+
+Give a string of numbers int [], then a query Interval [], each interval is [start, end], find the sum in the query 
+range. 
+ 
+#### Segment Tree + Binary Search 
+-In fact, the segment tree adds a sum to each node.
+-Remember Segment Tree methods: Build, Query -Note: The sum stored in SegmentTreeNode is sum . Other topics may be min, max, count ... or something else. 
+
+
+
+--- 
+
+** 147. [Kth Smallest Element in a BST.java] (https://github.com/awangdev/LintCode/blob/master /Java/Kth%20Smallest%20Element%20in%20a%20BST.java)** Level: Medium Tags: [BST, DFS, Stack, Tree] 
+      
+
+#### Iterative + stack: inorder traversal 
+-I can think of Inorder-binary -search-tree Traversal 
+-Iterative Slightly harder to think about: first add the leftmost add, pop () stack, plus the right (if it exists); the next reincarnation, if there is a left child, add another meal. 
+
+#### Recursive + DFS 
+-Then optimize it a bit to ensure that rst.size () == k, you can return 
+-check leaf => dfs left => add root => dfs right 
 
 
 
 ---
 
-**146. [Interval Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Interval%20Sum.java)**      Level: Medium      Tags: [Binary Search, Lint, Segment Tree]
+** 148. [Majority Element II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Majority%20Element%20II.java) ** Level: Medium Tags: [Array] 
       
 
-给一串数字 int[], 然后一个query Interval[], 每个interval是 [start, end], 找query 区间里的sum.
+## ## Sort + count 
+-O (nlogN) 
 
-#### Segment Tree + Binary Search
-- 其实是segment tree 每个node上面加个sum
-- 记得Segment Tree methods: Build, Query
-- Note: 存在SegmentTreeNode里面的是sum.  其他题目可能是min,max,count ... or something else.
+#### Two counters 
+-O (n), count and track valueA, valueB 
+-count overall apperance at the end for the two items 
+-save to result 
+-Note: According to the if statement In order, valA && countA has priority over valB && countB 
+
+
+
+--- 
+
+** 149. [Partition List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Partition%20List.java) ** Level: Medium Tags: [Linked List, Two Pointers] 
+      
+
+#### Linked List 
+-linked list cannot be traversed from both sides like partitioin array 
+-add less than value in the first half and add> = value in the second half
+-The method is very common: build two lists, midTail pointer, post pointer 
+-Put the numbers that meet the conditions (<x,> = x) into the two lists separately 
+-Remember to use dummyNode track head. 
+-Finally midTail.next = post Link up. 
+
+
+
+--- 
+
+** 150. [Peeking Iterator.java] (https://github.com/awangdev/LintCode/blob/master/Java/Peeking%20Iterator.java) ** Level: Medium Tags: [Design] 
+      
+
+## ## Use concept pre cache 
+-find a cache to store the value of next (), that is: the value of next value is stored in the cache in advance 
+-so when peek (), you can directly return the cache without using itt.next ( ) 
+-Then every time next () is really taken, take an itt.next () to maintain this cache 
+
+#### Previous notes 
+-understand the wrong topic again. Peek () is overhead, but not necessarily the largest It's worth it. 
+-Always think of PEEK as the maximum value, then use 2 STACK to make the maximum value cache, and practice a good dual stack, but it is a mistake. 
+
 
 
 
 ---
 
-**147. [Kth Smallest Element in a BST.java](https://github.com/awangdev/LintCode/blob/master/Java/Kth%20Smallest%20Element%20in%20a%20BST.java)**      Level: Medium      Tags: [BST, DFS, Stack, Tree]
+** 151. [Rehashing.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rehashing.java) ** Level: Medium Tags: [Hash Table] 
       
 
-#### Iterative + stack: inorder traversal
-- 很容想到Inorder-binary-search-tree Traversal
-- Iterative 稍微难想点：先把最左边的add， pop() stack， 加上右边（如果存在）； 下一个轮回，如果又左孩子，又是一顿加。
+For a Hash Table, use Linked list does. The problem is: if the capacity is too small, if there are too many collisions, you need double capacity and then rehash. 
 
-#### Recursive + DFS
-- 然后稍微优化一下，确保rst.size() == k 时候，就可以return了
-- check leaf => dfs left => add root => dfs right
+#### Hash Table 
+-Understand the meaning of hashCode () function: When you get the hashKey, use hashKey% capacity 
+Let's do hash code -hashcode is the index in the hash map 
+-understand the way of collision handling, and how to double capacity and rehashing 
+-are basic operations, concept implementation 
 
 
 
----
+--- 
 
-**148. [Majority Element II.java](https://github.com/awangdev/LintCode/blob/master/Java/Majority%20Element%20II.java)**      Level: Medium      Tags: [Array]
+152. [Reorder List.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Reorder%20List.java)** Level: Medium Tags: [Linked List] 
       
 
-#### Sort + count
-- O(nlogN)
-
-#### Two counters
-- O(n), count and track valueA, valueB
-- count overall apperance at the end for the two items
-- save to result
-- 注意: 按照if statement的顺序, valA&&countA 比valB&&countB有优先性
-
-
-
----
-
-**149. [Partition List.java](https://github.com/awangdev/LintCode/blob/master/Java/Partition%20List.java)**      Level: Medium      Tags: [Linked List, Two Pointers]
-      
+for a Linked list, reorder: proceed from the head / tail direction to the middle, re-order like: one node at a time, 
 
 #### Linked List
-- linked list 不能像partitioin array一样从两边遍历
-- 把小于value的加在前半段, 把 >= value的加在后半段
-- 做法很普通: 建造两个list, midTail pointer, post pointer
-- 把满足条件（<x, >=x）的数字分别放到两个list里面
-- 记得用dummyNode track head.
-- 最终midTail.next = post链接起来。
+-reverse list, find mid of list, merge two list 
+-find mid first, then reverse mid.next, and finally merge two paragraphs. 
+-Note that after using mid.next, be sure to mid.next = null, otherwise merge There will be a problem 
 
 
-
+ 
 ---
 
-**150. [Peeking Iterator.java](https://github.com/awangdev/LintCode/blob/master/Java/Peeking%20Iterator.java)**      Level: Medium      Tags: [Design]
+** 153. [Restore IP Addresses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Restore%20IP%20Addresses.java) ** Level: Medium Tags: [Backtracking , DFS, String] 
       
 
-#### Use concept pre cache
-- 找一个cache来存next()的值, 也就是: next value的值提前存在cache里面
-- 因此peek()的时候, 就可以直接return cache, 而不用做 itt.next()
-- 然后每次真的next()的时候, 里取下一个itt.next()维护这个cache
+Give a string of numbers, check if it is a valid IP, and if it is reasonable, give all valid IP combinations. 
 
-#### Previous notes
-- 再一次理解错题意. peek() 就是头顶，但是不一定是最大值啊。
-- 总是把PEEK想成了最大值，然后用2 STACK做了最大值的cache，练的一手好双stack，可惜错了。
-
-
-
-
----
-
-**151. [Rehashing.java](https://github.com/awangdev/LintCode/blob/master/Java/Rehashing.java)**      Level: Medium      Tags: [Hash Table]
-      
-
-给一个Hash Table, 是用 linked list 做的. 问题是: capacity太小, collision太多的情况下, 需要double capacity 然后rehash.
-
-#### Hash Table
-- 明白hashCode() function的意义: 拿到hashKey的时候, 用hashKey%capacity 来做hash code
-- hashcode就是hash map里面的index
-- 明白collision handling 的方式, 和如何double capacity而rehashing
-- 都是基本操作, 概念实现
+#### Backtracking 
+-End point of recursion: list.zie () == 3, solve the last paragraph 
+-Recursively on an index, pass s.toCharArray ()-validate 
+string should pay attention to leading ' 0' 
+-Note: When recursing , you can use a start / level / index to run the route 
+-but try not to change the input source, it will change It is very confusing. 
+-Note: The code is a bit messy, because the validity of the IP must be considered 
+-the 'remainValid' is actually a judgment optimization for the remain substring. If it is not true, it will not be dfs 
 
 
 
 ---
 
-**152. [Reorder List.java](https://github.com/awangdev/LintCode/blob/master/Java/Reorder%20List.java)**      Level: Medium      Tags: [Linked List]
-      
-
-给一个Linked list, reorder: 从head/tail 两个方向 向中间进发, re-order like: one node at a time,
-
-#### Linked List 功能大集合
-- reverse list, find mid of list, merge two list
-- 先find mid, 然后把 mid.next reverse了, 最后merge 两段.
-- 注意, 用完mid.next之后, 一定要 mid.next = null, 不然merge会出问题
-
-
-
----
-
-**153. [Restore IP Addresses.java](https://github.com/awangdev/LintCode/blob/master/Java/Restore%20IP%20Addresses.java)**      Level: Medium      Tags: [Backtracking, DFS, String]
-      
-
-给一串数字, 检查是否是valid IP, 如果合理, 给出所有valid 的IP组合方式.
-
-#### Backtracking
-- 递归的终点:list.zie() == 3, 解决最后一段
-- 递归在一个index上面, pass s.toCharArray()
-- validate string要注意leading '0'
-- 注意: 递归的时候可以用一个start/level/index来跑路
-- 但是尽量不要去改变Input source， 会变得非常confusing.
-- note: code有点messy, 因为要考虑IP的valid情况
-- 那个'remainValid', 其实是一个对于remain substring的判断优化, 不成立的就不dfs了
-
-
-
----
-
-**154. [Reverse Words in a String.java](https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String.java)**      Level: Medium      Tags: [String]
+** 154. [Reverse Words in a String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String.java) ** Level: Medium Tags : [String] 
+#### In-place reverse
       
 
 #### Break by space, then flip 
-- 结尾不能有空格
-- trim() output
-- 如果Input是 ""的话，split以后就啥也没有了
-- 另个题目Reverse Words in String (char[]) 可以in-place, 条件是char[]里面是没有首尾空格.
-- Time, Space: O(n)
+-No space at the end 
+-trim () output 
+-If Input is "", there will be nothing after split 
+-Another topic Reverse Words in String (char []) can be in -place, provided that there are no leading and trailing spaces in char [].- 
+Time, Space: O (n) 
 
-#### Other methods
-- flip entire string, then flip each individual string (代码有点多, 这道题犯不着)
+#### Other methods 
+-flip entire string, then flip each individual string (there is a lot of code, this question cannot be made) 
+
+
+
+- - 
+
+** 155. [Reverse Words in a String II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String%20II.java) * * Level: Medium Tags: [String] 
+      
+
+-reverse is used twice. Global reverse. Partial: encounter a space reverse 
+-note the ending index: `i == str.length-1`, even if there is no '' at the end point, give the last word to the reverse 
+
 
 
 
 ---
-
-**155. [Reverse Words in a String II.java](https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Words%20in%20a%20String%20II.java)**      Level: Medium      Tags: [String]
+ 
+** 156. [Search a 2D Matrix.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix.java) ** Level: Medium Tags: [Array, Binary Search] 
       
 
-#### In-place reverse
-- reverse用两回. 全局reverse。局部:遇到空格reverse
-- 注意ending index: `i == str.length - 1`, 结尾点即使没有' '也要给reverse一下最后一个词
+for 2D matrix, sorted by each row, each row The first position is greater than the end of the previous line. Goal: find target from matrix 
+
+#### 2D matrix to 1D array 
+-line by line from small to large, sorted, continuous, can be regarded as 1D sorted array 
+-Binary Search 
 
 
 
+--- 
 
----
-
-**156. [Search a 2D Matrix.java](https://github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix.java)**      Level: Medium      Tags: [Array, Binary Search]
+* * 157. [Search a 2D Matrix II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix%20II.java) ** Level: Medium Tags: [Binary Search, Divide and Conquer] 
       
 
-给2D matrix, 每行sorted, 每行的首位都大于上一行的末尾. goal: find target from matrix
-
-#### 2D matrix 转1D array
-- 一行一行是从小到大, sorted, 连续的, 可以看做1D sorted array
-- Binary Search
-
-
-
----
-
-**157. [Search a 2D Matrix II.java](https://github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix%20II.java)**      Level: Medium      Tags: [Binary Search, Divide and Conquer]
-      
-
-给matrix, 每一行sorted, 每一列从上往下sorted, 找target是否存在
+For matrix, each row is sorted, each column is sorted from top to bottom, find if the target exists 
 
 #### Binary Search
-- 根据给定的性质, 其实点选的极端一点: x = 最下面的row, y = 当下一行里面最小的left position. 
-- (x,y)在左下角
-- 在此情况下, 只能往一个方向运行: 如果小于target, y++; 如果大于target, 那么只能x--
-- 每次操作, 都是删掉一行, 或者一列, 再也不需要回头看
-- `while (x >= 0 && y < col) {}` 确保不会跑脱
-- 同样的方式: 可以从右上角(0, col - 1) 开始, 代码稍微改一改
+-According to the given properties, in fact, click the extreme point: x = bottom row, y = the smallest left position in the current row. 
+(X, y) in the lower left corner 
+-in this case, it can only run in one direction: if less than target, y ++; If it is greater than target, then only x--
+-For each operation, delete a row, or a column, no need to look back 
+-`while (x> = 0 && y <col) {}` to ensure that it will not run away 
+-the same way: you can from the upper right corner (0, col - 1), the code follows a slightly altered 
 
-#### Divide and Conquer?
-- TODO
+#### Divide and Conquer? 
+- TODO 
+
+
+
+--- 
+
+** 158 [Search for A Range.java] (https://github.com/awangdev/. LintCode / blob / master / Java / Search% 20for% 20a% 20Range.java) ** Level: Medium Tags: [Array, Binary Search] 
+      
+
+For sorted array, there are duplicate numbers, find the range where the target coincides. 
+
+### # Binary Search 
+-2 while loop 
+-find first / last occurance 
+-TODO: Can the code be simplified? 
+
+
+
+
+--- 
+
+** 159. [Search Range in Binary Search Tree .java] (https://github.com/awangdev /LintCode/blob/master/Java/Search%20Range%20in%20Binary%20Search%20Tree%20.java)** Level: Medium Tags: [BST, Binary Tree]
+      
+ 
+Give a BST, integer range (k1, k2), find all integers in the range. 
+
+#### BST 
+-equals dfs to traverse all k1 <= x <= k2 x node. 
+-dfs left, process root, then dfs right 
+-Here, we have covered all the left / right / match cases, and then limited the borders of k1 and k2, and traversed all in the middle. 
+
+
+
+--- 
+
+** 160. [Sort List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20List.java) ** Level: Medium Tags: [Divide and Conquer, Linked List, Merge Sort, Sort] 
+      
+
+#### Merge sort 
+-1. find middle. Speed ​​pointer 
+-2. Sort: cut the two halves, sort the first half first, if sort first mid.next ~ end, sort, middle Point mid.next == null, then sort the first half
+-3. Merge: Assume that given list A, B is already sorted, and then mix according to size. 
+-Recursively call sortList () on partial list. 
+
+#### Quick sort  
+-If you want to do it, please read the handout: http://www.jiuzhang.com/solutions/sort-list/-But 
+quick sort is not recommended for list .
+-Sort list, merge sort may be more feasible and reasonable. The reason analysis is as follows: http://www.geeksforgeeks.org/why-quick-sort-preferred-for-arrays-and-merge-sort-for-linked-lists/ 
+
+
+
+--- 
+
+161. [Summary Ranges.java] (https://github.com/awangdev/LintCode/blob/master/Java/Summary%20Ranges.java) ** Level: Medium Tags: [Array] 
+      
+
+Give a list of sorted lists, with missing numbers in the middle, return all number range string (example see title) 
+
+#### Basic implementation 
+-use a list as the buffer to store candidates 
+-when: 1. end of nums; 2. not continuous integer => convert list to result 
 
 
 
 ---
 
-**158. [Search for a Range.java](https://github.com/awangdev/LintCode/blob/master/Java/Search%20for%20a%20Range.java)**      Level: Medium      Tags: [Array, Binary Search]
+** 162. [Topological Sorting.java] (https://github.com/awangdev/LintCode/blob/master/Java/Topological%20Sorting.java) ** Level: Medium Tags: [BFS, DFS, Topological Sort] 
       
-
-给sorted array, 有重复数字, 找跟target重合所在的range.
-
-#### Binary Search
-- 2个while loop
-- 找first/last occurance
-- TODO: Can the code be simplified?
-
-
-
-
----
-
-**159. [Search Range in Binary Search Tree .java](https://github.com/awangdev/LintCode/blob/master/Java/Search%20Range%20in%20Binary%20Search%20Tree%20.java)**      Level: Medium      Tags: [BST, Binary Tree]
-      
-
-给一个BST, integer range (k1, k2), 找range 里面所有的integer.
-
-#### BST
-- 等于dfs遍历了所有k1<= x <= k2的x node。
-- dfs left, process root, then dfs right
-- 这里, 把 left/right/match的情况全部cover了，然后把k1,k2的边框限制好，中间就全部遍历了。
-
-
-
----
-
-**160. [Sort List.java](https://github.com/awangdev/LintCode/blob/master/Java/Sort%20List.java)**      Level: Medium      Tags: [Divide and Conquer, Linked List, Merge Sort, Sort]
-      
-
-#### Merge sort
-- 1. find middle. 快慢指针
-- 2. Sort: 切开两半，先sort前半, 如果先sort了mid.next~end, sort后，中间点mid.next == null，再sort前半段
-- 3. Merge:  假设given list A, B 已经是sorted, 然后按照大小，混合。
-- 要recursively call sortList() on partial list.
-
-#### Quick sort
-- 想做可以看讲义：http://www.jiuzhang.com/solutions/sort-list/
-- 但是quick sort不建议用在list上面。
-- 排列list, merge sort可能更可行和合理。原因分析在下面， 以及： http://www.geeksforgeeks.org/why-quick-sort-preferred-for-arrays-and-merge-sort-for-linked-lists/
-
-
-
----
-
-**161. [Summary Ranges.java](https://github.com/awangdev/LintCode/blob/master/Java/Summary%20Ranges.java)**      Level: Medium      Tags: [Array]
-      
-
-给一串sorted list, 中间有缺数字, return 所有数字的range string (example 看题目)
-
-#### Basic implementation
-- 用一个list as the buffer to store candidates
-- when: 1. end of nums; 2. not continuous integer => convert list to result
-
-
-
----
-
-**162. [Topological Sorting.java](https://github.com/awangdev/LintCode/blob/master/Java/Topological%20Sorting.java)**      Level: Medium      Tags: [BFS, DFS, Topological Sort]
-      
-
+ 
 #### Topological Sort BFS
-- indegree tracking: Track all neighbors/childrens. 把所有的children都存在 inDegree<label, indegree count>里面
-- Process with a queue: 先把所有的root加一遍(indegree == 0)，可能多个root。并且全部加到queue里面。
-- BFS with Queue:
-- Only when map.get(label) == 0, add into queue && rst. (indegree剪完了, 就是root啦)
-- inDegree在这里就 count down indegree, 确保在后面出现的node, 一定最后process.
+-indegree tracking: Track all neighbors / childrens. Store all children in inDegree <label, indegree count>-Process 
+with a queue: First add all the roots (indegree == 0), there may be multiple roots. And all added to the queue. 
+-BFS 
+with Queue: -Only when map.get (label) == 0, add into queue && rst. (Indegree is cut, it is root) 
+-inDegree count down indegree here, make sure that the nodes that appear later, must Finally process. 
 
 
-#### Basics about graph
-- 几个graph的condition：   
-- 1. 可能有多个root
-- 2. directed node, 可以direct backwards.
+#### Basics about graph 
+-several graph conditions:    
+-1. 
+There may be multiple roots -2. directed node, you can direct backwards. 
 
 TODO:
-- build`Map<DirectedGraphNode, Integer> inDegree = new HashMap<>();` and include the root itself
-- that is more traditional indegree building
+-build`Map <DirectedGraphNode, Integer> inDegree = new HashMap <> (); `and include the root itself 
+-that is more traditional indegree building 
+
+
+ 
+---
+
+** 163. [Spiral Matrix.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Spiral% 20Matrix.java) ** Level: Medium Tags: [Array, Enumeration] 
+      
+
+From (0,0) coordinates, walk through the spiral matrix, and store the result in the list. 
+
+### # DX, DY 
+-Basic implementation, array, enumeration 
+-Write the direction of position forward: RIGHT-> DOWN-> LEFT-> UP 
+-Use a direction status to determine the direction 
+-Write a compute direction function to change the direction `(direction + 1) % 
+4`-`boolean [] [] visited` where the track went 
 
 
 
 ---
 
-**163. [Spiral Matrix.java](https://github.com/awangdev/LintCode/blob/master/Java/Spiral%20Matrix.java)**      Level: Medium      Tags: [Array, Enumeration]
+** 164. [Construct Binary Tree from Inorder and Postorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal .java) ** Level: Medium Tags: [Array, DFS, Divide and Conquer, Tree]
       
 
-从(0,0)坐标, 走完spiral matrix, 把结果存在list里.
+#### DFS, Divide and Conquer 
+-Write an example of Inorder and Postorder. Use them to divide left / right subtrees to solve problems. 
+-The end of the Postorder array is the root of    
+the current layer.-When you find this root in the Inorder array, you just split the left and right sides into a left / right tree. 
+-This question is tricky using a helper for recursive. Pay special attention to handling changes in the index, precisely considering the beginning and end 
+-runtime: O (n), visit && build all nodes 
 
-#### DX, DY
-- Basic implementation, array, enumeration
-- 写一下position前进的方向: RIGHT->DOWN->LEFT->UP
-- 用一个direction status 确定方向
-- 写一个compute direction function 改变方向 `(direction + 1) % 4`
-- `boolean[][] visited` 来track走过的地方
+#### Improvement 
+-`findMid (arr)` can be replaced with a map <value, index>, no need execute O (n) search at runtime 
 
 
 
----
+--- 
 
-**164. [Construct Binary Tree from Inorder and Postorder Traversal.java](https://github.com/awangdev/LintCode/blob/master/Java/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.java)**      Level: Medium      Tags: [Array, DFS, Divide and Conquer, Tree]
+** 165. [Generate Parentheses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Generate%20Parentheses.java) ** Level : Medium Tags: [Backtracking, DFS, Sequence DFS, String] 
       
 
-#### DFS, Divide and Conquer
-- 写个Inorder和Postorder的例子。利用他们分left/right subtree的规律解题。
-- Postorder array 的末尾， 就是当下层的root.   
-- 在Inorder array 里面找到这个root,就刚好把左右两边分割成left/right tree。
-- 这题比较tricky地用了一个helper做recursive。 特别要注意处理index的变化, precisely考虑开头结尾
-- runtime: O(n), visit && build all nodes
-
-#### Improvement
-- `findMid(arr)` can be replaced with a map<value, index>, no need execute O(n) search at runtime
-
-
-
----
-
-**165. [Generate Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Generate%20Parentheses.java)**      Level: Medium      Tags: [Backtracking, DFS, Sequence DFS, String]
-      
-
-#### DFS
-- start with empty string, need to go top->bottom
-- 取或者不取`(`, `)`
+#### DFS 
+-start with empty string, need to go top-> bottom 
+-take or not take `(`, `)`
 - rule: open parentheses >= close parentheses
 - Note: 在DFS时 pass a reference (StringBuffer) and maintain, instead of passing object (String) and re-create every time
 - time: O(2^n), pick/not pick, the decision repat for all nodes at every level
@@ -3205,318 +3205,318 @@ TODO:
       
 
 TODO: 
-1. use list, iterative? keep candidates and populating
-2. clean up the dfs code, a bit messy
-3. edge case of "0001000" is invalid, right?
+1. use list, iterative? Keep candidates and populating 
+2. clean up the dfs code, a bit messy 
+3. edge case of "0001000" is invalid, right? 
 
-#### DFS
-- A bit like BFS solution: find inner list, and then combine with outter left/right sides.
-- find all solutions, DFS will be easier to write than iterative/BFS
-- when n = 1, there can be list of candidates at bottom of the tree, so bottom->up is better
-- bottom->up, dfs till leaf level, and return candidates.
+#### DFS 
+-A bit like BFS solution: find inner list , and then combine with outter left / right sides. 
+-find all solutions, DFS will be easier to write than iterative / BFS 
+-when n = 1, there can be list of candidates at bottom of the tree, so bottom-> up is better 
+-bottom-> up, dfs till leaf level, and return candidates. 
 - each level, pair with all the candidates
-- 其实就是剥皮，一层一层，是一个central-depth-first的，钻到底时候，return n=1,或者n=2的case，然后开始backtracking。
-- 难的case先不handle.到底之后来一次overall scan.
-- every level have 5 choices of digital pairs to add on sides. Need to do for n-2 times. 
-- Time complexity: O(5^n)
+-In fact, it is peeling, one layer at a time, is a central-depth-first. When drilling to the end, return n = 1, or n = 2. And then start backtracking. 
+-Difficult case without handle first. After that, come to an overall scan. 
+-Every level have 5 choices of digital pairs to add on sides. Need to do for n-2 times. 
+-Time complexity: O (5 ^ n)
 
 
+ 
+- - 
 
----
-
-**167. [Flip Game II.java](https://github.com/awangdev/LintCode/blob/master/Java/Flip%20Game%20II.java)**      Level: Medium      Tags: [Backtracking, DFS, DP]
+** 167. [Flip Game II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flip%20Game%20II.java) ** Level: Medium Tags: [Backtracking, DFS , DP] 
       
 
-String 只包含 + , - 两个符号. 两个人轮流把consecutive连续的`++`, 翻转成 `--`.
+String contains only +,-two symbols. Two people take turns turning consecutive consecutive ++, into `--`. 
 
-如果其中一个人再无法翻转了, 另一个人就赢. 求: 给出string, 先手是否能赢.
+If one of them can no longer be turned over, the other one wins. If the string is out, can you win first? 
 
-#### Backtracking
-- curr player 每走一步, 就生成一种新的局面, dfs on this
-- 等到dfs结束, 不论成功与否, 都要backtracking
-- curr level: 把"++" 改成 "--"; backtrack的时候, 改回 '--'
-- 换成boolean[] 比 string/stringBuilder要快很多, 因为不需要重新生成string.
-- ++ 可以走 (n - 1)个位置: 
-- T(N) = (N - 2) * T(N - 2) = (N - 4) * (N - 2) * T(N - 4) ... = O(N!)
+#### Backtracking 
+-curr player Every step you take, a new situation is generated, dfs on this 
+-Wait until the dfs is over, whether it is successful or not, you must backtracking 
+-curr level: put " ++ "changed to"-"; backtrack, change back to '-'
+-Replaced by boolean [] is much faster than string / stringBuilder, because there is no need to regenerate the string.- 
+++ can take (n-1) positions: 
+-T (N) = (N-2) * T (N- 2) = (N-4) * (N-2) * T (N-4) ... = O (N!) 
 
-##### iterate based on "++"
-- 做一个String s的 replica: string or stringBuilder
-- 每次dfs后, 然后更替里面的字符 "+" => "-"
-- 目的只是Mark已经用过的index
-- 真正的dfs 还是在 original input string s 身上展开
-- 每次都重新生成substring, 并不是很efficient
+##### iterate based on "++" 
+-make a replica of String s: string or stringBuilder  
+- After each dfs, then replace the characters "+" => "-" 
+-the purpose is just the index that Mark has used
+-The real dfs is still expanded on the original input string s 
+-the substring is regenerated every time , not very efficient 
 
-##### Game theory
-- 保证p1能胜利，就必须保持所有p2的move都不能赢
-- 或者说, 在知道棋的所有情况时, 只要p2有一种路子会输, p1就一定能走对路能赢.
-- 同时，p1只要在可走的Move里面，有一个move可以赢就足够了。
-- p1: player1, p2: player2
+##### Game theory 
+-To ensure that p1 can win, you must keep all the moves of p2 not win 
+-In other words, knowing all the situations of chess, as long as p2 has a way to lose, p1 will definitely be able to go the opposite way and win. 
+-At the same time, as long as p1 is in a move that can move, it is enough to have a move to win . 
+-p1: player1, p2: player2 
 
-#### O(N^2) 的 DP
-- 需要Game Theory的功底, Nim game. https://www.jiuzhang.com/qa/941/
-- http://www.1point3acres.com/bbs/thread-137953-1-1.html
-- TODO: https://leetcode.com/problems/flip-game-ii/discuss/73954/Theory-matters-from-Backtracking(128ms)-to-DP-(0ms)
+#### DP of O (N ^ 2) -Requires 
+Game Theory skills, Nim game. https://www.jiuzhang.com/qa/941/-http 
+: // www .1point3acres.com / bbs / thread-137953-1-1.html
+-TODO: https://leetcode.com/problems/flip-game-ii/discuss/73954/Theory-matters-from-Backtracking(128ms)-to-DP-(0ms) 
 
 
 
----
+--- 
 
-**168. [Palindrome Partitioning.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning.java)**      Level: Medium      Tags: [Backtracking, DFS]
+** 168. [Palindrome Partitioning.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning.java) ** Level: Medium Tags: [Backtracking, DFS] 
+      
+ 
+giving string s, partition (segmentation), make sure that every All partitions are palindrome.
+
+Find all combinations of partition palindrome. `List < list <string >> ` 
+
+#### DFS 
+-can top-> bottom: traverse str, validate substring (start, i); if valid, add as candidate, and dfs; backtrack by remove candidate. 
+-can also bottom-> up: traverse str, validate substring (start, i); if valid, dfs (remaining str), return list of suffix; cross match with curr candidate. 
+
+#### DFS Top-> Bottom 
+-When traversing str, consider From each curr spot to the end of str, how many kinds of palindorme can there be?-Then 
+start counting from the curr spot as a character and start backtracking. 
+selection is not palindrome, then move -If the selection is 
+indeed palindrome, add to path, DFS Go to the next level and wait until the end of the traversal, which results in a string split into palindrome. 
+-At the end of each DFS, delete the selected palindrome added in this layer, backtracking. 
+
+#### Optimization 
+-You can calculate isPalindrome (S) for each dfs level, but you can calculate boolean [] [] isPalin first Come out, every time O (1) is used 
+-Note: isPalin [i] [j] is inclusive, so you need to find the coordinates when you use it
+-Calculate isPalin [i] [j]: pick mid point [0 ~ n] 
+-expand and validate palindrome at these indexes: `[mid, mid + 1]` or `[mid-1] [mid + 1]` 
+
+# ### Complexity 
+-Overall Space O (n ^ 2): isPlain [] []-Time 
+O (2 ^ n), each layer is doing pick / not pick index i selection, so worst case 2 ^ n . 
+-Because our isPalin [] [] optimizes Palindrome's judgment O (1), so overall Time: O (2 ^ n) 
+
+
+
+--- 
+
+** 169. [Submatrix Sum.java] (https: // github. com / awangdev / LintCode / blob / master / Java / Submatrix% 20Sum.java) ** Level: Medium Tags: [Array, Hash Table, PreSum] 
       
 
-给个string s, partition(分段)后, 要确保每个partition都是palindrome. 
+give an int [] [] matrix, find a sub matrix, where the sum == 0. 
 
-求所有partition palindrome组合. `list<list<string>>`
-
-#### DFS
-- 可以top->bottom: 遍历str, validate substring(start, i); if valid, add as candidate, and dfs; backtrack by remove candidate.
-- 也可以bottom->up: 遍历str, validate substring(start, i); if valid, dfs(remaining str), return list of suffix; cross match with curr candidate.
-
-#### DFS Top->Bottom
-- 在遍历str的时候，考虑从每个curr spot 到 str 结尾，是能有多少种palindorme?
-- 那就从curr spot当个字符开始算，开始backtracking.
-- 如果所选不是palindrome， 那move on.
-- 若所选的确是palindrome,　加到path里面，DFS去下个level，等遍历到了结尾，这就产生了一种分割成palindrome的串。
-- 每次DFS结尾，要把这一层加的所选palindrome删掉，backtracking嘛
-
-#### Optimization
-- 可以再每一个dfs level 算 isPalindrome(S), 但是可以先把 boolean[][] isPalin 算出来, 每次O(1) 来用
-- 注意: isPalin[i][j] 是 inclusive的, 所以用的时候要认准坐标
-- Calculate isPalin[i][j]: pick mid point [0 ~ n]
-- expand and validate palindrome at these indexes: `[mid, mid+1]` or `[mid-1][mid+1]`
-
-#### Complexity
-- Overall Space O(n^2): 存 isPlain[][]
-- Time O(2^n), 每一层都在做 pick/not pick index i 的选择, 所以worst case 2^n. 
-- 因为我们的isPalin[][]优化了palindrome的判断O(1), 所以overall Time: O(2^n)
+#### The idea of ​​PreSum 
+-Calculate the size of a lower right corner point (i, j) to (0,0): previous block + left block + curr node-overlap area 
+-preSum [i] [j] : sum from (0,0) to (i-1, j-1)
+-same approach as `subarray sum`: use hashmap to store diff-> index; if diff re-appears, that means sum of 0 has occurred 
+-sequence of calculation: 1. iterate over start row. 2. iterate over end row. 3. iterate over col number (this is where hashmap is stored based on) 
+-the iteration over col is like a screening: find previous sum and determine result 
+-Note: Actually, I didn't really find the answer of `== 0`, But judging by the characteristics of `the rest / later must be 0` 
 
 
 
----
+--- 
 
-**169. [Submatrix Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Submatrix%20Sum.java)**      Level: Medium      Tags: [Array, Hash Table, PreSum]
+** 170. [Longest Palindromic Substring.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Longest% 20Palindromic% 20Substring.java) ** Level: Medium Tags: [DP, String] 
       
 
-给一个int[][] matrix, 找一个sub matrix, where the sum == 0.
+Give a string to find the longest 
 
-#### PreSum的思想
-- 算出一个右下角点(i,j)到(0,0)的大小: 上一块 + 左一块 + curr node - overlap area
-- preSum[i][j]: sum from (0,0) to (i-1,j-1)
-- same approach as `subarray sum`: use hashmap to store diff->index; if diff re-appears, that means sum of 0 has occurred
-- sequence of calculation: 1. iterate over start row. 2. iterate over end row. 3. iterate over col number (this is where hashmap is stored based on)
-- the iteration over col is like a screening: find previous sum and determine result
-- Note: 其实并没有真的去找 `== 0` 的解答,而是根据特性来判断 `剩下的/后来加上的一定是0`
+Palindrome substring. Related: Longest Palindromic Subsequence, Palindrome Partioning II
+ 
+O (n ^ 2) is not too hard to think of. How about O (n)? 
+
+#### String, Palindrome definition 
+-split from the middle, traverse i: from n Different points of splitting: each time we see whether we can extend from the splitting as the midpoint of 
+palindromic-palindrome two cases: odd, even palindrome 
+-Worst case: the entire string is the same character, time complexity becomes: 1 + 2 +3 +. ．．＋ n = O (n ^ 2) 
+
+#### DP: isPalin [] []-Exhaustive 
+double for loop. O (n ^ 2) 
+-boolean isPalin [i] [j], it is recorded every time Palindrome is confirmed true / false 
+-exhaustive for loop calculation order: end point j, and stat point i = [0, j] 
+-when calculating isPalin [i] [j], isPalin [i + 1] [j-1] Should have been calculated.- 
+double for loop: O (n ^ 2). Slower, because it guarantees O (n ^ 2) due to the for loop 
+
+#### O (n) 
+-TODO
+Https://www.felix021.com/blog/read.php?2040 - 
+-the same way as model dp [i] [j]: range [i, j] Max palindromic length
 
 
-
+ 
 ---
 
-**170. [Longest Palindromic Substring.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Palindromic%20Substring.java)**      Level: Medium      Tags: [DP, String]
+** 171. [Longest Palindromic Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Palindromic%20Subsequence.java) ** Level: Medium Tags: [DFS, DP, Interval DP, Memoization] 
       
 
-给一个string, 找到最长的palindrome substring.
+Give a string s, find the longest sub-sequence which is also palindrome. 
 
-Related: Longest Palindromic Subsequence, Palindrome Partioning II
-
-O(n^2) is not too hard to think of. How about O(n)?
-
-#### String, Palindrome definition
-- 从中间劈开, 遍历i: 从n个不同的点劈开: 每次劈开都看是否可以从劈开出作为palindromic的中点延伸
-- palindrome两种情况: odd, even palindrome
-- Worst case: 整个string都是相同字符，time complexity变成： 1 + 2 +３　＋　．．．　＋n = O(n^2)
-
-#### DP: isPalin[][]
-- 穷举double for loop. O(n^2)
-- boolean isPalin[i][j], 每次确认有palindrome就记录下来true / false
-- 穷举的for loop计算顺序: end point j, and stat point i = [0, j]
-- 在计算 isPalin[i][j]的时候, isPalin[i+1][j-1]应该已经计算过了.
-- double for loop: O(n^2). slower, because it guarantees O(n^2) due to the for loop
-
-#### O(n) 
-- TODO
-- https://www.felix021.com/blog/read.php?2040
-
-
-
----
-
-**171. [Longest Palindromic Subsequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Palindromic%20Subsequence.java)**      Level: Medium      Tags: [DFS, DP, Interval DP, Memoization]
-      
-
-给一个string s, 找最长的sub-sequence which is also palindrome.
-
-注意！subsequence并不是substring, 是可以skip letter / non-continuous character sequence
+Attention! subsequence is not a substring, but can be skip letter / non-continuous character sequence 
     
-#### Interval DP
-- 用[i][j]表示区间的首尾
-- 考虑3个情况: 砍头, 砍尾, 砍头并砍尾 (考虑首尾关系)
-- Iteration一定是以i ~ j 之间的len来看的. 
-- len = j - i + 1; 那么反推, 如果len已知, j = len + i -1;
-- 注意考虑len == 1, len == 2是的特殊情况.
-- time/space: O(n^2)
-
-#### Memoization
-- 同样的方式model dp[i][j]: range [i, j] 之间的  max palindromic length
-- 三种情况: 
-- 1. 首尾match 继而 dfs[i+1, j-1]
-- 2. 首尾不match,dfs[i+1,j] 
-- 3. 首尾不match,dfs[i,j-1] 
-- 注意: init dp[i][j]=-1, dfs的时候查dp[i][j] 是否算过
-- more about dfs: bottom-up, first dive deep into dfs(i+1,j-1) till the base cases.
-- time/space: O(n^2)
-- prepare dp[n][n]: O(n^2); dfs: visit all combinations of [i,j]: O(n^2)
-
+#### Interval DP 
+-use [i] [j] to represent the beginning and end of the interval 
+-consider 3 cases: behead, end, end and end (Considering the head-to-tail relationship) 
+-Iteration must be viewed in terms of len between i ~ j. 
+-Len = j-i + 1; then inverse, if len is known, j = len + i -1;-pay 
+attention to consideration len == 1, len == 2 is a special 
+case.- 
+time / space: O (n ^ 2) 
+#### Memoization 
+-Three cases: -1. End -to 
+-end match followed by dfs [i + 1, j-1 ] 
+-2. Do not match, dfs [i + 1, j] 
+-3. Do not match, dfs [i, j-1] 
+-Note: init dp [i] [j] =-1, check if dp [i] [j] is counted when dfs 
+-more about dfs: bottom-up, first dive deep into dfs (i + 1, j-1) till the base cases. 
+-time / space: O (n ^ 2) 
+-prepare dp [n] [n]: O (n ^ 2); dfs: visit all combinations of [i, j]: O (n ^ 2) 
 
 
 
----
 
-**172. [Gas Station.java](https://github.com/awangdev/LintCode/blob/master/Java/Gas%20Station.java)**      Level: Medium      Tags: [Greedy]
+--- 
+
+** 172. [Gas Station.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Gas% 20Station.java) ** Level: Medium Tags: [Greedy] 
       
 
-给一串gas station array, 每个index里面有一定数量gas.
+Give a string of gas station array, each index has a certain amount of gas. 
 
-给一串cost array, 每个index有一个值, 是reach下一个gas station的油耗.
+Give a string of cost array, each index has a value , Is the fuel consumption of the next gas station in the reach. 
 
-array的结尾地方, 再下一个点是开头, 形成一个circle route.
+At the end of the array, the next point is the beginning, forming a circle route. 
 
-找一个index, 作为starting point: 让车子从这个点, 拿上油, 开出去, 还能开回到这个starting point
+Find an index, as the starting point: let the car go from this point, get oil, drive out, but also Drive back to this starting point 
 
 #### Greedy
-- 不论从哪一个点开始, 都可以记录总油耗, `total = {gas[i] - cost[i]}`. 最后如果total < 0, 无论从哪开始, 必然都不能走回来
-- 可以记录每一步的油耗积累, `remain += gas[i] - cost[i]`
-- 一旦 remain < 0, 说明之前的starting point 不合适, 也就是说, 初始点肯定在后面的index. 重设: start = i + 1
-- single for loop. Time: O(n)
+-No matter where you start, you can record the total fuel consumption, `total = {gas [i]-cost [i]}`. Finally, if total <0, no matter where you start, you must not walk back 
+-Bottom-top: first dfs to the deepest path, then gradually return online 
+-you can record the accumulation of fuel consumption at each step,` remain + = gas [i]-cost [i] `
+-Once remain <0, it means that the previous starting point is not suitable, that is, the initial point must be at the following index. Reset: start = i + 1 
+-single for loop. Time: O (n) 
 
-#### NOT DP
-- 看似有点像 House Robber II, 但是问题要求的是: 一个起始点的index
-- 而不是求: 最后点可否走完/最值/计数
+#### NOT DP 
+-Seems a bit like House Robber II, but the question asks: the index of a starting point 
+-instead of asking: can the last point be completed / maximum value / count 
+
+
+
+--- 
+
+173. [Triangles.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Triangles.java) ** Level: Medium Tags: [Array, Coordinate DP, DFS, DP, Memoization] 
+      
+
+give a list <list <Integer >> triangle , Details of the original question. Find min path sum from root. 
+
+#### DFS + Memoization 
+-Actually there is no difference to giving a 2D matrix, you can do dfs, memoization. 
+-Initialize memo: pathSum [i] [j] = MAX_VALUE; Calculated path omitted 
+-`OR principle: min (pathA, pathB) + currNode` 
+-waste a little space, pathSum [n] [n]. Space: O (n ^ 2), where n = triangle height
+-Time: O (n ^ 2). Visit all nodes once: 1 + 2 + 3 + .... n = n ^ 2 
+
+#### DP 
+-Much like the principle of dfs, `OR principle: min (pathA , pathB) + currNode` 
+-init dp [n-1] [j] = node values 
+-build from bottom-> top: dp [i] [j] = Math.min (dp [i + 1] [j], dp [i + 1] [j + 1]) + triangle.get (i) .get (j); 
+-Different from the traditional coordinate dp, the inner for loop needs to calculate j <= i, the reason is triangle nature. 
+- space: DP [n-] [n-] space: O (^ n-2). 
+- time:. O (n ^ 2) Visit all nodes once: 1 + 2 + 3 + .... n = n ^ 2 
+
+#### DP + O (n) space 
+-Based on the DP solution: the calculation always depend on `next row` for col at` j` and `j + 1` 
+-since only depend on next row, you can use Rolling array to deal with: reduce to O (n) space. 
+-Further: You can reduce the dimension, remove the first dimension completely, and it will become dp [n]
+-Same double for loop, but only care about column changes: `dp [j] = Math.min (dp [j], dp [j + 1]) + triangle.get (i) .get (j);`   
+
+
+
+- - 
+
+** 174. [Merge Intervals.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Intervals.java) ** Level: Medium Tags: [Array, PriorityQueue, Sort , Sweep Line] 
+      
+
+give a string of int [Interval] (unsorted), merge all Intervals. 
+
+#### Sweep Line with Priority Queue 
+-O (nlogn) time (PriorityQueue), O (n) space      
+-Scan line + Count Invincible. Note that the start end closes the interval.   
+-When count == 0, it means the start / end of an interval every time the start end doubles off. Just write an example.   
+-Remember how to write comparator. New way: new PriorityQueue <> (Comparator.comparing (p-> p.val)); 
+-In LeetCode, Sweep Line is much faster than method 2. 
+
+#### Sort Interval
+-After Sort by interval.start, try to run it again, according to the needs of merge, continue the place where you need to merge, and then subtract the extra interval. 
+- Sort by Interval.start: `intervals.sort (Comparator.comparing (interval The -> interval.start)); // O (nlogn)` 
+- Related Example: the Insert Interval 
+- Interval connected with two: Curr, Next 
+- If curr.end covers next.start: merge is required. Then compare curr.end vs. next.end 
+-once merge, remove the next interval that needs to be overridden: `list.remove (i + 1)` -if     
+there is no overlap , Continue iteration 
+-time O (nlogn), space O (1) 
+
+#### Sort Intervals and append end logically 
+-Sort intervals: O (nlogn), extra space O (n) when creating rst list 
+-find the ending interval, Satisfy the conditions to save 
+-if the conditions for return are not met, continue to extend interval.end 
 
 
 
 ---
 
-**173. [Triangles.java](https://github.com/awangdev/LintCode/blob/master/Java/Triangles.java)**      Level: Medium      Tags: [Array, Coordinate DP, DFS, DP, Memoization]
+** 175. [H-Index.java] (https://github.com/awangdev/LintCode/blob/master/Java/H-Index.java) ** Level: Medium Tags: [Bucket Sort, Hash Table, Sort] 
       
 
-给一个list<list<Integer>> triangle, 细节原题. 找 min path sum from root.
+finds the h-index, and the citation int [] is not sorted. The definition of h-index depends on the subject. 
 
-#### DFS + Memoization
-- 其实跟给一个2D matrix没有什么区别, 可以做dfs, memoization.
-- initialize memo: pathSum[i][j] = MAX_VALUE; 计算过的path省略
-- Bottom-top: 先dfs到最深的path, 然后逐步网上返回
-- `OR 原理: min(pathA, pathB) + currNode`
-- 浪费一点空间, pathSum[n][n]. space: O(n^2), where n = triangle height
-- 时间:O(n^2). Visit all nodes once: 1 + 2 + 3 + .... n = n^2
+#### Sort, find h from end 
+-The example is written out, and it can be sorted and searched according to the definition later. nlogn. 
+-can be optimized when searching again, use binary search. But it doesn't make sense, because array.sort already uses nlogn 
+-rules given by the title, after sorting from small to large: the remaining paper `nh`, all must be <= h Citation. 
+-Time O (nlogn), search O (n) 
 
-#### DP
-- 跟dfs的原理很像, `OR 原理: min(pathA, pathB) + currNode`
-- init dp[n-1][j] = node values
-- build from bottom -> top: dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1]) + triangle.get(i).get(j);
-- 跟传统的coordinate dp有所不同, inner for loop 是需要计算 j <= i, 原因是triangle的性质.
-- 空间: dp[n][n]. space: O(n^2)
-- 时间:O(n^2). Visit all nodes once: 1 + 2 + 3 + .... n = n^2
+##### Forward thinking 
+-start with i = 0 and find the first `citations [i]> = h`, which is the first one that matches h- index rule paper, return h 
 
-#### DP + O(n) space 
-- Based on the DP solution: the calculation always depend on `next row` for col at `j` and `j + 1`
-- 既然只depend on next row, 可以用rolling array来处理: reduce to O(n) space.
-- Further: 可以降维, 把第一维彻底去掉, 变成 dp[n]
-- 同样是double for loop, 但是只在乎column changes: `dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i).get(j);`  
+##### Thinking backwards 
+-if h = n, every time h--; then `x = n-h` is the first one starting from` (0 ~ n) ` `dictations [x]> = h`, which is the result 
+-at the same time,` dictations [x-1] `is the last (most dictation) remaining paper. 
+
+#### Bucket count / Bucket Sort 
+-O (n) 
+-The idea of ​​Bucket sort (more like counting sort?): After inputting again, use dictation value as index, and distribute it on bucket [index] ++ 
+-bucket [x] is count when # of citation = = x. 
+-If x is greater than n, it is beyond the index range, but this problem can be tolerated. Just record this situation in bucket [n] 
+-clever: `sum + = bucket [h]` where `h = [n ~ 0]` uses the definition of h-index: 
+-#of papers (sum of bucket [n] ... bucket [0]) has more than h cidations 
+-the idea of ​​bucket sort is used here, But it is not sorting, and the definition of h-index is clever. 
+-Read more about actual bucket sort: https://en.wikipedia.org/wiki/Bucket_sort 
 
 
 
----
+--- 
 
-**174. [Merge Intervals.java](https://github.com/awangdev/LintCode/blob/master/Java/Merge%20Intervals.java)**      Level: Medium      Tags: [Array, PriorityQueue, Sort, Sweep Line]
+** 176. [H-Index II. java] (https://github.com/awangdev/LintCode/blob/master/Java/H-Index%20II.java) ** Level: Medium Tags: [Binary Search] 
       
 
-给一串int[Interval] (unsorted), 把所以Interval merge起来.
-
-#### Sweep Line with Priority Queue
-- O(nlogn) time (PriorityQueue), O(n) space     
-- 扫描线+Count无敌手。注意start end把interval给合起来。   
-- count==0的时候，就是每次start end双数抵消的时候，就应该是一个interval的开头/结尾。写个例子就知道了。   
-- 记得怎么写comparator. New way: new PriorityQueue<>(Comparator.comparing(p -> p.val));
-- 在 LeetCode里面，Sweep Line比方法2要快很多.
-
-#### Sort Interval 
-- Sort by interval.start之后，试着跑一遍，按照merge的需求，把需要merge的地方续好，然后减掉多余的interval就好。
-- sort by Interval.start: `intervals.sort(Comparator.comparing(interval -> interval.start)); // O(nlogn)`
-- Related example: Insert Interval
-- 用两个相连的Interval: curr, next
-- 如果 curr.end覆盖了 next.start: 需要merge. 那么比较一下 curr.end vs. next.end    
-- 一旦merge, 需要remove被覆盖的 next interval: `list.remove(i+1)`
-- 若没有重合，就继续iteration
-- time O(nlogn), space O(1)
-
-#### Sort Intervals and append end logically
-- Sort intervals: O(nlogn), extra space O(n) when creating rst list
-- 找到结尾 interval, 满足条件就可以save
-- 如果不到return的条件, 就继续延伸 interval.end
-
-
-
----
-
-**175. [H-Index.java](https://github.com/awangdev/LintCode/blob/master/Java/H-Index.java)**      Level: Medium      Tags: [Bucket Sort, Hash Table, Sort]
-      
-
-找到h-index, 给的citation int[] 并不是sorted. h-index 的definition 具体看题目.
-
-#### Sort, find h from end
-- 例子写出来，发现可以sort以后按照定义搜索一遍。 nlogn.
-- 搜索一遍时候可以优化，用binary search. 但是没意义，因为array.sort已经用了nlogn
-- 题目给的规则, 从小到大排序后: 剩下的 paper `n-h`, 全部要 <= h 个 citation.
-- time O(nlogn), search O(n)
-
-##### 正向思考
-- 从i = 0 开始找第一个 `citations[i] >= h`, 就是第一个符合 h-index 规则的paper, return h
-
-##### 反向思考
-- 如果从 h = n, 每次h--; 那么 `x = n - h` 就是从 `[0 ~ n)` 开始找第一个 `dictations[x] >= h`, 就是结果
-- 同时, `dictations[x-1]` 就是最后一个(dictation最多的)其余的paper.
-
-#### Bucket count / Bucket Sort
-- O(n)
-- Bucket sort的思想(更像是counting sort?): 过一遍 input, 把dictation value 作为 index, 分布在bucket[index]上++
-- bucket[x] 是 count when # of citation == x. 
-- 如果 x 大于 n的时候, 就超出了index范围, 但是刚好这个问题可以包容, 把这样的情况记位在bucket[n]就可以
-- 巧妙: `sum += bucket[h]` where `h = [n ~ 0]` 利用了h-index的definition:
-- #of papers (sum of bucket[n]...bucket[0]) has more than h cidations 
-- 这里运用到了bucket sort的思想, 但是并不是sorting, 而h-index的定义运用的很巧妙.
-- Read more about actual bucket sort: https://en.wikipedia.org/wiki/Bucket_sort
-
-
-
----
-
-**176. [H-Index II.java](https://github.com/awangdev/LintCode/blob/master/Java/H-Index%20II.java)**      Level: Medium      Tags: [Binary Search]
-      
-
-找到h-index, 给的citation int[] 已经sorted. h-index 的definition 具体看题目.
-
+find h-index, give citation int [ ] The sorted. H-index definition depends on the topic.
+ 
 #### Binary Search
-- H-index的一个简单版, 已经sorted(从小到大), 找target value
-- 按定义, 找最后一个 `dictations[mid] >= h`, where `h = n - mid`
-- O(logn)
+-A simple version of H-index, sorted (from small to large), find target value 
+-By definition, find the last `dictations [mid]> = h`, where` h = n-mid` 
+-O (logn) 
 
 
 
----
+--- 
 
-**177. [Sort Colors.java](https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Colors.java)**      Level: Medium      Tags: [Array, Partition, Quick Sort, Sort, Two Pointers]
+** 177. [Sort Colors.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Colors.java) ** Level: Medium Tags: [Array, Partition, Quick Sort, Sort, Two Pointers] 
       
 
-给一串数字 nums, 数字代表颜色[0,1,2]; 要求 sort nums, 数字最终按照大小排列. 
+gives a string of numbers nums, the numbers represent the color [0,1,2]; requires sort nums, the numbers are finally arranged according to size. 
 
-虽然叫sort color, 其实就是sort 这些 numbers, 只不过抽象了一下.
+Although called sort color, it is actually sort these numbers, but it is abstract look. 
 
-#### partition array, the base of quick sort
-- partition the array by pivot k = {0, 1, 2}
-- 每一次partition都return starting point of the current partition
-- 然后根据下一个 color, 去还没有sort 干净的那个部分, 再sort一下就好
-- time O(kn), where k = 0 => O(n)
-- 这里只是partion, 并不需要recursively quick sort, 所以结果是简单的O(n)
+#### Array partition, the Base of Quick Sort 
+- the partition Array Pivot by K = {0,. 1, 2} 
+- are each partition Starting Point of the Current return partition 
+- and according to the next color, but also to There is no clean part of the sort, just sort it again  
+-time O (kn), where k = 0 => O (n)
+-here is just a partion, there is no need to recursively quick sort, so the result is simple O (n) 
 
 #### One pass
 - have two pointers, left/right
@@ -3533,77 +3533,77 @@ array的结尾地方, 再下一个点是开头, 形成一个circle route.
 
 ---
 
-**178. [Sort Colors II.java](https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Colors%20II.java)**      Level: Medium      Tags: [Partition, Quick Sort, Sort, Two Pointers]
+** 178. [Sort Colors II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Colors%20II.java) ** Level: Medium Tags: [Partition, Quick Sort , Sort, Two Pointers] 
       
 
-Sort Color的普通版, sort all k colors in colors array.
+Normal version of Sort Color, sort all k colors in colors array. 
 
-Details 参见: https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Color.java
+Details see: https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Color.java 
 
-#### Quick Sort
-- O(nk)
+#### Quick Sort 
+-O (nk) 
 
 
 
----
+--- 
 
-**179. [Sort Letters by Case.java](https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Letters%20by%20Case.java)**      Level: Medium      Tags: [Partition, Sort, String, Two Pointers]
+** 179. [Sort Letters by Case.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sort%20Letters%20by%20Case.java ) ** Level: Medium Tags: [Partition, Sort, String, Two Pointers] 
       
 
-给一串字符(ASCII 大写, 小写字母), 要求sort 小写字母, 在大写字母前面. 
+Give a string of characters (ASCII uppercase, lowercase letters), require sort lowercase letters, before the uppercase letters. 
 
-字母间的前后顺序无所谓, 也不需要preserve original order .
+The order of the letters is not important, and it is not necessary preserve original order. 
 
-跟sort color分成相似.
+Similar to sort color split. 
 
 #### Partition + Two pointers
-- 其实就是quick sort里面的partition function的简化版
-- Two pointers, 找一个 pivot 'a' 来区分大写小写字母
-- ASCII code 里面 大写字母在小写字母前面, 数字更小
-- 然后 while, move start++, end--,
-- 每一轮都swap
-
+-In fact, it is a simplified version of the partition function in quick sort 
+-Two pointers, find a pivot 'a' to distinguish uppercase and lowercase letters 
+-ASCII code in which uppercase letters precede lowercase letters, and the numbers are smaller 
+-then while, move start ++, end- -, 
+-Swap in each round 
+time: O (nlogn)
+ 
 #### Two pointers
-- 直接用两个 pointer left/right 标记开头结尾
-- 每次遇到 `>= 'a'` 就是小写字母, swap(chars, i, left);
-- 每次遇到 `< 'a'` 就是大写字母, swap(chars, i, right);
-- 注意: 每次处理完left swap, 任由for loop i++, 因为确定 [0 left] 都是准确的
-- 每次处理完 right swap, 我们不确定从 right index 换过来的是不是正确的, 所以 i--, 跟for loop 的 i++抵消.
-- 写 while loop 的 solution看起来更容易理解.
+-Directly 
+mark the beginning and end with two pointer left / right -Each time you encounter `> = 'a'` is a lowercase letter, swap (chars, i, left); 
+-Each time you encounter` <' a'` is uppercase Letter, swap (chars, i, right); 
+-Note: Left swap is processed every time, let for loop i ++, because it is determined that [0 left] is accurate 
+-Right swap is processed every time, we are not sure from right The index is not correct, so i--, offset from i ++ of the for 
+loop.-It 
+is easier to understand the solution of the while loop. 
 
 
 
----
-
-**180. [Subarray Sum Closest.java](https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Closest.java)**      Level: Medium      Tags: [PreSum, PriorityQueue, Sort, Subarray]
+--- 
+** 180. [Subarray Sum Closest.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Closest.java)** Level: Medium Tags: [PreSum, PriorityQueue, Sort, Subarray] 
       
-time: O(nlogn)
-space: O(n)
+space: O (n) 
 
-给一串数字, 找subarray的首尾index, 条件: subarray最接近0.
+gives a string of numbers , Find the beginning and end index of the subarray, Condition: The subarray is closest to 0. 
 
-#### PreSum + index in class
-- Can be a 2D array, or a `class Point` to store preSum + index
-- Sort preSum: smaller (有可能负数) 靠前, 大数字靠后
-- 比较preSum种相连接的两个节点, 找差值min; 因为最接近的两个preSum节点的差值肯定是最小
-- min所在的两个节点的index, 就是result candidate: 这两个index可能再原nums里面相差很远
-- time O(nlogn), sort
-- space: O(n)
+#### PreSum + index in class 
+-Can be a 2D array, or a `class Point` to store preSum + index 
+-Sort preSum: smaller (possibly negative ) Forward, big numbers backward
+-Compare the two nodes connected by? PreSum, find the difference min; because the difference between the two closest preSum nodes must be the smallest 
+-the index of the two nodes where min is, is the? Result candidate: these two indexes May be very different in the original nums 
+-time O (nlogn), sort 
+-space: O (n) 
 
-#### 为何没有用 map<preSum, index> ?
-- 因为map虽然能存 preSum + index, 但是无法有效排序
-- 所以用一个class来存这两个信息, 然后合理排序
-
+#### Why didn't you use map <preSum, index>? 
+-Because map can store preSum + index, but it is not effective Sorting 
+-So use a class to store these two information, and then sort them reasonably 
 
 
----
 
-**181. [Task Scheduler.java](https://github.com/awangdev/LintCode/blob/master/Java/Task%20Scheduler.java)**      Level: Medium      Tags: [Array, Enumeration, Greedy, PriorityQueue, Queue]
+--- 
+
+** 181. [Task Scheduler.java] (https://github.com/awangdev/LintCode/blob/master/Java/Task% 20Scheduler.java) ** Level: Medium Tags: [Array, Enumeration, Greedy, PriorityQueue, Queue] 
       
-
+ 
 #### Array, count frequency, enumerate
-- Enumerate to understand: 1. we can module the tasks in module/section; 2. Only need sum the intervals/slots, not return actual layout
-- Perfect condition, all letters appear identical # times: just line them up separate in order.
+-Enumerate to understand: 1. we can module the tasks in module / section; 2. Only need sum the intervals / slots, not return actual layout 
+-Perfect condition, all letters appear identical # times: just line them up separate in order.
 - Real case: task appears different times
 - 1. Place maxCount task as header followed with n slots: define (maxCount-1) sections
 - 2. For tasks with less # than maxCount# can fill the (maxCount-1) sections; what about the tail section?
@@ -3611,106 +3611,106 @@ space: O(n)
 - To count overall slots/intervals, come up with this equation:
 - 1. Fixed sections: `(maxCount - 1) * (n + 1)`
 - 2. Plus all repeating maxCount tasks: calculate by couting identical maxCount of them
-- 3. Exception: if the first (max - 1) sections are all filled completely, and we still have extra task (ex: when n is not large enough), then just return tasks.length
-- time O(1), space O(1)
+-3. Exception: if the first (max-1) sections are all filled completely, and we still have extra task (ex: when n is not large enough), then just return tasks.length 
+-time O (1), space O (1) 
 
 #### PriorityQueue
 - 正面去做: 
-- summerize 每个task出现的次数, 然后qp sort Task object, count 大的靠前
-- 起始每个section: k slots = n + 1
-- 目标是穷尽 k, 或者 穷尽 pq (poll k times, but will save it back to queue if Task # > 0)
-- 如果qp 真的穷尽, break, return count
-- 不然, count + remain of k
-- extra space O(x), time O(n) + constant time O(xlogx), where x = 26
+-summerize the number of times each task occurs, and then qp sort Task object, count large forward 
+-start each section: k slots = n + 1 
+-the goal is to exhaust k, or exhaust pq (poll k times , but will save it back to queue if Task #> 0) 
+-if qp is really exhausted, break, return count 
+-otherwise, count + remain of k 
+-extra space O (x), time O (n) + constant time O (xlogx), where x = 26 
 
 
 
----
+--- 
 
-**182. [Exam Room.java](https://github.com/awangdev/LintCode/blob/master/Java/Exam%20Room.java)**      Level: Medium      Tags: [PriorityQueue, Sort]
+** 182. [Exam Room.java] (https://github.com/awangdev/LintCode/blob/master/Java/Exam%20Room.java) ** Level: Medium Tags: [PriorityQueue, Sort] 
       
 
-#### PriorityQueue
-- Use priority queue to sort by customized class interval{int dist; int x, y;}. 
-- Sort by larger distance and then sort by start index
-- seat(): pq.poll() to find interval of largest distance. Split and add new intervals back to queue.
-- leave(x): one seat will be in 2 intervals: remove both from pq, and merge to a new interval.
-- 主方程写出来其实很好写, 就是 split + add interval, 然后 find + delete interval 而已. 最难的是构建data structure
-- seat(): O(logn), leave(): O(n)
+#### PriorityQueue 
+-Use priority queue to sort by customized class interval {int dist; int x, y;} 
+.- 
+Sort by larger distance and then sort by start index -seat (): pq.poll () to find interval of largest distance. Split and add new intervals back to queue.
+-leave (x): one seat will be in 2 intervals: remove both from pq, and merge to a new interval. 
+-The main equation is actually very easy to write, which is split + add interval, then find + delete interval. Most The hard part is building the data structure 
+-seat (): O (logn), leave (): O (n) 
 
-##### Trick: 构建虚拟 boundary
-- 如果是开头的seat, 或者是结尾的seat, 比较难handle: 一开始坐在seat=0的时候, 没有interval啊!
-- Trick就是, 我们自己定义个虚拟的座位 `seat=-1`, `seat=N`
-- 一开始有一个 interval[-1, N] 然后就建立了boundary.
-- 从此以后, 每次split成小interval的时候:
-- 遇到 `interval[-1, y]`, distance就是 `(y - 0)`
-- 遇到 `interval[x, N]`, distance就是 `(N - 1 - x)`
-- 当然正常的interval dist 就是 `(y - x) / 2`
-
-##### distance 中间点
-- Interval.dist 我们其实做的是 distance的中间点 `(y - x) / 2`
-- 这里的dist是 `距离两边的距离` 而不是 x, y 之间的距离. 这里要特别注意.
-
+##### Trick: Constructing a virtual boundary 
+-if it is the beginning of the seat, or the end of the seat, it is more difficult to handle : When sitting at seat = 0, there is no interval! 
+-Trick is, we define a virtual seat `seat = -1`,` seat = N` 
+-At first, there is an interval [-1, N] Then boundary was established. 
+-From now on, every time the split becomes a small interval: 
+-When encountering `interval [-1, y]`, distance is `(y-0)`-When 
+encountering `interval [x, N ] `, distance is` (N-1-x) `-Of 
+course, the normal interval dist is` (y-x) / 2` 
 #### TreeSet
-- https://leetcode.com/problems/exam-room/discuss/139885/Java-Solution-based-on-treeset/153588
+ 
+##### distance
+-Interval.dist What we actually do is the middle point of distance `(y-x) / 2` 
+-Here dist is` distance from both sides` , not distance between x, y. Pay special attention 
 
-#### Map
-- how?
-- TODO, not sure.
+here.-Https : //leetcode.com/problems/exam-room/discuss/139885/Java-Solution-based-on-treeset/153588 
+
+#### Map 
+-how? -TODO 
+, not sure. 
 
 
 
----
+--- 
 
-**183. [Anagrams.java](https://github.com/awangdev/LintCode/blob/master/Java/Anagrams.java)**      Level: Medium      Tags: [Array, Hash Table]
+** 183. [ Anagrams.java] (https://github.com/awangdev/LintCode/blob/master/Java/Anagrams.java) ** Level: Medium Tags: [Array, Hash Table] 
       
 
-把anagram找到并output
+Find and output anagram 
 
-#### HashMap
-- 存在int[26], Arrays.toString(arr) 就是 string key: character frequency map
-- anagram都有一样的key, 存进hashmap<string, list of anagrams>
-- output anagrams
+#### HashMap 
+-There is int [26], Arrays.toString (arr) is string key: character frequency map 
+-anagram has the same key, stored in hashmap <string, list of anagrams> 
+-output anagrams 
 
-#### HashMap + Sort
-- HashMap 的做法. sort每个string, 存进HashMap, 重复的就是anagrams,最后输出。   
-- toCharArray
-- Arrays.sort
-- Stirng.valueOf(char[])
-- 时间n*L*O(logL),L是最长string的长度。
+#### HashMap + Sort 
+-HashMap The method is to sort each string and store it in HashMap, the duplicate is anagrams, and finally output.   
+-toCharArray
+- Arrays.sort 
+- Stirng.valueOf (char []) 
+- time n * L * O (logL) , L is the longest string length. 
 
 #### Previous Notes
-- Arrays.toString(arr)的做法。arr是int[26], assuming only have 26 lowercase letters.    
-- Count occurrance, 然后convert to String，作为map的key.
-- Time complexity: nO(L)
-- 另一种做法：http://www.jiuzhang.com/solutions/anagrams/   
-- 1. take each string, count the occurrance of the 26 letters. save in int[]count.   
-- 2. hash the int[] count and output a unique hash value; hash = hash * a + num; a = a * b.   
-- 3. save to hashmap in the same way as we do. 
-- 这一步把for s: strs 里面的时间复杂度降到了O(L). L = s.length().   
-- Need to work on the getHash() function.
-- 时间变成n*O(L). Better.
+-Arrays.toString (arr). arr is int [26], assuming only have 26 lowercase     
+letters.-Count occurrance, and then convert to String as the key of the map. 
+-Time complexity: nO (L) -Another 
+way: http: //www.jiuzhang. com / solutions / anagrams /-1    
+. take each string, count the occurrance of the 26 letters. save in int [] count.    
+-2. hash the int [] count and output a unique hash value; hash = hash * a + num; a = a *    
+b.-3. save to hashmap in the same way as we do. 
+-This step reduces the time complexity in for s: strs to O (L). L = s.length ().    
+-Need to work on the getHash () function. 
+-Time becomes n * O (L). Better. 
 
 
 
 
 ---
 
-**184. [Path Sum IV.java](https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20IV.java)**      Level: Medium      Tags: [DFS, Hash Table, Tree]
+** 184. [Path Sum IV.java] (https://github.com/awangdev/LintCode/blob/master/Java/Path%20Sum%20IV.java) ** Level: Medium Tags: [DFS, Hash Table , Tree] 
       
 
-给一串3-digit 的数组. 每个数字的表达一个TreeNode, 3 digit分别代表: depth.position.value
+gives a string of 3-digit arrays. Each number represents a TreeNode, and 3 digits represent: depth.position.value 
 
-这串数字已经从小到大排列. 求: 所有可能的 root->leaf path 的所有可能的 path sum 总和. 
+This string has been arranged from small to large. Seek: All possible root-> leaf path The sum of all possible path sums. 
 
-#### DFS, Hash Table
-- 因为`前两个digit可以uniquely identify`一个node, 所以可以把前两个digit作为key, 定位node.
-- 特点: 比如考虑root, 有 n 个leaf, 就会加 n 遍root, 因为有 n 个 unique path嘛.
-- 实现: 每个node, 上来先把curr value加进sum; 只要有child, 到这个node位置的以上path sum 就要被重加一次.
-- format: depth.position.value. (on same level, position may not be continuous)
-- approach: map each number into: <depth.position, value>, and dfs. 
-- Start from dfs(map, rootKey, sum):
-- 1. add node value to sum
+#### DFS, Hash Table 
+-Because the first two digits can uniquely identify a node, the first two digits can be used as keys to locate the node. 
+-Features: For example, consider root, there is n leafs, n roots will be added, because there are n unique paths. 
+-Implementation: Each node, first add the curr value to the sum; as long as there is a child, the path sum to the position of this node will be added Repeat it 
+again.- format: depth.position.value. (On same level, position may not be continuous) 
+-approach: map each number into: <depth.position, value>, and dfs. 
+-Start from dfs (map, rootKey, sum): 
+-1. add node value to sum
 - 2. compute potential child.
 - 3. check child existence, if exist, add sum to result (for both left/right child). Check existence using the map.
 - 4. also, if child exist, dfs into next level
@@ -3731,307 +3731,307 @@ space: O(n)
 - total number of combinations of pick 2 points randomly: count * (count - 1) / 2
 
 #### DP
-- TODO. HOW?
 
-#### Brutle
-- O(m^2 * n^2), times out
+-TODO 
+. HOW? #### Brutle 
+-O (m ^ 2 * n ^ 2), times out 
+
+
+
+--- 
+
+** 186. [Palindromic Substrings.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Palindromic% 20Substrings.java) ** Level: Medium Tags: [DP, String] 
+      
+
+According to the intent, count # of palindromic substring. (Substrings extracted from different indexes are different) 
+
+#### isPalin [] []-build 
+boolean [] [] to check isPalin [i] [j] with DP 
+concept-? check all candidates isPalin [] [] 
+-O (n ^ 2) 
+
+#### odd / even split check 
+https://leetcode.com/problems/palindromic-substrings/discuss/105689/Java-solution-8-lines-extendPalindrome 
 
 
 
 ---
 
-**186. [Palindromic Substrings.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindromic%20Substrings.java)**      Level: Medium      Tags: [DP, String]
+** 187. [Multiply Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Multiply%20Strings.java) ** Level: Medium Tags: [Math, String] 
       
 
-根据题意, count # of palindromic substring. (不同index截取出来的substring算不同的情况)
+for two integer String, Find product 
 
-#### isPalin[][]
-- build boolean[][] to check isPalin[i][j] with DP concept
-- check all candidates isPalin[][]
-- O(n^2)
+#### String calculation, basic implementation 
+-let num1 = multipier, num2 = 
+base.-mutiply and save into int [m + n], without carry. Loop over num1, each row num1 [x] * num2 
+-move carry to the correct index and direclty save result 
+-calculate carry on rst []: sb.insert (0, c) such that no need to reverse () later 
+-remove leading '0', but do not delete string " 0 " 
+-time, space O (mn) 
 
-#### odd/even split check
-https://leetcode.com/problems/palindromic-substrings/discuss/105689/Java-solution-8-lines-extendPalindrome
-
-
-
----
-
-**187. [Multiply Strings.java](https://github.com/awangdev/LintCode/blob/master/Java/Multiply%20Strings.java)**      Level: Medium      Tags: [Math, String]
-      
-
-给两个integer String, 求乘积
-
-#### String calculation, basic implementation
-- let num1 = multipier, num2 = base. 
-- mutiply and save into int[m + n], without carry. Loop over num1, each row num1[x] * num2
-- move carry to the correct index and direclty save result
-- calculate carry on rst[]: sb.insert(0, c) such that no need to reverse() later
-- remove leading '0', but do not delete string "0"
-- time,space O(mn)
-
-#### Previous notes. 
+#### Previous notes.
+- and so! Flip two numbers first! I go. This is a big pit.
 - Bad solution: reversing makes it complicated, no need to reverse.
-- 1. 数字‘123’， 在数组里面， index == 0 是 ‘1’。 但是我们平时习惯从最小位数开始乘积，就是末尾的'3'开始。
-- 所以！翻转两个数字先！我去。这个是个大坑。
-- 2. 乘积product，和移动Carrier都很普通。
-- 3. ！！最后不能忘了再翻转。
-- 4. 最后一个看坑。要是乘积是0，就返回‘0’。 但是这个其实可以在开头catch到没必要做到结尾catch。
-- 用到几个StringBuffer的好东西: reverse(), sb.deleteCharAt(i)   
-- 找数字，或者26个字母，都可以: s.charAt(i) - '0'; s.charAt(i) - 'a';
+-1. The number '123'. In the array, index == 0 is '1'. But we usually used to start the product from the minimum number of digits, which is the beginning of the '3'. 
+-2. The product product is very common with moving Carrier. 
+-3.! !! Finally, don't forget to flip it again. 
+-4. One last look at the pit. If the product is 0, it returns '0'. But this can actually catch from the beginning to the end without having to catch. 
+-A few good things about StringBuffer: reverse (), sb.deleteCharAt (i)-Find    
+numbers, or 26 letters: s.charAt (i)-'0'; s.charAt (i)- 'a'; 
+
+
+
+--- 
+
+** 188. [Subsets.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subsets.java) ** Level: Medium Tags: [Array, BFS , Backtracking, Bit Manipulation, DFS] 
+      
+time: O (2 ^ n) 
+space: O (2 ^ n) 
+
+gives a string of unique integers, and finds all possible subsets. There must be no duplicates in the result. 
+
+#### DFS 
+-dfs Two ways: 1. pick && skip dfs, 2. for loop dfs
+-1. pick && skip dfs: take or not + backtracking. When the level / index reaches the end, return a list. Bottom-up, reach the bottom, only the first solution is produced.
+-2. for loop dfs: for loop + backtracking. Remember: when doing a subset, each dfs recursive call is a unique possibility, add it to rst first. Top-bottom: If there is a solution, add it 
+first.-Time && space : subset means independent choice of either pick && not pick. You pick n times: `O (2 ^ n)`, 3ms 
+
+#### Bit Manipulation 
+-n = nums.length, then at each index, it is pick / not pick : 0/1 
+-Consider bit index of subset index 0/1: range is [0000 ... 00 ~ 2 ^ n-1] 
+-Each bitmap can show the contents of a subset: all the 1 represents picked indexes 
+-Method: 
+-1 
+. Find the Range 
+-2. Traverse each bitmap candidate -3 . Traverse the bit representation of each integer, if it is 1, add to list 
+-time: O (2 ^ n * 2 ^ n) = O (4 ^ n), still 3ms, fast. 
+
+#### Iterative, BFS 
+-Regular BFS, pay attention to consider if one level to generate next level
+-1 
+. Use queue to store the candidate indexes every time-2. Each time you open a layer of candiates, add them all to result 
+-3. And use each round of dates, populate next level, back into queue. 
+-Should be same O (2 ^ n), but actual run time 7ms, slower 
+
+
+
+
+
+--- 
+
+** 189. [Subsets II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subsets%20II. java) ** Level: Medium Tags: [Array, BFS, Backtracking, DFS] 
+      
+time: O (2 ^ n) 
+sapce: O (2 ^ n) 
+
+gives a list of integers (may have duplicates), find all possible subsets. There can be no duplicates in the result. 
+
+#### DFS 
+-DFS, find the data structures that need to pass along. First `sort input`, then DFS 
+-sort O (nlogn), subset: O (2 ^ n) 
+-Using for loop approach: each dfs call Is a possibility, directly add into result.     
+-To remove duplicated results, skip used item at current level: `if (i> depth && nums [i] == nums [i-1]) continue;` 
+-space O (2 ^ n), save results 
+
+### # BFS 
+-Regular BFS, pay attention to consider if one level to generate next level 
+-skip duplicate: `if (i> endIndex && nums [i] == nums [i-1]) continue;`-1 
+. Use queue to save Candidate indexes 
+each time-2. Candiates each time, add them all to result 
+-3. And candidates, populate next level, back into 
+queue.-Srot O (nlogn), subset: O ( 2 ^ n) 
+-should be same O (2 ^ n). Slower than dfs 
+
+#### Previous notes: 
+-Skip duplicate candidates in DFS, based on the sorted array technique:-Once     
+i! = Index in the for loop, And nums [i] == nums [i-1], 
+-Explain that x = nums [i-1] has been used at the curr level and does not need to be used again: [a, x1, x2], x1 == x2     
+-i == index-> ​​[a, x1]     
+-i == index + 1-> [a, x2]. We want to skip this one 
+-what if [a, x1, x2] is needed? In fact, when the index changes, it will be involved in two different dfs calls.
+
+#### Note 
+-you cannot use result.contains (), which is very costly O (nlogn) 
+-using list.toString () several times is actually O (n) iteration, which actually increases the check time, no Suggestion 
+
+
+
+
+--- 
+
+** 190. [Combination Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum.java) ** Level: Medium Tags: [Array, Backtracking , Combination, DFS] 
+      
+time: O (n!) 
+Space: O (n!) 
+
+Gives a string of numbers dates (no duplicates), and a target. 
+
+Find all unique combinations (combination) int [], requiring each combination of And = target. 
+
+Note: The same candidate integer can be used any number of times. 
+
+
+#### DFS, Backtracking  
+- considering input: no duplicate, not Need sort
+-Consider the rules of reuse: Can be reused, then when using dfs in the for loop, use curr index i 
+-the result is trivial, save success list into result. 
+
+##### Time complexity for Combination (reuse-candidate) 
+-At each level dfs, we have the index as starting point: 
+- if we are at `index = 0, we can have n child dfs () options via for loop`;-if at` 
+index = 1, we will have (n-1) dfs options via for loop`. 
+-Consider it as the `pick / not-pick` problem, where the difference is you can pick` x` times at each index rather than only 2 times. 
+-Overall, we will multiply the # of possibilities: n * (n-1) * ( n-2) ... * 1 = n! => `O (n!)` 
+
+##### Combination DFS idea 
+-at each index: `pick / not pick choice`, use for loop over index + backtracking to implement picks. 
+-After each pick, a new routine is generated, from this index
+-The next level of dfs starts from this index, and the same pick / not pick is selected for the later (or the current / if allow index reuse)  
+-Note 1: In each level dfs, there will be an end condition in the for loop: the dfs is no longer necessary.
+-Note 2: Backtracking must be done after success case && dfs case, because backtrack is For the previous dfs. 
+
+
+
+
+--- 
+
+** 191. [Combination Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20II.java) ** Level: Medium Tags: [Array, Backtracking, Combination, DFS] 
+      
+
+Give a string of numbers dates (can have duplicates), and a target. 
+
+Find all unique combinations (combination) int [], requiring the sum of each combination = target. 
+
+Note: The same candidate integer can only be used once. 
+
+#### DFS, Backtracking 
+-when the input has duplicates, and want to skip redundant items? 
+-1. sort. 2. in for loop, skip same neighbor. 
+-Consider input: duplicate, must be sorted 
+-rules for reuse are considered: cannot be reused
+-1 For dfs in the for loop, use curr index + 1-2
+-2. In a loop, the same level and the same number cannot be reused: `(i> index && candidates [i] == candidates [i-1]) continue` 
+-because the numbers are repeated in the same level It will be taken into account in the next dfs level, here must be skipped (remember this) 
+-the result is trivial, save success list into result. 
+
+##### Time complexity 
+-Which one? 
+-Time: every level has 1 less element to choose, worst case is: cannot find any solution over all combinations: O (m!) 
+-Time: Same as `subsetII`, pick / not = pick an item as we go, no reuse of item. Worst case: all unique items in the set. O (2 ^ n) 
+
+
+
+
+--- 
+
+** 192. [Combination Sum III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination% 20Sum% 20III.java) ** Level: Medium Tags: [Array, Backtracking, Combination, DFS] 
+      
+
+gives an integer k, and a target n.
+ 
+From the positive numbers [1 ~ 9], find all unique combinations (combination) int [], size = k, requires the sum of each combination = n. 
+
+(Hidden condition, requires declare): the same candidate integer [1-9] can only be used once. 
+
+#### the DFS, backtracking 
+- with Combination Sum I, II is not much difference, but be sure to use k digits, which is a special condition inside the loop for 
+- Consider input: no duplicate numbers [1 ~ 9] 
+-consider candidate reuse: no reuse, next level dfs, curr index + 1 
+-the result is trivial, save success list into result. 
+
+##### Time Complexity 
+-Which one? 
+-Worst case: tried all numbers and cannot find: O (m!), M = 9, all possible integers in [1 ~ 9]
+-C (n, k), n choose k problem: `n! / (K! * (Nk)!)` => Ends up being `O (min (n ^ k, n ^ (nk)))` 
+
+
+ 
+- -
+
+* * 193. [Product of Array Except Self.java] (https://github.com/awangdev/LintCode/blob/master/Java/Product%20of%20Array%20Except%20Self.java) ** Level: Medium Tags: [Array, PreProduct] 
+      
+time: O (n) 
+space: O (1) 
+
+gives a string of numbers, output rst [n], each index is the product of all itemds except nums [i]. 
+
+#### Array, PreProduct 
+-Analyze common practices, and finally use O (n) from left to right, and O (n) from right to 
+left. 
+-Pay attention to the maintenance of carry 
+-see the second answer, further? Simplified the code -PreProduct, and preSum feels a bit like, but it's one bit worse. 
+
+
+
+--- 
+
+** 194. [Total Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Total%20Hamming%20Distance. java) ** Level: Medium Tags: [Bit Manipulation] 
+      
+time: O (n)
+Space: O (1), 32-bit Array 
+ 
+gives Hamming Distance definition (how much binary diff is in bit format), find the sum of the Hamming distance of a series of numbers.
+
+#### Bit Manipulation 
+- Bit title: test bit >>, mask & 1, as well as understanding of the subject 
+- of Put integers in binary, and the Compare the each column: 
+- for each `1`, ask: how many are different from me? all 
+the` 0`-`# of diffs at each bit-column = #ofZero * #ofOne` 
+-1. countZero [], countOne []; 2. loop over nums and populate the two array 
+
+##### Pay attention to the thunder point 
+-ask clearly: 10 ^ 9 <2 ^ 31, we are okay with 32 bits- 
+? `Final Hamming Distance? Which bit to [1 ~ 32] Starting to count `? Depends on the longest binary format: but don't need to find the bit length first 
+-when doing countZero, countOne, all do 32-bit; when doing the final product, if` 1` or `0 `The number is zero, the product is naturally 0. 
+
 
 
 
 ---
 
-**188. [Subsets.java](https://github.com/awangdev/LintCode/blob/master/Java/Subsets.java)**      Level: Medium      Tags: [Array, BFS, Backtracking, Bit Manipulation, DFS]
+** 195. [Smallest Subtree with all the Deepest Nodes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.java) ** Level: Medium Tags: [DFS, Divide and Conquer, Tree] 
       
-time: O(2^n)
-space: O(2^n)
+time: O (n) 
+space: O (n) 
 
-给一串unique integers, 找到所有可能的subset. result里面不能有重复.
+for a tree,? Find the most node according to the intent? Satisfy: 
+1.? The subtree of this node Covers all leaves at the deepest level. 
+2. This node must be the deepest one that can be found 
+? The 
+requirement of condition 2 is because: root itself is a node that meets condition 1, and there are many higher-level nodes, so find that deepest. 
 
-#### DFS
-- dfs的两种路子: 1. pick&&skip dfs, 2. for loop dfs
-- 1. pick&&skip dfs: 取或者不取 + backtracking. 当level/index到底，return 一个list. Bottom-up, reach底部, 才生产第一个solution.
-- 2. for loop dfs: for loop + backtracking. 记得：做subset的时候, 每个dfs recursive call是一种独特可能，先加进rst.  top-bottom: 有一个solution, 就先加上.
-- Time&&space: subset means independent choice of either pick&&not pick. You pick n times: `O(2^n)`, 3ms
 
-#### Bit Manipulation
-- n = nums.length, 那么在每一个index, 都是 pick / not pick: 0/1
-- 考虑subset index 0/1的bit map: range 的就是 [0000...00 ~ 2^n-1]
-- 每一个bitmap就能展现出一个subset的内容: all the 1 represents picked indexes
-- 做法:
-- 1. 找出Range
-- 2. 遍历每一个bitmap candidate
-- 3. 对每一个integer 的 bit representation 遍历, 如果是1, add to list
-- time: O(2^n * 2^n) = O(4^n), still 3ms, fast.
+#### DFS on tree 
+-analyze the topic, the idea is: see all the leaves in the tree, find their deepest common ancestor 
+-Maintain a map <Node, maxChildDepth>-Recursively 
+dfs: return deepest node that has all leaves by these comparisons:
+-1. If left, right child same depth, return root: they need common ancestor  
+-2. If not same depth, return the one with larger depth
+-Transferred to the previous level, always in the subtree: 1. the node containing all leaf nodes 
+-Visit all nodes once O ( n), space O (n) 
 
-#### Iterative, BFS
-- Regular BFS, 注意考虑如果让one level to generate next level
-- 1. 用queue来存每一次的candidate indexes
-- 2. 每一次打开一层candiates, add them all to result
-- 3. 并且用每一轮的candidates, populate next level, back into queue.
-- should be same O(2^n), but actual run time 7ms, slower
+#### BFS 
+-Find all leaves at deepest level 
+-Use map to track each node-parent 
+-Backtrack all nodes to find common ancestor 
 
 
 
+--- 
 
-
----
-
-**189. [Subsets II.java](https://github.com/awangdev/LintCode/blob/master/Java/Subsets%20II.java)**      Level: Medium      Tags: [Array, BFS, Backtracking, DFS]
+** 196. [Subarray Sum Equals K. java] (https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Equals%20K.java) ** Level: Medium Tags: [Array, Hash Table, PreSum, Subarray] 
       
-time: O(2^n)
-sapce: O(2^n)
-
-给一串integers(may have duplicates), 找到所有可能的subset. result里面不能有重复.
-
-#### DFS
-- DFS, 找准需要pass along的几个数据结构. 先`sort input`, 然后DFS
-- Using for loop approach: 每个dfs call是一种可能性，直接add into result.     
-- 为了除去duplicated result, skip used item at current level: `if (i > depth && nums[i] == nums[i - 1]) continue;`
-- sort O(nlogn), subset: O(2^n)
-- space O(2^n), save results
-
-#### BFS
-- Regular BFS, 注意考虑如果让one level to generate next level
-- skip duplicate: `if (i > endIndex && nums[i] == nums[i - 1]) continue;`
-- 1. 用queue来存每一次的candidate indexes
-- 2. 每一次打开一层candiates, add them all to result
-- 3. 并且用每一轮的candidates, populate next level, back into queue.
-- srot O(nlogn), subset: O(2^n)
-- should be same O(2^n). slower than dfs
-
-#### Previous notes:
-- 在DFS种skip duplicate candidates, 基于sorted array的技巧：    
-- 一旦for loop里面的i!=index，并且nums[i] == nums[i-1],
-- 说明x=nums[i-1]已经在curr level 用过，不需要再用一次: [a,x1,x2]，x1==x2    
-- i == index -> [a,x1]    
-- i == index + 1 -> [a,x2]. 我们要skip这一种
-- 如果需要[a,x1,x2]怎么办？ 其实这一种在index变化时，会在不同的两个dfs call 里面涉及到。
-
-#### 注意
-- 不能去用result.contains(), 这本身非常costly O(nlogn)
-- 几遍是用 list.toString() 其实也是O(n) iteration, 其实也是增加了check的时间, 不建议
-
-
-
-
----
-
-**190. [Combination Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum.java)**      Level: Medium      Tags: [Array, Backtracking, Combination, DFS]
-      
-time: O(n!)
-space: O(n!)
-
-给一串数字candidates (no duplicates), 和一个target. 
-
-找到所有unique的 组合(combination) int[], 要求每个combination的和 = target.
-
-注意: 同一个candidate integer, 可以用任意多次.
-
-
-#### DFS, Backtracking
-- 考虑input: 没有duplicate, 不需要sort
-- 考虑重复使用的规则: 可以重复使用, 那么for loop里面dfs的时候, 使用curr index i
-- the result is trivial, save success list into result.
-
-##### Time complexity for Combination (reuse-candidate)
-- at each level dfs, we have the index as starting point: 
-- if we are at `index=0, we can have n child dfs() options via for loop`; 
-- if at `index=1, we will have (n-1) dfs options via for loop`. 
-- Consider it as the `pick/not-pick` problem, where the difference is you can pick `x` times at each index rather than only 2 times. 
-- Overall, we will multiply the # of possibilities: n * (n - 1) * (n - 2) ... * 1 = n! => `O(n!)`
-
-##### Combination DFS 思想
-- 在每个index上面都要面临: `pick/not pick的选择`, 用for loop over index + backtracking 实现 picks.
-- 每次pick以后, 就生成一条新的routine, from this index
-- 下一个level的dfs从这个index开始, 对后面(或者当下/if allow index reuse) 进行同样的 pick/not pick 的选择
-- 注意1: 每个level dfs 里面, for loop 里会有 end condition: 就不必要dfs下去了.
-- 注意2: Backtracking在success case && dfs case 后都要做, 因为backtrack 是为了之前上一层dfs.
-
-
-
-
----
-
-**191. [Combination Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20II.java)**      Level: Medium      Tags: [Array, Backtracking, Combination, DFS]
-      
-
-给一串数字candidates (can have duplicates), 和一个target. 
-
-找到所有unique的 组合(combination) int[], 要求每个combination的和 = target.
-
-注意: 同一个candidate integer, 只可以用一次.
-
-#### DFS, Backtracking
-- when the input has duplicates, and want to skip redundant items? 
-- 1. sort. 2. in for loop, skip same neighbor.
-- 考虑input: 有duplicate, 必须sort
-- 考虑重复使用的规则: 不可以重复使用
-- 1. for loop里面dfs的时候, 使用curr index + 1
-- 2. for loop里面, 同一个level, 同一个数字, 不能重复使用: `(i > index && candidates[i] == candidates[i - 1]) continue`
-- 因为在同一个level里面重复的数字在下一个dfs level里面是会被考虑到的, 这里必须skip (这个就记住吧)
-- the result is trivial, save success list into result.
-
-##### Time complexity
-- Which one?
-- Time: every level has 1 less element to choose, worst case is: cannot find any solution over all combinations: O(m!)
-- Time: Same as `subsetII`, pick/not=pick an item as we go, no reuse of item. Worst case: all unique items in the set. O(2^n)
-
-
-
-
----
-
-**192. [Combination Sum III.java](https://github.com/awangdev/LintCode/blob/master/Java/Combination%20Sum%20III.java)**      Level: Medium      Tags: [Array, Backtracking, Combination, DFS]
-      
-
-给一个integer k, 和一个target n. 
-
-从positive数字[1 ~ 9], 找到所有unique的 组合(combination) int[], size = k, 要求每个combination的和 = n.
-
-(隐藏条件, 需要clarify): 同一个candidate integer [1 ~ 9], 只可以用一次.
-
-#### DFS, Backtracking
-- 跟Combination Sum I, II 没什么太大区别, 只不过, 一定要用k个数字, 也就是一个for loop里面的特别条件
-- 考虑input: 没有重复数字 [1 ~ 9]
-- 考虑candidate重复利用: 不可以重复利用, next level dfs 时候, curr index + 1
-- the result is trivial, save success list into result.
-
-##### Time Complexity
-- Which one?
-- worst case: tried all numbers and cannot find: O(m!), m = 9, all possible integers in [1~9]
-- C(n,k), n choose k problem : `n! / (k! * (n-k)!)` => ends up being `O(min(n^k, n^(n-k)))`
-
-
-
----
-
-**193. [Product of Array Except Self.java](https://github.com/awangdev/LintCode/blob/master/Java/Product%20of%20Array%20Except%20Self.java)**      Level: Medium      Tags: [Array, PreProduct]
-      
-time: O(n)
-space: O(1)
-
-给一串数字, output rst[n], 每个index是 除了nums[i]以外 所有itemd的乘积.
-
-#### Array, PreProduct
-- 分析普通做法, 了结到用从左到右一遍O(n), 从右到左一遍 O(n) 就可以
-- 注意carry的维护
-- 看第二个解答, 进一步简化了代码
-- PreProduct, 跟preSum的感觉有点像, 就是差一位.
-
-
-
----
-
-**194. [Total Hamming Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/Total%20Hamming%20Distance.java)**      Level: Medium      Tags: [Bit Manipulation]
-      
-time: O(n)
-space: O(1), 32-bit array
-
-给出Hamming Distance定义(bit format时候有多少binary diff), 求一串数字的hamming distance总和.
-
-#### Bit Manipulation
-- Bit题: 考验 bit >>, mask & 1, 还有对题目的理解能力
-- Put integers in binary, and compare each column:
-- for each `1`, ask: how many are different from me? all the `0`
-- `# of diffs at each bit-column = #ofZero * #ofOne `
-- 1. countZero[], countOne[]; 2. loop over nums and populate the two array
-
-##### 注意雷点
-- 问清楚: 10^9 < 2^31, we are okay with 32 bits
-- `最终的hamming distance 要从 [1 ~ 32] 哪个bit开始算起`? 取决于 `最长`的那个binary format: 但不用先去找bit length
-- 在做countZero, countOne时候, 都做32-bit; 最终做乘积的时候, 如果 `1` 或者 `0` 个数为零, 乘积自然为0.
-
-
-
-
----
-
-**195. [Smallest Subtree with all the Deepest Nodes.java](https://github.com/awangdev/LintCode/blob/master/Java/Smallest%20Subtree%20with%20all%20the%20Deepest%20Nodes.java)**      Level: Medium      Tags: [DFS, Divide and Conquer, Tree]
-      
-time: O(n)
-space: O(n)
-
-给一个tree, 按照题意找最一个node满足: 
-1. 这个node的subtree涵盖最深level的所有leaves. 
-2. 这个node必须是能找到的最deep那个
-
-条件2的需求是因为: root本身就是满足条件1的node, 还有很多Higher-level node也是如此, 所以要找那个deepest.
-
-
-#### DFS on tree
-- 分析题目, 思想是: 看到tree里面所有的leaves, 找到他们最deep的 common ancestor
-- Maintain a map <Node, maxChildDepth>
-- Recursively dfs: return deepest node that has all leaves by these comparisons:
-- 1. If left,right child same depth, return root: they need common ancestor
-- 2. If not same depth, return the one with larger depth
-- 被传送去上一个level的, 永远都是subtree里面符合题意的: the node containing all leaf nodes
-- Visit all nodes once O(n), space O(n)
-
-#### BFS
-- Find all leaves at deepest level
-- Use map to track each node-parent
-- Backtrack all nodes to find common ancestor
-
-
-
----
-
-**196. [Subarray Sum Equals K.java](https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Equals%20K.java)**      Level: Medium      Tags: [Array, Hash Table, PreSum, Subarray]
-      
-time: O(n)
-space: O(n)
-
-给一串数字, 找其中的 # of subarray的 where subararySum == k.
-
-#### Hash Table + PreSum
-- Hash Table two sum 思想, but `save frequency of current preSum`
-- map.get(priorSum) = the # of possible ways to reach k
-- Keep counting
-- O(n) time, O(n) space
+time: O (n) 
+space: O (n) 
+
+gives a string of numbers, find # of subarray where subararySum == k. 
+
+#### Hash Table + PreSum 
+-Hash Table two sum thought, but `save frequency of current preSum ` 
+-map.get (priorSum) = the # of possible ways to reach k 
+-Keep counting 
+-O (n) time, O (n) space
 
 ##### Detailed explanation
 - From the orignal presum solution: `target = preSum[j] - preSum[i - 1]`. Here: `k = sum - priorSum`, and reversely, `priorSum = sum - k`
@@ -4043,144 +4043,144 @@ space: O(n)
 
 #### PreSum, O(n^2)
 - move from starting point i = [0 ~ n -1] and define range = [i ~ j]
-- use presum to verify k: `preSum[j] - preSum[i - 1]`
-- O(n^2): `1 + 2 + 3 + 4 ... + n ~= O(n^2)`
+-use presum to verify k: `preSum [j]-preSum [i-1]` 
+-O (n ^ 2): `1 + 2 + 3 + 4 ... + n ~ = O (n ^ 2)` 
 
 
 
 
 ---
 
-**197. [Simplify Path.java](https://github.com/awangdev/LintCode/blob/master/Java/Simplify%20Path.java)**      Level: Medium      Tags: [Stack, String]
+** 197. [Simplify Path.java] (https://github.com/awangdev/LintCode/blob/master/Java/Simplify%20Path.java) ** Level: Medium Tags: [Stack, String] 
       
-time: O(n)
-space: O(n)
+time: O (n) 
+space: O (n) 
 
-给一个path, simplify成最简单形式. 注意考虑edge case
+gives a path, simplify to the simplest form. Note that consider edge case 
 
-#### Stack
-- 理解unix path 的情况, 不懂得要问: 
-- 1. `.` 代表current directory, 可以忽略. 
-- 2. `../` 表示previous level. 
-- 3. double slash 可以忽略.
-- 4. empty string 要output `/`
-- 最终就是用stack (`上一个加进去的item, 用来备选pop() out`), 遇到 `../` pop()掉上一个加上去的item, 其余加进stack
-- 最终用 '/' 把所有item连接起来.
+#### Stack 
+-understand the situation of unix path, do not know how to ask: 
+-1. `.` stands for current directory, It can be ignored. 
+-2. `../` means the previous level. 
+-3. Double slash can be ignored. 
+-4. The empty string is output `/`-In the 
+end, the stack (`item added to the previous is used to prepare Select pop () out`), when you encounter `../` pop () drop the last added item, and add the rest to the stack 
+-finally use '/' to connect all items. 
 
 
 
 ---
 
-**198. [Convert Binary Search Tree to Sorted Doubly Linked List (extra space).java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List%20(extra%20space).java)**      Level: Medium      Tags: [Linked List, Stack, Tree]
+** 198. [Convert Binary Search Tree to Sorted Doubly Linked List (extra space) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to% 20Sorted% 20Doubly% 20Linked% 20List% 20 (extra% 20space) .java) ** Level: Medium Tags: [Linked List, Stack, Tree] 
       
-time: O(n)
-space: O(n)
+time: O (n) 
+space: O (n) 
 
-给一个BST, convert成 sorted doubly DoublyListNode.
+to a BST, convert into sorted doubly DoublyListNode. 
 
-#### Inorder Traversal, Linked List
-- 会iterative traverse Binary Search Tree（Stack && handle left-dig-down）
-- create Doubly-ListNode, 注意用一个dNode作为tail node of the list
+#### Inorder Traversal, Linked List 
+-will iterative traverse Binary Search Tree (Stack && handle left-dig-down) 
+-create Doubly-ListNode, note the use of a dNode as the tail node of the list 
 
-##### Iterative inorder traversal
-- 在check right node的事后，    
-- 不论right == null or != null, 每次都要强行move to right.    
-- 如果不node = node.right,     
-- 很可能发生窘境：       
-- node always  = stack.top(), 然后stack.top()一直是一开始把left 全部遍历的内容。所以就会infinite loop, 永远在左边上下上下。      
+#### # Iterative inorder traversal 
+-After checking the right node,     
+-regardless of 
+right == null or! = Null, you must move to right every     time.-If not node = node.right,-a      
+dilemma is likely to occur:       
+-node always = stack.top (), then stack.top () has always been the first to traverse all the left. So it will infinite loop, always up and down on the left.      
 
 
 
----
+--- 
 
-**199. [Binary Tree Zigzag Level Order Traversal.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.java)**      Level: Medium      Tags: [BFS, Stack, Tree]
+** 199. [Binary Tree Zigzag Level Order Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.java) ** Level: Medium Tags: [BFS, Stack, Tree] 
       
-time: O(n)
-space: O(n)
+time: O (n) 
+space: O (n) 
     
-#### Queue
-- 简单的level traversal.根据level奇数偶数而add到不同位子.
-- Option1: based on level % 2, insert to front/end of list
-- Option2: based on level, insert right/left of node into queue
+#### Queue 
+-Simple level traversal. Add to different positions according to level odd and 
+even.-Option1: based on level% 2, insert to front / end of list 
+-Option2: based on level, insert right / left of node into queue 
+
+
+
+--- 
+
+** 200. [Word Break.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Word% 20Break.java) ** Level: Medium Tags: [DP, Hash Table, Sequence DP] 
+       
+time: O (n ^ 2)
+space: O (n)
+
+Give a String word, and a dictionary, check whether the word can be split, and all substrings should be the words in the dictionary. 
+
+#### Sequence DP 
+-true / false problem, think about dp 
+-sub-problems: the first i Letters, is there a valid break 
+-check dp [j] && `if substring (j, i) valid`, for all j = [0 ~ i]-dp 
+= new boolean [n + 1]; dp [0] = to true; 
+- Goal: IF there IS AJ, `DP [J] == && to true Word [J, n-] in the iterate over dict` Need I = [0 ~ n-], Also J = [0, I]. 
+- Note Use set instead of list because contains () is used. 
+
+#### Previous notes 
+##### Method 2 (attempt4 code)     
+-Use the same DP as Word BreakII. 
+-valid [i]: record if i is valid from i to the end of the valid array. 
+
+##### Method 1: (attempt3 code)-function  
+, rst [i]: Can the inclusive string from [0 ～ i] be in the dict? Break to find it?      
+: rst [i] = true if (rst [i-j] && set.contains ( s.substring (i-j, i))); j in [0 ~ i]     
+-1. rst [i-j] records whether [0, ij] can be found in dict after break.     
+-2. If true, plus all remaining [ij, i] can be found in dict, then rst [i] = rst [0, i-j] && rst [ij, i] == true 
+-optimization: Find the longest string in dict and limit the increase of j. 
+
+
+
+
+--- 
+
+** 201. [Longest Increasing Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Subsequence.java) ** Level: Medium Tags: [Binary Search, Coordinate DP, DP, Memoization] 
+      
+time: O (n ^ 2) dp, O (nLogN) binary search 
+space: O (n) 
+
+unordered array, find the length of the longest rising (no continuous) array. First Do O (n ^ 2), and then O (nLogN)? 
+
+#### DP, double for loop, O (n ^ 2) -When  
+subsequence: no continuous, you can skip candidate
+considering the end of nums [i], at [0, i), dp [ How many counts in i-1] are less than nums [i] 
+-dp [i]: up to i (for all j in [0, i], record the max length of increasing subsequence 
+-max needs to be maintained globally: nums is out of order, nums [i] is also It may be a small value, so the end dp [i] is not the global max, but only the max for nums [i] 
+.-Because of this, each nums [i] must work with each nums [j] Compare, j < 
+i.-Dp [i] = Maht.max (dp [i], dp [j] + 1); j = [0, i-1]-time 
+complexity O (n ^ 2) 
+
+## ## O (nLogN)-Maintain 
+a list of increasing sequence 
+-This list is actually a base-line, recording the lowest increasing sequence. 
+-When we go through all nums, if it happens to rise, directly append 
+-if No rise, you should go to the list, find the smallest number that is just larger than new num, and replace it with num 
+-this completes the baseline. For example, for example, the replacement is just at the last element of the list, which is equivalent to putting the peak It has fallen, then the other numbers may continue to 
+rise.- The proof of 'maintaining the baseline is an increasing number series', I haven't thought about it carefully. 
 
 
 
 ---
 
-**200. [Word Break.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Break.java)**      Level: Medium      Tags: [DP, Hash Table, Sequence DP]
+** 202. [Best Time to Buy and Sell Stock with Transaction Fee.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock % 20with% 20Transaction% 20Fee.java) ** Level: Medium Tags: [Array, DP, Greedy, Sequence DP, Status DP] 
       
-time: O(n^2)
-space: O(n)
+time: O (n) 
+space: O (n), O (1) rolling array and 
 
-给一个String word, 和一个字典, 检查是否word可以被劈开, 而所有substring都应该是dictionary里面的words.
+Stock Like II, the sale of infinite, you must first buy sell additional conditions: each sell transaction to add a sum Fee.. 
 
-#### Sequence DP
-- true/false problem, think about dp
-- 子问题: 前i个字母, 是否可以有valid break
-- 检查dp[j] && `if substring(j, i) valid`, for all j = [0 ~ i]
-- dp = new boolean[n + 1]; dp[0] = true;
-- goal: if there is a j,  `dp[j] == true && word[j, n] in dict`. Need iterate over i = [0 ~ n], also j = [0, i]
-- 注意, 用set代替list, 因为要用 contains().
-
-#### Previous notes
-##### 方法2(attempt4 code)    
-- 与Word BreakII用同样的DP。
-- valid[i]: 记录从i到valid array末尾是否valid.
-
-##### 方法1:（attempt3 code）
-- state,rst[i]: 从[0～i] inclusive的string是否可以在dict中break开来找到？      
-- function: rst[i] = true if (rst[i - j] && set.contains(s.substring(i - j, i))); j in[0~i]     
-- 1. rst[i - j] 记录的是[0, i-j]这一段是否可以break后在dict找到。     
-- 2. 若true，再加上剩下所有[i-j, i]都能在dict找到，那么rst[i] = rst[0, i - j] && rst[i-j, i] == true
-- 优化：找dict里面最长string, 限制j的增大。
-
-
-
-
----
-
-**201. [Longest Increasing Subsequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Subsequence.java)**      Level: Medium      Tags: [Binary Search, Coordinate DP, DP, Memoization]
-      
-time: O(n^2) dp, O(nLogN) binary search
-space: O(n)
-
-无序数组, 找最长的上升(不需要连续)数组 的长度. 先做O(n^2), 然后可否O(nLogN)?
-
-#### DP, double for loop, O(n^2)
-- 找subsequence: 不需要continous, 可以skip candidate
-- 考虑nums[i]结尾的时候, 在[0, i), dp[i - 1] 里count有多少小于nums[i]
-- dp[i]: 到i为止 (对于所有 j in [0, i], 记录max length of increasing subsequence
-- max需要在全局维护: nums是无序的, nums[i]也可能是一个很小的值, 所以末尾dp[i]并不是全局的max, 而只是对于nums[i]的max.
-- 正因此, 每个nums[i]都要和每个nums[j] 作比较, j < i.
-- dp[i] = Maht.max(dp[i], dp[j] + 1); j = [0 , i - 1]
-- 时间复杂度  O(n^2)
-
-#### O(nLogN)
-- 维持一个list of increasing sequence
-- 这个list其实是一个base-line, 记录着最低的increasing sequence.
-- 当我们go through all nums的时候, 如果刚好都是上升, 直接append
-- 如果不上升, 应该去list里面, 找到最小的那个刚好大于new num的数字, 把它换成num
-- 这样就完成了baseline. 举个例子, 比如替换的刚好是在list最后一个element, 等于就是把peak下降了, 那么后面其他的数字就可能继续上升.
-- '维护baseline就是一个递增的数列' 的证明, 还没有仔细想.
-
-
-
----
-
-**202. [Best Time to Buy and Sell Stock with Transaction Fee.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee.java)**      Level: Medium      Tags: [Array, DP, Greedy, Sequence DP, Status DP]
-      
-time: O(n)
-space: O(n), O(1) rolling array
-
-跟Stock II 一样, 买卖无限, 需先买在卖. 附加条件: 每个sell transaction要加一笔fee.
-
-#### Sequence DP
-- 与StockII一样, dp[i]: represents 前i天的最大profit.
-- sell 的时候, 才完成了一次transaction, 需要扣fee; 而买入不扣fee.
-- model sell on dp[i] day (which depends on dp[i-1]) and each day can be sell/buy => add status to dp[i][status]
-- status[0] buy on this day, status[1] sell on this day
-- dp[i][0] = Math.max(dp[i-1][0], dp[i - 1][0] - prices[i]);
-- dp[i][1] = Math.max(dp[i-1][1], dp[i - 1][1] + prices[i] - fee);
+#### Sequence DP 
+- and StockII the same, dp [i]: i days ago represents the greatest Profit. 
+- When sell is completed, a transaction is completed and fee is deducted. Fee is not deducted when buying. 
+-model sell on dp [i] day (which depends on dp [i-1]) and each day can be sell / buy = > add status to dp [i] [status] 
+-status [0] buy on this day, status [1] sell on this day  
+-dp [i] [0] = Math.max (dp [i-1] [0 ], dp [i-1] [0]-prices [i]);
+-dp [i] [1] = Math.max (dp [i-1] [1 ], dp [i-1] [1] + prices [i]-fee);
 - init: dp[0][0,1] = 0; dp[1][1] = 0; dp[1][0] = - prices;
 - return dp[n][1]
 
@@ -4219,59 +4219,59 @@ space: O(1)
 
 有n个人, 其中有个人是celebrity, 满足条件 `Celeb knows nobody; Everyone else knows the celeb`. 找到celeb
 
-#### Understand the property
-- If brutly find celeb by comparing all possible pair: take complete O(n^2) handshakes.
-- Instead, we can perform pruning, or like survival mode:
-- 1. Assume a celeb = 0, and compare with all i = [1~ n-1]
-- 2. If `celeb candidate know i, set celeb = i` as the next candidate (ex: prev canddiate invalid when he knows i)
-- 3. For last standing celeb candidate: compare with all for validation
-- Why performing the last run of validation? There could be someone dropped out before we execute `know(celeb, i)`. 
+#### Understand the property 
+-We can greedy Ground, once fail one, immediately assume the next one is celeb candidate
+-If brutly find celeb by comparing all possible pair: take complete O (n ^ 2) handshakes. 
+-Instead, we can perform pruning, or like survival mode: 
+-1. Assume a celeb = 0, and compare with all i = [ 1 ~ n-1] 
+-2. If `celeb candidate know i, set celeb = i` as the next candidate (ex: prev canddiate invalid when he knows i) 
+-3. For last standing celeb candidate: compare with all for validation 
+-Why performing the last run of validation? There could be someone dropped out before we execute `know (celeb, i)`. 
 
-##### 思考逻辑
-- 先写出来[0 ~ n - 1], 最简单的方式 O(n^2) 检查, 记录每个人的状态.
-- 逐渐发现, 因为 celeb 谁都不会认识, 那么当任何candidate knows anyone, 他自身就不是celeb.
-- 我们可以greedy地, 一旦fail一个, 就立刻假设下一个是celeb candidate
-- 最终还是要检查一遍, 避免错漏.
-- 想一下happy case: 如果 celeb=0,  那么 know(celeb, i) 永远都是false, 然后 celeb一直保持0, 坚持到verify所有人.
+##### Thinking logic 
+-write it first [0 ~ n-1], the simplest way O (n ^ 2) check and record the status of each 
+person.- Gradually find out that because celeb will not know anyone, then when any candidate knows anyone, he is not celeb. 
+-In the end, it is necessary to check it again to avoid mistakes and omissions.
+-In the -Think about the happy case: if celeb = 0, then know (celeb, i) is always false, and then celeb remains 0, and persists until verify everyone. 
 
 
 
----
+--- 
 
-**205. [Sparse Matrix Multiplication.java](https://github.com/awangdev/LintCode/blob/master/Java/Sparse%20Matrix%20Multiplication.java)**      Level: Medium      Tags: [Hash Table]
+** 205. [Sparse Matrix Multiplication.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sparse%20Matrix%20Multiplication.java) ** Level: Medium Tags: [Hash Table] 
       
-time: O(mnk), where `m = A.row`, `n = B.col`, `k = A.col = B.row`
-space: O(1) extra
+time: O (mnk), where `m = A.row`,` n = B.col`, `k = A.col = B.row` 
+space: O (1) extra 
 
-给两个matrics, 做乘积. 注意, 是sparse matrix (特点: 很多0).
+gives two matrices, do the product. Note, yes sparse matrix (features: many 0). 
 
-#### Hash Table
-- Recall matric multiplication rules: result[i][j] = sum(A-row[i] * B-col[j])
-- `sparse matric: lots positions are zero`
-- 平白地写matric multiplication 没有意义, 重点就是optimization:
-- `optimization`: for A-zero-row, and B-zero-col, there is no need to calculate, just return 0.
-- 1. Find A-zero-rows and store in setA, same for setB
-- 2. during multiplication, reduce time complexity.
-- Base: O(mnk), where `m = A.row`, `n = B.col`, `k = A.col = B.row`
+#### Hash Table 
+-Recall matric multiplication rules: result [i] [j] = sum (A-row [i] * B-col [j]) 
+-`sparse matric: lots positions are zero` 
+-It doesn't make sense to write matric multiplication plainly, the point is optimization:
+-`optimization`: for A-zero-row, and B-zero-col, there is no need to calculate, just return 0. 
+#### Hash Table 
+-1. Find A-zero-rows and store in setA, same for setB
+-2 
+. during multiplication, reduce time complexity. -Base: O (mnk), where `m = A.row`,` n = B.col`, `k = A.col = B.row` 
 
-#### Matrices
-- 乘法规则: result[i][j] = sum(A-row[i] * B-col[j])
-- A column size == B row size. 并且: 计算顺序是iterate over A column size
+#### the Matrices 
+- product rule: Result [I] [J] = SUM (A-Row [I] * B-COL [J]) 
+- A column size and size == B Row: A calculation procedure is column size over the iterate 
 
 
 
----
+- - 
 
-**206. [Brick Wall.java](https://github.com/awangdev/LintCode/blob/master/Java/Brick%20Wall.java)**      Level: Medium      Tags: [Hash Table]
+** 206. [Brick Wall.java] (https://github.com/awangdev/LintCode/blob/master/Java/Brick%20Wall.java) ** Level: Medium Tags: [Hash Table] 
       
-time: O(mn)
-space: O(X), X = max wall width
+time: O (mn) 
+space: O (X), X = max wall width 
 
-给一面墙, 每一行是一行bricks. 用一条vertical line 扫描, 会vertically割开brink. 找到割开最少brick的那条线的x index.
+for a wall, each line is a line of bricks. Scanning with a vertical line will cut the bricks vertically. Find the x index of the line that cuts the least brick . 
 
-#### Hash Table
-- Find the vertical line (x-coordinate of the grid), where most gaps are found.
-- Each gap has (x,y) coordinate
+-Find the vertical line (x-coordinate of the grid), where most gaps are found. 
+-Each gap has (x, y) coordinate
 - Create `map<x-coordinate, #occurrance>`, and maintain a max occurance. 
 - 计算: x-coordinate: `x = 0; x += brick[i] width`
 - Eventually: min-crossed bricks = wall.lenght - maxOccurrance 
@@ -4296,27 +4296,27 @@ space: O(X), X = max wall width
 
 
 
----
+--- 
 
-**208. [Friends Of Appropriate Ages.java](https://github.com/awangdev/LintCode/blob/master/Java/Friends%20Of%20Appropriate%20Ages.java)**      Level: Medium      Tags: [Array, Math]
+** 208. [Friends Of Appropriate Ages.java] (https://github.com/awangdev/LintCode/blob/master/Java/Friends%20Of%20Appropriate%20Ages.java) ** Level: Medium Tags : [Array, Math] 
       
 
-#### Array, Math
-- 这个问题更在于问题本身的分析 (而且还有多余条件); 最终的for loop 也比较不standard.
-- People younger than 15 cannot make requests due to the first rule.
-- From the age of 15, people can make requests to the same age: a[i] * (a[i] - 1) requests.
+#### Array, Math 
+-This problem lies in the analysis of the problem itself (and there are redundant conditions); the final for loop is also less standard. 
+-People younger than 15 cannot make requests due to the first rule. 
+-From the age of 15, people can make requests to the same age: a [i] * (a [i]-1) requests. 
 - People can make requests to younger people older than 0.5 * i + 7: a[j] * a[i] requests.
-- The third rule is redundant as the condition is already covered by the second rule.
-- TODO: the approach.
+-The third rule is redundant as the condition is already covered by the second rule . 
+-TODO: the approach. 
 
 
 
----
+--- 
 
-**209. [Target Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Target%20Sum.java)**      Level: Medium      Tags: [DFS, DP]
+** 209. [Target Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Target%20Sum.java) ** Level: Medium Tags: [DFS, DP] 
       
 
-// 如何想到从中间initialize
+// How to think of initialize from the middle 
 
 
 
@@ -4339,164 +4339,164 @@ space: O(n)
 
 ---
 
-**211. [Contiguous Array.java](https://github.com/awangdev/LintCode/blob/master/Java/Contiguous%20Array.java)**      Level: Medium      Tags: [Hash Table]
+** 211. [Contiguous Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Contiguous%20Array.java) ** Level: Medium Tags: [Hash Table] 
       
 
-TODO: how aout without chaning the input nums?
+TODO: how aout without chaning the input nums? 
 
 
 
----
+--- 
 
-**212. [Line Reflection.java](https://github.com/awangdev/LintCode/blob/master/Java/Line%20Reflection.java)**      Level: Medium      Tags: [Hash Table, Math]
+** 212. [Line Reflection.java] (https://github.com/awangdev/LintCode/blob/master/Java/Line%20Reflection.java) ** Level: Medium Tags : [Hash Table, Math] 
       
-time: O(n)
-space: O(n)
+time: O (n) 
+space: O (n) 
+. When processing left == right, it is treated as two points. 
+-4. There is no sort in the set, but the check is done at the end When you need a sort list
 
-给一串点, 找是否有一个所有点中间的, 跟y-axis平行的中线.
+Give a list of points, find if there is a middle line in the middle of all the points, parallel to the y-axis. 
 
-#### Hash Table
-- 1. store in `Map<y, set<x>>`, 2. iterate over map, check head,tail against the mid point
-- 很好的细节题目:
-- 1. 除以2, 需要存double
-- 2. (问面试官)可以有重复的点! 所以track `set<x>`
-- 3. 处理 left==right时候, 就当做两个点来处理.
-- 4. 存进set里面没有sort, 但是最后做check的时候, 需要sort list
-- 时间: visit all nodes 两遍,  O(n)
+#### Hash Table 
+-1. store in `Map <y, set <x >>`, 2. iterate over map , Check head, tail Against the MID point 
+- nice detail Title: 
+- 1 divided by 2, need to save Double 
+- 2. (ask the interviewer) may duplicate points so SET `Track <X>`! 
+- time : visit all nodes twice, O (n) 
 
 
 
----
+--- 
 
-**213. [Insert Delete GetRandom O(1).java](https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Delete%20GetRandom%20O(1).java)**      Level: Medium      Tags: [Array, Design, Hash Table]
+** 213. [Insert Delete GetRandom O (1) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert% 20Delete% 20GetRandom% 20O (1) .java) ** Level: Medium Tags: [Array, Design, Hash Table] 
       
-time: O(1) avg
-space: O(n)
+time: O (1) avg 
+space: O (n) 
 
-#### Hash Table
-- 用`map<value, index> 来track value->index`, 用`list track index->value`
-- map查看value是否存在
-- list maintain 用来 insert/remove/random operations.
-- 特点: 一旦remove, 换到list结尾然后 `list.remove(list.size() - 1)`, 这样remove的cost更低. 
-- list.remove(object) 应该是要O(logn) 做一个search的.
+#### Hash Table 
+-Use `map < value, index> to track value-> index`, use `list track index-> ​​value` 
+-map to see if value exists 
+-list maintain is used for insert / remove / random operations. 
+-Features: Once , switch to the end of the list and (list.size () -1) `, so the cost of remove is 
+lower.- list.remove (object) should be a search by O (logn) 
 
 
 
----
+.---
 
-**214. [Number of Longest Increasing Subsequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Longest%20Increasing%20Subsequence.java)**      Level: Medium      Tags: [Coordinate DP, DP]
+** 214. [Number of Longest Increasing Subsequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Longest%20Increasing%20Subsequence.java) ** Level: Medium Tags : [Coordinate DP, DP] 
       
-time: O(n^2)
-time: O(n)
+time: O (n ^ 2) 
+time: O (n) 
 
-给一串 unsorted sequence, 找到长 increasing subsequence 的个数!
+gives a string of unsorted sequence and finds the number of long increasing subsequences! 
 
-#### Coordinate DP
-- 需要能够判断综合题, 分清楚情况和套路: combination of `longest subsequence` and `ways to do`, as well as global variable. 
-- len[i] (我们平时的dp[i]): 在前i个元素中, 最长的 increasing subsequence length;
-- count[i]: 在前i个元素中, 并且以 len[i]这个长度为准的 subsequence的 count. 或者: 在前i个元素中, ways to reach longest increasing subsequence.
-- `len[i] == len[j] + 1`: same length, but different sequence, so add all `count[i] += count[j]`
-- `len[i] < len[j] + 1`: 这就是更长的情况找到了, 那么有多少次 count[j] 有多少, count[i] 就有多少. 仔细想sequence: 长度增长了, 但是ways to reach i 没有增长.
-- 同样的判断需要用在 maxLen 和 maxFreq上:
-- 如果没有增长 maxLen 不变, maxFreq上面需要 +=count[i] (同一种长度, 多了更多的做法)
-- 如果maxLen 变长, maxFreq 也就是采用了 count[i] = count[j]
-- TODO: Is rolling array possible?
+#### Coordinate DP 
+-Need to be able to judge comprehensive questions and be clear Situation and routine: combination of `longest subsequence` and` ways to do`, as well as global variable. 
+-Len [i] (our usual dp [i]): in the first i elements, the longest incident subsequence length;  
+-count [i]: in the first i elements, and the count of the subsequence based on the length of len [i]. Or: in the first i elements, ways to reach longest increasing subsequence.
+-`len [i] == len [j] + 1`: same length, but different sequence, so add all` count [i] + = count [j] 
+`-` len [i] <len [j ] + 1`: This is where the longer case is found, then there are as many count [j] as there are count [i]. Think about sequence: the length has increased, but the way to reach i has not increased.
+-The same judgment needs to be used on maxLen and maxFreq:-If maxLen is 
+not increased, maxFreq needs + = count [i] (the same length, more ways) 
+-If maxLen becomes longer, maxFreq is also Count [i] = count [j] 
+-TODO 
+: Is rolling array possible? 
 
-#### 相关
-- 都是 Coordiate DP, DP的鼻祖家族:
-- Longest Increasing Subsequence (跟这道题的一部分一模一样)
-- Longest Continuous Increasing Subsequence (连续, 只check dp[i - 1])
-- Longest Increasing Continuous Subsequence I, II (Lintcode, II 是matrix)
+#### Related -Both are the originator of Coordiate DP, DP:-Longest 
+Increasing Subsequence (exactly the same as part of this question) 
+-Longest Continuous Increasing Subsequence (Continuous, only check dp [i-1]) 
+-Longest Increasing Continuous Subsequence I, II (Lintcode, II is matrix) 
 
 
 
----
+--- 
 
-**215. [Minimum Swaps To Make Sequences Increasing.java](https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Swaps%20To%20Make%20Sequences%20Increasing.java)**      Level: Medium      Tags: [Coordinate DP, DP, Status DP]
+** 215. [Minimum Swaps To Make Sequences Increasing.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Minimum%20Swaps%20To%20Make%20Sequences%20Increasing.java)** Level: Medium Tags: [Coordinate DP, DP, Status DP] 
       
 
 
-#### DP
-- 特点: 上一步可能是swaped也可能是fixed
-- 考虑A,B之间的现状: `A[i] > A[i - 1] && B[i] > B[i - 1]` 或者 `A[i] > B[i - 1] && B[i] > A[i - 1]`
-- 问题: 如何把这个状态变成合理的strick-increasing状态?
-- `A[i] > A[i - 1] && B[i] > B[i - 1]`: 1. 已经合理, 也不动.  2. [i], [i-1] 全部都swap
-- `A[i] > B[i - 1] && B[i] > A[i - 1]`, 交错开来, 所以调换[i], 或者[i-1]: 1. 换[i-1]. 2. 换[i]
-- 注意因为求min, 所以init value应该是 Integer.MAX_VALUE;
+#### DP 
+-Features: The previous step may be swaped or fixed
+-Consider the current situation between A and B: `A [i]> A [i-1] && B [i]> B [i-1]` or `A [i]> B [i-1] && B [i]> A [i-1] ` 
+-Question: How to turn this state into a reasonable strick-increasing state?-` 
+A [i]> A [i-1] && B [i]> B [i- 1] `: 1. It's reasonable and doesn't move. 2. [i], [i-1] All swap 
+-` A [i]> B [i-1] && B [i]> A [i- 1] `, staggered, so change [i], or [i-1]: 1. Change [i-1]. 2. Change [i] 
+-Note that since min is calculated, the init value should be Integer.MAX_VALUE ; 
 
 
 
----
+--- 
+for a Binary Tree, traverse all nodes, arranged in output order according to vertical order: List <List>
 
-**216. [Binary Tree Vertical Order Traversal.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Vertical%20Order%20Traversal.java)**      Level: Medium      Tags: [BFS, DFS, Hash Table, Tree]
+** 216. [Binary Tree Vertical Order Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Vertical%20Order%20Traversal.java) ** Level: Medium Tags : [BFS, DFS, Hash Table, Tree] 
       
-time: O(n)
-space: O(n)
+time: O (n) 
+space: O (n) The 
 
-给一个Binary Tree, traverse所有node, 按照vertial order 排列成output: List<List> 
 
-重点是: col里面有排序, 在higher level的排在前面; 如果node遇到collision在同一个位置: 根据他们的相对位置 先放left, 再放right
+key point is: there is sorting in col, it is ranked at the higher level; if node encounters collision in the same position: according to Their relative position is left first, then right 
 
-#### BFS
-- 应该比较好想: naturally level-traverse all nodes, add node to appropriate col list
-- Use min/max to track map keys, since the keys are continous
-- Map does not provide random access; unless map key is marked with sequence i = [min, max]
+#### BFS 
+-it should be more imaginative: naturally level-traverse all nodes, add node to appropriate col list 
+-Use min / max to track map keys, since the keys are continous 
+-Map does not provide random access; unless map key is marked with sequence i = [min, max] 
 
-#### DFS
-- 一开始很容易想到: enumerate一下, 先放curr node.val, 然后node.left.val, node.right.val. 非常简单
-- 但是最简单的方法有错: assume所有left subtree都 排在right subtree. 但是: right subtree可能先有一个lower-left-branch,  appear in a column first.
-- 所以还要preserve column list的order.
-- 这里我们用了 `Map<col, Node>` 来track col, Node 里面用了 `node.level`来track level (其实再一个map也可以)
-- 这样在结尾要sort,就会非常慢: Visit all nodes O(n) + O(logK) + O(KlogM), K = # of cols, M = # of items in col
-- 应该也是可以optimize map keys的, 反正都是continuous key
-
+#### DFS 
+-It is easy to think at first: enumerate it, put curr node.val first, then node.left.val , node.right.val. is very simple 
+-But the easiest way is wrong: assume that all left subtrees are ranked in the right subtree. However: right subtree may have a lower-left-branch, appear in a column first. 
+-So also reserve column list of the Order. 
+- here we use the `map <col, Node>` to track col, Node inside with a `node.level` to track level (in fact, then a map can be) 
+- so in the end you want to sort, it will be very Slow: Visit all nodes O (n) + O (logK) + O (KlogM), K = # of cols, M = # of items in col 
+- It should also be possible to optimize map keys. Anyway, they are continuous keys 
 
 
 
 
----
 
-**217. [Populating Next Right Pointers in Each Node II.java](https://github.com/awangdev/LintCode/blob/master/Java/Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.java)**      Level: Medium      Tags: [DFS, Tree]
+--- 
+
+** 217. [Populating Next Right Pointers in Each Node II.java] (https://github.com/awangdev/LintCode/blob/master/Java /Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.java)** Level: Medium Tags: [DFS, Tree] 
       
-time: O(n)
-space: O(1)
+time: O (n) 
+space: O (1) 
 
-给一个binary tree, 用constant space link 所有所有node.next to same level next node.
+for a binary tree, use constant space link all all nodes.next to the same level next node. 
 
-#### DFS
-- 用constant space 也就是不可以BFS, 但是mention了用dfs stack space没问题 (提示啊!)
-- 1. link leftChild -> rightChild
-- 2. resolve root.rightMost child -> first possible root.next.left/right child
-- 3. dfs connect(rightChild), connect(leftChild)
-- Each level should be fully linked from left side, so every reach to parent will have valid path or end.
-
-#### Trick
-- 1. 处理 nextNode -> next -> next ...的case: 找到第一个有child的next node才可以罢休. 这个case很容易miss
-- 2. 我们的假设是, 上一个level的所有node都应该是linked, 那么在dfs时候, 就应该先connect(root.right). 右孩子的全处理完毕, 那么trick1才可以施行.
-
-
-
----
-
-**218. [Search in Rotated Sorted Array.java](https://github.com/awangdev/LintCode/blob/master/Java/Search%20in%20Rotated%20Sorted%20Array.java)**      Level: Medium      Tags: [Array, Binary Search]
-      
-time: log(n)
-space: O(1)
-
+#### DFS 
+-using constant space is not BFS, but it is fine to use dfs stack space (mention!) 
+-1. link leftChild-> rightChild
+-2. resolve root.rightMost child-> first possible root.next.left / right child 
+-3. dfs connect (rightChild), connect (leftChild)-Each 
+level should be fully linked from left side, so every reach to parent will have valid path or 
 #### Binary Search
-- 关键点, 是找到 [mid]是在左边/还是右边的continous increasing subarray: 比较 `A[start] < A[mid]`
-- 在两个section 里面分别讨论 target 的位置     
-- 1. `nums[start] < nums[mid]`: start是从index=0开始的, 那就说明 `mid在前半段`
-- `start<target<mid`: target 在这个section里面, end = mid;
-- `target > mid`: start = mid;
-- 2. `nums[start] > nums[mid]`: start是从index=0开始的, 那就说明 `mid在后半段`
-- `mid < target < end`: start = mid;
-- `target < mid`: end = mid;   
+ 
+# ### Trick
+-1. Handle the case of nextNode-> next-> next ...: find the first next node with child. This case is easy to miss 
+-2. Our assumption is that all nodes at the previous level are It should be linked, then in dfs, you should connect (root.right) first. After the right child is completely processed, then trick1 can be implemented. 
 
-#### binary search break point, 然后继续binary search target
-- 1. binay search break point     
-- 2. binary search target      
-- 注意等号，在判断target在前半段还是后半段：if (A[p1] <= target && target <= A[breakPoint])      
+
+
+--- 
+
+** 218. [Search in Rotated Sorted Array.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20in%20Rotated%20Sorted%20Array.java) ** Level: Medium Tags: [Array, Binary Search] 
+      
+time: log (n) 
+space: O (1) 
+
+-The key point is to find the continuous increasing subarray of [mid] on the left / right: compare `A [start] <A [mid]`-discuss 
+the position of the target in two sections      
+-1. `nums [start] <nums [mid]`: start starts at index = 0, which means that `mid is in the first 
+half`-` start <target <mid`: target is in this section, end = mid; 
+- `target> mid`: start = mid; 
+half`-2. `nums [start]> nums [mid]`: start starts at index = 0, That means `mid is in the second 
+half`-` mid <target <end`: start = mid; 
+-`target <mid`: end = mid;    
+
+#### binary search break point, then continue to binary search target 
+-1 binay search break point      
+-2. binary search target       
+-pay attention to the equal sign, in determining whether the target is in the first half or the second half: if (A [p1] <= target && target <= A [breakPoint])       
 
 
 
@@ -4504,99 +4504,99 @@ space: O(1)
 
 ---
 
-**219. [Find the Weak Connected Component in the Directed Graph.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Weak%20Connected%20Component%20in%20the%20Directed%20Graph.java)**      Level: Medium      Tags: [Union Find]
+** 219. [Find the Weak Connected Component in the Directed Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Weak%20Connected%20Component%20in%20the% 20Directed% 20Graph.java) ** Level: Medium Tags: [Union Find] 
       
 
-遍历 weak connected graph, 将结果存在 List<List<Node>>种.
+Iterates over weak connected graph and stores the results in List <List <Node >> .- 
+ 
+#### Union Find 
+-Two differences from the traditional UnionFind:
+1. Use Map <Integer, Integer> instead of int [], because The boundary of the graph node label is 
+not given.-2. When find (x), I did not update `parent [x] /map.put (x, ..)`. Because we eventually need to find this path. 
+-Cannot use traditional dfs: directed node cannot point to the previous point; all nodes must be traversed by using the method of "storing parent" 
 
-#### Union Find
-- 跟传统的UnionFind有两点不同:
-- 1. 用 Map<Integer, Integer> 代替 int[], 因为没有给出 graph node label的 boundary.
-- 2. find(x)时候, 没有去update `parent[x]/map.put(x, ..)`. 因为我们最终需要找到这个path.
-- 无法用传统dfs: directed node 无法point到上一个点; 必须用`存parent的方式把所有node遍历掉`
-
-#### Identify这是个union-find问题
-- 看到了weak component的形式： 一个点指向所有，那么所有的点都有一个公共的parent，然后就是要找出这些点。    
-- 为何不能从一个点出发，比如A，直接print它所有的neighbors呢:
-- 如果轮到了B点，那因为是directed,它也不知道A的情况，也不知道改如何继续加，或者下手。    
-- 所以，要把所有跟A有关系的点，或者接下去和A的neighbor有关系的点，都放进union-find里面，让这些点有Common parents.     
-- 最后output的想法：    
-- 做一个 map <parent ID, list>。    
-- 之前我们不是给每个num都存好了parent了嘛。    
-- 每个num都有个parent, 然后不同的parent就创造一个不同的list。   
-- 最后，把Map里面所有的list拿出来就好了。    
+#### Identify this is a union-find problem 
+-see the form of weak component: one point points to all, then all All points have a common parent, and then these points are to be found.    
+-Why ca n’t we start from a point, such as A, and print all its neighbors directly?-If it is 
+B's turn, then because it is directed, it does not know the situation of A, nor does it know how to continue to add, or start.    
+-So, put all points that are related to A, or points that are related to A's neighbor, into the union-find, so that these points have Common parents.      
+-The final output idea:     
+-Make a map <parent ID, list>.    
+-We didn't save parent for each num before.    
+-Each num has a parent, and then different parents create a different list.   
+-Finally, just take out all the lists in the map.     
+-init with <email, email> for all emails
 
 
 
 ---
 
-**220. [Accounts Merge.java](https://github.com/awangdev/LintCode/blob/master/Java/Accounts%20Merge.java)**      Level: Medium      Tags: [DFS, Hash Table, Hash Table, Union Find]
+** 220. [Accounts Merge.java] (https://github.com/awangdev/LintCode/blob/master/Java/Accounts%20Merge.java) ** Level: Medium Tags: [DFS, Hash Table, Hash Table , Union Find] 
       
 
-给一串account in format `[[name, email1, email2, email3], [name2, email,..]]`. 
+Give a string of account in format `[[name, email1, email2, email3], [name2, email, ..]]`. 
 
-要求把所有account merge起来 (可能多个record记录了同一个人, by common email)
+Require all accounts to be merged (maybe multiple records record the same person,? by common email) 
 
 
-#### Union Find
-- 构建 `Map<email, email parent>`, 然后再反向整合: parent -> list of email
-- init with <email, email> for all emails
-- 因为不同account可能串email, 那么把所有email union的时候, 不同account 的email也会被串起来
-- 最终: 所有的email都被union起来, 指向一个各自union的 parent email
-- UnionFind 的 parent map 可以反向输出所有  child under parent.
-- 同时要维护一个 <email -> account name> 的map, 最终用来输出.
+#### Union Find 
+-build `Map <email, email parent>`, and then integrate backwards: parent-> list of email 
+-because different accounts may string emails, then when you combine all emails, 
+Emails of different accounts will also be chained 
+-eventually: all emails are unionized , pointing to a parent email of each union -ParentFind of UnionFind can output all child under parents in reverse. 
+-Also maintain an < email- > account name> map, which is ultimately used for output. 
 
-#### Hash Table solution, passed but very slow
-- Definitely need iterate over accounts: merge them by email.
-- Account object {name, list of email}
-- map<email, account>
-- 1. iterate over accounts
-- 2. find if 'account' exist;  if does, add emails
-- 3. if not, add account to list and to map. map all emails to accounts.
-- output -> all accounts, and sort emails
-- space O(mn): m row, n = emails
-- time O(mn)
+#### Hash Table solution, passed but very slow 
+output.-Definitely need iterate over accounts: merge them by email. 
+-Account object {name, list of email} 
+- map <email, account> 
+-1. iterate over accounts 
+-2. find if 'account' exist; if does, add emails 
+-3. if not, add account to list and to map. map all emails to accounts. 
+-output- > all accounts, and sort emails 
+-space O (mn): m row, n = emails 
+-time O (mn) 
 
 
 
 ---
 
-**221. [Count of Smaller Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number.java)**      Level: Medium      Tags: [Binary Search, Lint, Segment Tree]
+** 221. [Count of Smaller Number.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number.java) ** Level: Medium Tags: [Binary Search, Lint, Segment Tree] 
       
 
-给一串数字, array size = n. 给一串query: 每个query是一个数, 目的找 count# items smaller than query element.
+gives a string of numbers, array size = n. Gives a string of queries: each query is a number, the purpose is to find count # items smaller than query element. 
 
 #### Segment Tree
-- 和平时的segment tree问题不同。 [0 ～ n] 代表实际数字: based on real value的segment tree.
-- Modify时，把array里面的value带进去，找到特定的位子, 然后count + 1. 
-- 最终在SegmentTree leaf上面全是array里面实际的数字。
-- node.count: 在node range里面的有多少个数字
+-The segment tree problem is different in peacetime. [0 ～ n] represents the actual number: segment tree based on real 
+value.-When modifying 
+, bring the value in the array to find a specific seat, and then count + 1. -Finally on the SegmentTree leaf is the actual array inside Numbers. 
+-node.count: how many numbers are there in the node range 
 
-##### right use of modify()
-- build() 只是 empty segment tree, 没有property
-- modify() 需要: 1. 找到left, update count+=1; 2. aggregate all parent when after returning
-- 所以每一个modify 都是在整个path上所有的node上 + count
+##### right use of modify () -build 
+() is only an empty segment tree, no property 
+-modify () requires: 1. find left, update count + = 1; 2. aggregate all parent when after returning 
+-so each modify is on all nodes on the entire path + count 
 
 ##### query trick
-- 在query前，给进去的start和end是： 0 ~ value-1.   
-- `value-1`: 找比自己所在range小1的range（那么自然而然地就不包括自己了），这样就找到了smaller number.   
+-Before the query, the start and end given are: 0 ~ value-1.    
+-`Value-1`: find a range that is 1 less than the range in which you are (so naturally you are not included), so you find it smaller number.    
 
-##### About other basic segment tree setup
-- [那么其他做过的SegmentTree是怎么样呢？]   
-- 那些构成好的SegmentTree(找min,max,sum)也有一个Array。但是构成Tree时候，随Array的index而构架。   
-- 也就是说，假如有Array[x,y,....]:在leaf,会有[0,0] with value = x. [1,1] with value = y. 
-- [但是这题]   
-- 构成时，是用actual value.也就是比如Array[x,y,....]会产生leaf:[x,x]with value = ..; [y,y]with value =...    
-- 其实很容易看穿:   
-- 若给出一个固定的array构成 SegmentTree，那估计很简单：按照index从0~array.lengh，leaf上就是[0,0] with value = x.
-- 若题目让构造一个空心SegmentTree, `based on value 0 ~ n-1 (n <= 10000)`, 然后把一个Array的value modify 进去。   
-- 这样八成是另外一种咯。
+##### About other basic segment tree setup  
+setup-[The other SegmentTree I have done is how is it? ]    
+-Those well-formed SegmentTrees (find min, max, sum) also have an Array. However, when constructing a Tree, it is structured with the index of the Array.   
+-that is, if there is Array [x, y, ....]: in leaf, there will be [0,0] with value = x. [1 , 1] with value = y.- 
+[But this question]    
+-When constructing, you use actual value. That is, for example, Array [x, y, ....] will produce leaf: [x, x] with value =. .; [y, y] with value =     
+...- 
+In fact, it is easy to see through:    -If a fixed array is formed to form SegmentTree, it is estimated to be simple: according to the index from 0 to array.lengh, the leaf is [0, 0] with value = 
+x.-If the title asks to construct a hollow SegmentTree, `based on value 0 ~ n-1 (n <= 10000)`, then modify the value of an Array into it.   
+-This 80% is another. 
 
 
 
 ---
-
-**222. [My Calendar I.java](https://github.com/awangdev/LintCode/blob/master/Java/My%20Calendar%20I.java)**      Level: Medium      Tags: [Array, TreeMap]
+ 
+** 222. [My Calendar I.java] (https://github.com/awangdev/LintCode/blob/master/Java/My%20Calendar%20I.java) ** Level: Medium Tags: [Array , TreeMap] 
       
 
 Given a list of interval as calendar items. Check if newly added calendar item is overlapping.
@@ -4681,197 +4681,197 @@ This problem can be solved with Merge sort concept, BST, Segment Tree and Binary
 kth largest in array
 
 #### PriorityQueue, MinHeap
-- Need to maintain k large elements, where the smallest will be compared and dropped if applicable: 
-- Maintain k elements with min value: consider using minHeap
-- add k base elements first
-- Maintain MinHeap: only allow larger elements (which will squzze out the min value)
-- Remove peek() of queue if over size
-- O(nlogk)
+-Need to maintain k large elements, where the smallest will be compared and dropped if applicable:
+-Find a low> pivot, high <pivot, and you can swap.    
+-Maintain k elements with min value: consider using minHeap 
+-add k base elements first 
+-Maintain MinHeap: only allow larger elements (which will squzze out the min value)-Remove 
+peek () of queue if over size 
+-O (nlogk) 
 
 
-#### Quick Sort
-- 用Quick Sort 里面partion的一部分
-- sort结束后是ascending的, 那么 n - k 就是第k大. 
-- partion的结果是那个low, 去找 low==nums.size() - k， 也就是倒数第K个。    
-- 没找到继续partion recursively.
-- sort的过程是排一个从小到大的list. (同样的代码还可以好xth smallest，mid变成x就好)
-- Steps:
-- 每个iteration, 找一个pivot,然后从low,和high都和pivot作比较。    
-- 找到一个low>pivot, high<pivot, 也就可以swap了。    
-- 得到的low就是当下的partion point了
-- Overall O(nlogN), average O(n) for this problem.
+# ### Quick Sort 
+-Use part of the Quick Sort partion 
+-after sorting is ascending, then n-k is the kth 
+largest.-The result of the partion is that low, find low == nums.size ()-k , Which is the penultimate K.    
+-Did not find continued partial recursively. 
+-The process of sorting is to sort a list from small to large. (The same code can also be xth smallest, mid becomes just x) 
+-Steps: 
+-For each iteration, find a pivot, then From low, and high are compared with pivot.    
+-The obtained low is the current partion point 
+-Overall O (nlogN), average O (n) for this problem. 
+
+
+
+---
+ 
+** 225. [Merge k Sorted Lists.java] (https://github.com/awangdev/LintCode /blob/master/Java/Merge%20k%20Sorted%20Lists.java)** Level: Medium Tags: [Divide and Conquer, Heap, Linked List, PriorityQueue] 
+      
+
+Give an array of ListNode, and connect all the nodes into one according to size. . 
+
+#### PriorityQueue 
+- the Iterative, the PQ to align the leading node list all. 
+- k lists need to remember the sort that has been well 
+- time: n * O (logk), where n = total node number, and PriorityQueue: logk, 
+-Note: 
+-1. Don't forget that customized priority requires a customized new Comparator <T> () 
+-2 
+. Given node may also have a null node, don't forget to check. 
+
+#### Divide and Conquer -always merge 2 list at a time 
+-3 branches: 
+-1. start == end 
+-2. start + 1 == end 
+-3. or start + 1 <end (recursive and keep merging)
+-T (k) = 2T (k / 2) + O (mk), where m = longest list length 
+-time complexity: O (nklogk)-TODO 
+: write the recursive code. 
+
+#### Followup 
+-If k is large What if I can't fit all k lists on one machine? 
+- If the Merge up very long, a fit how to do on a machine? 
+
+
+
+
+--- 
+
+** 226. [Merge k Sorted Arrays.java] (https://github.com/awangdev/LintCode/blob/master/Java/Merge%20k%20Sorted%20Arrays.java) ** Level: Medium Tags : [Heap, MinHeap, PriorityQueue] 
+      
+
+Same as merge k sorted list, use priorityQueue 
+
+#### Priority Queue 
+-Inspired by Merge k sorted list. Use PriorityQueue to store the k first element 
+-PriorityQueue needs to store units: Build a Class Node yourself to store val, x, y      
+-Because there is no 'next' pointer in the array, only x, y can be stored to push the next element
+index.-Not sure why `new PriorityQueue <> (Comparator.comparing (a-> a.val)) ; `is slower 
 
 
 
 ---
 
-**225. [Merge k Sorted Lists.java](https://github.com/awangdev/LintCode/blob/master/Java/Merge%20k%20Sorted%20Lists.java)**      Level: Medium      Tags: [Divide and Conquer, Heap, Linked List, PriorityQueue]
+** 227. [Heapify.java] (https://github.com/awangdev/LintCode/blob/master/Java/Heapify.java) ** Level: Medium Tags: [Heap, MinHeap] 
       
 
-给一个array of ListNode, 把所有node按照大小连成一条.
+Turn unsorted array into a min -heap array, where for each A [i], 
 
-#### Priorityqueue
-- Iterative, PQ来排列所有list的leading node.
-- 记得k lists 需要是已经sort好的
-- 时间：n*O(logk), where n = total node number, and PriorityQueue: logk, 
-- Note:
-- 1. 不要忘记customized priority需要一个customized new Comparator<T>()
-- 2. Given list 里面也可能有null node, 不要忘记查.
+A [i * 2 + 1] is the left child of A [i] and A [i * 2 + 2] is the right child of A [i]. 
 
-#### Divide and Conquer
-- always merge 2 list at a time
-- 3 branches: 
-- 1. start == end
-- 2. start + 1 == end
-- 3. or start + 1 < end (recursive and keep merging)
-- T(k) = 2T(k/2) + O(mk), where m = longest list length
-- time complexity: O(nklogk)
-- TODO: write the recursive code.
+## ## Heap 
+-Heap is not used much. You have to use it to understand it. Usually, the PriorityQueue of default gives a ready-made min-heap: 
+-All the corresponding elements are smaller than the curr element. 
+-The siftdown part of Heapify:-Only 
+from for (i = n / 2-1 ~ 0), but not from for (i = 0 ~ n / 2 -1): Must bloom in the middle and upward When running, can I ensure that my feet are in line with the rules of 
 
-#### Followup
-- 如果k很大，一个机器上放不下所有的k list怎么办？ 
-- 如果Merge起来的很长，一个机器上放不下怎么办？
+#### What does Heapify / SiftDown do?-For
+#### Min-heap's judgment rules: 
+-for each element A [i], we will get A [i * 2 + 1]> = A [i] and A [i * 2 + 2]> = A [ i]. 
+sure that the two children under the curr node in the heap datastructure and all the nodes below follow a rule
+-For example here, if it is min-heap, then the next two children will be older than themselves. If not, swap is required.    
+
+-In siftdown: small comparison between curr node and two children. If it is true that curr <child, get it, break while.    
+-But if curr is not smaller than child, then change the seat, and continue to check from the child's seat down.    
+
+
+
+--- 
+
+** 228. [Top K Frequent Elements.java] (https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent%20Elements.java) ** Level: Medium Tags : [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue] 
+      
+time: O (n) 
+space: O (n) 
+
+gives a string of numbers, finds the top k frequent element, and the time complexity is better than nLogN 
+
+#### HashMap + bucket List [] 
+-Use HashMap to store <num, freq> 
+-Reverse mapping <count, list unique element with that count> in a `bucket = new List [n]`. 
+-Size of the data structure will be m <= n
+-The bucket [count] preserves order from end of the array. 
+-then priorityQueue, (mLog (m)), where m is the total number of unique numbers
+-Simply loop over the reversed map, we can find the top k 
+items. 
+- 
+Solid O (n) 
+#### PriorityQueue, MinHeap -Use regualr priorityQueue to sort by frequency ascendingly 
+-the queue.peek () record has lowest frequency, which is replacable 
+-Always only maintain k elements in the queue, so sorting is O (logk) 
+-IMPORTANT: remember to `rst.add (0, x)` for desired ordering 
+-time faster than maxHeap: O (nlogk) 
+
+## ## PriorityQueue, MaxHeap 
+-The title has a reminder: it must be better than O (nLog (n)), which means that it must be O (n) 
+-the first thought is PriorityQueue, and it cannot be queue.offer on the fly 
+-then count, O (n), using HashMap 
+-eventually find top k, O (k) 
+-Overall time: O (n) + O (mLogm) + O (k) => O (n), if m is small enough 
+
+
+
+
+---
+ 
+** 229. [Ugly Number II.java ] (https://github.com/awangdev/LintCode/blob/master/Java/Ugly%20Number%20II.java) ** Level: Medium Tags: [DP, Enumeration, Heap, Math, PriorityQueue] 
+      
+time: O ( n) 
+space: O (n) 
+
+#### DP 
+-curr index is based on previous calculation: the min of all 3 previous factors 
+-O (n) 
+
+#### PriorityQueue, DP 
+-very brute. 
+-Each time you take out dp [i-1], regardless of whether it is thirty-seven or twenty-one, multiply it by 2,3,5. The result will be put in the priority queue for comparison. 
+-The last time is n * log (n * 3) 
+-Note: use long, use HashSet to ensure that there are no duplicates 
+-O (nlogn) 
 
 
 
 
 ---
 
-**226. [Merge k Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Merge%20k%20Sorted%20Arrays.java)**      Level: Medium      Tags: [Heap, MinHeap, PriorityQueue]
+** 230. [Inorder Successor in BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Inorder%20Successor%20in%20BST.java) ** Level: Medium Tags: [BST , Tree] 
       
 
-Same as merge k sorted list, use priorityQueue
+find the next one in the Inorder traversal rule. The 
 
-#### Priority Queue
-- 由Merge k sorted list启发。用PriorityQueue,存那k个首发element
-- PriorityQueue需要存储单位: 自己建一个Class Node 存val, x, y index.    
-- 因为array里没有 'next' pointer，只能存x,y来推next element
-- Not sure why `new PriorityQueue<>(Comparator.comparing(a -> a.val));` is slower
+main idea is to consider: 
+    1. If node.right == null, find the previous unprocessed node alone the inorder traversal path 
+    2. If node.right! = Null, successor must be in The node.right subtree 
+can be reduced to a few lines at the end, a very comprehensive BST problem: search, understanding of inorder traversal, and pits. 
+
+#### Short Recursive and Iterative without Stack 
+-Previous solution, we use stack to hold previous cached / unprocessed items: but do we need use catch to hold them? 
+-If moving left: `p.val <root.val`, then root (parent of left child) is a successor candidate, so save `rst = root`. 
+-If moving right or equal: `p.val> = root.val`, the successor has nothing to do with curr node, so just directly dive into root.right. 
+-Both iterative and recursive solution can be simplified as such. 
+
+
+#### Previous Iterative + stack 
+-Iteratively search
+-Still need stack to store previously unprocessed items along the path 
+
+#### Previous Recursive + Stack 
+-Draw an inorder graph and discover the rules. There are several cases for the successor (successor) of each node:    
+-1. node.right is a leaf In the end. Then    
+return.-2. set rightNode = node.right, but found that rightNode has a lot left children to    
+leaf.-3. For example, node.right == null, that is, node itself is a leaf, you need to look back at the top of the mountain to find Inorder The next in the traversal rule.   
+-Discovery: In fact, each layer puts the passing curr node in the stack. The top one is the successor that changed the return now :) Done. 
 
 
 
----
+--- 
 
-**227. [Heapify.java](https://github.com/awangdev/LintCode/blob/master/Java/Heapify.java)**      Level: Medium      Tags: [Heap, MinHeap]
+** 231. [Walls and Gates.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Walls%20and%20Gates.java)** Level: Medium Tags: [BFS, DFS] 
       
 
-Turn unsorted array into a min-heap array, where for each A[i], 
+Give a room 2D grid. Inside there is wall-1, door 0 , And empty space INF (Math.MAX_VALUE). 
 
-A[i * 2 + 1] is the left child of A[i] and A[i * 2 + 2] is the right child of A[i].
-
-#### Heap
-- Heap用的不多. 得用一下, 才好理解. 通常default 的PriorityQueue就是给了一个现成的min-heap:
-- 所有后面的对应element都比curr element 小。
-- Heapify里面的**siftdown**的部分:
-- 只能从for(i = n/2-1 ~ 0)， 而不能从for(i = 0 ~ n/2 -1): 必须中间开花，向上跑的时候才能确保脚下是符合heap规则的
-
-#### Heapify/SiftDown做了什么?
-- 确保在heap datastructure里面curr node下面的两个孩子，以及下面所有的node都遵循一个规律
-- 比如在这里，若是min-heap,就是后面的两孩子都要比自己大。若不是，就要swap。    
-
-#### min-heap的判断规律:
-- for each element A[i], we will get A[i * 2 + 1] >= A[i] and A[i * 2 + 2] >= A[i].
-- siftdown时：在curr node和两个child里面小的比较。如果的确curr < child, 搞定，break while.   
-- 但若curr 并不比child小，那么就要换位子，而且继续从child的位子往下面盘查。    
-
-
-
----
-
-**228. [Top K Frequent Elements.java](https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent%20Elements.java)**      Level: Medium      Tags: [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue]
-      
-time: O(n)
-space: O(n)
-
-给一串数字, 找到top k frequent element, 并且time complexity 要比nLogN要好
-
-#### HashMap + bucket List[]
-- Use HashMap to store <num, freq>
-- Reverse mapping <count, list unique element with that count> in a `bucket = new List[n]`. 
-- Size of the data structure will be m <= n
-- The bucket[count] preserves order from end of the array.
-- Simply loop over the reversed map, we can find the top k items.
-- Solid O(n)
-
-#### PriorityQueue, MinHeap
-- Use regualr priorityQueue to sort by frequency ascendingly
-- the queue.peek() record has lowest frequency, which is replacable
-- Always only maintain k elements in the queue, so sorting is O(logk)
-- IMPORTANT: remember to `rst.add(0, x)` for desired ordering
-- time faster than maxHeap: O(nlogk)
-
-#### PriorityQueue, MaxHeap
-- 题目有提醒: 必须beetter than O(nLog(n)), 也就是说明要O(n)
-- 首先想到就是PriorityQueue, 并且不能queue.offer on the fly
-- 那么就先count, O(n), using HashMap
-- 再priorityQueue, (mLog(m)), m是unique 数字的总量
-- 最终find top k, O(k)
-- Overall time: O(n) + O(mLogm) + O(k) => O(n), if m is small enough
-
-
-
-
----
-
-**229. [Ugly Number II.java](https://github.com/awangdev/LintCode/blob/master/Java/Ugly%20Number%20II.java)**      Level: Medium      Tags: [DP, Enumeration, Heap, Math, PriorityQueue]
-      
-time: O(n)
-space: O(n)
-
-#### DP
-- curr index is based on previous calculation: the min of all 3 previous factors
-- O(n)
-
-#### PriorityQueue, DP
-- 非常brutle的。
-- 每次把dp[i-1]拿出来，不管三七二十一，分别乘以2,3,5. 出来的结果放进priority queue做比较。
-- 最后时间是n*log(n*3)
-- 注意：use long, use HashSet确保没有重复
-- O(nlogn)
-
-
-
-
----
-
-**230. [Inorder Successor in BST.java](https://github.com/awangdev/LintCode/blob/master/Java/Inorder%20Successor%20in%20BST.java)**      Level: Medium      Tags: [BST, Tree]
-      
-
-找 Inorder traversal规则里的下一个.
-
-主要想法是考虑: 
-    1. 如果 node.right == null, 找上一个unprocessed node alone the inorder traversal path
-    2. 如果 node.right != null, successor 一定在这个node.right那个subtree里面
-最后竟然可以简化成几行, 非常全面的BST问题: 有search, 有对inorder traversal的理解, 还有坑.
-
-#### Short Recursive and Iterative without Stack
-- Previous solution, we use stack to hold previous cached/unprocessed items: but do we need use catch to hold them?
-- If moving left: `p.val < root.val`, then root (parent of left child) is a successor candidate, so save `rst = root`.
-- If moving right or equal: `p.val >= root.val`, the successor has nothing to do with curr node, so just directly dive into root.right.
-- Both iterative and recursive solution can be simplified as such.
-
-
-#### Previous Iterative + stack
-- Iteratively search
-- Still need stack to store previously unprocessed items along the path
-
-#### Previous Recursive + Stack
-- 画inorder图，发现规律.每个node的后继node(successor)有几种情况:   
-- 1. node.right 是个leaf到底了。那么就return.   
-- 2. set rightNode = node.right， 但发现rightNode has a lot left children to leaf.   
-- 3. 比如, node.right == null， 也就是node自己是leaf，要回头看山顶找Inorder traversal规则里的下一个。   
-- 发现：其实就是每层都把路过的curr node放在stack里，最上面的，就是当下改return的那个successor:) Done.
-
-
-
----
-
-**231. [Walls and Gates.java](https://github.com/awangdev/LintCode/blob/master/Java/Walls%20and%20Gates.java)**      Level: Medium      Tags: [BFS, DFS]
-      
-
-给一个room 2D grid. 里面有墙-1, 门0, 还有empty space INF(Math.MAX_VALUE). 
-
-对每个empty space而言, fill it with dist to nearest gate.
+For each empty space, fill it with dist to nearest gate.
 
 #### DFS
 - Form empty room: it can reach different gate, but each shortest length will be determined by the 4 directions. 
@@ -4879,197 +4879,197 @@ space: O(n)
 - hard to resue: we do not know the direction in cached result dist[i][j]
 - Option2. DFS on gate, and each step taken to each direction will +1 on the spot: distance from one '0'; 
 - Through dfs from all zeros, update each spot with shorter dist
-- Worst time: O(mn), where entre rooms[][] are gates. It takes O(mn) to complete the iteration. Other gates be skipped by `if (rooms[x][y] <= dist) return;`
+-Worst time: O (mn), where entre rooms [] [] are gates. It takes O (mn) to complete the iteration. Other gates be skipped by `if (rooms [x] [y] <= dist) return ; ` 
 
-#### BFS
-- Exact same concept. Init with `Queue<int[]> queue = new LinkedList<int[]>()`
+#### BFS 
+-Exact same concept. Init with` Queue <int []> queue = new LinkedList <int []> () ` 
 
 
 
 ---
 
-**232. [Convert Binary Search Tree to Sorted Doubly Linked List.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List.java)**      Level: Medium      Tags: [BST, DFS, Divide and Conquer, Linked List, Tree]
+** 232. [Convert Binary Search Tree to Sorted Doubly Linked List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List.java)** Level: Medium Tags: [BST, DFS , Divide and Conquer, Linked List, Tree] 
       
-time: O(n)
-space: O(1)
+time: O (n) 
+space: O (1) The 
 
-题目描述起来有点复杂, 简而言之: 把 BST 转换成一个 sorted doubly linked list. (in-place)
+title is a bit complicated to describe, in short: convert BST into a sorted doubly linked list. (In-place) 
 
-#### Tree, In-order traversal
-- 平时做过convert BST to sored list: 画一下就理解, 其实就是in-order traversal
-- 只不过做的时候要小心地 doubly link them
-- 理解之后就简单了, traverse all nodes,  DFS 好做: `left, curr, right`
+## ## Tree, In-order traversal 
+-I usually do convert BST to sored list: I can understand it by drawing, it is actually in-order traversal
+-Just doubly link them when you 
+do it. 
+ 
+##### Topic special features 
+-use the Node {val, left, right} `from beginning to end, instead of opening a new doubley linked list class
+- After understanding, it is simple, traverse all nodes, DFS is easy to do: `left, curr, right` -The problem of extra space is because it requires create new DoublyLinkedNode class: different from `Convert Binary Search Tree to Sorted Doubly Linked List (extra space)`-requires 
+in-place: cannot recreate new node 
 
-##### 题目特殊特点
-- 自始至终用了同一个 `Node {val, left, right}`, 而并不是开一个新的doubley linked list class
-- extra space 的问题, 是因为它需要create new DoublyLinkedNode class: different from `Convert Binary Search Tree to Sorted Doubly Linked List (extra space)`
-- 要求in-place: 不能重新create new node
 
 
+--- 
 
----
-
-**233. [String to Integer (atoi).java](https://github.com/awangdev/LintCode/blob/master/Java/String%20to%20Integer%20(atoi).java)**      Level: Medium      Tags: [Math, String]
+** 233. [String to Integer (atoi) .java] (https: // github .com / awangdev / LintCode / blob / master / Java / String% 20to% 20Integer% 20 (atoi) .java) ** Level: Medium Tags: [Math, String] 
       
 
 #### String 
-- check sign, leading-0, overall size > 11, check max/min in Long format 
-- if passed all tests, parseInt()
+-check sign, leading-0 , overall size> 11, check max / min in Long format 
+-if passed all tests, parseInt () 
 
-#### regular expression
-- if (!str.matches("[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)")).  猛了一点
+#### regular expression 
+-if (! str.matches ("[+-]? (?: \\ d + (? : \\. \\ d *)? | \\. \\ d +) ")). It's a bit 
 
 
 
----
+tougher ---
 
-**234. [Clone Graph.java](https://github.com/awangdev/LintCode/blob/master/Java/Clone%20Graph.java)**      Level: Medium      Tags: [BFS, DFS, Graph]
+. ** 234 [Clone Graph.java] ( https://github.com/awangdev/LintCode/blob/master/Java/Clone%20Graph.java) ** Level: Medium Tags: [BFS, DFS, Graph] 
       
 
-给一个graph node, 每个node有list of neighbors. 复制整个graph, return new head node.
+to A graph node, each node has a list of neighbors. Copy the entire graph, return new head node. It is 
        
-实现起来就好像在crawl urls.
+implemented like crawl urls. 
 
-#### 思想
-- Use HashMap to mark cloned nodes.    
-- 先能复制多少Node复制多少. 然后把neighbor 加上
-- Use `map<oldNode, newNode>` to mark visited
+#### Idea 
+-Use HashMap to mark cloned nodes. 
+-How many nodes     can be copied first and how many Then add neighbor 
+-Use `map <oldNode, newNode>` to mark visited 
 
-#### DFS
-- Given graph node obj `{val, list of neighbor}`: copy the node and all neighbors
-- Mark visited using map<oldNode, newNode>
-- for loop on the each one of the neighbors: map copy, record in map, and further dfs
-- once dfs completes, add newNeighbor as neighbor of the new node (get to it via map)
-- 主要思想是: 一旦复制过了, 不必要重新复制
+#### DFS 
+-Given graph node obj `{val, list of neighbor}`: copy the node and all neighbors 
+-Mark visited using map <oldNode, newNode>-for 
+loop on the each one of the neighbors: map copy, record in map, and further dfs  
+-once dfs completes, add newNeighbor as neighbor of the new node (get to it via map)
+-The main idea is: once copied, there is no need to re-copy 
 
-#### BFS
-- Copy the root node, then copy all the neighbors. 
-- Mark copied node in map.
-- Use queue to contain the newly added neighbors. Need to work on them in the future.
+#### BFS 
+-Copy the root node , then copy all the neighbors. 
+-Mark copied node in map. 
+-Use queue to contain the newly added neighbors. Need to work on them in the future. 
 
 
 
----
+--- 
 
-**235. [Permutations.java](https://github.com/awangdev/LintCode/blob/master/Java/Permutations.java)**      Level: Medium      Tags: [Backtracking, DFS, Permutation]
+** 235. [Permutations. java] (https://github.com/awangdev/LintCode/blob/master/Java/Permutations.java) ** Level: Medium Tags: [Backtracking, DFS, Permutation] 
       
 
-#### Recursive: Backtracking
-- Given a remaining list: 取, 或者不取
-- always iterate over full `nums[]`, use list.contains() to check if item has been added.
-- Improvement: maintain list (add/remove elements) instead of 'list.contains'
-- time O(n!): visit all possible outcome
-- T(n) = n * T(n-1) + O(1)
+#### Recursive: Backtracking 
+-Given a remaining list: take, or not take 
+-always iterate over full `nums []`, use list.contains () to check if item has been added.- 
+Improvement: maintain list (add / remove elements) instead of 'list.contains' 
+- Time O (n-!): Visit All Possible outcome 
+- T (n-) = n-T * (. 1-n-) O + (. 1) 
 
-#### Iterative: Insertion
-- 插入法:
-- 1. 一个一个element加进去
-- 2. 每一次把rst里面的每个list拿出来, 创建成新list, 然后选位置加上new element
-- 3. 加新元素的时候, 要在list的每个位置insert, 最终也要在原始的list末尾加上new element
-- 还是O(n!), 因为rst insert O(n!)个permutations
-- 但是比dfs要快, 因该是因为 # of checks 少: 不需要check list.size(), 不需要maintain remaining list.
+#### the Iterative: insertion 
+- insertion method: 
+- 1. an element added to the list a
+-2. Each time you take out each list in rst, create a new list, and then select the position and add the new element 
+-3. When adding a new element, you must insert at each position of the list, and eventually you have to insert the original Add new element to the end of the list 
+-still O (n!), Because rst insert O (n!) Permutations 
+-but faster than dfs, because it is less # of checks: no need to check list.size (), No need to maintain remaining list. 
 
-#### Previous Notes
-- 用个queue，每次poll()出来的list, 把在nums里面能加的挨个加一遍
-- Time O(n!)
-- A bit slower, possibly because of the polling and saving the entire list every time
-
-
+#### Previous Notes 
+-Use a queue, each time the list of the poll (), add each one that can be added in nums 
+-Time O (n!) 
+-A bit slower, possibly because of the polling and saving the entire list every time 
 
 
----
 
-**236. [One Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/One%20Edit%20Distance.java)**      Level: Medium      Tags: [String]
+
+--- 
+
+** 236. [One Edit Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/One%20Edit%20Distance.java ) ** Level: Medium Tags: [String] 
       
 
-如果S, T只用一个operation就能变成相等, return true.
+If S, T can become equal with only one operation, return true. 
 
-#### Edit: 删除，增加，和替换
-- 换完之后，理论上换成的String 就应该全等
-- for loop, 一旦找到不一样的char, 就判断那三种可能性: insert/delete/replace
-- insert/delete 对于2个string来说, 效果是类似的
-- O(n)
+#### Edit: Delete, add, and replace 
+-after the replacement , theoretically replaced by String should be congruent
+-For loop, once different chars are found, judge the three possibilities: insert / delete / replace 
+-insert / delete For 2 strings, the effect is similar 
+-O (n)
+-See #### Based on 3Sum
 
 
 
----
+--- 
 
-**237. [4Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/4Sum.java)**      Level: Medium      Tags: [Hash Table]
+** 237. [4Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/4Sum.java) ** Level: Medium Tags: [Hash Table] 
       
 
-#### Based on 2sum
-- 1. 利用2Sum的原理，把4Sum分为连个2Sum。左一个pair,右一个pair，每个pair里面放2个数字。   
-- 2. 以一个点，i，作为分界口，也要列举出所有i之前的pair,作为基础。   
-- 3. 再尝试从所有i+1后面,找合适的2nd pair。   
-- Time: O(n^2 * x), where x = # of candidates, still slow
-- 可以用HashSet<List>, 可以直接比较list里面每一个元素, 保证set不重复.
-- Previous Notes: 在造class Pair时候，要做@override的function: hashCode(), equals(Object d). 平时不太想得起来用。
-- 参见 http://lifexplorer.me/leetcode-3sum-4sum-and-k-sum/    
-
-#### Based on 3Sum
-- 3Sum外面再加一层. 参考3Sum. 时间O(n^3)。 但此方法在k-sum时候，无疑过于费时间. O(n^k)
-
-
-
+#### Based on 2sum 
+-1. Using the principle of 2Sum, 4Sum is divided into 2Sum. A pair on the left and a pair on the right. Put 2 numbers in each pair.   
+-2. Take a point, i, as the boundary, and also list all pairs before i as the basis.   
+-3. Then try to find the appropriate 2nd pair from behind all i + 1.   
+-Time: O (n ^ 2 * x), where x = # of candidates, still slow 
+-You can use HashSet <List>, you can directly compare each element in the list to ensure that the set is not duplicated. 
+-Previous Notes: Creating classes When pairing, you need to do @ override's function: hashCode (), equals (Object d). Usually I don't think of it.  
+http://lifexplorer.me/leetcode-3sum-4sum-and-k-sum/-Add     
 ---
 
-**238. [Redundant Connection.java](https://github.com/awangdev/LintCode/blob/master/Java/Redundant%20Connection.java)**      Level: Medium      Tags: [BFS, DFS, Graph, Tree, Union Find]
+-Add another layer outside 3Sum. See 3Sum. Time O (n ^ 3). But this method is undoubtedly too time-consuming in k-sum. O (n ^ k) 
+
+
+
+
+** 238. [Redundant Connection.java] (https://github.com/awangdev/LintCode/blob/master/Java/Redundant % 20Connection.java) ** Level: Medium Tags: [BFS, DFS, Graph, Tree, Union Find] 
       
 
-#### unionFind
-- keyword: tree has no `cycle`.
-- 一旦两个node在edge中出现, 并且parent相同, 说明这两个node不union, 也在同一个tree里面, 所以可以break them.
+#### unionFind 
+-keyword: tree has no `cycle`. 
+-Once two nodes appear in the edge, and The parent is the same, indicating that the two nodes are not union and are also in the same tree, so you can break them. 
 
-#### Graph, DFS
-- Add graph using adjacent list, and verify cycle alone the way
-- IMPORTANT: use `pre` node in dfs to prevent backward dfs
-- similar to `Graph Valid Tree` where it validates cycle and also needs to validate if all nodes are connected
+#### Graph, DFS 
+-Add graph using adjacent list, and verify cycle alone the way 
+-IMPORTANT: use `pre` node in dfs to prevent backward dfs 
+-similar to `Graph Valid Tree` where it validates cycle and also needs to validate if all nodes are connected 
 
-#### BFS
-- same concept as DFS, find first redundant edge that alreay exists in graph map.
+#### BFS 
+-same concept as DFS, find first redundant edge that alreay exists in graph map .
 
 
 
----
+--- 
+-Another union-find, using hashmap :
 
-**239. [Graph Valid Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Graph%20Valid%20Tree.java)**      Level: Medium      Tags: [BFS, DFS, Graph, Union Find]
+** 239. [Graph Valid Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Graph%20Valid%20Tree.java) ** Level: Medium Tags: [BFS, DFS, Graph, Union Find] 
       
 
-给一个数字n代表n nodes, marked from 1 ~ n, 和一串undirected edge int[][]. 
+Give a number n for n nodes, marked from 1 ~ n, and a string of undirected edge int [] []. 
 
-检查这些edge是否能合成一个 valid tree
+Check if these edges can form a valid tree 
 
-#### Union Find
-- 复习Union-Find的另外一个种形式, track union size: tree does not have cycle, so eventually union size should == 1
-- 1. 查找2个元素是不是在一个union里面。如果不在，false. 如果在，那就合并成一个set,共享parent.   
-- 2. 验证cycle: `find(x) == find(y) => cycle`: new index has been visited before
-- 存储的关键都是：元素相对的index上存着他的root parent.    
-- 注意: 结尾要检查, 是否只剩下1个union: Tree必须连接到所有给出的node.
-- 另一个union-find, 用hashmap的:
-- http://www.lintcode.com/en/problem/find-the-weak-connected-component-in-the-directed-graph/
+#### Union Find 
+-Review Union-Find Another form of the track union size: tree does not have cycle, so eventually union size should == 1-1 
+. Find if 2 elements are in a union. If it is not, false. If it is, then merge into a set and share the parent.    
+-2. Verify cycle: `find (x) == find (y) => cycle`: new index has been visited before 
+-the key of storage are: elements relative index kept on his parent root.     
+- Note: to check the end, if only one union: Tree must be connected to all given the Node. 
+- http://www.lintcode.com / en / problem / find-the-weak-connected-component-in-the-directed-graph /
 
-#### DFS
-- Very similar to `Redundant Connection`
-- Create adjacent list graph: Map<Integer, List<Integer>>
-- 检查: 
-- 1. 是否有cycle using dfs, check boolean[] visited
-- 2. 是否所有的node全部链接起来: validate if all edge connected: # of visited node should match graph size
-- IMPORTANT: use `pre` node to avoid linking backward/infinite loop such as (1)->(2), and (2)->(1)
+-http //www.lintcode.com/en/problem/find-the-weak-connected-component-in-the-directed-graph/ #### DFS 
+-Very similar to `Redundant Connection` 
+-Create adjacent list graph: Map <Integer, List <Integer >> 
+-Check: 
+-1. Whether there is cycle using dfs, check boolean [] visited 
+-2. Whether all nodes are linked: validate if all edge connected: # of visited node should match graph size 
+-IMPORTANT: use `pre` node to avoid linking backward / infinite loop such as (1)-> (2), and (2)-> (1) 
 
-#### BFS
-- (还没做, 可以写一写)
-- 也是检查: 1. 是否有cycle, 2. 是否所有的node全部链接起来
+#### BFS- 
+(Not done yet, you can (Write and write) 
+-also 
+check: 1. whether there is a cycle, 2. whether all nodes are linked 
 
 
 
----
-
-**240. [The Maze.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Maze.java)**      Level: Medium      Tags: [BFS, DFS]
+--- 
+** 240. [The Maze.java] (https://github.com/awangdev/LintCode/blob /master/Java/The%20Maze.java)** Level: Medium Tags: [BFS, DFS] 
       
 
-#### BFS
-- BFS on coordinates
-- always attempt to move to end of border
+#### BFS 
+-BFS on coordinates 
+-always attempt to move to end of border
 - use boolean[][] visited to alingn with BFS solution in Maze II, III, where it uses Node[][] to store state on each item.
 
 
@@ -5091,71 +5091,71 @@ space: O(1)
 **242. [Predict the Winner.java](https://github.com/awangdev/LintCode/blob/master/Java/Predict%20the%20Winner.java)**      Level: Medium      Tags: [DP, MiniMax]
       
 
-Detailed in `Coins in a Line III`
-
-
-
----
-
-**243. [Group Shifted Strings.java](https://github.com/awangdev/LintCode/blob/master/Java/Group%20Shifted%20Strings.java)**      Level: Medium      Tags: [Hash Table, String]
-      
-
-
-#### Convert to orginal string
-- shit by offset. `int offset = s.charAt(0) - 'a';`
-- increase if less than 'a': `if (newChar < 'a') newChar += 26;`
-
-#### Previous notes
-- 相同shift规则的string, 能被推算到同一个零起始点，就是共同减去一个char,最后就相等。以此作为key，用HashMap。一目了然。
-- 记得根据题目意思，一开始要String[] sort一下。
-
-
-
----
-
-**244. [Delete Digits.java](https://github.com/awangdev/LintCode/blob/master/Java/Delete%20Digits.java)**      Level: Medium      Tags: [Greedy, Priority Queue]
-      
-
+Detailed in `Coins in a Line III` 
 #### Priority Queue
-- TODO: parse into node(index, digitValue)
-- find the top k, and remove from char array
-- O(nlogn) time
-
-#### Greedy
-- 数位靠前的，权值更大. 所以硬来把靠前的相对更大的（跟following digit相比）去掉。
 
 
 
 ---
 
-**245. [Flatten 2D Vector.java](https://github.com/awangdev/LintCode/blob/master/Java/Flatten%202D%20Vector.java)**      Level: Medium      Tags: [Design]
+** 243. [Group Shifted Strings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Group%20Shifted%20Strings.java) ** Level: Medium Tags: [Hash Table, String ] 
       
 
-Implement an iterator to flatten a 2d vector.
 
-Just move pointers carefully with next(), hashNext()
+#### Convert to orginal string 
+-shit by offset. `Int offset = s.charAt (0)-'a';` 
+-increase if less than 'a': `if (newChar <'a') newChar + = 26; ` 
 
-#### Basic Implementation using x, y corrdinate
-- 就是把2D list里面的element全部遍历一遍。
-- 跟一个nxn的matrix遍历，是没区别的拉; 所有来个x,y，把2d list跑一变。
-
-#### Always return item at index 0, and remove from list?
-- list 方便remove, 考虑吧reduce input vector (就像给的是linked list 一样)
+#### Previous notes 
+- Strings with the same shift rule can be calculated to the same zero starting point, that is, subtracting a char together, and finally equal. With this as the key, use HashMap. At a glance. 
+-Remember to sort String [] at the beginning according to the meaning of the title. 
 
 
 
----
+--- 
 
-**246. [The Spiral Matrix II.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Spiral%20Matrix%20II.java)**      Level: Medium      Tags: [Array]
+** 244. [Delete Digits.java] (https://github.com/awangdev/LintCode/blob/master/Java/Delete%20Digits.java) ** Level: Medium Tags: [Greedy, Priority Queue ] 
       
 
-#### Move forward till end
-- Similar concept as `The Maze`: keep walking until hit wall, turn back
-- fix direction `dx[direction % 4]`
+-TODO: parse into node (index, digitValue)-find 
+the top k, and remove from char array
+-O (nlogn) time 
+
+#### Greedy 
+-The higher the number, the greater the weight. So it is hard to remove the relatively higher one (compared to the following digit). 
+
+
+
+--- 
+
+** 245. [Flatten 2D Vector.java] (https://github.com/awangdev/LintCode/blob/master/Java/Flatten%202D%20Vector.java) ** Level: Medium Tags: [Design ] 
+      
+
+Implement an iterator to flatten a 2d vector. 
+
+Just move pointers carefully with next (), hashNext () 
+
+#### Basic Implementation using x, y corrdinate 
+-Iterates over all elements in the 2D list. 
+-Traversing with an nxn matrix is ​​the same as pulling it; all x, y, change the 2d list. 
+
+#### Always return item at index 0, and remove from list? 
+-List is convenient for remove, consider reduce input vector (as if it were a linked list) 
 
 
 
 ---
+
+** 246. [The Spiral Matrix II.java] (https://github.com/awangdev/LintCode/blob/master/Java/The%20Spiral%20Matrix%20II.java) ** Level: Medium Tags: [Array ] 
+      
+
+#### Move forward till end 
+-Similar concept as `The Maze`: keep walking until hit wall, turn back 
+-fix direction` dx [direction% 4] ` 
+
+
+
+--- 
 
 
 
@@ -5163,40 +5163,40 @@ Just move pointers carefully with next(), hashNext()
  
  
  
-## Hard (91)
-**0. [Count of Smaller Number before itself.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number%20before%20itself.java)**      Level: Hard      Tags: []
+## Hard (91) 
+** 0. [Count of Smaller Number before itself.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number%20before%20itself.java) ** Level: Hard Tags: [] Is 
       
-与Count of Smaller Number非常类似。以实际的value来构成segment tree，leaf上存（count of smaller number）。
+very similar to Count of Smaller Number. The actual value is used to form the segment tree, and the leaf is stored (count of smaller number). 
 
-Trick: 先Query，再modify.   
-每次Query时候，A[i]都还没有加入到Segment Tree 里面，而A[i+1,...etc]自然也还没有加进去。   
-那么就自然是coutning smaller number before itself.   
-刁钻啊！   
+Trick: Query first, then modify.    
+Each time Query, A [i] has not been added to the Segment Tree, and A [i + 1, ... etc] has not been added yet.   
+Then it is naturally coutning smaller number before itself.    
+Tricky ah!   
 
-另外注意：   
-在modify里面：多Check了root.start <= index 和  index <= root.end。 过去都忽略了。以后可以把这个也写上。   
-（其实是Make sense的，就是更加严格地check了index再 root.left 或者 root.right里面的站位）   
+Also note:   
+In modify: Check root.start <= index and index <= root.end. It was ignored in the past. You can also write this later.   
+(In fact, it is Make sense, that is, the index and root.left or root.right are checked more strictly)    
+
+
+
+--- 
+
+** 1. [Kth Smallest Sum In Two Sorted Arrays.java] (https: // github.com/awangdev/LintCode/blob/master/Java/Kth%20Smallest%20Sum%20In%20Two%20Sorted%20Arrays.java)** Level: Hard Tags: [] 
+      
+
+Use priority queue. Each time you expand the smallest, Shift. X + 1, or y + 1:    
+Because x and y are the smallest in Min at the moment. So the next smallest is either (x + 1, y), or (x, y + 1). 
+
+Just poll () one every time, just put 2 new candidates in. 
+Note that this approach will be repeated, for example the example (7,4) will appear twice. Block it with a HashSet. 
+
+Note that the uniqueness of HashSet can be solved by using an "x, y" string. 
 
 
 
 ---
-
-**1. [Kth Smallest Sum In Two Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Kth%20Smallest%20Sum%20In%20Two%20Sorted%20Arrays.java)**      Level: Hard      Tags: []
-      
-
-用priority queue. 每次把最小的展开，移位。分别x+1,或者y+1:   
-因为当下的Min里面x,y都是最小的。所以下一个最小的不是（x+1,y）,就是（x,y+1）。
-
-每次就poll（）一个，放2个新candidate进去就好了。
-注意，这样的做法会用重复，比如例子（7,4）会出现两次。用一个HashSet挡一下。
-
-注意，HashSet的唯一性，用一个"x,y"的string就可以代为解决。
-
-
-
----
-
-**2. [LFU Cache.java](https://github.com/awangdev/LintCode/blob/master/Java/LFU%20Cache.java)**      Level: Hard      Tags: [Design, Hash Table]
+ 
+** 2. [LFU Cache.java] (https://github.com/awangdev/LintCode/blob/master/Java/LFU%20Cache.java) ** Level: Hard Tags: [Design, Hash Table ]
       
 
 #### Hash Table
@@ -5215,1136 +5215,1136 @@ Trick: 先Query，再modify.
 
 
 
----
+--- 
 
-**3. [Prefix and Suffix Search.java](https://github.com/awangdev/LintCode/blob/master/Java/Prefix%20and%20Suffix%20Search.java)**      Level: Hard      Tags: [Trie]
+** 3. [Prefix and Suffix Search.java] (https://github.com/awangdev/LintCode/blob/master/Java/Prefix%20and%20Suffix%20Search.java) ** Level: Hard Tags : [Trie] 
       
 
 
 
----
+--- 
 
-**4. [Remove Node in Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Node%20in%20Binary%20Search%20Tree.java)**      Level: Hard      Tags: [BST]
+** 4. [Remove Node in Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Node%20in%20Binary%20Search% 20Tree.java) ** Level: Hard Tags: [BST] 
       
 
 方法1: Brutle一点。找到target和target的parent.    
-把target remove时，把target的children nodes 重新排列组成新的BST: inorder traversal, build tree based on inorder traversal list.
+When removing the target, rearrange the child nodes of the target to form a new BST: inorder traversal, build tree based on inorder traversal list. 
 
-方法2: 分析规律,先找到target和parent, 然后根据性质，把target remove时，移动children nodes, 保证还是BST。
+Method 2: Analyze the rules, find them first target and parent, then according to the nature, when removing the target, move the children nodes to ensure that it is still BST. 
 
 
 
----
+--- 
 
-**5. [Subarray Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20II.java)**      Level: Hard      Tags: [Array, Binary Search, Two Pointers]
+** 5. [Subarray Sum II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20II.java) ** Level: Hard Tags: [Array , Binary Search, Two Pointers] 
       
 
 
 
 ---
 
-**6. [k Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/k%20Sum.java)**      Level: Hard      Tags: [DP]
+** 6. [K Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/k%20Sum.java) ** Level: Hard Tags: [DP] 
       
 
-DP. 公式如何想到, 还需要重新理解.
+DP. How do formulas come to mind , Need to be re-understood. 
 
-dp[i][j][m]: # of possibilities such that from j elements, pick m elements and sum up to i. 
-i: [0~target]
+Dp [i] [j] [m]: # of possibilities such that from j elements, pick m elements and sum up to i. 
+I: [0 ~ target] 
 
-dp[i][j][m] = dp[i][j-1][m] + dp[i - A[j - 1]][j-1][m-1]
-            (i not included)   (i included)
+dp [i] [j] [ m] = dp [i] [j-1] [m] + dp [i-A [j-1]] [j-1] [m-1] 
+            (i not included) (i included) 
 
 
 
----
+--- 
 
-**7. [Copy Books.java](https://github.com/awangdev/LintCode/blob/master/Java/Copy%20Books.java)**      Level: Hard      Tags: [Binary Search, DP, Partition DP]
+* * 7. [Copy Books.java] (https://github.com/awangdev/LintCode/blob/master/Java/Copy%20Books.java) ** Level: Hard Tags: [Binary Search, DP, Partition DP] 
       
 
-给一串书pages[i], k个人, pages[i] 代表每本书的页数. k个人从不同的点同时开始抄书. 
+Give a series of books pages [i], k people, pages [i] represents the number of pages in each book. K people start to copy books from different points at the same time. 
 
-问, 最快什么时候可以抄完?
+Ask, when can I finish the fastest? 
 
-#### Partition DP
-- 第一步, 理解题目要求的问题: 前k个人copy完n本书, 找到最少的用时; 也可以翻译成: `n本书, 让k个人来copy, 也就是分割成k段`.
-- 最后需要求出 dp[n][k]. 开: int[n+1][k+1]. 
-- 原理:
-- 1. 考虑最后一步: 在[0 ~ n - 1]本书里, 最后一个人可以选择copy 1 本, 2 本....n本, 每一种切割的方法的结果都不一样
-- 2. 讨论第k个人的情况, 在 j = [0 ~ i] 循环. 而循环j时候最慢的情况决定 第k个人的结果(木桶原理): `Math.max(dp[j][k - 1], sum)`. 
-- 3. 其中: `dp[j][k-1]` 是 [k-1]个人读完j本书的结果, 也就是著名的`上一步`. 这里循环考虑的是第k个人不同的j种上一步 : )
-- 4. 循环的结果, 是要存在 dp[i][k] = Math.min(Math.max(dp[j][k - 1], sum[j, i]), loop over i, k, j = [i ~ 0])
-- Time: O(kn^2), space O(nk)
-
+#### Partition DP 
+-the first step, understand the problem required by the title: the first k people copy n books and find the least time; it can also be translated into: `n books, let k people copy, that is, split into k segments`.
+-Finally, dp [n] [k] is required. On: int [n + 1] [k + 1] 
+.-Principle: -1. 
+Consider the last step: in the book [0 ~ n-1], finally One can choose to copy 1 book, 2 books ...... n books, the results of each cutting method are different 
+-2. Discuss the situation of the kth person, loop in j = [0 ~ i]. And loop The slowest case at j determines the result of the kth person (barrel principle): `Math.max (dp [j] [k-1], sum)`. 
+-3. where: `dp [j] [k- 1] `is the result of [k-1] personally reading the j book, which is the famous` previous step`. Here the loop considers the different j previous steps of the kth person:) 
+-4. The result of the loop, Is to exist dp [i] [k] = Math.min (Math.max (dp [j] [k-1], sum [j, i]), loop over i, k, j = [i ~ 0] ) 
+-Time: O (kn ^ 2), space O (nk) 
+ 
 ##### Init
-- Init: dp[0][0] = 0, 0个人0本书
-- Integer.MAX_VALUE的运用:
-- 当 i = 1, k = 1, 表达式: dp[i][k] = Math.min(dp[i][k], Math.max(dp[j][k - 1], sum));
-- 唯一可行的情况就只有一种: i=0, k=0, 刚好 0 个人 copy 0 本书, dp[0][0] = 0.
-- 其他情况, i = 1, k = 0, 0 个人读 1本书, 不可能发生: 所以用Integer.MAX_VALUE来冲破 Math.max, 维持荒谬值.
-- 当 i=0, k=0 的情况被讨论时候, 上面的方程式才会按照实际情况计算出 dp[i][k]
-- 这道题的init是非常重要而tricky的
+-Init: dp [0] [0] = 0, 0 people 0 books 
+-Use of Integer.MAX_VALUE:-When 
+i = 1, k = 1 , Expression: dp [i] [k] = Math.min (dp [i] [k], Math.max (dp [j] [k-1], sum)); 
+-the only feasible case is only one Kind: i = 0, k = 0, exactly 0 people copy 0 books, dp [0] [0] = 0. 
+-In other cases, i = 1, k = 0, 0 people read 1 book, it is impossible to happen : So use Intege r.MAX_VALUE to break Math.max, maintaining absurd values.
+-When the case of i = 0, k = 0 is discussed, the above equation will calculate dp [i] [k] according to the actual situation 
+-the init of this problem is very important and tricky 
 
-##### 计算顺序
-- k个人, 需要一个for loop; 
-- k个人, 从copy1本书开始, 2, 3, ... n-1,所以 i=[1, n], 需要第二个for loop
-- 在每一个i上, 切割的方式可以有[0 ~ i] 中, 我们要计算每一种的worst time
+##### calculation Order 
+-k people, need a for loop; 
+-k people, starting with copy1 book, 2, 3, ... n-1, so i = [1, n], need a second for loop 
+-in each On i, the cutting method can be [0 ~ i], we have to calculate the worst time of each type 
 
-##### 滚动数组
-- [k] 只有和 [k - 1] 相关
-- Space: O(n)
+##### Scrolling array- 
+[k] Only related to [k-1] 
+-Space: O (n) 
 
-#### Binary Search
-- 根据: 每个人花的多少时间(time)来做binary search: 每个人花多久时间, 可以在K个人之内, 用最少的时间完成?
-- time variable的范围不是index, 也不是page大小. 而是[minPage, pageSum]
-- validation 的时候注意3种情况: 人够用 k>=0, 人不够所以结尾减成k<0, 还有一种是time(每个人最多花的时间)小于当下的页面, return -1
-- O(nLogM). n = pages.length; m = sum of pages.
+#### Binary Search 
+-According to: How much time does each person spend doing binary search: How long does each person spend, can it be completed in K people with the least time? 
+-The range of time variable is not index, It's not the page size. It's [minPage, pageSum] 
+attention to 3 cases when validating: people are enough k> = 0, there are not enough people, so the ending is reduced to k <0, and there is a time (the time spent by each person) is less than the current page, retur n -1
+-O (nLogM). N = pages.length; m = sum of pages. 
 
+
+
+
+--- 
+
+** 8. [Scramble String.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Scramble% 20String.java) ** Level: Hard Tags: [DP, Interval DP, String]-Give 
+      
+
+two strings S, T. Check if they are scramble string.-Scramble 
+string Definition: string can be split into binary tree Form, that is, cut into substrings;-After 
+rotating a node that is not a leaf, a new substring is formed, which is the scramble of the original string. 
+
+
+#### Interval DP Interval- 
+dimensionality reduction, segmentation, dp according to length. 
+-dp [i] [j] [k]: array S starts at index i, T starts at index j, is a substring of length k, is it a scramble string 
+
+##### Break down 
+-after everything in half, see Two cases:, or do not rotate the two halves. For these substrings, verify whether they are scrambled. 
+-The two halves without rotate division: S [part1] corresponds to T [part1] && S [part2] corresponds to T [part2].
+-Rotate the two halves: S [part1] corresponds to T [part2] && S [part2] corresponds to T [part1]. 
+
+##### Initialization 
+-len == 1, in fact, cannot be rotated, that is, S, Whether the corresponding index of T is equal to the characters. 
+-Initialization is very important. Very amazing, this initailization lays the foundation for DP, and the result is calculated by mathematical expressions. 
+-Input s1, s2 In the content, it is almost not used, but only used for initialization. 
+-More details, see the answer 
+
+
+ 
+---
+
+** 9. [Interleaving String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Interleaving 20String.java%) ** Level: Hard Tags: [DP, String] 
+      
+
+. dyad sequences DP, considered from the last point of 
+the end of split problems, and considering the correlation between s1, s2 subsequence. 
+
+seeking existence, Boolean 
+
+
+
+
+- - 
+
+** 10. [Edit Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Edit%20Distance.java) ** Level: Hard Tags: [DP, Double Sequence DP, Sequence DP, String]
+      
+time: O (MN) 
+Space: O (N) 
+
+two strings, A must be B, you can insert / delete / replace, find the smallest change operation count 
+
+#### Double Sequence  
+-Consider the index of the end of two strings? S [i], t [j]: If you need to make this Two characters are the same, it is possible to use the three operations given in the title: insert / delete / replace? 
+-First calculate the worst case, 3 operation count + 1; then compare the case of match.
+-Note, it is 0 in i or j When the step becomes another number, it can only be fully changed. 
+-In the first step, space time is O (MN), O (MN) 
+-rolling array optimization, space O (N) 
+
+##### Detail analysis 
+-insert: assume insert on s,? `#ofOperation = (s [0 ~ i] to t [0 ~ j-1]) + 1; 
+`-delete: assume delete on t, `#ofOperatoin = (s [ 0 ~ i-1] to t [0 ~ j]) + 1; 
+`-replace: replace both s and t,` #ofOperatoin = (s [0 ~ i-1] to t [0 ~ j-1]) + 1; ` 
+-dp [i] [j]? Represents the nature of two sequences:? S [0 ~ i]? The minimum operation count required to convert to s [0 ~ j] 
+-init: when i == 0, dp [0] [j] = j;? + j characters each time; Similarly, when j == 0, dp [i] [0] = i; 
+-and dp [i] [j] There are two cases to deal with: `s [i] == t [j]` or `s [i]! = t [j]`
+ 
+##### When initialize 
+-this kind of judgment depends on experience: if you know that initialization can be done together in a double for loop, then you can leave it as it is 
+-this belongs to `what is needed, initialize what`
+-When doing space optimization afterwards, you can easily do rolling array on 1st dimension 
+
+#### Search 
+-It can be done, but it is not recommended: this problem needs to find min count, not search / find all solutions, so search will It's more complicated to write, kill a chicken with a knife. 
+
+
+
+--- 
+
+** 11. [Distinct Subsequences.java] (https://github.com/awangdev/LintCode/blob/master/Java/Distinct%20Subsequences.java) ** Level : Hard Tags: [DP, String] 
+      
+
+Double Sequence DP: 
+0. DP size (n + 1): Find the result of the previous nth, then the dp array needs to open n + 1, because the end needs to return dp [n] [m] 
+1. Initialize dp [0] [j] dp [i] [0] in the for loop 
+2. Rolling array is optimized to O (N): If dp [i] [j] is in the for loop, it is a good replacement for curr / prev 
+
+
+
+--- 
+
+** 12. [Ones and Zeroes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Ones%20and%20Zeroes.java) ** Level: Hard Tags: [DP]
+      
+
+It is still Double Sequence, but consider the third state: the amount of string array given. 
+So a 3-dimensional array is opened. 
+
+If you use a scrolling array to optimize space, you need to put the for loop to be scrolled to the outermost, not the innermost. 
+Of course, this third bit of 
+
+definition is in which position of dp [] [] [], the problem is not big. In addition, pay attention to calcultete zeros and ones outside, saving time and complexity. 
+
+
+
+--- 
+
+** 13. [Word Break II .java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Break%20II.java) ** Level: Hard Tags: [backtracking, DFS, DP, Hash Table, Memoization] 
+      
+
+find Out all word break variations, given dictionary 
+
+using memoization: `Map <prefix, List <suffix variations >>` 
+
+#### DFS + Memoization 
+-Realize the input s expands into a tree of possible prefixes. 
+-We can do top-> bottom (add candidate + backtracking) OR bottom-> top (find list of candidates from subproblem, and cross-match)
+-DFS on string: find a valid word, dfs on the suffix. [NO backtraking in the solution]-DFS 
+returns List <String>: every for loop takes a prefix substring, and append with all suffix (result of dfs) 
+-IMPORANT : Memoization: `Map <prefix, List <suffix variations >>`, which reduces repeated calculation if the substring has been tried. 
+-Time O (n!). Worst case, permutation of unique letters: `s = 'abcdef .. .. '`, and` dict = [a, b, c, d, e, f ...] ` 
+
+#### Regular DPs 
+-Two DPs used together, solve the problem of timeout: when a invalid case' aaaaaaaaa 'occurs, isValid [] stops dfs from occuring 
+-1. isWord [i] [j], subString (i, j) exists in the dict? 
+-2. Use isWord to speed up isValid [i]: Can [i ~ end] find a reasonable solution from dict?      
+-View i from the end: Because we need to test isWord [i] [j], j> i, and we observe the interval [i, j];       
+-The part of j> i also needs to be considered, we also need to know isValid [0 ～ j + 1]. So isValid [x] is a DP indicating whether [x, end] is valid this time.     
+-i is from the end to 0, probably because it is considered that isWord [i] [j] is within [0 ~ n], so the numbers are reversed and the coordinates are easier to figure out.     
+-(Looking back at Word Break I, there is also a method of coordinate inversion) 
+-3. dfs uses isValid and isWord to make ordinary DFS. 
+
+#### Timeout Note 
+-Regarding regular solution: If you do not do memoization or dp, 'aaaaa .... aaa' will repeatedly calculate the same substring 
+-Regarding double DP solution: Set.contains (... ), In isValid, i starts from 0. However, contains () itself is O (n); intead, using an isWord [i] [j] to determine whether i ~ j is a dictionary 
+
+
+
+- O (1) - - 
+
+** 14. [Minimum Window Substring.java] (https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Window%20Substring.java) ** Level: Hard Tags: [Hash Table , String, Two Pointers] The 
+      
+
+basic idea: use a char [] to store the frequency of the string. Then 2pointer, end go to the end, and continue to validate. If it 
+meets the process as result candidate, the method of 
+---
+
+The method of HashMap is a bit more complicated to write than char [], but more generic 
+
+
+
+
+** 15. [Longest Substring with At Most K Distinct Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java /Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters.java)** Level: Hard Tags: [Hash Table, Sliding Window, String] 
+      
+
+Big cleaning O (nk)    
+map.size Once> k, you need to change longest string the very beginning (marked by pointer: start) that erase char     
+. Once one char to be cleared, so the char in the char between the 1st and last appearance of the Map must be cleaned from 
+
+
+
+
+--- 
+
+** 16. [Find Minimum in Rotated Sorted Array II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II.java) ** Level: Hard Tags: [Array, Binary Search] 
+      
+
+An issue that requires rigorous thinking. Because duplicates cause constant translation, the time complexity is ultimately O (n) 
+So it ’s better to scan it directly, give The answer. 
+
+But still write a Binary Search, but the result is O (n) 
 
 
 
 ---
 
-**8. [Scramble String.java](https://github.com/awangdev/LintCode/blob/master/Java/Scramble%20String.java)**      Level: Hard      Tags: [DP, Interval DP, String]
+** 17. [Number of Islands II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Islands%20II.java) ** Level: Hard Tags: [Union Find] 
       
 
-- 给两个string S, T. 检验他们是不是scramble string.
-- scramble string 定义: string可以被分拆成binary tree的形式, 也就是切割成substring;
-- 旋转了不是leaf的node之后, 形成新的substring, 这就是原来string的 scramble.
-
-
-#### Interval DP 区间型
-- 降维打击, 分割, 按照长度来dp.
-- dp[i][j][k]: 数组S从index i 开始, T从index j 开始, 长度为k的子串, 是否为scramble string
-
-##### Break down
-- 一切两半以后, 看两种情况: , 或者不rotate这两半. 对于这些substring, 各自验证他们是否scramble.
-- 不rotate分割的两半: S[part1] 对应  T[part1] && S[part2] 对应  T[part2]. 
-- rotate分割的两半: S[part1] 对应  T[part2] && S[part2] 对应  T[part1]. 
-
-##### Initialization
-- len == 1的时候, 其实无法旋转, 也就是看S,T的相对应的index是否字符相等.
-- initialization非常非常重要. 很神奇, 这个initailization 打好了DP的基础, 后面一蹴而就, 用数学表达式就算出了结果.
-- input s1, s2 在整个题目的主要内容里面, 几乎没有用到, 只是用在initialization时候.
-- More details, 看解答
-
-
-
----
-
-**9. [Interleaving String.java](https://github.com/awangdev/LintCode/blob/master/Java/Interleaving%20String.java)**      Level: Hard      Tags: [DP, String]
-      
-
-双序列DP, 从最后点考虑.
-拆分问题的末尾, 考虑和s1, s2 subsequence之间的关联.
-
-求存在性, boolean
-
-
-
-
----
-
-**10. [Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/Edit%20Distance.java)**      Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, String]
-      
-time: O(MN)
-Space: O(N)
-
-两个字符串, A要变成B, 可以 insert/delete/replace, 找最小变化operation count
-
-#### Double Sequence
-- 考虑两个字符串的末尾index s[i], t[j]: 如果需要让这两个字符一样, 可能使用题目给出的三种operation: insert/delete/replace?
-- 先calculate最坏的情况, 3种operation count + 1; 然后在比较match的情况.
-- 注意, 在i或者j为0的时候, 变成另外一个数字的steps只能是全变.
-- 第一步, 空间时间都是O(MN), O(MN)
-- 滚动数组优化, 空间O(N)
-
-##### Detail analysis
-- insert: assume insert on s, `#ofOperation = (s[0 ~ i] to t[0 ~ j-1]) + 1;`
-- delete: assume delete on t, `#ofOperatoin = (s[0 ~ i - 1] to t[0 ~ j]) + 1;`
-- replace: replace both s and t, `#ofOperatoin = (s[0 ~ i - 1] to t[0 ~ j - 1]) + 1;`
-- dp[i][j]代表了两个 sequence 互相之间的性质: s[0 ~ i] 转换成 s[0~j] 所需要的最少 operation count
-- init: 当i==0, dp[0][j] = j; 每次都要 + j 个character; 同理, 当j==0, dp[i][0] = i;
-- 而dp[i][j]有两种情况处理: `s[i] == t[j]` or `s[i] != t[j]`
-
-##### 何时initialize
-- 这种判断取决于经验: 如果知道initialization可以再 double for loop 里面一起做, 那么可以留着那么做
-- 这样属于 `需要什么, initialize什么`
-- 事后在做space optimization的时候, 可以轻易在 1st dimension 上做rolling array
-
-#### Search
-- 可以做, 但是不建议:这道题需要找 min count, 而不是search/find all solutions, 所以search会写的比较复杂, 牛刀杀鸡.
-
-
-
----
-
-**11. [Distinct Subsequences.java](https://github.com/awangdev/LintCode/blob/master/Java/Distinct%20Subsequences.java)**      Level: Hard      Tags: [DP, String]
-      
-
-Double Sequence DP:
-0. DP size (n+1): 找前nth的结果, 那么dp array就需要开n+1, 因为结尾要return dp[n][m]
-1. 在for loop 里面initialize dp[0][j] dp[i][0]
-2. Rolling array 优化成O(N): 如果dp[i][j]在for loop里面, 就很好替换 curr/prev
-
-
-
----
-
-**12. [Ones and Zeroes.java](https://github.com/awangdev/LintCode/blob/master/Java/Ones%20and%20Zeroes.java)**      Level: Hard      Tags: [DP]
-      
-
-还是Double Sequence, 但是考虑第三种状态: 给的string array的用量.
-所以开了3维数组.
-
-如果用滚动数组优化空间, 需要把要滚动的那个for loop放在最外面, 而不是最里面.
-当然, 这个第三位define在 dp[][][]的哪个位置, 问题都不大.
-
-另外, 注意在外面calcualte zeros and ones, 节约时间复杂度.
-
-
-
----
-
-**13. [Word Break II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Break%20II.java)**      Level: Hard      Tags: [Backtracking, DFS, DP, Hash Table, Memoization]
-      
-
-找出所有 word break variations, given dictionary
-
-利用 memoization: `Map<prefix, List<suffix variations>>`
-
-#### DFS + Memoization
-- Realize the input s expands into a tree of possible prefixes.
-- We can do top->bottom(add candidate+backtracking) OR bottom->top(find list of candidates from subproblem, and cross-match)
-- DFS on string: find a valid word, dfs on the suffix. [NO backtraking in the solution]
-- DFS returns List<String>: every for loop takes a prefix substring, and append with all suffix (result of dfs)
-- IMPORANT: Memoization: `Map<prefix, List<suffix variations>>`, which reduces repeated calculation if the substring has been tried.
-- Time O(n!). Worst case, permutation of unique letters: `s= 'abcdef....'`, and `dict=[a,b,c,d,e,f...]`
-
-#### Regular DPs
-- 两个DP一起用, 解决了timeout的问题: when a invalid case 'aaaaaaaaa' occurs, isValid[] stops dfs from occuring
-- 1. isWord[i][j], subString(i,j)是否存在dict中？
-- 2. 用isWord加快 isValid[i]: [i ～ end]是否可以从dict中找到合理的解？      
-- 从末尾开始查看i：因为我们需要测试isWord[i][j]时候，j>i, 而我们观察的是[i,j]这区间；       
-- j>i的部分同样需要考虑，我们还需要知道isValid[0～j+1]。 所以isValid[x]这次是表示[x, end]是否valid的DP。     
-- i 从 末尾到0, 可能是因为考虑到isWord[i][j]都是在[0~n]之内，所以倒过来数，坐标比较容易搞清楚。     
-- (回头看Word Break I， 也有坐标反转的做法)
-- 3. dfs 利用 isValid 和isWord做普通的DFS。
-
-#### Timeout Note
-- Regarding regular solution: 如果不做memoization或者dp, 'aaaaa....aaa' will repeatedly calculate same substring
-- Regarding double DP solution: 在Word Break里面用了set.contains(...), 在isValid里面，i 从0开始. 但是, contains()本身是O(n); intead,用一个isWord[i][j]，就O(1)判断了i~j是不是存在dictionary
-
-
-
----
-
-**14. [Minimum Window Substring.java](https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Window%20Substring.java)**      Level: Hard      Tags: [Hash Table, String, Two Pointers]
-      
-
-基本思想: 用个char[]存string的frequency. 然后2pointer, end走到底, 不断validate.
-符合的就process as result candidate.
-
-HashMap的做法比char[]写起来要复杂一点, 但是更generic
-
-
-
----
-
-**15. [Longest Substring with At Most K Distinct Characters.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters.java)**      Level: Hard      Tags: [Hash Table, Sliding Window, String]
-      
-
-大清洗 O(nk)   
-map.size一旦>k，要把longest string最开头（marked by pointer:start）的那个char抹掉    
-一旦某一个char要被清除，所以在这个char 的1st and last appearance之间的char都要被清洗from map
-
-
-
-
----
-
-**16. [Find Minimum in Rotated Sorted Array II.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II.java)**      Level: Hard      Tags: [Array, Binary Search]
-      
-
-一个需要严谨思考的题目. 因为有duplicate, 会导致不断平移, 所以最终time complexity是O(n)
-所以不如直接扫一遍, 给出答案.
-
-但是还是写一个Binary Search的样子, 只不过worst结果是O(n)
-
-
-
----
-
-**17. [Number of Islands II.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Islands%20II.java)**      Level: Hard      Tags: [Union Find]
-      
-
-给一个island grid[][], and list of operations to fill a particualr (x,y) position.
-
-count # of remaining island after each operation.
-
-#### Union Find, model with int[]
-- 把board转换成1D array， 就可以用union-find来判断了. 
-- 用int[] father 的unionFind, 需要转换2D position into 1D index. 这样比较clean
-- 判断时，是在四个方向各走一步，判断是否是同一个Land.
-- 每走一次operator，都会count++. 若发现是同一个island, count--
-- count的加减, 都放在了UnionFind自己的function里面, 方便tracking, 给几个helper function就对了.
-- Time: O(k * log(mn))
+give an island grid [] [], and list of operations to fill a particualr (x, y) position. 
+
+Count # of remaining island after each operation. 
+
+#### Union Find, model with int [] 
+-put board Converted to 1D array, you can use union-find to 
+judge.-With int [] father's unionFind, you need to convert 2D position into 1D index. This is relatively clean. 
+-When judging, one step is taken in each of the four directions to determine whether It is the same 
+Land.-Every time I walk the operator, it will count ++. If it is found that the same island, 
+count--The addition and subtraction of count are all placed in the UnionFind's own function, for convenient tracking, just give a few helper functions a. 
+- Time: O (k * log (Mn)) 
+#### Note:
 
 #### Union Find, model with Hashmap 
-- 用HashMap的Union-find.
+-Union-find with HashMap. - 
 
 
-#### Note:
-- Proof of UnionFind log(n) time: https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2%80%93find
+Proof of UnionFind log (n) time: https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2% 80% 93find 
 
 
 
----
+--- 
 
-**18. [Word Search II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Search%20II.java)**      Level: Hard      Tags: [Backtracking, DFS, Trie]
+** 18. [Word Search II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Search%20II.java) ** Level: Hard Tags : [Backtracking, DFS, Trie] 
       
 
-给一串words, 还有一个2D character matrix. 找到所有可以形成的words. 条件: 2D matrix 只可以相邻走位.
+Give a string of words, and a 2D character matrix. Find all the words that can be formed. Condition: 2D matrix can only be positioned next to each other. 
 
-#### Trie, DFS
-- 相比之前的implementation, 有一些地方可以优化:
-- 1. Backtracking时候, 在board[][] 上面mark就可以, 不需要开一个visited[][]
-- 2. 不需要implement trie的所有方程, 用不到: 这里只需要insert.
-- 普通的trie题目会让你search a word, 但是这里是用一个board, 看board的每一个字母能不能走出个Word.
-- 也就是: 这里的search是自己手动写, 不是传统的trie search() funcombination
-- 3. TrieNode里面存在 end的时候存string word, 表示到底. 用完了 word = null, 刚好截断重复查找的问题.
-
-##### 关于Trie
-- Build Trie with target words: insert, search, startWith. Sometimes, just: `buildTree(words)` and return root.
-- 依然要对board matrix做DFS。
-- no for loop on words. 直接对board DFS:   
-- 每一层,都会有个up-to-this-point的string. 在Trie里面check它是不是存在。以此判断。   
-- 若不存在，就不必继续DFS下去了。
-- Trie solution time complexity, much better:      
-- build Trie:   n * wordMaxLength
-- search: boardWidth * boardHeight * (4^wordMaxLength + wordMaxLength[Trie Search])
-
-
-#### Regular DFS
-- for loop on words: inside, do board DFS based on each word.     
-- Time cpmplexity: word[].length * boardWidth * boardHeight * (4^wordMaxLength)
-
+#### Trie, DFS 
+-Compared to the previous Implementation, there are some places that can be optimized: 
+-1. When backtracking, mark on board [] [], you don't need to open a visited [] [] 
+-2. You don't need all the equations of the implementation trie, you can't use: here Only insert is required. 
+-The common trie topic will let you search for a word, but here is a board, see if each letter of the board can come out of Word. 
+-That is: the search here is written manually, not traditional trie search () funcombination
+-3. When there is an end in the TrieNode, the string word is stored, which means the end. When the word = null is used up, the problem of repeated search is just truncated. 
 #### Previous Notes
-- Big improvement: use boolean visited on TrieNode!     
-- 不要用rst.contains(...), 因为这个是O(n) 在leetcode还是会timeout（lintcode竟然可以pass）!    
-- 在Trie search() method 里面，凡是visit过的，mark一下。  
+ 
+#### # About Trie
+-Build Trie with target words: insert, search, startWith. Sometimes, just: `buildTree (words)` and return root. 
+-Still need to DFS the board matrix. 
+-no for loop on words. Directly to the board DFS:-Each    
+layer will have an up-to-this-point string. Check if it exists in the Trie. Use this to judge.   
+-If it does not exist, you do not need to continue DFS. 
+-Trie solution time complexity, much better:       
+-build Trie: n * wordMaxLength 
+-search: boardWidth * boardHeight * (4 ^ wordMaxLength + wordMaxLength [Trie Search]) 
+
+
+#### Regular DFS 
+-for loop on words: inside, do board DFS based on each      
+word.-Time cpmplexity: word []. Length * boardWidth * boardHeight * (4 ^ wordMaxLength)-Big 
+
+improvement: use boolean visited on TrieNode!     
+-Don't use rst.contains (...), because this is O (n) timeout in leetcode (lintcode can pass)!     
+-In Trie search () method, mark any visit.  
 
 
 
 
----
+--- 
 
-**19. [Word Squares.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Squares.java)**      Level: Hard      Tags: [Backtracking, Trie]
+** 19. [Word Squares.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Squares.java) ** Level: Hard Tags: [Backtracking, Trie] 
       
 
-可以开Trie class, 里面用到TrieNode. 开Trie(words) 可以直接initalize with for loop
-TrieNode 里面可以有一个 List<String> startWith: 记录可以到达这个点的所有string: 有点像树形, ancestor形状的存储.
+You can open the Trie class, which uses TrieNode. Opening Trie (words) can be directly initalized with for loop 
+TrieNode There can be a List <String> startWith: Record all strings that can reach this point: a bit like a tree, ancestor-shaped storage . 
 
-神操作:
-根据square的性质, 如果选中了list of words, 设定 int prefixIndex = list.size().
-取出list里面的所有word[prefixedIndex], 并且加在一起, 就是下一个word candidate的 prefix.
+God operation: 
+according to the nature of the square, if the select list of words, setting int prefixIndex = list.size (). 
+remove list all inside word [prefixedIndex], and together, the next word candidate is a prefix. 
 
-形象一点:
+A bit of image:  
 list = ["ball", "area"];
-prefixIndex = list.size(); ball[prefixIndex] = 'l'; area[prefixIndex] = 'e';
-//then
-candidatePrefix = ball[prefixIndex] + area[prefixIndex] = "le";
-这里就可以用到Trie的那个 findByPrefix function, 在每个点, 都存有所有这个点能产生的candidate.
-这时, 试一试所有candidate: dfs
+prefixIndex = list.size (); ball [prefixIndex] = 'l'; area [prefixIndex] = 'e'; 
+// then 
+candidatePrefix = ball [prefixIndex] + area [prefixIndex] = "le"; the 
+Trie one can be used here findByPrefix function, at each point, all the dates that can be generated by this point are stored. 
+At this time, try all the dates: dfs 
 
-能想到这种倒转的结构来存prefix candidates 在 Trie里面, 这个想法非常值得思考.
+can think of this inverted structure to store prefix candidates in Trie, this idea is very worth thinking about. 
 
 
 
----
+--- 
 
-**20. [Trapping Rain Water.java](https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water.java)**      Level: Hard      Tags: [Array, Stack, Two Pointers]
+** 20. [Trapping Rain Water.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water.java) ** Level: Hard Tags: [Array , Stack, Two Pointers] There are 
       
 
-这道题目的方法比较多.
-#### 方法1
-Array, 维持一个左手最高墙array, 右手最高强array.
-对于每个index而言, vertically 能存放的最大水柱, 就是靠左右最高墙决定的:
-min(leftHighestWall, rightHighestWall) - currHeight.
+many methods for this topic. 
+#### Method 1 
+Array, maintaining a left-hand highest wall array, right-hand highest strength array. 
+For each index, the largest water column that can be stored vertically is by The left and right highest walls are determined by: 
+min (leftHighestWall, rightHighestWall)-currHeight. 
 
-#### 方法2
-方法1上面的优化, two pointer, 还是找左边最高和右边最高. O(1) space.
-利用到了方法3里面的想法一样: 整个structure是被中间的最高bar 二分天下:
-左边按照maxLeft来计算, 右边按照maxRight来计算.
+#### Method 2 
+The optimization above method 1, two pointers, still find the highest left and highest right. O (1) space.
+The idea used in method 3 is the same: the entire structure is divided by the highest bar in the middle of the world:  
+left is calculated according to maxLeft, and the right is calculated according to maxRight. 
 
-#### 方法3
-2 Pointers， 双面夹击:
-1. 找中间最高bar的index    
-2. 两面往中心扫：每次加上（topBarIndex - currIndex）* (elevation from previous index).也就是每次加一个横条。    
-3. 每次还要减去block自身的height
+#### Method 3
+2 Pointers, double-sided pinching: 
+1. find the index of the highest bar in the middle     
+2. Swipe to the center on both sides: add (topBarIndex-currIndex each time) ) * (Elevation from previous index). That is, one bar is added at a time.    
+3. Every time you want to subtract the height of the block itself 
 
-#### 方法4
-主要想法和方法3一致: 在山坡下坡的基础上, 一直用stack堆积bottom. 
-最后遇到上升之前, 此时bottom可以用来跟stack之前堆积的所有下坡index做比较, 算跟他们高度相差的积水.
-用了stack记录下坡, 然后用个while loop一挖到底的想法非常棒.
-
-
+#### The 
+main idea of Method 4 is the same as Method 3: On the basis of the downhill slope, the stack has been used to accumulate the bottom. 
+Before the last encounter, the bottom can be used at this time. Let's compare it with all the downhill indexes that were stacked before the stack, and calculate the stagnant water that is different from their height. 
+The idea of ​​using the stack to record the downhill and then dig to the end with a while loop is great. 
 
 
----
 
-**21. [Largest Rectangle in Histogram.java](https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Rectangle%20in%20Histogram.java)**      Level: Hard      Tags: [Array, Monotonous Stack, Stack]
+
+--- 
+
+** 21. [ Largest Rectangle in Histogram.java] (https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Rectangle%20in%20Histogram.java) ** Level: Hard Tags: [Array, Monotonous Stack, Stack ] 
       
 
-给n个bar,组成柱状图histogram. 求在这一排柱状图里面可以找到的面积最大的长方形.
+Give n bars to form a histogram of histograms. Find the rectangle with the largest area that can be found in this row of histograms. 
 
-思考: 找长方形面积, 无非是找两个index, 然后底边长度 * height.
+Thinking: Finding the area of ​​a rectangle is nothing more than finding two indexes, then the length of the bottom edge * height. 
 
-#### Monotonous Stack
-- 重点是根据找Histogram里面rectangle的性质, 维持一个单调递增的Stack
-- 在loop over indexes的时候:
-- 如果高度>= previous peek(), 那么对于那个peek, 就意味着, 往下走, 一直走高嘛, 之前的peek总可以继续抄底
-- 什么时候不能抄底了呢? 就是有一个下降趋势的时候
-- 这时候并不是calculate所有前面的peek, 而是考虑 大于 current height的之前所有的peek.
-- 把这些peek到 current height 前一格的rectangle全部找出来: stack.pop()
-- 这个stack.pop()的过程里面, 其实没有算上 current height, 因为需要留到下一轮, 把current index加进stack 再说
-- 为什么用stack? 因为需要知道连续递增的peek, stack.peek() O(1), 好用
-  而其实不用stack, 也可以用其他方式记录所有height, 只不过要 O(n)去找peek不方便
+### # Monotonous Stack
+-The main point is to maintain a monotonically increasing Stack according to the nature of the rectangle in the Histogram. 
+-When loop over indexes:-If the 
+height is> = previous peek (), then for that peek, it means, go down, keep going up Well, the previous peek can always continue to bottom 
+-when can't it bottom? When there is a downward trend 
+-this time not calculate all the previous peek, but consider all the previous peeks greater than the current height. 
+-Put these All the rectangles from the previous grid from peek to current height are found out: stack.pop () 
+-In the process of stack.pop (), the current height is not counted, because it needs to be retained in the next round, and the current index is added to the stack. Then again 
+-why use stack? Because you need to know the continuous increasing peek, stack.peek () O (1), it is easy to use 
+  without stack, you can also record all heights in other ways, but you need O (n) to find peek inconvenient to 
 
-#### 知识点
-- 理解monotonous stack 是如何被维护的
-- 维护monotonous stack 是题目需要, 而不是stack本身性质, 是一种借助 stack.peek() O(1)的巧妙用法.
-
-
-
-
----
-
-**22. [Find Peak Element II.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Peak%20Element%20II.java)**      Level: Hard      Tags: [Binary Search, DFS, Divide and Conquer]
-      
-
-2Dmatrix, 里面的value有一些递增, 递减的特点(细节比较长, 看原题). 目标是找到peak element
-
-peak: 比周围4个方向的点value大
-
-#### DFS
-
-##### 基本原理
-- 我们不可能一口气准确定位(x,y), 但是我们可以再一个row/col里面, 找到1D array的 peak.
-- 根据这个点, 再往剩下两个方向移动
-- 1. 在中间的一行i=midX, 找到peak所在的y.
-- 2. 在中间的一列j=midY, 找到peak所在的x. (有可能强势override之前找到的y, 也就是放弃那一行的peak, 在midY上找peak)
-- 3. 根据 (x,y) 的4个neighbor check (x,y)是不是 peak, 如果不是, 像更高的位置移动一格
-- 4. 根据之前算的 midX, midY 把board分成4个象限, 在每一份里面再继续找
-- 这个题目LintCode不给做了, 所以思路对的, 但是解答还没有再次验证.
-
-##### 剪枝/切分象限
-- 每次只是找到一个row/col里面的peak而已!
-- 找到这个点, 就等于把board切成了两半.
-- 然后, 再跟剩下的相邻的两个位置比较, 就知道了哪里更大, 就去哪里找peak, 也就是又切了第二刀.
-- 切第二刀的时候, 也要把(x, y) 移到需要取的象限. 进行DFS
-- 根据mid row 切割: 
-- http://www.jiuzhang.com/solution/find-peak-element-ii/#tag-highlight-lang-java
-- http://courses.csail.mit.edu/6.006/spring11/lectures/lec02.pdf
-
-##### 时间复杂度
-- 每一个level都减一半
-- T(n) = n + T(n/2) = n + n/2 + n/4 + ... + 1 = n(1 + 1/2 + .... + 1/n) = 2n = O(n)
-
-#### Binary Search
-- TODO
-- O(nLogN)
-
-
-
----
-
-**23. [Palindrome Pairs.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Pairs.java)**      Level: Hard      Tags: [Hash Table, String, Trie]
-      
-
-Obvious的做法是全部试一遍, 判断, 变成 O(n^2) * O(m) = O(mn^2). O(m): isPalindrome() time.
-
-当然不行了, 那就看是O(nlogN), 还是O(n)?
-
-#### 方法1: Hash Table + Palindrome的性质. 复合型.
-O(mn)
-
-##### 思路
-- 每一个word, 都可以拆分成 front + mid + end. 如果这个word + 其他word可以组成palindrome,那就是说
-- 砍掉 (mid+end), front.reverse() 应该存在 words[] 里面.
-- 砍掉 (front+mid), end.reverse() 应该存在 words[] 里面.
-- 我们用HashMap存所有的<word, index>, 然后reverse, 找配对就好.
-
-##### Corner case
-- 如果有 empty string "", 那么它跟任何一个palindrome word, 都可以配对, 并且根据位置前后变换, 凑成2份 distinct indexes.
-- 这样就有了那个 `if (reverseEnd.equals("")) {...}` 的logic.
-- 注意: 虽然在处理砍头/砍尾的两个 for loop里面都在根据 empty string 重复记录, 
-  但因为 "" 自己本身不能作为起点, 所以overall只会在被其他palindrome配对时记录一次.
-
-
-#### 方法2: Trie
-还要做一下那.
-
-
-
----
-
-**24. [Maximal Rectangle.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximal%20Rectangle.java)**      Level: Hard      Tags: [Array, DP, Hash Table, Stack]
-      
-
-#### 方法1: monotonous stack
-分解开来, 其实是'Largest Rectangle in Histogram', 只不过这里要自己model heights.
-一个2D array里面的rectangle, 最终也是用height * width做出来的.
-巧妙在于, 把每一行当做底边, 算出这个底边, 到顶部的height: 
-- 如果底边上的一个value==0, 那么算作没有height(以这个底边做rectangle, value==0的位置是空中楼阁, 不能用)
-- 如果底边上的value==1, 那么就把上面的height加下来, 做成histogram
-
-如果看具体实例, 有些row似乎是白算的, 但是没有办法, 这是一个搜索的过程, 最终会比较出最优解.
-
-#### 方法2: DP
-Coordinate DP?
-
-
-
----
-
-**25. [Longest Increasing Path in a Matrix.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Path%20in%20a%20Matrix.java)**      Level: Hard      Tags: [Coordinate DP, DFS, DP, Memoization, Topological Sort]
-      
-
-m x n 的matrix, 找最长增序的序列长度. 这里默认连续的序列.
-
-- 接成圈是不行的, 所以visit过得 (x,y)就不能再去了.
-- 斜角方向不能走, 只能走上下左右
-- 无法按照坐标DP来做, 因为计算顺序4个方向都可以走.
-- 最终要visit所有node, 所以用DFS搜索比较合适.
-
-#### DFS, Memoization
-- 简单版: longest path, only allow right/down direction: 
-- `dp[x][y] = Math.max(dp[prevUpX][prevUpY], or dp[prevUpX][prevUpY] + 1)`; and compare the other direction as well
-- This problem, just compare the direction from dfs result
-- DFS太多重复计算; memoization (dp[][], visited[][]) 省去了重复计算
-- initialize dp[x][y] = 1, (x,y) 自己也算path里的一格
-- dfs(matrix, x, y): 每次检查(x,y)的4个neighbor (nx, ny), 如果他们到(x,y)是递增, 那么就考虑和比较:
-- Maht.max(dp[x][y], dp[nx][ny] + 1); where dp[n][ny] = dfs(matrix, nx, ny)
-- top level: O(mn), 尝试从每一个 (x,y) 出发
-- O(m * n * k), where k is the longest path
-
-#### Topological sort
-还没有做
-
-
-
----
-
-**26. [Coins in a Line III.java](https://github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20III.java)**      Level: Hard      Tags: [Array, DP, Game Theory, Interval DP, Memoization]
-      
-
-LeetCode: Predict the Winner
-
-还是2个人拿n个coin, coin可以有不同的value. 
-
-只不过这次选手可以从任意的一头拿, 而不限制从一头拿. 算先手会不会赢?
-
-#### Memoization + Search
-- 跟Coins in a Line II 一样, MaxiMin的思想: 找到我的劣势中的最大值
-- `dp[i][j] 代表在[i,j]区间上 选手最多能取的value 总和`
-- 同样, sum[i][j]表示[i] 到 [j]间的value总和
-- 对手的最差情况, 也就是先手的最好情况:
-- dp[i][j] = sum[i][j] - Math.min(dp[i][j - 1], dp[i + 1][j]);
-- 这里需要search, 画出tree可以看明白是如何根据取前后而分段的.
-
-#### 博弈 + 区间DP, Interval DP
-- 因为是看区间[i,j]的情况, 所以可以想到是区间 DP
-- 这个方法需要复习, 跟数学表达式的推断相关联: S(x) = - S(y) + m. 参考下面的公式推导.
-- dp[i][j]表示 从index(i) 到 index(j), 先手可以拿到的最大值与对手的数字差. 也就是S(x).
-- 其中一个S(x) = dp[i][j] = a[i] - dp[i + 1][j]
-- m 取在开头, m 取在末尾的两种情况:
-- dp[i][j] = max{a[i] - dp[i + 1][j], a[j] - dp[i][j - 1]}
-- len = 1, 积分就是values[i]
-- 最后判断 dp[0][n] >= 0, 最大数字和之差大于0, 就赢.
-- 时间/空间 O(n^2)
-
-##### 公式推导
-- S(x) = X - Y, 找最大数字和之差, 这里X和Y是选手X的总分, 选手Y的总分. 
-- 对于选手X而言: 如果S(x)最大值大于0, 就是赢了; 如果最大值都小于0, 就一定是输了. 
-- 选手Y: S(y)来表示 对于Y,  最大数字和之差. S(y) = Y - X
-- 根据S(x) 来看, 如果从 数字和X里面, 拿出一个数字 m, 也就是 X = m + Xwithout(m)
-- S(x) = m + Xwithout(m) - Y = m + (Xwithout(m) - Y). 
-- 如果我们从全局里面索性去掉m, 那么 S(y'') = Y - Xwithout(m)
-- 那么推算下来: S(x) = m + (Xwithout(m) - Y) = m - (Y - Xwithout(m)) = m - S(y'')
-- 在这个问题里面, 我们model X 和 Y的时候, 其实都是 dp[i][j], 而区别在于先手/后手.
-- 将公式套用, 某一个S(x) = a[i] - dp[i + 1][j],  也就是m=a[i], 而 S(y'') = dp[i + 1][j]
-
-##### 注意
-- 如果考虑计算先手[i, j]之间的最大值, 然后可能还需要两个数组, 最后用于比较先手和opponent的得分大小 => 那么就要多开维.
-- 我们这里考虑的数字差, 刚好让人不需要计算先手的得分总值, 非常巧妙.
-- Trick: 利用差值公式, 推导有点难想到.
-
-##### 区间型动态规划
-- 找出[i, j]区间内的性质: dp[i][j]下标表示区间范围 [i, j]
-- 子问题: 砍头, 砍尾, 砍头砍尾
-- loop应该基于区间的length
-- template: 考虑len = 1, len = 2; 设定i的时候一定是 i <= n - len; 设定j的时候, j = len + i - 1;
+#### knowledge 
+- understanding how monotonous stack is maintained 
+- maintenance monotonous stack is the subject needs, rather than stack very nature, it is a means of stack.peek () O (1) Clever usage. 
 
 
 
 
 ---
 
-**27. [Burst Balloons.java](https://github.com/awangdev/LintCode/blob/master/Java/Burst%20Balloons.java)**      Level: Hard      Tags: [DP, Divide and Conquer, Interval DP, Memoization]
+** 22. [Find Peak Element II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20Peak%20Element%20II.java) ** Level: Hard Tags: [Binary Search, DFS, Divide and Conquer] 
       
 
-一排球, 每个球有value, 每次扎破一个, 就会积分: 左*中间*右 的值. 求, 怎么扎, 最大值?
+2Dmatrix, the value inside has some increasing and decreasing characteristics (the details are longer, see the original question). The goal is to find the peak element 
 
-TODO: Need more thoughts on why using dp[n + 2][n + 2] for memoization, but dp[n][n] for interval DP.
+peak: the value is larger than the points in the 4 directions around 
 
-#### Interval DP
-- 因为数组规律会变, 所以很难找'第一个burst的球'. 反之, 想哪一个是最后burst?
-- 最后burst的那个变成一堵墙: 分开两边, 分开考虑, 加法原理; 最后再把中间的加上.
-- dp[i][j] represent max value on range [i, j)
-- Need to calculate dp[i][j] incrementally, starting from range size == 3 ---> n
-- Use k to divide the range [i, j) and conquer each side.
+#### DFS 
 
-##### Interval DP 三把斧:
-- 中间劈开
-- 砍断首或尾
-- Range区间作为iteration的根本
+##### Basic principle 
+-We cannot accurately locate (x, y) at one go, but we can find the peak of the 1D array in another row / col. 
+-According to this point, go in the remaining two directions Move 
+-1. In the middle row i = midX, find the y where the peak is. 
+-2. In the middle row j = midY, find the x where the peak is. (It is possible that the y found before the strong override overrides the line (Peak, find peak on midY)-3. 
+According to the 4 neighbor check (x, y) of (x, y) whether (x, y) is the peak, if not, move it one block like a higher position 
+-4. According to the previous calculation MidX, midY divide the board into 4 quadrants, and continue to find in each one 
+-this question LintCode does not do it, so the idea is correct, but the answer has not been checked again Proof.- 
+ 
+##### Pruning / splitting quadrant
+Every time I just find a peak in row / col! 
+this point is equivalent to cutting the board in half. 
+-Then, comparing with the remaining two adjacent positions, I know where it is more Large, go where to find the peak, that is, cut the second knife again. 
+-When cutting the second knife, also move (x, y) to the quadrant that needs to be taken. DFS 
+-cut according to mid row: 
+-http : //www.jiuzhang.com/solution/find-peak-element-ii/#tag-highlight-lang-java 
+- http://courses.csail.mit.edu/6.006/spring11/lectures/lec02.pdf 
 
-##### Print the calculation process
-- use pi[i][j] and print recursively.
-- Print k, using pi[i][j]: max value taken at k
+# #### Time complexity 
+-each level is halved 
+-T (n) = n + T (n / 2) = n + n / 2 + n / 4 + ... + 1 = n (1 + 1 / 2 + .... + 1 / n) = 2n = O (n) 
 
-#### Memoization
-- 其实会做之后挺好想的一个DP
-- dp[i][j] =  balloons i~j 之间的 max. 
-- 然后找哪个点开始burst? 设为x。
-- For loop 所有的点作为x， 去burst。
-- 每次burst都切成了三份：左边可以recusive 求左边剩下的部分的最大值 + 中间3项相乘 + 右边递归下去求最大值。
-- Note: 这个是Memoization, 而不纯是DP
-- 因为recursive了，其实还是搜索，但是memorize了求过的值，节省了Processing
+#### Binary Search 
+-TODO 
+-O (nLogN) 
+
+
+
+--- 
+
+** 23. [Palindrome Pairs.java] (https: // github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Pairs.java)** Level: Hard Tags: [Hash Table, String, Trie]
+      
+
+Obvious's method is to try it all, and judge, it becomes O (n ^ 2) * O (m) = O (mn ^ 2). O (m): isPalindrome () time. 
+
+Of course it doesn't work, then it is O (nlogN), or O (n)? 
+
+#### Method 1: Properties of Hash Table + Palindrome. Compound. 
+O (mn) 
+
+##### Idea 
+-Each word can be split into front + mid + end. If this word + other words can form palindrome, it means 
+-cut off (mid + end), front.reverse () should be stored in words [] 
+.-cut off (front + mid), end.reverse ( ) Should exist in words [] 
+.-We use HashMap to store all <word, index>, and then reverse, just find a match. 
+
+##### Corner case 
+-If there is an empty string "", then it is related to any palindrome word, can be paired, and transformed back and forth according to the position to make 2 distinct 
+indexes.-This has the logic of `if (reverseEnd.equals (" ")) {...}`. 
+-Note: Although in the The two for loops that deal with beheading / chopping are repeatedly recording according to the empty string, 
+  but because "" itself cannot be used as a starting point, overall will only be recorded once when paired by other palendrome.
+
+
+#### Method 2: Trie 
+still has to do that. 
+
+
+
+--- 
+
+** 24. [Maximal Rectangle.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximal%20Rectangle. java) ** Level: Hard Tags: [Array, DP, Hash Table, Stack] 
+      
+
+#### Method 1: The monotonous stack is 
+decomposed, but it is actually 'Largest Rectangle in Histogram', but here you have to build your own model heights. 
+The rectangle in a 2D array is also finally made with height * width. The 
+clever thing is that each line is used as the bottom edge, and the bottom edge is calculated, and the height to the top is: 
+-If a value == 0 on the bottom edge, then Calculated as no height (the bottom edge is used as a rectangle, value == 0 is the sky tower, cannot be used) 
+-If the value on the bottom edge == 1, then add the above height to make a histogram 
+
+. For example, some rows seem to be calculated for nothing, but there is no way. This is a search process, and the optimal solution will eventually be compared. 
+
+#### Method 2: DP 
+Coordinate DP? 
+
+
+
+---
+
+** 25. [Longest Increasing Path in a Matrix.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Path%20in%20a%20Matrix.java) ** Level : Hard Tags: [Coordinate DP, DFS, DP, Memoization, Topological Sort] 
+      
+
+mxn matrix, find the longest increasing sequence length. Here is the default continuous sequence.- Looping 
+
+is not possible, so visit passes (x , y) can't go anymore.-Cannot go in the 
+oblique direction, can only go up, down, left and right 
+-Can not do according to the coordinate DP, because the calculation order can go in 4 directions. 
+-Finally, all nodes must be visited, so use DFS search More suitable. 
+
+#### DFS, Memoization 
+-Simple version: longest path, only allow right / down direction: 
+-`dp [x] [y] = Math.max (dp [prevUpX] [prevUpY], or dp [prevUpX ] [prevUpY] + 1) `; and compare the other direction as well 
+-This problem, just compare the direction from dfs result 
+-DFS has too many repeated calculations; memoization (dp [] [], visited [] []) saves Double counting 
+-initialize dp [x] [y] = 1, (x, y) One grid
+-dfs (matrix, x, y): check 4 neighbors (nx, ny) of (x, y) each time, if they are increasing to (x, y), then consider and compare: 
+-Maht.max ( dp [x] [y], dp [nx] [ny] + 1); where dp [n] [ny] = dfs (matrix, nx, ny) 
+-top level: O (mn), try from each ( x, y) start 
+-O (m * n * k), where k is the longest path 
+
+#### Topological sort 
+has not been done yet 
+
+
+
+--- 
+
+** 26. [Coins in a Line III.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20III.java)** Level: Hard Tags: [Array, DP, Game Theory, Interval DP, Memoization] 
+      
+
+LeetCode: Predict The Winner 
+
+is still 2 people who take n coins, and the coins can have different values. 
+
+But this time the player can take from any side, but not restricted from one side. Will the first mover win? 
+[i] [j] represents the sum of the maximum values ​​that players can take in the [i, j] interval`
+ 
+mover #### Memoization + Search
+-Like Coins in a Line II, MaxiMin's idea: find the largest value among my disadvantages 
+-again, sum [i] [j] represents the sum of the values ​​between [i] and [j] -the 
+worst case of the opponent, That is the best case of the first mover: 
+-dp [i] [j] = sum [i] [j]-Math.min (dp [i] [j-1], dp [i + 1] [j]); 
+-You need to search here and draw a tree to see how it is segmented according to before and after. 
+
+#### Game + Interval DP, Interval DP 
+-Because it looks at the interval [i, j], it can be thought of as an interval DP 
+-This method needs a review and is related to the inference of mathematical expressions: S (x) =-S (y) + m. Refer to the following formula to derive. 
+-Dp [i] [j] means from index (i) to index (j), the difference between the maximum value that the first player can get and the opponent's number. That is S (x) 
+.-One of them S (x) = dp [i] [j] = a [i]-dp [i + 1] [j] 
+-m at the beginning and m at the end: 
+-dp [i] [j] = max {a [i]-dp [i + 1] [j], a [j] -dp [i] [j-1]} 
+-len = 1, the integral is values ​​[i] 
+-finally judged dp [0] [n]> = 0, the difference between the maximum number and the number is greater than 0, the win. 
+-time / Space O (n ^ 2) 
+
+##### Formula derivation
+-S (x) = X-Y, find the difference between the largest number and sum, where X and Y are the total score of player X and the total score of player Y.  
+-For player X: if S (x) maximum is large At 0, you win; if the maximum values ​​are less than 0, you must lose.
+-Player Y: S (y) is used to indicate that for Y, the largest number and The difference. S (y) = Y-X 
+-According to S (x), if you take a number m from the number and X, that is X = m + Xwithout (m) 
+-S (x) = m + Xwithout (m)-Y = m + (Xwithout (m)-Y) .- 
+If we simply remove m from the global, then S (y '') = Y-Xwithout (m)-then 
+calculate: S ( x) = m + (Xwithout (m)-Y) = m-(Y-Xwithout (m)) = m-S (y '')-In 
+this question, when we model X and Y, they are actually both dp [i] [j], and the difference is first-hand / last-hand. 
+-Apply the formula, a certain S (x) = a [i]-dp [i + 1] [j], which is m = a [i ], And S (y '') = dp [i + 1] [j] 
+
+##### Note 
+-If you consider calculating the maximum value between [i, j] first hand, then two arrays may be needed, and finally It is used to compare the score of the first mover and the opponent => then more dimensions 
+are needed.-The number difference we consider here just happens to make it unnecessary to calculate the total score of the first mover, which is very clever. 
+-Trick: Use the difference formula to derive A little hard to imagine To. 
+
+##### Interval-type dynamic programming 
+-find the properties within the interval [i, j]: dp [i] [j] The subscript indicates the interval range [i, j]
+-Sub-question: Beheading, tailcut, beheading  
+- loop should be based on Between the length
+-template: consider len = 1, len = 2; i must be i <= n-len when i is set; j = len + when j is set i-1; 
+
+
+
+
+--- 
+
+** 27. [Burst Balloons.java] (https://github.com/awangdev/LintCode/blob/master/Java/Burst%20Balloons.java) ** Level: Hard Tags: [ DP, Divide and Conquer, Interval DP, Memoization] 
+      
+
+A volleyball, each ball has a value, each time you break one, you will score: left * middle * right value. Find, how to tie, the maximum? 
+
+TODO: Need more thoughts on why using dp [n + 2] [n + 2] for memoization, but dp [n] [n] for interval DP. 
+
+#### Interval DP 
+-Because array rules will change, it's hard to find 'first A burst of balls'. On the contrary, which one is the last burst? 
+-The last burst becomes a wall: separate the two sides, consider separately, the principle of addition; finally add the middle. 
+-Dp [i] [j ] represent max value on range [i, j) 
+-Need to calculate dp [i] [j] incrementally, starting from range size == 3 ---> n 
+-Use k to divide the range (i, j) and conquer each side. 
+
+##### Interval DP three axes:-split in the 
+middle 
+-cut off the head or tail
+-Range interval as the basis of iteration 
+
+##### Print the calculation process 
+-use pi [i] [j] and print recursively. 
+-Print k, using pi [i] [j]: max value taken at k 
+
+### # Memoization 
+-In fact, I will do a DP that I think of very well afterwards 
+-dp [i] [j] = max between balloons i ~ j. - 
+Then which point to start burst? Set it to x. 
+-For loop all points are taken as x, go to burst. 
+-Each burst is cut into three parts: the left side can be recusive to find the maximum value of the remaining part on the left side + the middle 3 terms are multiplied + the right side is recursive to find the maximum value. 
+-Note: This is Memoization, not pure DP. 
+-Because it is recursive, it is still a search, but memorize the calculated value, saving Processing 
 
 
 
 
 ---
 
-**28. [K Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/K%20Edit%20Distance.java)**      Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, Trie]
+** 28. [K Edit Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/K%20Edit%20Distance.java) ** Level: Hard Tags: [DP, Double Sequence DP, Sequence DP, Trie]
       
 
-给一串String, target string, int k. 找string array里面所有的candidate: 变化K次, 能变成target.
+Give a string of String, target string, int k. Find all the dates in the string array: change K times, can become the target. 
 
-#### Trie
-TODO
+#### Trie 
+TODO 
 
-#### Double Sequence DP
-- Edit Distance的follow up.
-- 其实就是改一下 minEditDistance的function, 带入K作比较罢了.
-- 写起来跟Edit Distance 的主要逻辑是一模一样的.
-- 但是LintCode 86% test case 时候timeout. 
-- Time O(mnh), where h = words.length, 如果 n ~ m, Time 就几乎是 O(n^2), 太慢.
+#### Double Sequence DP 
+-Follow up for Edit Distance. 
+-Actually It is to change the function of minEditDistance and bring in K for comparison. 
+-The main logic of writing is exactly the same as Edit Distance. 
+-But timeout in LintCode 86% test case. 
+-Time O (mnh), where h = words.length , If n ~ m, Time is almost O (n ^ 2), too slow. 
 
 
 
+--- 
+
+** 29. [Paint House II.java] (https://github.com/awangdev/LintCode/blob/master /Java/Paint%20House%20II.java)** Level: Hard Tags: [DP, Sequence DP, Status DP] 
+      
+time: O (NK ^ 2): 
+space: (NK) 
+
+a row of n houses, each house It can be painted in k colors, the price of each house is different, and it is represented by costs [] []. 
+
+Costs [0] [1] indicates that the house with index 0 is painted, and color 1. 
+
+Rules: Adjacent Two houses cannot make the same color
+ 
+Find: the least cost 
+
+#### DP 
+-almost the same as Paint House I, but the paint color is more: k colors. 
+-Consider first Simply use dp [i] to represent the minimum cost of painting the first i houses 
+-but what colors dp [i] and dp [i-1] index will affect each other, it is difficult to discuss, so add state: the sequence DP is added The status becomes 2D. 
+-Consider the last bit, and the previous bit i-1 is limited by the color of the i bit, so when considering min dp [i], there is another layer of iteration. 
+-Do dp [i] [ j]: # cost for i before a house, so the first pick (i-1) cost of the house, and then find the (i-2) of the house cost 
+- K color => O (of NK ^ 2) 
+- If No optimization, almost the same code as Paint House I 
+-Time O (NK ^ 2), space (NK) 
+-Rolling array: reduce space to O (K) 
+
+#### Note 
+-the sequence type dp [i] means' The first i-1 'results. So dp is best set to int [n + 1] size.
+-However, the color is the state here, so it remains in j: [0 ~ k) 
+-[[8]] This edge case. Ca n’t run into for loop, so special handle. 
+
+#### Optimization Solution 
+-only sell 2 times, split the sale into 5 status modules. 
+-Time: O (NK)-If 
+you know that you need to choose two different minimum costs from the cost each time, then the minimum two Pick out, there is no need to have a third for loop Find min
+-Each time in the series: find the minimum value other than yourself, use the idea of ​​the minimum value / secondary value 
+-maintain 2 minimum values: the minimum value / secondary value. 
+-When calculating, if the minus value is not the minimum value The index of the value gives the minimum value; if the index of the minimum value is removed, the next smallest value is 
+given.-Every loop: 1. calculate the two min vlaues for each i; 2. calcualte dp [i] [ j] 
+-How to think of optimization: write the expression and then see where you can optimize 
+-In addition, you can still roll the array, reduce space complexity to O (K) 
+
+
+
+--- 
+
+** 30. [Best Time to Buy and Sell Stock III .java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.java) ** Level: Hard Tags: [Array, DP, Sequence DP] 
+      
+
+has one more restriction than stock II: only 2 sell opportunities. 
+
+#### DP plus status 
+-at status index 0, 2, 4: No shares held. 1. Always in this status, max profit unchanged; 2. just sold, dp [i] [previous state] + profit
+-At state index 1, 3: Holding the stock. 1. Always in this state, daily profit. 2. Just bought, state changed, but no profit yet: dp [i] [前 State] 
+
+##### Partial profit 
+-Adding daily partial profit (diff) together, the final overall profit is the same. The only thing that is better is that you don't need to record the time of the intermediate purchase. 
+-When will the profit be accumulated?-1. 
+Original Hold the stock, if there is no action, then the status is unchanged, and the profit diff is accumulated. 
+-2 . The stock is sold, the status is changed, and the profit diff is accumulated. 
+-Note: Only in the state index: 0, 2, 4, also Only when the stock is sold, you can accumulate profit 
+
+##### Rolling Array- 
+[i] Only deal with [i-1], reduce space 
+-O (1) space, O (n) time 
+
+#### Find Peak 
+-Find the peak; then look for another peak. 
+-How about Optimize twice? Start looking for Max from both sides at the same time! ( 
+Awesome idea) -leftProfit is the largest Profit at each i point from left to right.  
 ---
-
-**29. [Paint House II.java](https://github.com/awangdev/LintCode/blob/master/Java/Paint%20House%20II.java)**      Level: Hard      Tags: [DP, Sequence DP, Status DP]
-      
-time: O(NK^2):
-space: (NK)
-
-一排n个房子, 每个房子可涂成k种颜色, 涂每个房子的价钱不一样, 用costs[][]表示. 
-
-costs[0][1]表示涂了index是0的房子, 用了color 1.
-
-规则: 相邻的两个房子不能使同一种颜色
-
-求: 最少的cost 
-
-#### DP
-- 跟Paint House I 几乎一模一样, 只不过paint color更多了: k colors.
-- 先考虑单纯地用dp[i]表示涂前 i 个房子的最小cost
-- 但是 dp[i] 和 dp[i-1] 两个index选什么颜色会互相影响, 难讨论, 于是加状态: 序列DP被加了状态变成2D. 
-- 考虑最后位, 而前一位i-1又被i位的颜色限制, 于是在考虑 min dp[i] 时候, 又多了一层iteration.
-- 做dp[i][j]: # cost for 前 i 个房子, 所以要先pick (i-1) 房子的cost, 然后在找出 (i-2)房子的cost
-- K种颜色 => O(NK^2)
-- 如果不优化, 跟Paint House I 几乎是一模一样的代码
-- Time O(NK^2), space(NK)
-- Rolling array: reduce space to O(K)
-
-#### 注意
-- 序列型dp[i]表示'前i-1个'的结果. 所以dp最好设定为 int[n + 1] size. 
-- 然而, 颜色在这里是状态, 所以保留在 j: [ 0~k)
-- [[8]] 这样的edge case. 跑不进for loop, 所以特殊handle.
-
-#### Optimization Solution
-- Time: O(NK)
-- 如果已知每次都要从cost里面选两个不同的最小cost,那么先把最小两个挑出来, 就不必有第三个for loop 找 min
-- 每次在数列里面找: 除去自己之外的最小值, 利用最小值/次小值的思想
-- 维持2个最值: 最小值/次小值. 
-- 计算的时候, 如果除掉的不是最小值的index, 就给出最小值; 如果除掉的是最小值的index, 就给出次小值.
-- Every loop: 1. calculate the two min vlaues for each i; 2. calcualte dp[i][j]
-- 如何想到优化: 把表达式写出来, 然后看哪里可以优化
-- 另外, 还是可以rolling array, reduce space complexity to O(K)
+-rightProfit is the maximum profit at each point starting from point i to the end.
+-At point i, it is the leftProfit, and the rightProfit split point. At point i, leftProfit + rightProfit is added to find the maximum value. 
+-Three 
+O (n), or O (n) 
 
 
 
----
-
-**30. [Best Time to Buy and Sell Stock III.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.java)**      Level: Hard      Tags: [Array, DP, Sequence DP]
+** 31. [Best Time to Buy and Sell Stock IV.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best% 20Time% 20to% 20Buy% 20and% 20Sell% 20Stock% 20IV.java) ** Level: Hard Tags: [DP, Sequence DP] 
       
 
-比stock II 多了一个限制：只有2次卖出机会.
+has int [] price of stock, up to k transactions. Seek maximum profit. 
 
-#### DP加状态
-- 只卖2次, 把买卖分割成5个状态模块.
-- 在状态index 0, 2, 4: 没有持有股票. 1. 一直在此状态, max profit不变; 2. 刚卖掉, dp[i][前状态] + profit
-- 在状态index 1, 3: 持有股票. 1. 一直在此状态, daily profit. 2. 刚刚买进, 状态改变, 但是没有profit yet: dp[i][前状态]
+#### DP 
+-According to StockIII, it is not difficult to find that StockIV divides the state into 2k + 1 shares. Then the same code, transplant. 
 
-##### Partial profit
-- 把每天的partial profit (diff)加在一起, 最终的overall profit是一样的. 唯一更好的是, 不需要记录中间买入的时间点.
-- 什么时候会积累profit呢? 
-- 1. 原本就持有股票的, 如果毫无动作, 那么状态不变, 积累profit diff. 
-- 2. 卖出了股票, 状态改变, 积累profit diff.
-- 注意: 只有在状态index: 0, 2, 4, 也就是卖掉股票的时候, 才可以积累profit
+##### Note 1: -If 
+k is large, k> n / 2, then the length is n In the array, there can only be n / 2 transactions at most 
+-then the problem is simplified to stockII, giving n arrays, unlimited transactions. 
+-Note that the number of status is 2k + 1 
+-Time O (NK), Space O (2k + 1) to store the status 
 
-##### Rolling Array
-- [i] 只有和 [i-1] 打交道, reduce space
-- O(1) space, O(n) time
+##### Note 2: 
+-The final status is 'no stock' should be considered, and a for loop is used to compare max. 
+-Of course, it is also possible to make a profit variable and keep comparing.
+ 
+#### Method 2- 
+(previous notes, proficient first One way to think about it is OK) 
+-Remember to understand: Why sell on day i-1 and buy again, can I make a transaction with the sale on day i?    
+-Because the price of daily transactions is fixed. So if you sell and buy, you are not selling! That's why you can merge. Be sensitive to prices. 
+-Inspired from here: http://liangjiabin.com/blog/2015/04/leetcode-best-time-to-buy-and-sell-stock.html 
 
-#### 找峰头
-- 找峰头；然后往下再找一个峰头。
-- 怎么样在才能Optimize两次巅峰呢？从两边同时开始找Max！（棒棒的想法）
-- leftProfit是从左往右，每个i点上的最大Profit。
-- rightProfit是从i点开始到结尾，每个点上的最大profit.
-- 那么在i点上，就是leftProfit，和右边rightProfit的分割点。在i点，leftProfit+rightProfit相加，找最大值。
-- 三个O(n),还是O(n)
+##### Local optimal solution vs. global optimal Solution:      
+-local [i] [j] = max (global [i – 1] [j – 1] + diff, local [i – 1] [j] + diff)     
+-global [i] [j] = max ( global [i – 1] [j], local [i] [j])      
+-local [i] [j]: on the i-th day, the j-th transaction profit      
+-global [i] [j]: the first i day, a total of j transactions of profit. 
+
+-The difference between local [i] [j] and global [i] [j] is: local [i] [j] means there must be a transaction (sell Out) happened.    
+-When the price on day i is higher than day i-1 (that is, diff> 0), then this transaction (buy on day i-1 and sell on day i) can be traded with day i-1 (Sell) merge into one transaction, that is local [i] [j] = local [i-1] [j] + diff;    
+-When the price on day i is not higher than day i-1 (that is, diff <= 0), then local [i] [j] = global [i-1] [j-1] + diff, and due to diff <= 0, so it can be written as local [i] [j] = global [i-1] [j-1].     
+max number depends on the max value of the previous successful Russian doll + 1
+-(Note: + diff is not omitted in this solution below)   
+
+-global [i] [j] is the maximum return we can make for a maximum of k transactions in the first i day, which can be divided into two cases:     
+-If there is no transaction (sell) on day i, then global [i] [ j] = global [i-1] [j];      
+-If there is a transaction (sell) on day i, then global [i] [j] = local [i] [j].    
 
 
 
----
 
-**31. [Best Time to Buy and Sell Stock IV.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.java)**      Level: Hard      Tags: [DP, Sequence DP]
+
+--- 
+
+** 32. [Russian Doll Envelopes.java] (https://github.com/awangdev/LintCode/blob/master/Java/Russian%20Doll%20Envelopes.java) ** Level: Hard Tags: [Binary Search, Coordinate DP, DP] 
       
 
-有int[] price of stock, 最多做 k transactions.  求最大profit.
+Russian matryoshka, here is represented by envelope. Give a string of array, each [x, y] is the length and width of envelope. [[5,4], [6,4], [6, 7], [2,3]]. 
 
-#### DP
-- 根据StockIII, 不难发现StockIV就是把状态划分为2k+1份. 那么同样的代码, 移植.
+Look at these sets of dolls, you can set a few at most. 
 
-##### 注意1: 
-- 如果k很大, k>n/2, 那么长度为n的数组里面, 最多也只能n/2个transaction
-- 那么题目简化为stockII, 给n数组, 无限次transaction.
-- 注意, status的数量是 2k+1
-- Time O(NK), Space O(2k+1) to store the status
-
-##### 注意2: 
-- 最后状态是'没有stock'的都该考虑, 做一个 for 循环比较max. 
-- 当然, 来一个profit variable, 不断比较, 也是可以的.
-
-#### 方法2
-- (previous notes, 熟练第一种方法的思考就可以)
-- 记得要理解：为什么 i-1天的卖了又买，可以和第 i 天的卖合成一次交易？    
-- 因为每天交易的price是定的。所以卖了又买，等于没卖！这就是可以合并的原因。要对价格敏感啊少年。
-- Inspired from here: http://liangjiabin.com/blog/2015/04/leetcode-best-time-to-buy-and-sell-stock.html
-
-##### 局部最优解 vs. 全局最优解：     
-- local[i][j] = max(global[i – 1][j – 1] + diff, local[i – 1][j] + diff)    
-- global[i][j] = max(global[i – 1][j], local[i][j])     
-- local[i][j]: 第i天，当天一定进行第j次交易的profit     
-- global[i][j]: 第i天，总共进行了j次交易的profit.
-
-- local[i][j]和global[i][j]的区别是：local[i][j]意味着在第i天一定有交易（卖出）发生。    
-- 当第i天的价格高于第i-1天（即diff > 0）时，那么可以把这次交易（第i-1天买入第i天卖出）跟第i-1天的交易（卖出）合并为一次交易，即local[i][j]=local[i-1][j]+diff；    
-- 当第i天的价格不高于第i-1天（即diff<=0）时，那么local[i][j]=global[i-1][j-1]+diff，而由于diff<=0，所以可写成local[i][j]=global[i-1][j-1]。    
-- (Note:在我下面这个solution里面没有省去 +diff）   
-
-- global[i][j]就是我们所求的前i天最多进行k次交易的最大收益，可分为两种情况：    
-- 如果第i天没有交易（卖出），那么global[i][j]=global[i-1][j]；     
-- 如果第i天有交易（卖出），那么global[i][j]=local[i][j]。    
-
-
-
-
-
----
-
-**32. [Russian Doll Envelopes.java](https://github.com/awangdev/LintCode/blob/master/Java/Russian%20Doll%20Envelopes.java)**      Level: Hard      Tags: [Binary Search, Coordinate DP, DP]
-      
-
-俄罗斯套娃, 这里用envelope来表现. 给一串array, 每一个[x, y] 是envelope 长宽. [[5,4],[6,4],[6,7],[2,3]]. 
-
-看用这些套娃, 可以最多套几个.
-
-#### DP: 1D Coordinate
-- envelopes没有顺序, 先排序 (主要根据第一个index排序)
-- 然后观察: 排序过后, 就变成了1D的坐标动态规划.
-- max number 取决于上一个成功Russian doll的 max value + 1
-- 上一个index不知道, 所以遍历找上一个index. 
-- 当下index i 的状态, 取决于前面index j 的状态, 所以遍历两个index.
-- O(n^2)的DP, n = envelopes.length;
+#### DP: 1D Coordinate 
+-envelopes have no order, sort first (mainly according to the first index) 
+-then observe: After sorting, it becomes a 1D coordinate dynamic programming. 
+-The previous index is unknown, so iterate to find the previous index. 
+-The current state of index i depends on the state of the previous index j, so iterate through the two indexes. 
+-O (n ^ 2) DP, n = envelopes.length; 
 
 #### DP: 2D Coordinate
-- 这个方法是自己想出来的, 但是时间复杂度太大, timeout
-- 把envelop标记在2D grid上面, 然后像走机器人一样, 求到最右下角的最大 count max.
-- count 当下能存在多少Russian doll
-- 两种情况: 当下coordinate 没有target, 当下coordinate有target
-- 当下coordinate 没有target: 如同机器人走法, Math.max(dp[i - 1][j], dp[i][j - 1])
-- 当下coordinate 有target: dp[i - 1][j - 1] + dp[i][j]
-- timeout: O(n^2), n = largest coordinate.
+-This method came up by myself, but the time complexity is too big, timeout 
+-Mark the envelop on the 2D grid, and then like a robot, find the maximum count max in the bottom right corner. 
+-Count How many Russian dolls can exist at the moment 
+-Two cases: the current coordinate does not have a target, the current coordinate has a target 
+-the current coordinate does not have a target: like the robot moves, Math.max (dp [i-1] [j], dp [i] [j-1]) 
+- The current coordinate has target: dp [i-1] [j-1] + dp [i] [j] 
+-timeout: O (n ^ 2), n = largest coordinate. 
+
+
+
+
+--- 
+
+** 33. [Expression Tree Build .java] (https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Tree%20Build.java) ** Level: Hard Tags: [Binary Tree, Expression Tree, Minimum Binary Tree, Stack] 
+#### Monotonous Stack 
+-Like Max-tree, https://leetcode.com/problems/maximum-binary-tree
+      
+
+Give a string of characters, which is the formula expression. Turn the formula into an expression tree 
+
+-use bottom-> top increasing stack: the bottom root is kept to the smallest element. 
+-This topic is Min-tree, with the smallest head, Logic and max-tree are exactly the same    
+-Space: O (n) 
+-Time on average: O (n). 
+
+#### Features 
+-TreeNode: Use a TreeNode that is not the final result, store weight, and use it for sorting 
+-use base weight The concept of weighing the symbols at the same level, numerical order 
+-each character is a node, has its own weight. Use a TreeNode to store the weight value, use weight to judge 
+:-(while loop) if node. val <= stack.peek (). nodeValue, change the current stack.peek () to the left child. 
+-2. (if condition) If the stack is left , change the current node to stack.peek (). rightChild 
 
 
 
 
 ---
 
-**33. [Expression Tree Build.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Tree%20Build.java)**      Level: Hard      Tags: [Binary Tree, Expression Tree, Minimum Binary Tree, Stack]
+** 34. [Expression Evaluation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Evaluation.java) ** Level: Hard Tags: [Binary Tree, DFS, Expression Tree , Minimum Binary Tree, Stack] 
       
 
-给一串字符, 表示的是 公式 expression. 把公式变成expression tree
+Give a formula expression, array of strings, and evaluate the result of the expression. 
 
-#### Monotonous Stack
-- 和Max-tree一样，https://leetcode.com/problems/maximum-binary-tree
-- 用到bottom->top递增的stack: 最底下的root维持成最小的element.
-- 这个题目是Min-tree， 头上最小，Logic 和max-tree如出一辙   
-- Space: O(n) 
-- Time on average: O(n).
+#### DFS on Expression Tree 
+-Calculate the value of expression: 1. Build the expression tree. 2. DFS calculation result 
+-Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)-After building the 
+Min Tree, do PostTraversal. 
+-Divde and Conquer: first recursively find the size of left and right, then evaluate the middle Symbol 
+-Time, Space O (n), n = # expression nodes 
 
-#### 特点
-- TreeNode: 用一个并不是最终结果的TreeNode, 存weight, 用来排序
-- 用base weight的概念权衡同一个层面的 符号, 数字 顺序
-- 每一个character都是一个节点, 都有自己的weight. 用一个TreeNode来存weight value, 利用用weight来判断: 
-- 1. (while loop) 如果node.val <= stack.peek().nodeValue, 把当前stack.peek() 变成 left child. 
-- 2. (if condition) 如果stack有残余, 把当前node变成 stack.peek().rightChild 
-
+#### Note 
+-1. For Handle numbers, if left && right Child is all Null, then it must be our largest number node.   
+-2. If one child is null, then return another node.    
+-3. prevent Integer overflow during operation: Use a Long during the process, and finally cast back to int. 
 
 
 
 ---
 
-**34. [Expression Evaluation.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Evaluation.java)**      Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Minimum Binary Tree, Stack]
+** 35. [Convert Expression to Polish Notation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Polish%20Notation.java) ** Level: Hard Tags : [Binary Tree, DFS, Expression Tree, Stack] 
       
 
-给一个公式 expression, array of strings, 然后evaluate expression 结果.
+Give a string of characters to represent the formula expression. Convert this expression into Polish Notation (PN). 
 
-#### DFS on Expression Tree
-- 计算 expression 的值: 1. 建造 expression tree. 2. DFS计算结果
-- Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)
-- build好Min Tree以后，做PostTraversal. 
-- Divde and Conquer: 先recursively找到 left和right的大小， 然后evaluate中间的符号
-- Time, Space O(n), n = # expression nodes
-
-#### Note
-- 1. Handle数字时，若left&&right Child全Null,那必定是我们weight最大的数字node了。   
-- 2. 若有个child是null,那就return另外一个node。    
-- 3. prevent Integer overflow　during operation:过程中用个Long，最后结局在cast back to int.
+#### Expression Tree 
+-Expression Tree: Minimum Binary Tree (https: //lintcode.com/en/problem/expression-tree-build/)-After 
+making the Expression Tree according to the intent: Come a Pre-order-traversal to record the Polish Notation 
+-This question is not given to 'ExpressionTreeNode', so Think of TreeNode as the node we need, which can be expanded to have left / right child. 
+-Note: The label needs to be String. Although Operator is a char with length 1, the number can be multiple digits 
 
 
 
 ---
 
-**35. [Convert Expression to Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Polish%20Notation.java)**      Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]
+** 36. [Convert Expression to Reverse Polish Notation.java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Reverse%20Polish%20Notation.java) ** Level : Hard Tags: [Binary Tree, DFS, Expression Tree, Stack] 
       
 
-给一串字符, 用来表示公式expression. 把这个expression转换成 Polish Notation (PN).
+Give a string of characters to represent the formula expression. Convert this expression to Reverse Polish Notation (RPN). 
 
-#### Expression Tree
-- Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)
-- 根据题意做出Expression Tree出来以后: 来个Pre-order-traversal 就能记录下 Polish Notation
-- 本题没有给'ExpressionTreeNode', 所以把TreeNode就当做成我们需要的node, 里面扩展成有left/right child就可以了.
-- Note: label需要是String. 虽然 Operator是长度为1的char, 但是数字可为多位
+#### Expression Tree 
+-Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)-After 
+making the Expression Tree according to the intent: After a Post-order-traversal, you can record the Reverse Polish Notation 
+-This question does not give 'ExpressionTreeNode', so consider TreeNode as the node we need, and it can be expanded to have left / right children. 
 
 
 
 ---
 
-**36. [Convert Expression to Reverse Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Reverse%20Polish%20Notation.java)**      Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]
+** 37. [Decode Ways II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Decode%20Ways%20II.java) ** Level: Hard Tags: [DP, Enumeration, Partition DP] 
       
 
-给一串字符, 用来表示公式expression. 把这个expression转换成 Reverse Polish Notation (RPN).
+gives a string of numbers to be decoded into English letters. [1 ~ 26] Corresponds to the corresponding English letters. Find out how many ways can be decoded. 
 
-#### Expression Tree
-- Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)
-- 根据题意做出Expression Tree出来以后: 来个Post-order-traversal 就能记录下 Reverse Polish Notation
-- 本题没有给'ExpressionTreeNode', 所以把TreeNode就当做成我们需要的node, 里面扩展成有left/right child就可以了.
+The characters may be "*", which can represent [1- 9] 
+
+#### DP 
+-Multiplication principle 
+-same as decode way I, addition principle, when cutting point: 1 digit or 2 digits is used to decode at present 
+-define dp [i] = how many kinds of first i digits can be at most The method of decode. new dp [n + 1].-The 
+different case is: if there is "*" in each partition, it will extend many different possibilities in itself 
+-then: dp [i] = dp [i -1] * (#variations of ss [i]) + dp [i-2] * (#variations of ss [i, i + 1]) 
+
+##### Features 
+-The ability to enumerate: specific analysis' * ' 
+Where it appears, enumerate numbers, basic skills. -Note !! The title says * in [1, 9]. (It will be more difficult if 0 ~ 9) 
+-Understand the reason for the MOD: the number is too large, the mod Give the final result: In fact, under the mod of 10 ^ 9 + 7, most of them Examples are pervious.
+
+
+
+ 
+---
+
+-After 
+enumeration, in fact, the writing and thinking process of this topic are not difficult ** 38. [Palindrome Partitioning II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning % 20II.java) ** Level: Hard Tags: [DP, Partition DP] 
+      
+
+Give a String s, find out how many cuts are used at least, so that each substring that is cut out is palindrome 
+
+#### Partition DP 
+-Find minimum cut: Divide DP 
+-dp [i]: How many knives to cut at least, so that the string of the length of the previous i, cut out are all palindrome 
+-finally get dp [n], so int [n + 1] 
+-move the cutter, See where to cut, index j in [0 ~ i] 
+-consider whether [j, i-1] is a palindrome, if so, then: dp [i] = min (dp [i], d [j] + 1) 
+.-Note: It is estimated that when traversing j, the traversal can be reversed. 
+
+#### Calculating the optimization of Palindrome 
+-Using the properties of palindrome, you can calculate the situation of boolean palindrome [i, j].- 
+Find an arbitrary mid point : 
+- 1. Suppose palindrome length is odd, then the mid separate characters, The characters [mid-1], [mid + 1] on both sides should be exactly equal.
+-2. Assuming palindrome is even length, then the characters at [mid] and [mid + 1] should be 
+equal.-Do this to palindrome [i, j]: Whether the substring from character i to character j is palindrome 
+-like this Give our question a reasonable dimensionality reduction, currently it is time: O (n ^ 2) 
+.-Otherwise, find palindrome once, which is n, will become O (n ^ 3) 
+
+#### Previous Notes 
+-Double for loop A kind of substring string (i ~ j). If i, j are adjacent or at the same point, then isPal; otherwise, (i + 1, j-1) between i and j must be isPal. 
+-It seems that when checking i, j, how can I know (i + 1, j-1) pressed in the middle first? Actually not .. When j grows up slowly, all 0 ~ j substrings are checked. So isPal [i + 1] [j-1] must already know the result. 
+-okay. Then if any of the above is true, that is to say isPal [i] [j] == true. Then we have to judge how many ways to cut to the end point of the loop parameter j in the first layer? 
+-The idea is smooth: we naturally think that it would be better to add the cut before i plus what happened between i ~ j. 
+---
+-Anyway, j is not changed now, let ’s see where i is and whether cut [i-1] is smaller / minimum; then +1 based on cut [i-1] is over.
+-Of course, if i == 0, and i ~ j is isPal, then there is nothing to talk about, don't cut, 0 knife. 
+-In the end, brush to cut [s.length ()-1], which is the last point. return is right. 
+
+
+
+
+
+** 39. [Backpack III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20III.java) ** Level: Hard Tags: [Backpack DP, DP] 
+      
+
+for n Different items, int [] A weight, int [] V value, each item can be used an unlimited number of times 
+
+Ask how many values ​​can be put into a bag of size m? 
+
+#### DP 
+-You can use items infinitely and lose The meaning of last i, last unique item: Because it can be reused. 
+-So you can convert an angle: 
+-1. Use i ** kinds of ** items, spell out w, and meet the problem conditions (max value). Here because of item i can be used unlimited times, so consider how many times K is used. 
+-2. Although K can be unlimited, it is also limited by k * A [i]: the maximum cannot exceed the size of the backpack. 
+-dp [i] [w]: before i items, fill weight w backpack, what is the maximum 
+value.-dp [i] [w] = max {dp [i-1] [w-k * A [i-1]] + kV [i-1 ]}, k> = 0 
+-Time O (nmk)-If 
+k = 0 or 1, it is actually Backpack II: Take or not take 
+
+#### Optimization 
+-Optimize the time complexity, draw the graph and find: 
+-The calculated (dp [i-1] [j-k * A [i-1]] + k * V [i-1])
+-In fact, the grid of dp [i] [jA [i-1]] on the same line has V [i-1]-so 
+there is no need to loop over k times every time 
+-Simplified: dp [i] [ j] One of them may be: dp [i] [j-A [i-1]] + V [i-1] 
+-Time O (mn) 
+
+#### Space optimized to 1-dimensional array 
+-according to the previous optimization Case, draw a 2 rows grid 
+-find that dp [i] [j] depends on: 1. dp [i-1] [j], 2. dp [i] [j-A [i-1]] 
+-where : dp [i-1] [j] is the settlement result of the previous round (i-1), it must be already calculated, ready to be used 
+-However, after we i ++, j ++, before row = i- 1, col <j, all of them are not 
+needed.- Dimension reduction and simplification: We only need to keep the dimension dimension of weigth, and the dimension dimension of i can be omitted:-( 
+i-1) row is just the old value calculated before: Each round, j = [0 ~ m], then dp [j] itself has the function of recording the old value. 
+-It becomes a 1-bit array 
+-The focus of the dimensionality reduction optimization: look at the left and right calculation direction of the two lines 
+-Time (mn). Space (m) 
 
 
 
 ---
 
-**37. [Decode Ways II.java](https://github.com/awangdev/LintCode/blob/master/Java/Decode%20Ways%20II.java)**      Level: Hard      Tags: [DP, Enumeration, Partition DP]
+** 40 [First Missing Positive.java] ( https://github.com/awangdev/LintCode/blob/master/Java/First%20Missing%20Positive.java) ** Level:. Hard Tags: [Array] 
       
 
-给出一串数字, 要翻译(decode)成英文字母. [1 ~ 26] 对应相对的英文字母. 求有多少种方法可以decode.
+to a Unordered strings, negative numbers: Find the first missing positive integer 
 
-其中字符可能是 "*", 可以代表 [1 - 9]
+missing positive integer in this array. It is actually [1, n] for comparison. 
 
-#### DP
-- 乘法原理
-- 跟decode way I 一样, 加法原理, 切割点时: 当下是取了 1 digit 还是 2 digits 来decode
-- 定义dp[i] = 前i个digits最多有多少种decode的方法. new dp[n + 1].
-- 不同的情况是: 每一个partition里面, 如果有"*", 就会在自身延伸出很多不同的可能
-- 那么: dp[i] = dp[i - 1] * (#variations of ss[i]) + dp[i - 2] * (#variations of ss[i,i+1])
+#### Array analysis, index trick 
+-use while loop, keep Try to send the number to where it should be placed 
+-if index = nums [i] exceeds nums.length, of course it will not move 
+-note: check val! = Nums [val], avoid infinitely loop 
+-check: nums [i ] Is it equal to i, if it is not right, the result is found 
 
-##### 特点
-- 枚举的能力: 具体分析 '*' 出现的位置, 枚举出数字, 基本功. 
-- 注意!!题目说 * in [1, 9].   (如果 0 ~ 9 会更难一些)
-- 理解取MOD的原因: 数字太大, 取mod来给最终结果: 其实在 10^9 + 7 这么大的 mod 下, 大部分例子是能通过的.
-- 枚举好以后, 其实这个题目的写法和思考过程都不难
-
+#### Edge Case 
+-If nums == null, in fact missing positive integer is naturally 1 
+-When validation, there may be no disconnected integer in this string of numbers, but the maximum The integer is in the first position (because the index exceeds the standard, it cannot be placed in the correct place) 
+-at this time, n is placed at index 0, in fact, the next integer should be n + 1 
+-In the end, if the array is completely sorted, it is not lacking, and it also meets the conditions of the subscript, then the only next is the first positive outside the array range number: n 
 
 
 
 ---
 
-**38. [Palindrome Partitioning II.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning%20II.java)**      Level: Hard      Tags: [DP, Partition DP]
+** 41. [N-Queens.java] (https://github.com/awangdev/LintCode/blob/master/Java/N-Queens.java) ** Level: Hard Tags: [Backtracking] 
       
 
-给一个String s, 找出最少用多少cut, 使致 切割出的每一个substring, 都是palindrome
+N-Queen Question , Give the numbers n, and nxn board, find all N-queens answers. 
 
-#### Partition DP
-- Find minimum cut: 分割型DP
-- dp[i]: 最少cut多少刀, 使得前 i 长度的string, 割出来都是palindrome
-- 最终要得到 dp[n], 所以 int[n + 1]
-- 移动切刀, 看在哪里切, index j in [0 ~ i]
-- 考虑[j, i - 1] 是否是回文串, 如果是, 那么: dp[i]= min(dp[i], d[j] + 1).
-- note: 估计遍历 j 的时候, 反过来遍历也可以.
+#### Backtracking 
+-find all situations with dfs, each iteration, pick the appropriate point from the line, dfs 
+-add the selected point to the candidate In the list, remember to backtracking. 
+-Each candidate needs validation, check if row, col, 2 diagnal is queen 
 
-#### 计算Palindrome的优化
-- 利用palindrome的性质, 可以算出 boolean palindrome[i, j]的情况. 
-- 找一个任意mid point:
-- 1. 假设palindrome是奇数长度, 那么 mid 是单独的字符, 而两边的字符 [mid-1], [mid+1] 应该完全相等.
-- 2. 假设palindrome是偶数长度, 那么 [mid] 和 [mid + 1] 这样位置的字符应该相等.
-- 这样做出来 palindrome[i, j]: 从字符 i 到 字符 j 的 substring 是否是 palindrome
-- 这样就给我们的问题合理降维, 目前是time: O(n^2). 
-- 不然求一次palindrome, 就是n, 会变成O(n^3)
-
-#### Previous Notes
-- Double for loop 检查每种substring string (i~j). 若i,j相邻或者同点，那么肯定isPal；否则，i,j之间的（i+1, j-1）一定得isPal。
-- 看上去，在检查i,j的时候，中间按的（i+1, j-1）怎么可能先知道？ 其实不然..在j慢慢长大的时候，所有的0~j的substring都检查过。所以isPal[i+1][j-1]一定是已经知道结果的。
-- okay.那么假如以上任意一种情况成立，也就是说isPal[i][j] == true。那就要判断，切到第一层循环参数j的末尾点时，有多少种切法？
-- 想法很顺：我们naturally会想到，把i之前的cut加上i~j之间发生的不就好了。
-- 反正现在j不变，现在就看吧i定在哪里，cut[i - 1]是否更小/最小； 再在cut[i-1]基础上+1就完了。
-- 当然，如果i==0, 而 i~j又是isPal,那没啥好谈的，不必切，0刀。
-- 最终，刷到cut[s.length() - 1] 也就是最后一点。 return的理所应当。
+#### validate n queue at certain (x, y) -1. There 
+must be no target row in the array # 
+- 2. diagnal. Remember the formula:-row1 
+-row2 == col1-col2. Diagnal elelment.fail 
+-row1-row2 ==-(col1-col2). Diagnal element. Fail-  
+-Draw a 3x3 board to test the 2 scanarios:
+(0,0) and (3,3) are diagnal- 
+(0,2) and (2,0) are diagnal 
 
 
 
 
 ---
-
-**39. [Backpack III.java](https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20III.java)**      Level: Hard      Tags: [Backpack DP, DP]
+ 
+** 42. [N-Queens II.java] (https://github.com/awangdev /LintCode/blob/master/Java/N-Queens%20II.java)** Level: Hard Tags: [backtracking ] 
       
 
-给n种不同的物品, int[] A weight, int[] V value, 每种物品可以用无限次
+with N-Queens, like, not looking for all the results, but how many results COUNT. 
 
-问最大多少value可以装进size是 m 的包?
+#### backtracking 
+- When list.size () == n, it means that a solution was found. 
+-1. 
+dfs function (List <Integer>, n) -2. 
+validate function 
 
-#### DP
-- 可以无限使用物品, 就失去了last i, last unique item的意义: 因为可以重复使用.
-- 所以可以转换一个角度:
-- 1. 用i **种** 物品, 拼出w, 并且满足题目条件(max value). 这里因为item i可以无限次使用, 所以考虑使用了多少次K.
-- 2. K虽然可以无限, 但是也被 k*A[i]所限制: 最大不能超过背包大小.
-- dp[i][w]: 前i种物品, fill weight w 的背包, 最大价值是多少.
-- dp[i][w] = max {dp[i - 1][w - k*A[i-1]] + kV[i-1]}, k >= 0
-- Time O(nmk)
-- 如果k = 0 或者 1, 其实就是 Backpack II: 拿或者不拿
 
-#### 优化
-- 优化时间复杂度, 画图发现:
-- 所计算的 (dp[i - 1][j - k*A[i - 1]] + k * V[i - 1]) 
-- 其实跟同一行的 dp[i][j-A[i-1]] 那个格子, 就多出了 V[i-1]
-- 所以没必要每次都 loop over k times
-- 简化: dp[i][j] 其中一个可能就是: dp[i][j - A[i - 1]] + V[i - 1]
-- Time O(mn)
 
-#### 空间优化到1维数组
-- 根据上一个优化的情况, 画出 2 rows 网格
-- 发现 dp[i][j] 取决于: 1. dp[i - 1][j], 2. dp[i][j - A[i - 1]]
-- 其中: dp[i - 1][j] 是上一轮 (i-1) 的结算结果, 一定是已经算好, ready to be used 的
-- 然而, 当我们 i++,j++ 之后, 在之前 row = i - 1, col < j的格子, 全部不需要.
-- 降维简化: 只需要留着 weigth 这个 dimension, 而i这个dimension 可以省略: 
-- (i - 1) row 不过是需要用到之前算出的旧value: 每一轮, j = [0 ~ m], 那么dp[j]本身就有记录旧值的功能.
-- 变成1个一位数组
-- 降维优化的重点: 看双行的左右计算方向
-- Time(mn). Space(m)
+--- 
+** 43. [LRU Cache.java] (https://github.com/awangdev/LintCode/blob/master/Java/ LRU% 20Cache.java) ** Level: Hard Tags: [Design, Hash Table, Linked List] 
+      
 
+#### Double Linked List 
+-A special bidirectional ListNode is used, with head and tail, which greatly speeds up speed.     
+-The main thing is to speed up the process of updating the ranking, find the item hashmap O (1), and perform subtraction and transposition are O (1) 
+-Overall O (1)
+
+##### Ingenious point 
+#### Kinda, Tree DP 
+-1. head And tail are particularly clever: removing heads and tails, and adding heads and tails, are particularly fast.    
+-2 
+. Use two-way pointers: pre and next. When you need to remove any node, you just need to know which one      to remove.-Just connect patient.pre and node.next patiently, and the node will be natural. Do not disconnect.     
+-Once 
+you know how to solve it, it is not very special and not difficult to write:     -moveToHead ()     
+-insertHead ()-remove     
+()       
+
+#### O (n) Check for duplicates 
+-timeout method, naive O (n) solution, and the result is indeed timeout.      
+-A map <key, value> stores the value. A queue <key> to hold the rank.     
+-Every time there is an update, put the latest one at the end; every time you exceed the capaticity, kill the big head. Very simple, but it took too long to run and failed.     
+
+
+
+
+--- 
+
+** 44. [Binary Tree Maximum Path Sum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum.java) ** Level : Hard Tags: [DFS, DP, Tree, Tree DP] 
+      
+
+Find max path sum, from any treeNode to any treeNode.
+
+-Two cases: 1. combo sum: left + right + root; 2. single path sum 
+-Note1: the path needs to be continuous, curr node cannot be skipped 
+-Note2: what about I want to skip curr node: handled by lower level of dfs (), where child branch max was compared. 
+-Note3: skip left / right child branch sum, by comparing with 0. If it is less than 0, it is not necessary to record 
+
+the idea of ​​#### DP 
+-tree gives us 2 branch, each branch is similar to dp [i-1], here is similar to dp [left], dp [right] this way 
+-after finding dp [left], dp [right], combine with curr node. 
+-because it is looking for max sum, and can skip nodes, so the global variable max is required 
+-each time dfs () returns must be a path that can continue `continuously link ', so return` one single path sum + curr value`. 
+
+#### DFS, PathSum object 
+-that just solves everything 
 
 
 ---
 
-**40. [First Missing Positive.java](https://github.com/awangdev/LintCode/blob/master/Java/First%20Missing%20Positive.java)**      Level: Hard      Tags: [Array]
+** 45. [Basic Calculator.java] (https://github.com/awangdev/LintCode/blob/master/Java/Basic%20Calculator.java) ** Level: Hard Tags: [Binary Tree, Expression Tree, Math , Minimum Binary Tree, Stack] 
       
 
-给一串无序数字, 有负数: 找这个array里面第一个 missing的 positive integer
+Give an expression String, and evaluate the value of the expression. The expression 
 
-missing positive integer 其实是以 [1, n] 来做比较的.
+string includes +,-, integers, opening and closing brackets, and space. 
 
-#### Array分析, index 技巧
-- 用while loop, 不断地尝试把 number 送到该放的地方
-- 如果 index = nums[i] 超过了nums.length, 当然就不移动了
-- 注意: 检查 val != nums[val], avoid infinitely loop
-- 检验: nums[i] 是否等于 i, 如果不对, 就找到了结果
+#### Expression Tree 
+-Expression Tree is a weight- based min-tree-tree 
+based on arithmetic symbols + numbers: the numbers are always in the leaf, then the symbol is the tree node, the brackets do not appear in the tree 
+-use monotonuous stack to build this tree 
 
-#### Edge Case
-- 如果nums==null, 其实missing positive integer 自然而然是 1
-- validation时, 有可能这串数字里没有断开的integer, 但是最大的integer在首位 (因为index超标, 无法被放到正确的地方)
-- 这种时候, n被放在 index 0, 其实就是说, 下一个integer应该是 n + 1
-- 最终, 如果array本来就是完全sorted, 也不缺, 还符合角标的条件, 那么唯一下一个就是array范围外的第一个positive number: n
+##### Thinking points 
+-Understand Expression Tree 
+-Use stack to build the expression tree + understand the weight system 
+-Use post-order traversal to evaluate the tree 
+-Note that the number in the input will not be a single digit, so a buffer is needed to store the number string 
+-For the practice of the entire topic, you can refer to `Expression Evaluation` 
 
 
 
 ---
-
-**41. [N-Queens.java](https://github.com/awangdev/LintCode/blob/master/Java/N-Queens.java)**      Level: Hard      Tags: [Backtracking]
+ 
+** 46. [Longest Consecutive Sequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Consecutive%20Sequence.java) ** Level: Hard Tags: [Array, Hash Table, Union Find] 
       
 
-N-Queen 问题, 给数字n, 和 nxn board, 找到所有N-queens的答案.
+Give a string of numbers, unsorted, find the length of the sequence of consecutive elements in the string (consecutive sequence, it is a continuous number, not to say that the original order) 
 
-#### Backtracking
-- 用dfs找所有情况, 每一个iteration, 从找一行里挑合适的点, dfs
-- 选中的点加进candidate list 里面, 记得要backtracking.
-- 每一个candidate都需要validation, 检查 row, col, 2 diagnal 有没有queen
-
-#### validate n queue at certain (x, y)
-- 1. array 里面不能有 target row#
-- 2. diagnal. 记得公式：
-- row1 - row2 == col1 - col2.     Diagnal elelment.fail
-- row1 - row2 == - (col1 - col2). Diagnal element. fail
-- Draw a 3x3 board to test the 2 scanarios:
-- (0,0) and (3,3) are diagnal
-- (0,2) and (2,0) are diagnal
-
-
-
-
----
-
-**42. [N-Queens II.java](https://github.com/awangdev/LintCode/blob/master/Java/N-Queens%20II.java)**      Level: Hard      Tags: [Backtracking]
-      
-
-跟 N-Queens 一样, 不是找所有结果, 而是count多少结果.
-
-#### Backtracking
-- 当list.size() == n 的时候，说明找到了一个Solution。
-- 1. dfs function (List<Integer>, n)
-- 2. validate function
-
-
-
----
-
-**43. [LRU Cache.java](https://github.com/awangdev/LintCode/blob/master/Java/LRU%20Cache.java)**      Level: Hard      Tags: [Design, Hash Table, Linked List]
-      
-
-#### Double Linked List
-- 用了一个特别的双向的ListNode，有了head和tail，这样就大大加快了速度。     
-- 主要加快的就是那个‘更新排位’的过程，找到item hashmap O(1), 做减法换位也都是O(1)
-- Overall O(1)
-
-##### 巧妙点
-- 1. head和tail特别巧妙：除掉头和尾，和加上头和尾，就都特别快。    
-- 2. 用双向的pointer: pre和next, 当需要除掉任何一个node的时候，只要知道要除掉哪一个，     
-- 直接把node.pre和node.next耐心连起来就好了，node就自然而然的断开不要了。     
-- 一旦知道怎么解决了，就不是很特别，并不是难写的算法:    
-- moveToHead()    
-- insertHead()    
-- remove()      
-
-#### O(n) 检查重复
-- timeout method, 天真的来了一个O(n) 的解法，结果果然timeout.     
-- 一个map<key,value>存数值。一个queue<key>来存排位。     
-- 每次有更新，就把最新的放在末尾；每次超过capaticity,就把大头干掉。很简单嘛，但是跑起来太久，失败了。     
-
-
-
-
----
-
-**44. [Binary Tree Maximum Path Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum.java)**      Level: Hard      Tags: [DFS, DP, Tree, Tree DP]
-      
-
-找max path sum,  可以从任意treeNode 到任意 treeNode.
-
-#### Kinda, Tree DP
-- 两个情况: 1. combo sum: left+right+root; 2. single path sum
-- Note1: the path needs to be continuous, curr node cannot be skipped
-- Note2: what about I want to skip curr node: handled by lower level of dfs(), where child branch max was compared.
-- Note3: skip left/right child branch sum, by comparing with 0. 小于0的, 没必要记录
-
-#### DP的思想
-- tree给我们2条branch, 每条branch就类似于 dp[i - 1], 这里类似于dp[left], dp[right] 这样
-- 找到 dp[left], dp[right] 以后, 跟 curr node结合. 
-- 因为是找max sum, 并且可以skip nodes, 所以需要全局变量max
-- 每次dfs() return的一定是可以继续 `continuously link 的 path`, 所以return `one single path sum + curr value`.
-
-#### DFS, PathSum object
-- that just solves everything
-
-
----
-
-**45. [Basic Calculator.java](https://github.com/awangdev/LintCode/blob/master/Java/Basic%20Calculator.java)**      Level: Hard      Tags: [Binary Tree, Expression Tree, Math, Minimum Binary Tree, Stack]
-      
-
-给一个expression String, 要evaluate这个expression的值.
-
-Expression string 里面包括 +, -, 整数, 开合括号, 还有space.
-
-#### Expression Tree
-- Expression Tree是一个 weight-based的 min-tree 
-- 基于 运算符号 + 数字的 tree: 数字永远在leaf, 然后符号是tree node,  括号不出现在tree里面
-- 用 monotonuous stack 来构建这个tree
-
-##### Thinking points
-- Understand Expression Tree
-- Use stack to build the expression tree + understand the weight system
-- Use post-order traversal to evaluate the tree
-- 注意, input里面的数字不会是single digit, 所以需要一个buffer存number string
-- 整个题目的做法, 可以参照 `Expression Evaluation`
-
-
-
----
-
-**46. [Longest Consecutive Sequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Consecutive%20Sequence.java)**      Level: Hard      Tags: [Array, Hash Table, Union Find]
-      
-
-给一串数字, unsorted, 找这串数字里面的连续元素序列长度 (consecutive序列, 是数字连续, 并不是说要按照原order)
-
-#### HashSet
-- 要想看连续元素, 必须要num++, num--这样搜索
-- 1. 需要O(1)找到元素
-- 2. 需要简单快速找到 num - 1, num + 1.
-- 如果用min,max开array, 耗费空间
-- 用HashSet来存, 用set.contains() 来查找 num - 1, num + 1 存在与否
-- for loop. O(n) 
-- 里面的while loop 一般不会有O(n); 一旦O(n), 也意味着set 清零, for loop也不会有更多 inner while 的衍生.
-- overall O(n) 时间复杂度
+# ### HashSet 
+-To see continuous elements, you must use num ++, num-- search like this 
+-1. need O (1) to find the element 
+-2. need to quickly and easily find num-1, num + 1. 
+-if you use min, max open array, consume space 
+-use HashSet to save, use set.contains () to find whether num-1, num + 1 exists or not 
+-for loop. O (n) 
+-while loop in the general will not have O (n ); Once O (n), it also means that the set is cleared, and there will be no more inner while derivatives in the for 
+loop.-Overall O (n) time complexity 
 
 
 #### Union Find
-- 最终是要把相连的元素算一下总长, 其实也就是把元素group起来, 相连的group在一起, 于是想到UnionFind
-- 这里用到了一个`int[] size` 来帮助处理 `合并的时候parent是哪个`的问题: 永远往group大的union里去
-- main function 里面, 有一个map来track, 每个元素, 只处理1遍.
-- union的内容: current number - 1, current number + 1
-- https://www.jianshu.com/p/e6b955ca208f
+- The final element is linked should count the total length, in fact, is to group elements together, group connected together, so think UnionFind  
+- this uses a `int [] size` to help when dealing with` `merger of parent which issues: forever large group of union go
+- main function inside, there is a map to track, each element handles only 1 times. 
+- Contents of union: current number-1, current number + 1 
+-https: 
 
-##### 特点
-- Union Find 在index上做好像更加容易
-- 其他union find function: `boolean connected(a,b){return find(a) == find(b)}`
+//www.jianshu.com/p/e6b955ca208f ##### Features 
+-Union Find seems easier to do on index 
+-Other union find function: ` boolean connected (a, b) {return find (a) == find (b)} ` 
 
 
 
----
+--- 
 
-**47. [Serialize and Deserialize Binary Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Serialize%20and%20Deserialize%20Binary%20Tree.java)**      Level: Hard      Tags: [BFS, DFS, Deque, Design, Divide and Conquer, Tree]
+** 47. [Serialize and Deserialize Binary Tree.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Serialize% 20and% 20Deserialize% 20Binary% 20Tree.java) ** Level: Hard Tags: [BFS, DFS, Deque, Design, Divide and Conquer, Tree] 
       
 
-Serialize and Deserialize Binary Tree
+Serialize and Deserialize Binary Tree 
 
-#### DFS, Divide and Conquer
-##### Serilize
-- Divide and conquer: Pre-order traversal to link all nodes together
-- build the string data: use '#' to represent null child. 
+#### DFS , Divide and Conquer 
+##### Serilize 
+-Divide and conquer: Pre-order traversal to link all nodes together 
+-build the string data: use '#' to represent null child.
 - the preorder string, can be parsed apart by `split(',')`
 
 ##### Deserialize
@@ -6358,27 +6358,27 @@ Serialize and Deserialize Binary Tree
 - serilize: divide and conquer, pre-order traversal
 - deserialize: 稍微复杂, 用dfs. 每次要truncate input string: 
 - 一直dfs找left child, 接着right child until leaf is found.
-- 用一个StringBuffer来hold string, 因为string 是primitive, 我们这里需要pass reference
+-Use a StringBuffer to hold the string, because string is primitive, we need to pass reference 
+-traverse nums [] from the end i = n-1
 
 #### BFS, Non-recursive
-- using queue. 想法直观。level-order traversal. save到一个string里面就好。
-- 遇到null child, 不是直接忽略, 而是assign一个Integer.MIN_VALUE, 然后 mark as '#'
-- BFS需要track queue size, 每一次只process特定数量的nodes
+-using queue. The idea is intuitive. level-order traversal. Save to a string. 
+-When encountering a null child, instead of ignoring it directly, you assign an Integer.MIN_VALUE, and then mark as '#' 
+-BFS needs track queue size, each time only a specific number of nodes 
 
 
 
----
+--- 
 
-**48. [Count of Smaller Numbers After Self.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Numbers%20After%20Self.java)**      Level: Hard      Tags: [BST, Binary Indexed Tree, Binary Search, Divide and Conquer, Segment Tree]
+** 48. [Count of Smaller Numbers After Self.java] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Numbers%20After%20Self.java) ** Level: Hard Tags: [BST, Binary Indexed Tree, Binary Search, Divide and Conquer, Segment Tree] 
       
 
-给一串数字nums[], 求一个新数组result, where result[i] = # of smaller items on right of nums[i]
+gives a string of numbers nums [], find a new array result, where result [i] = # of smaller items on right of nums [i] 
 
-#### Binary Search
-- sort and insert 进一个新list, 新的list是sorted
-- 从末尾 i = n-1 遍历nums[]
-- 每一次insert nums[i] 进list的位置, 就是# of smaller items on right side of nums[i]
-- 每次记录下result[i]
+#### Binary Search 
+-sort and insert into a new list, the new list is sorted 
+-each time insert nums [i] enters the list, it is # of smaller items on right side of nums [i]-each 
+time results [i] is recorded
 - **问题**: 这里的binary search 是用 `end = list.size(); while(start<end){...}`做的, 可否换成用`end=list.size() - 1`?
 
 
@@ -6391,95 +6391,95 @@ Serialize and Deserialize Binary Tree
 - time: `n * log(m)`, where m = Math.abs(max-min). log(m) is used to modify() the leaf element
 
 ##### Segment Tree solution - tricky part:
-- negative nubmer works oddly with mid and generates endless loop in build(): `[-2, -1]` use case
-- build entire segment tree based on [min, max], where min must be >= 0. 
-- we can do this by adding Math.abs(min) onto both min/max, as well as +diff during accessing nums[i]
+-negative nubmer works oddly with mid and generates endless loop in build (): `[-2, -1]` use case 
+-build entire segment tree based on [min, max], where min must be> = 0. 
+-we can do this by adding Math.abs (min) onto both min / max, as well as + diff during accessing nums [i] 
 
 
 
-#### Binary Indexed Tree
-- TODO, have code
+#### Binary Indexed Tree 
+-TODO, have code 
 
 
 
----
+--- 
 
-**49. [Remove Duplicate Letters.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicate%20Letters.java)**      Level: Hard      Tags: [Greedy, Hash Table, Stack]
+** 49. [Remove Duplicate Letters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicate%20Letters.java) ** Level: Hard Tags: [Greedy, Hash Table, Stack] 
       
 
-#### Hash Table, Greedy
+#### Hash Table, Greedy 
 - count[] = int[256], 不需要 `c-'a'`
-- boolean visited[]: 一旦一个字母固定了位置后, 再次遇到时候, 直接跳过用过的character
-- 如果tail字母可以变小, 那就delete掉tail, 重新接上新字母 (前提条件: 去掉的字母后面还会再出现, set visited[tail] = false)
-- Space: O(1) count[], visited[].
-- Time: Go through all letters O(n)
+-boolean visited []: Once a letter has fixed its position, when it meets again, it skips the used character directly 
+-if the tail letter can become smaller, then delete the tail and reconnect with the new letter ( Prerequisites: The removed letter will appear again, set visited [tail] = false) 
+-Space: O (1) count [], visited []. 
+-Time: Go through all letters O (n) 
 
-#### Stack
-- Use stack instead of stringBuffer: keep append/remove last added item
-- However, stringBuffer appears to be faster than stack.
+#### Stack 
+-Use stack instead of stringBuffer: keep append / remove last added item 
+-However, stringBuffer appears to be faster than stack. 
 
 
 
----
+--- 
 
-**50. [Expression Add Operators.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Add%20Operators.java)**      Level: Hard      Tags: [Backtracking, DFS, Divide and Conquer, String]
+** 50. [Expression Add Operators.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Expression% 20Add% 20Operators.java) ** Level: Hard Tags: [Backtracking, DFS, Divide and Conquer, String] 
       
 
-给一个数字String, 数字来自`0-9`, 给3个操作符 `+`,`-`,`*`, 看如何拼凑, 可以做出结果target.
+Give a number String, the numbers come from `0-9`, give 3 operators` + `,`- `,` * `, See how to piece together, can produce results target. Output 
 
-output 所有 expression
+all expression 
 
-#### string dfs, use list to track steps (backtracking)
-- 跟string相关, 写起来可能稍微繁琐一点
-- 数字有 dfs([1,2,3...]) 组合方法
-- operator有[`+`,`-`,`*`] 3种组合方法
-- 注意1: 乘号要特殊处理, pass along 连乘的数字, 计算下一步乘积的时候, 要 sum - preProduct + product
-- 注意2: '01' 这种数字要skip
-- 注意3: 第一个选中数字不需要加操作符, 直接加进去
-- Time: O(4^n)， Space: O(4^n)
-- T(n) = 3 * T(n-1) + 3 * T(n-2) + 3 * T(n-3) + ... + 3 *T(1);
-- T(n-1) = 3 * T(n-2) + 3 * T(n-3) + ... 3 * T(1);
-- Thus T(n) = 4T(n-1) = 4^2 * T(n - 1) = .... O(4^n)
+#### string dfs, use list to track steps (backtracking) 
+-related to string, it may be a little tedious to write 
+-numbers have dfs ( [1,2,3 ...]) combination methods 
+-operator has [`+`, `-`,` * `] 3 combination methods
+-Note 1: The multiplication sign must be specially processed, and the numbers along the multiplication are passed. When calculating the next product, sum-preProduct + product 
+-Interval teardown point, PriorityQueue point 
+-Note 2: '01' is a skip number.
+-Note 3: The first selected number does not need to be added, it is added directly 
+-Time: O (4 ^ n), Space: O (4 ^ n) 
+-T (n) = 3 * T (n-1) + 3 * T (n-2) + 3 * T (n-3) + ... + 3 * T (1); 
+-T (n-1) = 3 * T (n-2) + 3 * T (n-3) + ... 3 * T (1); 
+-Thus T (n) = 4T (n-1) = 4 ^ 2 * T (n-1) = .... O (4 ^ n ) 
 
-#### String dfs, use string as buffer
-- 逻辑一样, 代码更短, 只不过不做list, 直接pass `buffer + "+" + curr`
-- 因为每次都创建新string, 所以速度稍微慢一点. Time complexity 一样
+#### String dfs, use string as buffer 
+-the logic is the same, the code is shorter, but instead of doing a list, pass `buffer +" + "+ curr` directly 
+-because a new string is created each time, it is slightly slower One point. Same time complexity 
 
 
 
----
+--- 
 
-**51. [Insert Interval.java](https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Interval.java)**      Level: Hard      Tags: [Array, PriorityQueue, Sort]
+** 51. [Insert Interval.java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Interval.java) ** Level: Hard Tags: [Array, PriorityQueue, Sort] 
       
 
-#### Sweep Line
-- Interval 拆点，PriorityQueue排点
-- Merge时用count==0作判断点
-- 注意, 一定要compare curr `p.x == queue.peek().x` 确保重合的点全部被process: `count+=p.x`
-- PriorityQueue: O(logN). 扫n点, 总共：O(nLogn)
+#### Sweep Line 
+-count == 0 is used as the judgment point during Merge 
+-Note, be sure to compare curr `px == queue.peek (). X` to ensure that all overlapping points are processed. : `count + = px` 
+-PriorityQueue: O (logN). Scan n points, total: O (nLogn) 
 
 
-#### Basic Implementation
-- 这里已经给了 **sorted** intervals by start point.
-- 直接找到可以insert newInterval的位子. Insert
-- 然后loop to merge entire interval array
-- 因为给的是个list, 所以方便`intervals.remove(i)`
-- remove之前都会重新assgin `pre.end`, 确保被remove的node.end 被capture
-- O(n) 
+#### Basic Implementation 
+-** sorted ** intervals have been given here by start point. 
+-Directly find a place where insert newInterval can be inserted.-Insert 
+-then loop to merge entire interval array 
+-Because it is given as a list, it is convenient for `intervals.remove (i)` 
+-Before remove, assgin `pre.end` will be reasserted to ensure it is removed The node.end is captured 
+-O (n) 
 
-#### 另外
-- 因为interval已经sort, 本想用Binary Search O(logn). 
-- 但是找到interval insert position 最后 merge还是要用 O(n), 所以不必要 binary Search
+#### Also 
+-because interval has been sorted, I wanted to use Binary Search O (logn).- 
+But to find the interval insert position, the final merge still uses O (n), so not Required binary Search 
 
 
 
----
+--- 
 
-**52. [Shortest Palindrome.java](https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Palindrome.java)**      Level: Hard      Tags: [KMP, String]
+** 52. [Shortest Palindrome.java] (https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Palindrome.java) ** Level: Hard Tags: [KMP , String] 
       
 
-#### Divide by mid point, Brutle
-- check (mid, mid+1), or (mid-1, mid+1).
+#### Divide by mid point, Brutle 
+-check (mid, mid + 1 ), or (mid-1, mid + 1).
 - If the two position matches, that is a palindrome candidate
 - 比较front string 是否是 end string 的substring
 - O(n^2)
@@ -6501,93 +6501,93 @@ output 所有 expression
 - BST structure not given, use TreeSet to build BST with each node
 - Every time find last/next inorder element 
 - `treeSet.lower(x)`, `treeSet.higher(x)`
-- 一旦位置相隔(k + 1), 就满足题目条件
-- O(nlogn), good enough
+-Once the positions are separated by (k + 1), the title conditions are met 
+-O (nlogn), good enough 
 
 #### Track slots of days
-- Reverse the array, save days index into days[], where the new index is slot.
-- days[i]: at slot i, which day a flower will be planted
-- O(n)
-- Needs to understand: http://www.cnblogs.com/grandyang/p/8415880.html
+-Reverse the array, save days index into days [], where the new index is slot. 
+-Days [i]: at slot i, which day a flower will be planted 
+-O (n) -Needs 
+to understand: http://www.cnblogs.com/grandyang/p/8415880.html 
 
 
 
----
+--- 
 
-**54. [Count of Range Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Range%20Sum.java)**      Level: Hard      Tags: [BST, Divide and Conquer, Merge Sort, PreSum]
+** 54. [Count of Range Sum.java ] (https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Range%20Sum.java) ** Level: Hard Tags: [BST, Divide and Conquer, Merge Sort, PreSum] 
       
 
-TODO: Write the code + merge function
+TODO : Write the code + merge function 
 
-#### Divide and Conquer + PreSum + MergeSort
-- 算法非常厉害就是了: 先做presum[], 那么 sum range [i,j] 就等于是preSum[j+1] - preSum[i]
-- 分治: 考虑[start, mid] range里面的结果, 再考虑[mid, end] range里面的结果. (分开来 mergeSort)
-- 最后考虑[low,high]总体的结果
-- 小技巧: PreSum 做成了 (n + 1) length, 那么求range sum [i,j] 就可以简化成 preSum[j] - preSum[i]
-- NOTE: should write merge() function, but that is minor, just use `Arrays.sort(nums, start, end)`, OJ passed
-- Every mergeSort() has a for loop => O(n log n)
+#### Divide and Conquer + PreSum + MergeSort 
+-The algorithm is very powerful: presum [], then sum range [i, j] is equal to preSum [j + 1]-preSum [i] 
+-Divide and conquer: Consider the results in [start, mid] range, and then the results in [mid, end] range. (MergeSort separately)
+-Finally consider the overall result of [low, high] 
+-The premise of the n, m method above is feasible: preSum [] has two range [low, mid], [mid, high] before and after sorted 
+-Tip: PreSum is done (n + 1) length, then finding range sum [i, j] can be simplified to preSum [j]-preSum [i]
+-NOTE: should write merge () function, but that is minor, just use `Arrays.sort (nums, start, end)`, OJ passed 
+-Every mergeSort () has a for loop => O (n log n) 
 
-##### 如何 count range?
-- 这里比较特别的一个做法: 找一个 [low, mid]里面的i, mid 之后的preSum作比较 (解释源自: https://blog.csdn.net/qq508618087/article/details/51435944)
-- 即在右边数组找到两个边界, 设为`m, n`, 
-- 其中m是在右边数组中第一个使得`sum[m] - sum[i] >= lower`的位置, 
-- n是第一个使得`sum[n] - sum[i] > upper`的位置, 
-- 这样`n-m`就是与左边元素i所构成的位于`[lower, upper]`范围的区间个数. 
+# #### How to count range? 
+-Here is a special method: find a i in [low, mid], and compare the preSum after mid (explain from: https://blog.csdn.net/qq508618087/ article / details / 51435944)-find 
+two boundaries in the right-hand array, set to `m, n`,-where 
+m is the first in the right-hand array such that` sum [m]-sum [i]> = lower` Position, 
+-n is the first position that makes `sum [n]-sum [i]> upper`, 
+-so that` nm` is the interval in the range of [[lower, upper] `formed by the left element i . the number 
 
-##### 神奇的重点: 为什么要 merge and sort
-- 边界[lower, higher] 在 sorted array 好作比较, 一旦国界, 就可以停止计算, 减少不必要计算.
-- 上面这个n,m的做法可行的前提: preSum[]里面前后两个 range[low, mid], [mid, high]已经sorted了
-- 也就是说, 在recursively mergeSort()的时候, 真的需要merge sorted 2 partitions
-- 也许会问: 能不能sort呢, sort不久打乱了顺序? 对,打乱的是preSum[]的顺序.
-- 但是不要紧: 很巧妙的, 分治的时候, 前半段/后半段 都在原顺序保留的情况下 分开process完了, 最后才merge
-- 在做m,n 的range的时候, 原理如下, 比如preSum被分成这么两段: `[A,B,C]`, `[D,E,F]`
-- 每一个preSum value `A` 在跟 preSum[i] 作比较的时候 `A - preSum < lower`, 都是单一作比较, 不牵扯到 B, C
-- 因此, `[A, B, C]` 是否保留一开始 preSum的顺序在此时不重要
-- 此时最重要的是, `[A,B,C]`以及排序好, 那么在于 `lower` boundary 作比较的时候, 一旦过界, 就可以停止计算(减少不必要的计算)
-
-
-#### BST
-- TODO?
+##### magical focus: Why the Sort and Merge 
+- border [lower, higher] good for comparison sorted array, once the borders, we can stop the calculation, reducing unnecessary computing. 
+- in other words, When recursively mergeSort (), you really need to merge sorted 2 partitions 
+-you may ask: Can you sort it? Sort will soon disrupt the order? Yes, the order of preSum [] is disrupted.
+-But it doesn't matter: very clever, when dividing and conquering, the first half / the second half are separated and the process is completed with the original order retained, and finally merged. 
+-When doing the range of m, n, the principle is as follows, such as preSum Divided into two sections: `[A, B, C]`, `[D, E, F]` 
+-each preSum value `A` when comparing with preSum [i]` A-preSum <lower`, All are single comparisons, not involving B, C 
+-so it doesn't matter whether `[A, B, C]` retains the order of the initial preSum at this 
+time-the most important thing at this time is that [[A, B, C] `and sorting are good, then when the` lower` boundary is compared, once the boundary is crossed, the calculation can be stopped (reduce unnecessary calculations) 
 
 
+#### BST 
+-TODO? 
 
----
 
-**55. [Max Sum of Rectangle No Larger Than K.java](https://github.com/awangdev/LintCode/blob/master/Java/Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K.java)**      Level: Hard      Tags: [Array, BST, Binary Search, DP, Queue, TreeSet]
+
+--- 
+
+** 55. [Max Sum of Rectangle No Larger Than K.java] (https://github.com/awangdev/LintCode/blob/master/Java/Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K.java) ** Level : Hard Tags: [Array, BST, Binary Search, DP, Queue, TreeSet] 
       
 
-给定一个非空的二维矩阵matrix与一个整数k，在矩阵内部寻找和不大于k的最大矩形和。
+Given a non-empty two-dimensional matrix matrix and an integer k, find the sum of the largest rectangle in the matrix that is not greater than k. 
 
-#### BST, Array, preSum
-- 将问题reduce到: row of values, find 1st value >= target.
-- 1. loop over startingRow; 2. loop over [startingRow, m - 1]; 3. Use TreeSet to track areas and find boundary defined by k.
-- When building more rows/cols the rectangle, total sum could be over k: 
-- when it happens, just need to find a new starting row or col, 
-- where the rectangle area can reduce/remain <= k
-- 找多余area的起始点: extraArea = treeSet.ceiling(totalSum - k). 也就是找 减去k 后 起始的/左边的area.
-- 去掉这些左边的起始area, 剩下的就 <=k.    (num - extraArea)
-- 为什么用TreeSet: area的大小无规律, 并且要找 >= 任意值 的第一个value. 给一串non-sorted数字, 找 >= target的数, 如果不写binary search, 那么用BST最合适
-- O(m^2*nlogn)
+#### BST, Array, preSum 
+- Reduce the problem to: row of values, find 1st value> = target. - 
+1. loop over startingRow; 2. loop over [startingRow, m-1]; 3. Use TreeSet to track areas and find boundary defined by k. 
+-When building more rows / cols the rectangle, total sum could be over k: 
+-when it happens, just need to find a new starting row or col, 
+-where the rectangle area can reduce / remain <= k 
+-find the starting point of the excess area: extraArea = treeSet.ceiling (totalSum-k). That is, find the starting / left area after subtracting k. 
+-remove these left starting areas, the rest Just <= k. (Num-extraArea)-Why 
+use TreeSet: the size of the area is irregular, and find the first value of> = any value. Give a list of non-sorted numbers, find the number of> = target, if Do not write binary search, then BST is most suitable 
+-O (m ^ 2 * nlogn) 
 
-#### 思想
-- 从最基本的O(m^2*n^2) 考虑: 遍历 startingRow/startingCol
-- rectangle? layer by layer? 可以想到Presum的思想, 大于需要的sum的时候, 减掉多余的部分
-- 如何找到多余的area? 那么就是search: 把需要search的内容存起来, 可以想到用BST(TreeSet), 或者自己写Binary Search.
+#### Idea
+-From the 
+most basic O (m ^ 2 * n ^ 2), consider: traversing startingRow / startingCol -rectangle? Layer by layer? You can think of the idea of ​​Presum, when the sum is greater than the required sum, subtract the excess part 
+-how to find the excess Area? So is search: save the content you need to search, you can think of using BST (TreeSet), or write Binary Search yourself. 
 
 
 
----
+--- 
 
-**56. [Perfect Rectangle.java](https://github.com/awangdev/LintCode/blob/master/Java/Perfect%20Rectangle.java)**      Level: Hard      Tags: [Design, Geometry, Hash Table]
+** 56. [Perfect Rectangle.java] (https://github.com /awangdev/LintCode/blob/master/Java/Perfect%20Rectangle.java)** Level: Hard Tags: [Design, Geometry, Hash Table] 
       
 
-看的list of coordinates 是否能组成perfect rectangle, 并且不允许overlap area.
+See if the list of coordinates can form a perfect rectangle, and overlap area is not allowed. 
 
-#### 画图发现特点
-- 特点1: 所有给出的点(再找出没有specify的对角线点), 如果最后组成perfect rectangle, 都应该互相消除, 最后剩下4个corner
-- 特点2: 找到所有点里面的min/max (x,y), 最后组成的 maxArea, 应该跟过程中accumulate的area相等
-- 特点1确保中间没有空心的部分, 保证所有的重合点都会互相消除, 最后剩下4个顶点
-- 特点2确保没有重合: 重合的area会最终超出maxArea
+# ### Drawing Features 
+-Feature 1: All the given points (and then find the diagonal points without the specification), if the perfect rectangle is formed at the end, they should be eliminated from each other, and finally 4 corners are left 
+-Feature 2: Find The min / max (x, y) in all points, and the final maxArea, should be equal to the area accumulate in the process 
+-Feature 1 Make sure that there is no hollow part in the middle, ensure that all coincident points will be eliminated from each other, and 4 are left Vertex 
+-Feature 2 ensures no coincidence: The coincident areas will eventually exceed maxArea 
 
 
 
@@ -6630,28 +6630,28 @@ https://leetcode.com/problems/number-of-digit-one/discuss/64381/4+-lines-O(log-n
       
 
 #### String
-- 首先要分两半解决，断点是'.': str.split("\\.");
-- Integer那一半好弄，whie loop里: num%2, num/2. 做一个 `parseInteger()` function
-- Decimal那边复杂点. 做一个 `parseDecimal()` function:
-- bit == 1的数学条件: 当下num * 2 >= 1。 更新: num = num * 2 - 1;
-- bit == 0的数学条件: num * 2 < 1. 更新: num = num * 2
+-First, we need to solve it in two halves. The breakpoint is '.': Str.split ("\\."); 
+#### Observation
+-The half of Integer is easy to handle, in the whie loop: num% 2, num / 2. Make a `parseInteger ()` function 
+-Decimal is more complicated. Make a `parseDecimal ()` function:-bit 
+== 1 math Condition: Now num * 2> = 1. Update: num = num * 2-1; 
+-bit == 0 Mathematical condition: num * 2 <1. Update: num = num * 2 
 
-#### 注意
-- num是 double, 小数在 `num = num * 2 - 1` 的公式下可能无限循环
-- 因此check: num重复性，以及binary code < 32 bit.
-- 所以题目也才有了32BIT的要求!
+#### Note 
+-num is double, decimals are in `num = num * 2 -1` formula may be infinite loop 
+-so check: num repeatability, and binary code <32 
+bit. 
+-So the problem also has 32BIT requirements! 
 
 
 
----
-
-**60. [Recover Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Recover%20Binary%20Search%20Tree.java)**      Level: Hard      Tags: [BST, DFS, Tree]
+--- 
+** 60. [Recover Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Recover%20Binary%20Search%20Tree.java)** Level: Hard Tags: [BST, DFS, Tree] 
       
 
-BST里面有2个node misplace, 要归为. 要求: O(1) extra space
+There are 2 node misplace in BST , To be classified as: Requirement: O (1) extra space 
 
-#### Observation
-- BST inorder traversal should give small -> large sequence
+-BST inorder traversal should give small-> large sequence
 - misplaced means: a **large**->small item would occur, and later a large>**small** would occur. 
 - The first large && second small item are the 2 candidates. Example
 - [1, 5,  7, 10,    12, 15, 18]
@@ -6670,132 +6670,132 @@ BST里面有2个node misplace, 要归为. 要求: O(1) extra space
 
 ---
 
-**61. [Jump Game II.java](https://github.com/awangdev/LintCode/blob/master/Java/Jump%20Game%20II.java)**      Level: Hard      Tags: [Array, Coordinate DP, DP, Greedy]
+** 61. [Jump Game II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Jump%20Game%20II.java) ** Level: Hard Tags: [Array, Coordinate DP , DP, Greedy] 
+- index / i is a forward step by step, each time when i <= range, do a while loop, in which the furthest to go to find a place maxRange
       
 
-给一串数字 是可以跳的距离. goal: 跳到最后的index 所可能用的最少次数.
+Giving a string of numbers is the distance that can be jumped. Goal: the minimum number of jumps to the last index possible. 
 
-#### Greedy
-- always aiming for the `farest can go`
-- if the `farest can go` breaches the end, return steps
-- otherwise, send `start=end+1`, `end=farest` and keep stepping from here
-- though trying with 2 loops, worst case [1,1,1,...1,1] could have O(n^2)
-- But on average should be jumpping through the array without looking back
-- time: average O(n)
+#### Greedy 
+-always aiming for the `farest can go` 
+-if the` farest can go` breaches the end , return steps 
+-otherwise, send `start = end + 1`,` end = farest` and keep stepping from here 
+-though trying with 2 loops, worst case [1,1,1, ... 1,1] could have O (n ^ 2) 
+-But on average should be jumpping through the array without looking back 
+-time: average O (n) 
 
-#### Previous Notes, Greedy
-- 维护一个range, 是最远我们能走的. 
-- index/i 是一步一步往前, 每次当 i <= range, 做一个while loop， 在其中找最远能到的地方 maxRange
-- 然后更新 range = maxRange
-- 其中step也是跟index是一样, 一步一步走.
-- 最后check的condition是，我们最远你能走的range >= nums.length - 1, 说明以最少的Step就到达了重点。Good.
+#### Previous Notes, Greedy 
+-Maintaining a range is the farthest we can go.- 
+Then Update range = maxRange 
+-where step is also the same as index, step by step. - 
+The condition of the final check is that we can range as far as you can go> = nums.length-1, indicating that the focus has been reached with the fewest steps. Good. 
 
 #### Even simpler Greedy
-- 图解 http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html
-- track the farest point
-- whenver curr index reachest the farest point, that means we are making a nother move, so count++
-- there seems to have one assumption: must have a solution. Otherwise, count will be wrong number. 
-- 其实跟第一个greedy的思维模式是一模一样的.
+-Graphic 
+http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html-track the farest point 
+-whenver curr index reaches t the farest point, that means we are making a nother move, so count ++ 
+-there seems to have one assumption: must have a solution. Otherwise, count will be wrong number. 
+-In fact, it is exactly the same thinking pattern as the first greedy. 
 
 
 #### DP 
-- DP[i]: 在i点记录，走到i点上的最少jump次数
-- dp[i] = Math.min(dp[i], dp[j] + 1);
-- condition (j + nums[j] >= i)
-- 注意使用 dp[i] = Integer.MAX_VALUE做起始值, 来找min
-- time: O(n^2), slow, and timesout
+-DP [i]: Record at point i, go to point i The minimum number of jumps 
+-dp [i] = Math.min (dp [i], dp [j] + 1); 
+-condition (j + nums [j]> = i)-Note the 
+use of dp [i] = Integer. MAX_VALUE as the starting value, come to find min 
+-time: O (n ^ 2), slow, and timesout 
 
 
 
 ---
 
-**62. [Longest Valid Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Valid%20Parentheses.java)**      Level: Hard      Tags: [Coordinate DP, Stack, String]
+** 62. [Longest Valid Parentheses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Valid%20Parentheses.java) ** Level: Hard Tags: [Coordinate DP, Stack , String] 
       
 
-给一串string, 里面只有`(`, `)`. 找最长valid parentheses 的长度.
+gives a string of strings with only `(`, `)` in it. Find the length of the longest valid parentheses. 
 
-#### 1D Coordinate DP
-- use dp[i] track local max, maintain global max
-- int[] dp. dp[i]: longest valid string that ends on i.
-- 结尾是 ')', 2种情况: 1. 刚好s[i-1]是'('; 2. s[i]的')'更前面的一个起始'(' 对应
-- 注意, 结尾如果是'('属于不合理情况, 忽略.
-- init: dp[0] = 0, 单个char不可能成型.
-- 计算顺序: 从左到右, 找local max, maintain global max
-- O(n) space, O(n) runtime
+#### 1D Coordinate DP 
+-use dp [i] track local max, maintain global max 
+-int [] dp. dp [i]: longest valid string that ends on i.-ends 
+with ')', 2 cases: 1. exactly s [i-1] is '('; 2. s [i] 's') An earlier start (') corresponds 
+-note, if the end is' (' is unreasonable, ignore 
+it.-Init: dp [0] = 0, a single char cannot be formed. 
+-Calculation order: left to right , Find local max, maintain global max 
+-O (n) space, O (n) runtime 
 
-#### Stack
-- Stack 里面存所有的open/close parentheses.
-- 如果遇到stack.top()刚好开合结掉, 就stack.pop().
-- 剩下的都是不合理的elements.
-- 有点像negatively找 solution: `endIndex - 最后一个failedIndex(stack.pop()) - 1`, 应该就是最后一个succeeded string的长度
-- 每次更新 endIndex 为stack.top(), 然后从stack继续找下一个failedIndex
-- 所有的length作比较, 就可以找出最长length
-- O(n) stack space, O(n) runtime. 应该比dp慢一点, 因为做了2遍O(n)
+#### Stack 
+-Store all open / close parentheses in the 
+Stack.-If you encounter stack.top () just open and close , Just stack.pop ().
+-The rest are unreasonable elements.
+-A bit like negatively looking for a solution: `endIndex-The last failedIndex (stack.pop ())-1`, it should be the length of the last 
+succeded string -Each time you update the endIndex to stack.top (), then continue to find from the stack A failedIndex 
+-compare all the lengths , you can find the longest length 
+-O (n) stack space, O (n) runtime. It should be a bit slower than dp, because O (n) is done 2 times 
 
+
+
+
+--- 
+
+** 63. [Rearrange String k Distance Apart.java] (https://github.com/awangdev/LintCode/blob/master/Java/Rearrange%20String%20k%20Distance%20Apart.java) ** Level: Hard Tags: [ Greedy, Hash Table, Heap] 
+      
+
+Give a string, all lowercase letters, and ask for rearrangement: Then each unique character must have a distance of k. It is 
+
+a bit like Task Scheduler, but there are other methods in Task Find count, this question requires the ranking result 
+
+#### PriorityQueue + HashTable 
+-A classic usage of PriorityQueue ordering + distribution ordering. 
+-Count frequency and store in pq.
+-Consume element of pq for k rounds, each time pick one element from queue. 
+-Exception: if k still has content but queue is consumed: cannot complete valid string, return ""; 
+-space, O (n) extra space in sb , O (26) constant space with pq. 
+-Time: O (n) to add all items 
+
+
+
+--- 
+
+** 64. [Valid Number.java] (https://github.com/awangdev/LintCode/blob/master /Java/Valid%20Number.java)** Level: Hard Tags: [Enumeration, Math, String] 
+      
+time: O (n) 
+
+analyzes the edge case, and various cases, and then determines whether it is a valid number 
+
+#### Summary of the situation 
+-Encountered several different cases of `.`,` e`, `+/-`, and `int` 
+-The order of the encounters is different, and the results are different. 
+-This question is more about analyzing the situation, and then edge case enumerate out, meaning algorithm is relatively small. 
 
 
 
 ---
 
-**63. [Rearrange String k Distance Apart.java](https://github.com/awangdev/LintCode/blob/master/Java/Rearrange%20String%20k%20Distance%20Apart.java)**      Level: Hard      Tags: [Greedy, Hash Table, Heap]
+** 65. [Bricks Falling When Hit.java] (https://github.com/awangdev/LintCode/blob/master/Java/Bricks%20Falling%20When%20Hit.java) ** Level: Hard Tags: [Union Find] 
       
 
-给一个string, 全是lowercase letter, 要求重新排列: 然后每个unique的character要有k distance apart.
+Give a matrix of 1 and 0, `1` stands for brick. The brick connected to ceiling will not drop. Give a series of coordinate hits [] [], record how many drops will be taken after each take down 1 brick. 
 
-跟Task Scheduler有点像, 只不过Task那道题里面还可以用其他方法求count, 这道题要求出排列结果
+#### UnionFind 
+-1. We know that most of the bricks may be connected to ceiling, so every forward check is traverse all and timeout 
+-2. Can I use union, install the connections together, and then drop brick When I drop all the connected ones? Difficult: because I still need to check all the current status of the brick. 
+-Inspired by the answers of others, because it is counting, we can `think backwards`: 
+-mark all hit-bricks = 2 (just discard it), observe the last step of the whole situation, first calculate the total of all bricks still connected to ceiling, and count all the counts in unionFind in count [0].-The 
+remaining ones are not connected The ceilings are also isolated islands 
+-method: add hit-brick one by one, and then do unio again n, see how many are eventually connected to ceiling. The increased count is the number of dropped bricks when thinking forward!
 
-#### PriorityQueue + HashTable
-- PriorityQueue排序+分布排列的一个经典用法.
-- Count frequency and store in pq.
-- Consume element of pq for k rounds, each time pick one element from queue.
-- Exception: if k still has content but queue is consumed: cannot complete valid string, return "";
-- space, O(n) extra space in sb, O(26) constant space with pq.
-- time: O(n) to add all items
-
-
-
----
-
-**64. [Valid Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Number.java)**      Level: Hard      Tags: [Enumeration, Math, String]
-      
-time: O(n)
-
-分析edge case, 和各种情况, 然后判别是否是valid number
-
-#### 情况总结
-- 遇到 `.`, `e`, `+/-`, `int`的几种不同情况
-- 分别遇到的顺序不同时候, 结果也不同.
-- 这道题更多是分析情况, 然后把edge case enumerate出来, 算法的意义比较少.
+##### Variation of Union Find 
+-still use the number index to make the union find, but +1 each index, shift right by one, and [0] is reserved for special purposes: 
+-use union at 0 to count the total remain count of ceiling-connected bricks, where `x = 0`. 
+-If it is on other topics, the condition may not be` x = 0`, but you can also use this union index = 0 to make a root count 
+-the key : Add the last hit brick back, and then re-union around this hit-brick: The increase in count is not the number of drops when the hit-brick is missing. 
 
 
-
----
-
-**65. [Bricks Falling When Hit.java](https://github.com/awangdev/LintCode/blob/master/Java/Bricks%20Falling%20When%20Hit.java)**      Level: Hard      Tags: [Union Find]
-      
-
-给一个matrix of 1 and 0, `1` 代表brick. 连着ceiling的brick就不会drop. 给一串coordinate hits[][], 记录每次take down 1 brick 后, 会drop多少个.
-
-#### UnionFind
-- 1. 我们知道大部分的brick可能都是连着ceiling, 所以每次正向检查都traverse all and timeout
-- 2. 能否用union, 把connect都装在一起, 然后drop brick的时候把连着的都drop掉? 难: 因为还是要check所有brick当下的status.
-- 受其他人的解答启发, 由于是计算count,我们可以`反向考虑`: 
-- 把hit-brick全部mark=2 (就当舍弃不算), 观察整个局面的最后一步, 先把所有还连着ceiling的brick算一下总数, 统计在unionFind的 全部统计在count[0] 里面. 
-- 剩下的不连着ceiling的也就是一个个isolated island
-- 做法: 把hit-brick 一个个加回去, 然后再做一次union, 看看最终连到ceiling的有多少个. 增加的count, 就是正向思考时 dropped brick 数量!
-
-##### Union Find 变种
-- 还是用数字index做union find, 但是把每一个index都+1, 右移一位, 而[0]留下来做特殊用途:
-- 用union at 0来 统计总共的remain count of ceiling-connected bricks, where `x = 0`. 
-- 如果在其他其他题目种, 条件可能就不是`x=0`, 但也可以用这个 union index = 0 来做一个root的统计
-- 关键: 把最后一个hit brick加回去, 然后再重新union一下这个hit-brick周围: count增加的变化, 不就是缺少hit-brick时候掉下去的数量.
-
-
-#### DFS (timeout)
-- 考虑每个hit的四周, 全部traverse, 没有连着ceiling就全部: 
-- 比如是 200 x 200 的 全部是1的matrix, 任何一次traverse都要到顶; 重复计算, 所以timeout
-- 算法是没错, 但是不efficient.
-- 想要减少重复计算, 但是又不能提前计算: grid在不断变化. 所以看能不能把连着ceiling的都group起来, 可以O(1)快速check?
+#### DFS (timeout) 
+-consider each hit All around the traverse, all without the ceiling:-For 
+example, a 200 x 200 matrix of all 1s, and the traverse must reach the top every time; the calculation is repeated, so the timeout 
+-the algorithm is correct, but not efficient. 
+-Think To reduce repeated calculations, but not in advance: the grid is constantly changing. So if you can group all connected ceilings, you can O (1) quickly check? 
 
 
 
@@ -6819,225 +6819,225 @@ SegmentTree大集合. Methods: `build, query, modify`. 不难。只是要都记�
 **67. [HashHeap.java](https://github.com/awangdev/LintCode/blob/master/Java/HashHeap.java)**      Level: Hard      Tags: [HashHeap, Heap]
       
 
-非题.是从九章找来的HashHeap implementation.
+Non-question. It is the HashHeap implementation found from Chapter 9. 
 
 
 
----
+--- 
 
-**68. [Trapping Rain Water II.java](https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water%20II.java)**      Level: Hard      Tags: [BFS, Heap, MinHeap, PriorityQueue]
+** 68. [Trapping Rain Water II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain % 20Water% 20II.java) ** Level: Hard Tags: [BFS, Heap, MinHeap, PriorityQueue] 
       
 
-给一个2Dmap, 每个position 有 height. 找Trapping water sum.
+Give a 2Dmap, each position has a height. Find Trapping water sum. 
 
 
-#### Min Heap
-- 用PriorityQueue把选中的height排序,为走位, create class Cell (x,y, height).
+#### Min Heap 
+-Use PriorityQueue to select the selected Height sorting, for position, create class Cell (x, y, height). 
 
-##### 注意几个理论
-- 1. 从matrix四周开始考虑，发现matrix能Hold住的水，取决于height低的block
-- 2. 必须从外围开始考虑，因为水是被包裹在里面，外面至少需要现有一层
-- 以上两点就促使我们用min-heap: 也就是natural order的PriorityQueue<Cell>.
+##### Note a few theories 
+-1. Consider from the matrix, and find that the water that the matrix can hold depends on the low-height block 
+-2. It must be considered from the outside, because the water is wrapped inside, and at least one layer is required on the outside 
+-the above two points prompt us to use min-heap: that is, PriorityQueue <Cell>. Of natural order. 
 
-##### Steps
-- 1. process的时候，画个图也可以搞清楚: 就是四个方向都走走，用curr cell的高度减去周围cell的高度.
-- 2. 若大于零，那么周围的cell就有积水: 因为cell已经是外围最低, 所以内部更低的, 一定有积水.
-- 3. 每个visited的cell都要mark, avoid revisit
-- 4. 根据4个方向的走位 `(mX, mY)` 创建新cell 加进queue里面: cell(mX, mY) 已经计算过积水后, 外围墙小时, `(mX, mY)`就会变成墙.
-- 5. 因为做的是缩小一圈的新围墙, height = Math.max(cell.h, neighbor.h);
-- 和trapping water I 想法一样。刚刚从外围，只是能加到跟外围cell高度一致的水平面。往里面，很可能cell高度变化。   
-- 这里要附上curr cell 和 move-to cell的最大高度。
+##### Steps 
+-1. During the process, you can draw a picture to make it clear: that is to walk in all four directions, subtract the height of the surrounding cells from the height of the curr . 
+-2. If it is greater than zero, then the surrounding cells have a product Water: Because the cell is already the lowest on the periphery, so the interior is lower, there must be water accumulation.
+-3. Each visited cell must be marked, avoid revisit 
+-4. Create a new cell and add it to the queue according to the 4 directions of the position (mX, mY) `: cell (mX, mY) has calculated the accumulated water Later, when the peripheral wall is small,? `(MX, mY)` will become a 
+wall.-5. Because the new fence wall is reduced by one circle, height = Math.max (cell.h, neighbor.h); 
+- Same idea as trapping water I. Just from the periphery, it can only be added to the horizontal plane with the same height as the peripheral cell. Going inside, it is likely that the cell height changes.   
+-Attach the maximum height of curr cell and move-to cell here. 
 
-##### 为什么想到用Heap (min-heap - priorityQueue)
-- 要找到bucket的最短板
-- 每次需要最先处理最短的那条 (on top)
+##### Why think of Heap (min-heap-priorityQueue) 
+-To find the shortest board of the bucket 
+-Each time you need to process the shortest one first (on top) 
 
-##### 为什么从外向里遍历
-- 木桶理论, 包水, 是从外面包住里面
-- 洋葱剥皮, 用完丢掉
+##### Why traverse from outside to inside 
+-wood Bucket theory, water, is from the outside 
+bread to live inside 
+-peel the onion, throw it away 
 
 
 
----
-
-**69. [Find Median from Data Stream.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Median%20from%20Data%20Stream.java)**      Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap]
+--- 
+** 69. [Find Median from Data Stream.java] (https://github.com/awangdev/LintCode/blob/ master / Java / Find% 20Median% 20from% 20Data% 20Stream.java) ** Level: Hard Tags: [Design, Heap, MaxHeap, MinHeap] 
       
 
-#### 原理
-- 把Input stream想成向上的山坡. 山坡中间那点，自然就是median.
-- 前半段，作为maxHeap,关注点是PriorityQueue的峰点，也就是实际上的median.   
-- 后半段，作为minHeap,正常的PriorityQueue。 开头是最小的。
+#### Principle
+-Think of 
+the input stream as an upward slope. The middle point of the slope is naturally median.-The first half, as maxHeap, the focus is the peak of PriorityQueue, which is the actual    
+median.-The second half, as minHeap, is normal PriorityQueue. The beginning is minimal. 
 
-#### 注意
-- 这里要首先定好, 哪一个queue是多存一个element的. 这里选maxHeap: maxHeap.size() == minHeap.size() + 1 || minHeap.size()
-- 必须先维护maxHeap里面有个元素, 否则null了会在比较大小时出问题.
+#### Attention 
+-first set here, which queue stores one more element. Here select maxHeap: maxHeap.size () == minHeap.size () + 1 || minHeap.size ()-must 
+be maintained first There is an element in maxHeap, otherwise null will cause problems when comparing sizes. 
 
 
 
----
+--- 
 
-**70. [Sliding Window Median.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Median.java)**      Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap, Sliding Window]
+** 70. [Sliding Window Median.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Sliding% 20Window% 20Median.java) ** Level: Hard Tags: [Design, Heap, MaxHeap, MinHeap, Sliding Window] 
       
 
-Data Stream Median 的同理题目: 不只是不断增加的Sequence, 而且要remove item (保持一个window size)
+The same problem of Data Stream Median: Not only the increasing sequence, but also remove item (keep a window size) 
 
-#### MaxHeap, MinHeap
-- Median还是用min-heap 和 max-heap. Time(logN)
-- 加/减: prioirtyQueue, log(n)
-- findMedian: O(1)
-- 加一个数, 减一个数。
-- 加减时看好，是从前面的maxheap里面抽，还是从后面的minHeap里面抽。
-- 抽完balance一下
+#### MaxHeap, MinHeap 
+-Median still uses min-heap and max-heap. Time (logN) 
+-Add / Subtract: prioirtyQueue, log (n) 
+-findMedian: O (1)
+-Add a number, subtract a number. 
+-It is optimistic when adding or subtracting, whether it is drawn from the maxheap in the front or the minHeap behind.
+-Finish the 
+balance 
 
-#### 注意
-- 用maxHeap, minHeap时候, 习惯选择让maxHeap多一个数字:
-- 左边的maxHeap总有 x+1或者x个数字
-- 后边minHeap应该一直有x个数字
+#### Note -When using maxHeap, minHeap, it is customary to choose one more number for maxHeap: 
+-The maxHeap on the left always has x + 1 or x numbers 
+-The minHeap behind should always have x numbers 
 
 
 
----
+--- 
 
-**71. [Design Search Autocomplete System.java](https://github.com/awangdev/LintCode/blob/master/Java/Design%20Search%20Autocomplete%20System.java)**      Level: Hard      Tags: [Design, Hash Table, MinHeap, PriorityQueue, Trie]
+** 71. [Design Search Autocomplete System.java] (https://github.com/awangdev/LintCode/blob/master/Java/Design%20Search%20Autocomplete%20System.java) ** Level: Hard Tags: [Design , Hash Table, MinHeap, PriorityQueue, Trie] 
       
-time: input: O(x), where x = possible words, constructor: O(mn) m = max length, n = # of words
-space: O(n^2), n = # of possible words, n = # of trie levels; mainlay saving the `Map<S, freq>`
+time: input: O (x), where x = possible words, constructor: O (mn) m = max length, n = # of words 
+space: O (n ^ 2), n = # of possible words, n = # of trie levels; mainlay saving the `Map <S, freq>` 
 
-Description is long, but in short: 做 search auto complete. 
+Description is long, but in short: do search auto complete. 
 
 Best problem to review Trie (prefix search), Top K frequent elements (Hash Map), and MinHeap (PriorityQueue)
 
-Easier to revisit https://leetcode.com/problems/design-search-autocomplete-system/description/
+Easier to revisit https://leetcode.com/problems/design-search-autocomplete-system/description/ 
 
-#### 思考方向
-- 做text的search, 毋庸置疑要用Prefix tree, trie.
+#### Thinking direction 
+-do text search, undoubtedly use Prefix tree, trie. 
 
-##### Find all possible word/leaf, 两种方案:
-- Trie造好之后, 做prefix search, 然后DFS/BFS return all leaf items. [high runtime complexity]
-- 在TrieNode里面存所有的possible words. [high space usage]
-- in memory space 应该不是大问题, 所以我们可以选择 store all possible words
+##### Find all possible word / leaf, two solutions: 
+-? After Trie is completed, do a prefix search, and then DFS / BFS return all leaf items. [high runtime complexity] 
+-Store all possible words in TrieNode. [high space usage] 
+-Should n’t it be in memory space? Big question, so we can choose store all? possible words 
 
-##### Given k words, find top k frequent items. 肯定用MinHeap, 但也有两种方案:
-- Store MinHeap with TrieNode: 因为会不断搜索新此条, 同样的prefix (尤其是在higher level), 会被多次搜索.
-- [complexity: need to update heaps across all visited TrieNodes once new sentence is completed]
-- Compute MinHeap on the fly: 当然我们不能每次都来一个DFS不然会很慢, 所以就必须要store list of possible candidates in TrieNode.
-- 这里就用到了`Top K Frequent Words` 里面的 `Map<String, freq>`, 这样O(m) 构建 min-heap其实很方便.
+##### Given k words, find top k frequent items. MinHeap is definitely used, but there are two solutions:  
+-? Store MinHeap with TrieNode: Because it will continue to search for new articles, the same prefix (especially at the higher level) will be searched multiple times.
+-[? complexity: need to update heaps across all visited TrieNodes once new sentence is completed] 
+-Compute MinHeap on the fly: Of course we can't come to a DFS every time? Otherwise it will be slow, so we must store list of possible candidates in TrieNode. 
+we use `Map <String, freq>` in `Top K Frequent Words`, so O (m) constructs min-heap It's actually very convenient. 
 
-##### Train the system
-- 每次 `#` 后 标记一个词条被add进search history. 那么就要 `insert it into trie`.
-- 这一条在最后遇到`#`再做就可以了, 非常简洁
+##### Train the system 
+-Each time a `#` is marked, an entry is added to the search history. Then `insert it into trie`. 
+-This one meets` # `again at the end do it, very simple 
 
-#### Trie, PriorityQueue, HashMap
-- Trie Prefix Search + maintain top k frequent items
+#### Trie, PriorityQueue, HashMap 
+- Trie the Prefix Search Top k + Maintain Frequent items 
 - 
 
 
 
----
+--- 
 
-**72. [Integer to English Words.java](https://github.com/awangdev/LintCode/blob/master/Java/Integer%20to%20English%20Words.java)**      Level: Hard      Tags: [Enumeration, Math, String]
+. ** 72 [Integer to English Words.java] (https://github.com /awangdev/LintCode/blob/master/Java/Integer%20to%20English%20Words.java)** Level: Hard Tags: [Enumeration, Math, String] 
       
 
-给一个小于 Integer.MAX_VALUE (2^31 - 1) 的数字, 转换成英语. (不需要加 'and')
+Give a number less than Integer.MAX_VALUE (2 ^ 31-1 ) , Convert to English. (No need to add 'and') 
 
-#### String
-- 基本implementation
-- `分类讨论`: thounsand, million, billion.  `3个数字一格`.
-- 用array枚举 token
-- 运用 % 和 / 来找到每个分段的英语翻译
-- 3-digit 的部分, 可以用一个helper funtion来找到结果, 每段的处理方法都是一样的
+#### String 
+-Basic implementation
+-`Classification discussion`: thounsand, million, billion.` 3 digits and one division`.  
+Enumerate tokens with array 
+-Use% and / to find English translation of each segment
+-3-digit part, you can use a helper funtion to find the result, the processing method of each paragraph is the same 
 
-#### 注意
-- StringBuffer 更有效率! `sb.insert(0, xxx)` append在sb前面
-- 注意加 " " 的时候, 如果多余, 要`trim()`
-- 注意, 小于20的数字, 有自己的特殊写法, 需要额外handle
-- 这道题目就是要细致`耐心`, 几乎么有什么算法, 就是想要写的efficient并且正确, 需要很小心
-
-
+#### Note 
+-StringBuffer is more efficient! `Sb.insert (0, xxx)` append in front of sb 
+-When adding "", if necessary, try "trim ()" 
+-Note, numbers less than 20 have their own special writing , Need extra handle 
+-this topic is to be careful and patient, there is almost no algorithm, just to write efficiently and correctly, you need to be careful 
 
 
----
 
-**73. [Alien Dictionary.java](https://github.com/awangdev/LintCode/blob/master/Java/Alien%20Dictionary.java)**      Level: Hard      Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]
+
+--- 
+
+** 73. [Alien Dictionary.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Alien%20Dictionary.java)** Level: Hard Tags: [BFS, Backtracking, DFS, Graph, Topological Sort] 
       
 
-给一个 array of strings: 假如这个array是按照一个新的字母排序表(alien dictionary)排出来的, 需要找到这个字母排序.
+Give an array of strings: if this array is According to a new alphabet dictionary, you need to find this alphabetical order. 
 
-有可能有多重排序的方法, 给出一种就可以.
+There may be multiple sorting methods, and you can give one. 
 
-#### Graph
-- 本质: 上下两行string, 相对应的相同的index上, 如果字母不同, 就说明排在第一行的字母在字母表里更领先
-- 把 string array 变成topological sort的 graph: `map<char, list<char>>`
-- 也可以`List[26] edges` (Course Schedule problem)
-- Build edges: find char diff between two row, and store the order indication into graph
-- 注意: indegree 永远是反向的 (跟 node to neighbors 相反的方式建立)
+#### Graph 
+-Essence: two strings above and below, relative Corresponding to the same index, if the letters are different, the word on the first line is explained More ahead in the alphabet
+-Turn string array into topological sort graph: `map <char, list <char >>` 
+result.- ex: cycle nodes from input, where inDegree of a one node would never reduce to 0, and will not be added to result 
+-also `List [26 ] edges` (Course Schedule problem)
+-Build edges: find char diff between two rows, and store the order indication into graph 
+-Note: indegree is always reversed (established in the opposite way to node to neighbors) 
 
-#### BFS
-- topological sort 本身很好写, 但是要在题目中先了解到字母排序的本质
-- 其实上面这个排序的本质很好想, 但是把它具体化成构建graph的代码, 会稍微有点难想到
-- 算indegree, 然后用 BFS 来找到那些 inDegree == 0的 node
-- 最先inDegree == 0的node, 就排在字母表前面.
-- 下面的解法, 用了Graph: map<Character, List<Character>>, 而不是 List[26], 其实更加试用超过26个字母的dictionary.
-- 如果 `inDegree.size() != result.length()`, there is nodes that did not make it into result. 
-- ex: cycle nodes from input, where inDegree of a one node would never reduce to 0, and will not be added to result
-- In this case, it will be treated as invalid input, and return ""
+#### BFS 
+-topological sort itself is well written, But first understand the nature of alphabetic sorting in the title-in 
+fact , the nature of the above sorting is very 
+imaginary , but it will be a bit difficult to think of it as the code for constructing the graph -calculate indegree, and then use BFS to find those inDegree = = 0 node 
+-the first node with inDegree == 0 is listed in front of the alphabet. 
+-The following solution uses Graph: map <Character, List <Character >> instead of List [26], but it is actually more trial Dictionary with more than 26 
+letters.-If `inDegree.size ()! = Result.length ()`, there is nodes that did not make it into result. 
+-In this case, it will be treated as invalid input, and return "" 
 
-#### DFS
-- 跟BFS建立 grpah 的过程一模一样
-- DFS的不同在于: 用visited map 来标记走过的地方
-- 走到leaf的时候, add to result: 但因为走到了底才add, 最终的顺序应该颠倒 (或者, sb.insert(0, x) 直接用颠倒的顺序add)
-
+#### DFS 
+-The process of creating grpah is exactly the same as BFS 
+-DFS differs in that it uses a visited map to mark the places you have passed
+-When you reach the leaf, add to result: but only add it because you have reached the end, the final order should be reversed (or, sb.insert (0, x) add directly in reverse order) 
 
 
----
 
-**74. [Word Ladder II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder%20II.java)**      Level: Hard      Tags: [Array, BFS, Backtracking, DFS, Hash Table, String]
+--- 
+
+** 74. [ Word Ladder II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder%20II.java) ** Level: Hard Tags: [Array, BFS, Backtracking, DFS, Hash Table, String] 
       
 
-给一串string, start word, end word. 找到所有从 startWord -> endWord的最短路径list. 
+gives a string of string, start word, end word. Find the shortest path list from startWord-> endWord. 
 
-变化方式: mutate 1 letter at a time.
+Variation: mutate 1 letter at a time. 
 
-#### BFS + Reverse Search
-- 用BFS找最短路径.
-- 问题: how to effectively store the path, if the number of paths are really large? 
-- If we store Queue<List<String candidates>>: all possibilities will very large and not maintainable
-- 用BFS做出一个反向structure, 然后再reverse search
+#### BFS + Reverse Search 
+-Find the shortest with BFS Path. 
+-Question: how to effectively store the path, if the number of paths are really large?  
+-If we store Queue <List <String candidates >>: all possibilities will very large and not maintainable
+-Make a reverse structure with BFS, and then reverse search 
 
-##### BFS Prep Step
-- BFS 找到所有start string 可以走到的地方 s, 放在一个overall structure里面: 注意, 存的方式 Map<s, list of sources>
-- BFS时候每次都变化1step, 所以记录一次distance, 其实就是最短路径candidate (止步于此)
-- 1. 反向mutation map: `destination/end string -> all source candidates` using queue: `Mutation Map`
-- Mutation Map<s, List<possible src>>: list possible source strings to mutate into target key string.
-- 2. 反向distance map: `destination/end string -> shortest distance to reach dest`
-- Distance Map<s, possible/shortest distance>: shortest distance from to mutate into target key string.
-- BFS prep step 并没解决问题, 甚至都没有用到end string. 我们要用BFS建成的反向mapping structure, 做search
+##### BFS Prep Step 
+-BFS find all start strings can Where you go, put it in an overall structure: Note, the way to save Map <s, list of sources>
+-BFS changes by 1 step each time, so recording a distance is actually the shortest path candidate (stop here)-1 
+. Reverse mutation map: `destination / end string-> all source candidates` using queue:` Mutation Map` 
+-Mutation Map <s, List <possible src >>: list possible source strings to mutate into target key 
+string.-2. Inverse distance map: `destination / end string-> shortest distance to reach dest` 
+-Distance Map <s , possible / shortest distance>: shortest distance from to mutate into target key string. 
+-BFS prep step didn't solve the problem, not even the end string. We want to use the reverse mapping structure built by BFS, do search 
 
-##### Search using DFS
-- 从结尾end string 开始扫, 找所有可以reach的candidate && only visit candidate that is 1 step away
-- dfs 直到找到start string.
+### ## Search using DFS 
+-Scan from the end string, find all candidate dates && only visit candidate that is 1 step away 
+-dfs until you find the start string.
 
-##### Bi-directional BFS: Search using BFS
-- reversed structure 已经做好了, 现在做search 就可以: 也可以选用bfs.
-- `Queue<List<String>>` to store candidates, searching from end-> start
+##### Bi-directional BFS: Search using BFS 
+-overall for loop; clean up list: 1. over size; 2. last item
+-The reversed structure is ready, now you can search: you can also use bfs.-`Queue 
+<List <String >>` to store candidates, searching from end-> start 
 
 
 
----
+--- 
 
-**75. [Text Justification.java](https://github.com/awangdev/LintCode/blob/master/Java/Text%20Justification.java)**      Level: Hard      Tags: [Enumeration, String]
+** 75. [Text Justification. java] (https://github.com/awangdev/LintCode/blob/master/Java/Text%20Justification.java) ** Level: Hard Tags: [Enumeration, String] 
       
 
-按照规则 adjust text. 就是Word里面: 有一行太长, adjust word 中间的space, 然后保证每一行的total width 顶格.
+Adjust text according to the rules. It is in Word: there is one line Too long, adjust the space in the middle of the word, and then ensure the top width of the total width of each line. 
 
-还有一些细节规则, 看原题
+There are some details rules, see the original title 
 
-#### String
-- Summing space = `width + (size-1)`. maintain: 1. list of candidates, 2. width of actual words
-- calculate space in between: `remain/(size - 1)`
-- overall for loop; clean up list: 1. over size; 2. last item
-- 一点也不难, 但是要小心: deal with list of string的时候, 注意处理干净sum size of list<string>, 就行了.
-- `干净处理space`: 只处理 (n-1) items, 然后最后一个拿到for loop 外面, 特殊处理.
+#### String 
+-Summing space = `width + (size-1)`. Maintain: 1. list of candidates, 2. width of actual words 
+-calculate space in between: `remain / (size-1)`-not 
+difficult at all, but be careful: deal with list of string, pay attention to clean sum size of list <string>, just 
+fine.-`Clear processing space`: only (n-1) items are processed, then the last one is taken out of the for loop, special processing. 
 
 #### Notes
 - Clarification, observation:
@@ -7047,140 +7047,140 @@ Easier to revisit https://leetcode.com/problems/design-search-autocomplete-syste
 - deal with last line with special care: just fill one space, and fill the rest of the row with space
 - Does not seem very complicated, but need additional care of calculating the amount of space needed.
 - Overall runtime: O(n) to go over all space
-- Overall space O(maxWidth) for maxWidth amount of strings
+-Overall space O (maxWidth) for maxWidth amount of strings
 
 
 
 ---
 
-**76. [Read N Characters Given Read4 II - Call multiple times.java](https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times.java)**      Level: Hard      Tags: [Enumeration, String]
+** 76. [Read N Characters Given Read4 II-Call multiple times.java] (https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4%20II%20 -% 20Call% 20multiple% 20times.java) ** Level: Hard Tags: [Enumeration, String] 
       
 
-Read N Character using `Read4(char[] buf)` 的加强版: 可以不断读 read(buf, n)
+Read N Character using `Read4 (char [] buf)` enhanced version: can read continuously read (buf, n) 
 
-#### String 
-- 注意String的index handle, 慢慢写edge case
-- 理解题目意思: `read4(char[] buf)` 这样的 `populate input object` 的function稍微少一点. 
-- 遇到时候, 仔细理解function用法, 不要慌乱. 其实思考方式很简单, 仔细handle string 还有 edge case就好了.
+## ## String 
+-Pay attention to the index handle of String, and slowly write the edge 
+case.-Understand the meaning of the title: `read4 (char [] buf)` has a slightly smaller function of `populate input object`. 
+-When you encounter it, understand the function carefully Usage, don't panic. In fact, the way of thinking is very simple, just carefully handle the string and edge case. 
+
+
+
+--- 
+
+** 77. [Frog Jump.java] (https://github.com/awangdev/LintCode/blob/ master / Java / Frog% 20Jump.java) ** Level: Hard Tags: [DP, Hash Table]
+      
+
+The question of Frog jump needs a little understanding: each grid can jump k-1, k, k + 1 steps, and k depends on the number of steps jumped in the previous step. The default 0-> 1 must be a step. 
+
+Note: int [] stones is the unit in which the stone is located (not the number of steps that can be jumped, don't understand it wrong). 
+
+#### DP 
+-originally wanted to do it according to corrdiante dp, but found many problems, need to track different possible previous starting spot . 
+- according to jiuzhang answer: by definition, a use of the Map <stone, the Set <# Possible Steps to the REACH stone >> 
+- at a time when processing a stone, all according to his own set of <previous steps>, to go Next three steps: k-1, k, or k + 1 steps. 
+-Take one step each time to see if stone + step exists; if it exists, add it to the hash set of next position: `stone + step` 
+
+### ## Note init 
+-`dp.put (stone, new HashSet <> ())` mark The existence of each stone 
+-`dp.get (0) .add (0)` init condition, used to do dp.put ( 1, 1) 
+
+##### Idea  
+-finally do the thinking mode, more like the BFS mode: starting from (0,0), add all possible ways
+-then again, try next stone with all possible future ways ... etc 
 
 
 
 ---
 
-**77. [Frog Jump.java](https://github.com/awangdev/LintCode/blob/master/Java/Frog%20Jump.java)**      Level: Hard      Tags: [DP, Hash Table]
+** 78. [Longest Substring with At Most Two Distinct Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters .java) ** Level: Hard Tags: [Hash Table, Sliding Window, String, Two Pointers] 
       
 
-Frog jump 的题目稍微需要理解: 每个格子可以 jump k-1, k, k+1 steps, 而k取决于上一步所跳的步数. 默认 0->1 一定是跳了1步.
+as the title. 
 
-注意: int[] stones 里面是stone所在的unit (不是可以跳的步数, 不要理解错).
+#### Two Pointer + HashMap 
+-originally wanted to use DP, but its practical sliding window idea 
+-sliding window cutting : Use hashmap to store last occurrance of char index; 
+-After map.remove (c), it is equivalent to cut out that section completely; then map.get (c) + 1 is the new left window border 
 
-#### DP
-- 原本想按照corrdiante dp 来做, 但是发现很多问题, 需要track 不同的 possible previous starting spot.
-- 根据jiuzhang答案: 按照定义, 用一个 map of <stone, Set<possible # steps to reach stone>>
-- 每次在处理一个stone的时候, 都根据他自己的 set of <previous steps>, 来走下三步: k-1, k, or k+1 steps.
-- 每次走一步, 查看 stone + step 是否存在; 如果存在, 就加进 next position: `stone+step`的 hash set 里面
 
-##### 注意init
-- `dp.put(stone, new HashSet<>())` mark 每个stone的存在
-- `dp.get(0).add(0)` init condition, 用来做 dp.put(1, 1)
 
-##### 思想
-- 最终做下来思考模式, 更像是BFS的模式: starting from (0,0), add all possible ways 
-- 然后again, try next stone with all possible future ways ... etc
+--- 
+
+** 79 [Shortest Distance from All Buildings.java] (https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Distance%20from%20All%20Buildings.java) ** Level: Hard Tags: [BFS ]
+      
+
+It is very similar to Walls and Gates, except that this question needs to choose a coordinate, having shortest sum distance to all buildings (marked as 1). 
+
+#### BFS 
+-BFS can mark shortest distance from bulding-> any possible spot . 
+-Try each building (marked as 1)-> BFS cover all 0. 
+-time: O (n ^ 2) * # of building; use new visited [] [] to mark visited for each building. 
+-O (n ^ 2) find the smallest point / aggregation 
+value.-Note, this problem we update grid [] [] sum up with shortest path value from building. 
+-Finally find a min value, even without return coordinate. 
+-Analysis, Not written yet. 
+
+
+
+--- 
+
+** 80. [Sliding Window Maximum.java] (https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Maximum.java) ** Level: Hard Tags: [Deque, Heap, Sliding Window]
+      
+
+#### Deque, Monotonous queue 
+-maintain monotonuous queue: one end is always at max and the other end is min. Always need to return the max end of queue. 
+-When adding new elements x: start from small-end of the queue, drop all smaller elements and append to first element larger than 
+x.-when sliding window: queue curr window max-end, remove it if needed. 
+-wonderful: use deque data structure (actually using LinkedList's Form) to make a `decreasing queue`. 
+-Each time smaller than the current node, all are eliminated, and the rest is naturally: the largest> the second largest> the third largest ... ETC. 
+-We only It cares about the existence of the maximum value; any value that is less than the current value (which is added when it is about to be new) will not become the maximum value anyway, so throw it away! 
 
 
 
 ---
 
-**78. [Longest Substring with At Most Two Distinct Characters.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters.java)**      Level: Hard      Tags: [Hash Table, Sliding Window, String, Two Pointers]
+** 81. [Median of Two Sorted Arrays.java] (https://github.com/awangdev/LintCode/blob/master/Java/Median%20of%20Two%20Sorted%20Arrays.java) ** Level: Hard Tags : [Array, Binary Search, DFS, Divide and Conquer] 
       
 
-如题.
+Famously find the median of two sorted arrays. Definition of median: If the total length of the two arrays is even, take the average. The 
+problem requires the log (m + n ) Time to solve 
 
-#### Two Pointer + HashMap
-- 原本想用 DP, 但是其实用 sliding window 的思想
-- sliding window 的切割: 用hashmap 存 last occurrance of char index; 
-- map.remove(c) 之后, 就等于彻底切掉了那一段; 那么 map.get(c) + 1 也就是新的 left window border
+-see log (m + n), I think of binary search, or recursive chop half each time 
+-the two sorted arrays are uneven, and certainly can not be simple binary search 
+
+#### Divide and Conquer, recursive 
+-Here is a mathematical exclusion idea: consider the intermediate points of A and B. 
+-If A [mid] <B [mid], then A [0 ~ mid-1] is not in the range of median and can be excluded. divide / conquer is like this.-For the 
+specific logic, look at the code, which roughly means: compare the positions of A and B [x + k / 2-1] each time, and then do the range exclusion method 
+-end cases: -1 
+. If We found that the start index of A or B in dfs () overflowed, then this is the simplest case: midian must be in another array
+-2. If k == 1: find 1st item in A / B, then make `Math.max (A [startA], B [startB])`-the 
+total number length is (m + n ) And every time the general content is deleted, then time is O (log (m + n)) 
 
 
 
+
+--- 
+
+** 82. [Bus Routes.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Bus% 20Routes.java) ** Level: Hard Tags: [BFS] 
+      
+
+
+ 
 ---
 
-**79. [Shortest Distance from All Buildings.java](https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Distance%20from%20All%20Buildings.java)**      Level: Hard      Tags: [BFS]
-      
-
-给Walls and Gates很像, 不同的是, 这道题要选一个 coordinate, having shortest sum distance to all buildings (marked as 1).
-
-#### BFS
-- BFS 可以 mark shortest distance from bulding -> any possible spot.
-- Try each building (marked as 1) -> BFS cover all 0. 
-- time: O(n^2) * # of building; use new visited[][] to mark visited for each building.
-- O(n^2) find smallest point/aggregation value.
-- 注意, 这道题我们update grid[][] sum up with shortest path value from building.
-- 最后找个min value 就好了, 甚至不用return coordinate.
-- 分析过, 还没有写.
-
-
-
----
-
-**80. [Sliding Window Maximum.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Maximum.java)**      Level: Hard      Tags: [Deque, Heap, Sliding Window]
-      
-
-#### Deque, Monotonous queue
-- 维持monotonuous queue: one end is always at max and the other end is min. Always need to return the max end of queue.
-- when adding new elements x: start from small-end of the queue, drop all smaller elements and append to first element larger than x.
-- when sliding window: queue curr window 里面 最大的已经在max-end,  remove it if needed.
-- 妙：用deque数据结构（实际上采用LinkedList的形式）来做一个`递减的queue`.
-- 每次把小于当前node的，全部剔除，剩下的，自然就是:最大的>第二大的>第三大的...ETC.
-- 我们只在乎最大值的存在；而任何小于当前（正要新就加进去的）值的，反正以后也成不了最大值，于是扔掉！
-
-
-
----
-
-**81. [Median of Two Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Median%20of%20Two%20Sorted%20Arrays.java)**      Level: Hard      Tags: [Array, Binary Search, DFS, Divide and Conquer]
-      
-
-著名的找两个sorted array的中位数. 中位数定义: 如果两个array总长为偶数, 取平均值.
-题目要求在 log(m + n) 时间内解决
-
-- 看到log(m+n), 就想到binary search, 或者是recursive 每次砍一半
-- 两个sorted array 参差不齐, 肯定不能做简单的binary search
-
-#### Divide and Conquer, recursive
-- 这里有个数学排除思想: 考虑A, B各自的中间点.
-- 如果A[mid] < B[mid], 那么 A[0 ~ mid - 1] 就不在 median的range里面, 可以排除. divide/conquer就这么来的.
-- 具体逻辑看代码, 大致意思就是: 每次都取比较A 和 B [x + k / 2 - 1] 的位置, 然后做range 排除法
-- end cases: 
-- 1. 如果我们发现dfs()里面A或者B的start index溢出了, 那么就是最简单的case: midian一定在另外那个array里面
-- 2. 如果 k == 1: 就是找A/B 里面的1st item, 那么做个 `Math.max(A[startA], B[startB])` 就可以
-- 总共的数字长度是 (m + n) 而且每次都有一般的内容被删除, 那么time就是 O(log(m + n))
-
-
-
-
----
-
-**82. [Bus Routes.java](https://github.com/awangdev/LintCode/blob/master/Java/Bus%20Routes.java)**      Level: Hard      Tags: [BFS]
+** 83. [Sliding Puzzle.java] (https://github.com/awangdev/LintCode/blob/master/Java /Sliding%20Puzzle.java)** Level: Hard Tags: [BFS, Graph] 
       
 
 
 
----
+--- 
 
-**83. [Sliding Puzzle.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Puzzle.java)**      Level: Hard      Tags: [BFS, Graph]
+** 84. [Cracking the Safe.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Cracking% 20the% 20Safe.java) ** Level: Hard Tags: [DFS, Greedy, Math] 
       
 
-
-
----
-
-**84. [Cracking the Safe.java](https://github.com/awangdev/LintCode/blob/master/Java/Cracking%20the%20Safe.java)**      Level: Hard      Tags: [DFS, Greedy, Math]
-      
-
-#### Greedy, Iterative
-- For 2 passwords, the shortest situation is both passwords overlap for n-1 chars.
+#### Greedy, Iterative 
+-For 2 passwords, the shortest situation is both passwords overlap for n-1 chars.
 - We can use a window to cut out last (n-1) substring and append with new candidate char from [k-1 ~ 0]
 - Track the newly formed string; if new, add the new char to overall result
 - Note: this operation will run for k^n times: for all spots of [0 ~ n - 1] each spot tries all k values [k-1 ~ 0]
@@ -7220,45 +7220,45 @@ Frog jump 的题目稍微需要理解: 每个格子可以 jump k-1, k, k+1 steps
 
 ---
 
-**87. [Regular Expression Matching.java](https://github.com/awangdev/LintCode/blob/master/Java/Regular%20Expression%20Matching.java)**      Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Sequence DP, String]
+** 87. [Regular Expression Matching.java] (https://github.com/awangdev/LintCode/blob/master/Java/Regular%20Expression%20Matching.java) ** Level: Hard Tags: [Backtracking, DP, Double Sequence DP, Sequence DP, String] 
       
 
-跟WildCard Matching 一样, 分清楚情况讨论 string p last char is '*' 还有并不是 '*'
+Like WildCard Matching, discuss the situation clearly. String p last char is '*' and not '*' 
 
-这里的区别是, '*' 需要有一个preceding element, 那么:
-- repeat 0 times
-- repeat 1 times: need s[i-1] match with prior char p[i-2]
+. The difference here is that '*' needs a precedent element, then: 
+- repeat 0 times 
+-repeat 1 times: need s [i-1] match with prior char p [i-2] 
 
 
 
----
+--- 
 
-**88. [Wildcard Matching.java](https://github.com/awangdev/LintCode/blob/master/Java/Wildcard%20Matching.java)**      Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Greedy, Sequence DP, String]
+** 88. [Wildcard Matching.java] (https://github.com/awangdev/LintCode /blob/master/Java/Wildcard%20Matching.java)** Level: Hard Tags: [Backtracking, DP, Double Sequence DP, Greedy, Sequence DP, String] 
       
 
-Double sequence DP. 与regular expression 很像.
+Double sequence DP. Similar to regular expression. 
 
-#### Double Sequence DP
-- 分析字符 ?, * 所代表的真正意义, 然后写出表达式.
-- 搞清楚initialization 的时候 dp[i][0] 应该always false. 当p为empty string, 无论如何都match不了 (除非s="" as well)
-- 同时 dp[0][j]不一定是false. 比如s="",p="*" 就是一个matching.
-- A. p[j] != '*'
-    1. last index match => dp[i - 1][j - 1]
-    2. last index == ?  => dp[i - 1][j - 1]
-- B. p[j] == "*"
-    1. * is empty => dp[i][j - 1]
-    2. * match 1 or more chars => dp[i - 1][j]
-
-
+#### Double Sequence DP 
+-Analyze the true meaning of the characters?, * And write out the expression.
+-Dp [i] [0] should always be false when initializing. When p is an empty string, it cannot match anyway (unless s = "" as well) 
+-At the same time dp [0] [j] may not be false For example, s = "", p = "*" is a match.  
+-A. p [j]! = '*' 
+    1. last index match =>dp[i - 1][j - 1]
+    2. last index ==? => Dp [i-1] [j-1] 
+-B. p [j] == "*" 
+    1. * is empty => dp [i] [j-1] 
+    2. * match 1 or more chars => dp [i-1] [j] 
 
 
----
 
-**89. [Robot Room Cleaner.java](https://github.com/awangdev/LintCode/blob/master/Java/Robot%20Room%20Cleaner.java)**      Level: Hard      Tags: [Backtracking, DFS]
+
+--- 
+
+** 89. [Robot Room Cleaner.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Robot%20Room%20Cleaner.java)** Level: Hard Tags: [Backtracking, DFS] 
       
 
-#### DFS
-- Different from regular dfs to visit all, the robot move() function need to be called, backtrack needs to move() manually and backtracking path shold not be blocked by visited positions
+#### DFS 
+-Different from regular dfs to visit all, the robot move () function need to be called, backtrack needs to move () manually and backtracking path shold not be blocked by visited positions
 - IMPORTANT: Mark on the way in using set, but `backtrack directly without re-check against set`
 - Mark coordinate 'x@y'
 - Backtrack: turn 2 times to revert, move 1 step, and turn 2 times to revert back.
@@ -7289,69 +7289,69 @@ Double sequence DP. 与regular expression 很像.
 
 ---
 
-**1. [Valid Perfect Square.java](https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Perfect%20Square.java)**      Level: Review      Tags: [Binary Search, Math]
+** 1. [Valid Perfect Square.java] (https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Perfect%20Square.java) ** Level: Review Tags: [Binary Search, Math ] 
       
 
-Binary找sqrt. 基本 mid+1, mid-1 template.
-注意: define index as long. 
+Binary finds sqrt. Basic mid + 1, mid-1 template. 
+Note: define index as long.
 
 
 
 ---
 
-**2. [Maximum Average Subarray II.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Average%20Subarray%20II.java)**      Level: Review      Tags: [Array, Binary Search, PreSum]
+** 2. [Maximum Average Subarray II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Average%20Subarray%20II.java) ** Level: Review Tags: [Array , Binary Search, PreSum] 
       
 
-给int[] nums 和 window min size k. window size可以大于K. 找最大的连续数列average value.
+gives int [] nums and window min size k. The window size can be greater than K. Find the largest continuous number average 
 
-- Binary Search的思想, 用在所要找的这个 average sum 上面. 大小是在[min, max]之中
-- 找k的时候, 是>=k都可以, 巧用一个 min(preSum)的概念.
-- 找k的时候, 画图, 可以看出来, 其实要的是 k window 里面的sum [x, i], 所以要用 sum[0, i] - sum[0, x]
+value.-The idea of ​​Binary Search is used on the average sum you are looking for. The size is in [min, max] 
+-When 
+looking for k, it can be> = k, use the concept of min (preSum).-When looking for k, draw a picture, it can be seen that what is actually in the k window sum [x, i], so to use sum [0, i]-sum [0, x] 
 
-需要仔细去读下面的notes.
+needs to read the following notes carefully. 
 
 
 
 ---
 
-**3. [The Skyline Problem.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Skyline%20Problem.java)**      Level: Review      Tags: [Binary Indexed Tree, Divide and Conquer, Heap, PriorityQueue, Segment Tree, Sweep Line]
+** 3. [The Skyline Problem.java] (https://github.com/awangdev/LintCode/blob/master/Java/The%20Skyline%20Problem.java) ** Level: Review Tags: [Binary Indexed Tree, Divide and Conquer, Heap, PriorityQueue, Segment Tree, Sweep Line] is 
       
 
-又叫做skyline. 用Sweep Line做的O(nLogN), 但是貌似还有很多做法: segement tree, hashheap, treeSet?
+also called skyline. O (nLogN) made with Sweep Line, but it seems that there are many ways: segement tree, hashheap, treeSet? 
 
-#### Sweep Line, Time O(nLogN), Space O(n)
-- original reference http://codechen.blogspot.com/2015/06/leetcode-skyline-problem.html?_sm_au_=isVmHvFmFs40TWRt
-- 画图分析: 需要找到 non-overlaping height point at current index; also height needs to be different than prev height peek to be visible.
-- 把所有点分出来， 每个点有index x, 再加上一个height.         
-- 在这个list上排序，根据index和height. 注意用负数标记building start point height, 这样保证start在end 之前
-- 用负数的height标记start: 在priority queue里面同一个x-pos比较 startPoint.height, endPoint.height 的时候, 因为end height是整数, 所以compare时会自动把start point放在end point前面
-- 当然了, 如果两个 start point比较, 第二个point的负数超大的话(也就是height很高), 就会顺理compare return正数, 成章形成倒位
-- 在processs时候用max-heap (reversed priorityqueue)，再iterate heightPoints 来存最大的height . 遇到peek,就是一个合理的解    
-- heightQueue里面加一个0, 用来在结尾的时候做closure
+#### Sweep Line, Time O (nLogN), Space O (n)-original 
+reference http://codechen.blogspot.com/2015/06/leetcode-skyline-problem.html?_sm_au_=isVmHvFmFs40TWRt-Drawing 
+analysis: Need to find non-overlaping height point at current index; also height needs to be different than prev height peek to be visible. 
+-Divide all points out, each point has index x, plus a height.          
+-Sort on this list, according to index and height. Note Mark building start point height with a negative number, so that start is guaranteed before end
+-Mark start with a negative height: When comparing startPoint.height, endPoint.height with the same x-pos in the priority queue, because the end height is an integer, the start point will be automatically placed in front of the end point during the compare 
+when comparing-Of course, if the two start points are compared, the negative value of the second point is too large (that is, the height is high), it will be smooth. 
+Manage compare to return positive numbers, forming inverses into chapters-use max-heap (reversed priorityqueue) in processes, then iterate heightPoints to store the maximum height. When peek is encountered, it is a reasonable solution    
+-Add a 0 to heightQueue to close it at the end 
 
-#### Segment Tree
-- 看了一些做法, segment tree写法很复杂, 估计在面试中难以用segment tree来写: https://www.cnblogs.com/tiezhibieek/p/5021202.html
+#### Segment Tree 
+-After reading some practices, the segment tree is complicated to write. It is estimated that it is difficult to write the segment tree in the interview: https: // www. cnblogs.com/tiezhibieek/p/5021202.html 
 
-#### HashHeap
-- HashHeap template 可以考虑: https://www.jiuzhang.com/solution/building-outline/#tag-highlight-lang-java
+#### HashHeap 
+-HashHeap template can be considered: https://www.jiuzhang.com/solution/building-outline/#tag-highlight-lang-java 
 
-Binary Indexed Tree?
-
-
+Binary Indexed Tree? 
 
 
 
----
 
-**4. [Remove Invalid Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Invalid%20Parentheses.java)**      Level: Review      Tags: [BFS, DFS, DP]
+
+--- 
+
+** 4. [Remove Invalid Parentheses.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Invalid%20Parentheses.java) ** Level: Review Tags: [BFS , DFS, DP] 
       
 
-给一个string, 里面有括号和其他字符. 以最少刀 剪出 valid string, 求所有这样的string.
+Give a string with parentheses and other characters. Cut out the valid string with the least knife, find all such strings. 
 
-这个题目有多种解法, 最强就是O(n) space and time
+There are multiple solutions to this problem, the strongest is O (n) space and time 
 
-#### DFS and reduce input string
-- in dfs: remove the incorrect parentheses one at a time
+### # DFS and reduce input string 
+-in dfs: remove the incorrect parentheses one at a time
 - detect the incorrect parentheses by tracking/counting (similar to validation of the parentheses string): `if(count<0)`
 - once detected, remove the char from middle of s, and dfs on the rest of the s that has not been tested yet.
 
@@ -7363,18 +7363,18 @@ Binary Indexed Tree?
 - only procceed to remove invalid parenthese when `count<0`, and also break && return dfs after the recursive calls.
 - The above 2 facts eliminates all the redundant results.
 - Reverse string before alternating open and close parentheses, so when returning final result, it will return the correct order.
-- Open questions: how does it guarantee minimum removals?
+-Open 
+questions: how does it guarantee minimum removals? 
 
-##### Backtracking
-- 如果用stringbuffer, 那么久不会每次create new string, 但是需要maintain这个string buffer, 就会backtracking
+##### Backtracking -If a stringbuffer is used, it will not create a new string every time, but if the string buffer is maintained, it will be backtracking 
 
-##### Complexity
-- Seems to be O(n), but need to derive
+##### Complexity 
+-Seems to be O (n), but need to derive 
 
-#### BFS
-TODO
+#### BFS 
+TODO 
 
-#### DP
+#### DP 
 
 
 
