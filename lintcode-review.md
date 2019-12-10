@@ -10,6 +10,7 @@
     - [4. IndexMatch.java   Level: Easy Tags: []](#4-indexmatchjava---level-easy-tags-)
     - [5. [Insert Node in a Binary Search Tree .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Node%20in%20a%20Binary%20Search%20Tree%20. java)   Level: Easy Tags: [BST]](#5-insert-node-in-a-binary-search-tree-java-httpsgithubcomawangdevlintcodeblobmasterjavainsertnodeinabinarysearchtree-java---level-easy-tags-bst)
     - [6. Jewels and Stones.java   Level: Easy Tags: [Hash Table]](#6-jewels-and-stonesjava---level-easy-tags-hash-table)
+      - [Basic HashSet](#basic-hashset)
     - [7. Longest Univalue Path.java   Level: Easy Tags: []](#7-longest-univalue-pathjava---level-easy-tags-)
     - [8. Matrix Zigzag Traversal.java   Level: Easy Tags: []](#8-matrix-zigzag-traversaljava---level-easy-tags-)
     - [9. Minimum Absolute Difference in BST.java   Level: Easy Tags : [BST]](#9-minimum-absolute-difference-in-bstjava---level-easy-tags--bst)
@@ -27,10 +28,14 @@
     - [21. Trailing Zeros.java   Level: Easy Tags: [Math]](#21-trailing-zerosjava---level-easy-tags-math)
     - [22. Two Strings Are Anagrams.java   Level: Easy Tags: []](#22-two-strings-are-anagramsjava---level-easy-tags-)
     - [23. Valid Sudoku.java   Level: Easy Tags: [Enumeration, Hash Table]](#23-valid-sudokujava---level-easy-tags-enumeration-hash-table)
+      - [Hash Set](#hash-set)
+      - [A bit Slower approach](#a-bit-slower-approach)
     - [24. Word Pattern.java   Level: Easy Tags: []](#24-word-patternjava---level-easy-tags-)
     - [25. Find Anagram Mappings.java   Level: Easy Tags: [Hash Table]](#25-find-anagram-mappingsjava---level-easy-tags-hash-table)
     - [26. Judge Route Circle.java   Level: Easy Tags: [String]](#26-judge-route-circlejava---level-easy-tags-string)
     - [27. Island Perimeter.java   Level: Easy Tags: [Hash Table]](#27-island-perimeterjava---level-easy-tags-hash-table)
+      - [Brutle](#brutle)
+      - [Hash Table](#hash-table)
     - [28. Power of Three.java   Level: Easy Tags: [Math]](#28-power-of-threejava---level-easy-tags-math)
     - [29. Plus One.java   Level: Easy Tags: [Array, Math]](#29-plus-onejava---level-easy-tags-array-math)
     - [30. Power of Two.java   Level: Easy Tags: [Bit Manipulation, Math ]](#30-power-of-twojava---level-easy-tags-bit-manipulation-math-)
@@ -38,6 +43,7 @@
     - [32. Guess Number Higher or Lower.java   Level: Easy Tags : [Binary Search]](#32-guess-number-higher-or-lowerjava---level-easy-tags--binary-search)
     - [33. Trim a Binary Search Tree.java   Level: Easy Tags : [BST, Tree]](#33-trim-a-binary-search-treejava---level-easy-tags--bst-tree)
     - [34. Array Partition I.java   Level: Easy Tags: [Array]](#34-array-partition-ijava---level-easy-tags-array)
+      - [Sort, basics](#sort-basics)
     - [35. 1-bit and 2-bit Characters.java * * Level: Easy Tags: [Array]](#35-1-bit-and-2-bit-charactersjava---level-easy-tags-array)
     - [36. Non-decreasing Array.java   Level: Easy Tags: [Array]](#36-non-decreasing-arrayjava---level-easy-tags-array)
     - [37. Max Consecutive Ones.java   Level: Easy Tags: [Array]](#37-max-consecutive-onesjava---level-easy-tags-array)
@@ -49,127 +55,287 @@
     - [43. Swap Bits.java   Level: Easy Tags: [Bit Manipulation]](#43-swap-bitsjava---level-easy-tags-bit-manipulation)
     - [44. Intersection of Two Arrays II.java   Level: Easy Tags : [Binary Search, Hash Table, Sort, Two Pointers]](#44-intersection-of-two-arrays-iijava---level-easy-tags--binary-search-hash-table-sort-two-pointers)
     - [45. Majority Element.java   Level: Easy Tags: [Array, Bit Manipulation, Divide and Conquer]](#45-majority-elementjava---level-easy-tags-array-bit-manipulation-divide-and-conquer)
+      - [Vote count](#vote-count)
+      - [HashMap count occurance](#hashmap-count-occurance)
+      - [Bit manipulation](#bit-manipulation)
+      - [Related Problems](#related-problems)
     - [46. Nested List Weight Sum.java   Level: Easy Tags: [BFS , DFS]](#46-nested-list-weight-sumjava---level-easy-tags-bfs--dfs)
+      - [DFS](#dfs)
+      - [BFS](#bfs)
     - [47. Same Tree.java   Level: Easy Tags: [DFS, Tree]](#47-same-treejava---level-easy-tags-dfs-tree)
+      - [DFS](#dfs-1)
+      - [BFS](#bfs-1)
     - [48. Convert Sorted Array to Binary Search Tree.java   Level: Easy Tags: [DFS, Divide and Conquer, Tree]](#48-convert-sorted-array-to-binary-search-treejava---level-easy-tags-dfs-divide-and-conquer-tree)
+      - [DFS](#dfs-2)
     - [49. Add Digits.java   Level: Easy Tags: [Math]](#49-add-digitsjava---level-easy-tags-math)
     - [50. Valid Anagram.java   Level: Easy Tags: [Hash Table, Sort]](#50-valid-anagramjava---level-easy-tags-hash-table-sort)
     - [51. Binary Tree Paths.java   Level: Easy Tags: [Backtracking, Binary Tree , DFS]](#51-binary-tree-pathsjava---level-easy-tags-backtracking-binary-tree--dfs)
+      - [DFS, backtracking](#dfs-backtracking)
+      - [DFS, bottom-> up](#dfs-bottom--up)
+      - [Iterative](#iterative)
     - [52. Linked List Cycle.java   Level: Easy Tags: [Linked List, Two Pointers]](#52-linked-list-cyclejava---level-easy-tags-linked-list-two-pointers)
+      - [Two Pointer: Slow Fast Pointer](#two-pointer-slow-fast-pointer)
+      - [Hash Table](#hash-table-1)
     - [53. Min Stack.java   Level: Easy Tags: [Design, Stack]](#53-min-stackjava---level-easy-tags-design-stack)
     - [54. Implement Queue using Stacks.java   Level: Easy Tags: [Design , Stack]](#54-implement-queue-using-stacksjava---level-easy-tags-design--stack)
+      - [Double Stack](#double-stack)
+      - [Previous notes](#previous-notes)
     - [55. Reverse Integer.java   Level: Easy Tags: [Math]](#55-reverse-integerjava---level-easy-tags-math)
+      - [method 1](#method-1)
+      - [Method 2](#method-2)
     - [56. [Sqrt (x) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Sqrt (x) .java)   Level: Easy Tags: [Binary Search, Math ]](#56-sqrt-x-java-httpsgithubcomawangdevlintcodeblobmasterjavasqrt-x-java---level-easy-tags-binary-search-math-)
+      - [s- qrt (int x)](#s--qrt-int-x)
+      - [sqrt (double x)](#sqrt-double-x)
     - [57. First Bad Version.java   Level: Easy Tags: [Binary Search]](#57-first-bad-versionjava---level-easy-tags-binary-search)
     - [58. Meeting Rooms.java   Level: Easy Tags: [PriorityQueue, Sort, Sweep Line]](#58-meeting-roomsjava---level-easy-tags-priorityqueue-sort-sweep-line)
+      - [method 1:](#method-1)
+      - [Method 2: Sweep line](#method-2-sweep-line)
     - [59. Binary Tree Inorder Traversal.java   Level: Easy Tags: [Hash Table, Stack, Tree]](#59-binary-tree-inorder-traversaljava---level-easy-tags-hash-table-stack-tree)
+      - [Recursive](#recursive)
+      - [Iterative: Stack](#iterative-stack)
+      - [HashMap](#hashmap)
     - [60. Change to Anagram.java   Level: Easy Tags: [String]](#60-change-to-anagramjava---level-easy-tags-string)
     - [61. Classical Binary Search.java   Level: Easy Tags: [Binary Search]](#61-classical-binary-searchjava---level-easy-tags-binary-search)
+      - [Binary Search Template](#binary-search-template)
     - [62. Climbing Stairs.java   Level: Easy Tags: [DP, Memoization, Sequence DP]](#62-climbing-stairsjava---level-easy-tags-dp-memoization-sequence-dp)
+      - [Recursive + Memoization](#recursive--memoization)
+      - [DP](#dp)
+      - [Sequence DP, scrolling array](#sequence-dp-scrolling-array)
     - [63. Closest Binary Search Tree Value.java   Level: Easy Tags : [BST, Binary Search, Tree]](#63-closest-binary-search-tree-valuejava---level-easy-tags--bst-binary-search-tree)
+      - [Recursive](#recursive-1)
+      - [Binary Search](#binary-search)
     - [64. Binary Tree Preorder Traversal.java   Level: Easy Tags: [BFS , DFS, Stack, Tree]](#64-binary-tree-preorder-traversaljava---level-easy-tags-bfs--dfs-stack-tree)
+      - [Recursive](#recursive-2)
+      - [Iterative](#iterative-1)
     - [65. Closest Number in Sorted Array.java   Level: Easy Tags : [Binary Search]](#65-closest-number-in-sorted-arrayjava---level-easy-tags--binary-search)
     - [66. Complete Binary Tree.java   Level: Easy Tags: [BFS, Tree]](#66-complete-binary-treejava---level-easy-tags-bfs-tree)
+      - [BFS](#bfs-2)
     - [67. Compare Strings.java   Level: Easy Tags: [String]](#67-compare-stringsjava---level-easy-tags-string)
+      - [Basic Implementation](#basic-implementation)
     - [68. Contains Duplicate.java   Level: Easy Tags: [Array, Hash Table]](#68-contains-duplicatejava---level-easy-tags-array-hash-table)
+      - [HashSet](#hashset)
+      - [Sort, Binary Search](#sort-binary-search)
     - [69. Contains Duplicate II.java   Level: Easy Tags: [Array, Hash Table ]](#69-contains-duplicate-iijava---level-easy-tags-array-hash-table-)
+      - [HashSet](#hashset-1)
+      - [HashTable <value, List of duplicates>](#hashtable-value-list-of-duplicates)
+      - [The difference between these two approaches is artistic](#the-difference-between-these-two-approaches-is-artistic)
     - [70. Nim Game.java   Level: Easy Tags: [Brainteaser, DP, Game Theory]](#70-nim-gamejava---level-easy-tags-brainteaser-dp-game-theory)
+      - [Brainteaser](#brainteaser)
+      - [DP](#dp-1)
     - [71. Convert Integer A to Integer B.java   Level : Easy Tags: [Bit Manipulation]](#71-convert-integer-a-to-integer-bjava---level--easy-tags-bit-manipulation)
+      - [Bit Manipulation](#bit-manipulation)
     - [72. Cosine Similarity.java   Level: Easy Tags: [Basic Implementation]](#72-cosine-similarityjava---level-easy-tags-basic-implementation)
     - [73. Count 1 in Binary.java   Level: Easy Tags: [Bit Manipulation]](#73-count-1-in-binaryjava---level-easy-tags-bit-manipulation)
+      - [Bit Manipulation](#bit-manipulation-1)
+      - [Convert to string O (n) space](#convert-to-string-o-n-space)
     - [74. Count and Say.java   Level: Easy Tags: [Basic Implementation, String ]](#74-count-and-sayjava---level-easy-tags-basic-implementation-string-)
+      - [Basic Implementation](#basic-implementation-1)
     - [75. Paint House.java   Level: Easy Tags: [DP, Sequence DP, Status DP ]](#75-paint-housejava---level-easy-tags-dp-sequence-dp-status-dp-)
+      - [Sequence DP](#sequence-dp)
+      - [Rolling Array](#rolling-array)
     - [76. Longest Continuous Increasing Subsequence.java   Level: Easy Tags: [Array , Coordinate DP, DP]](#76-longest-continuous-increasing-subsequencejava---level-easy-tags-array--coordinate-dp-dp)
+      - [Coordinate DP](#coordinate-dp)
+      - [Basic](#basic)
     - [77. House Robber.java   Level: Easy Tags: [DP, Sequence DP]](#77-house-robberjava---level-easy-tags-dp-sequence-dp)
+      - [Sequence DP](#sequence-dp-1)
+      - [Rolling Array](#rolling-array-1)
     - [78. Find All Anagrams in a String.java   Level : Easy Tags: [Hash Table, Sliding Window]](#78-find-all-anagrams-in-a-stringjava---level--easy-tags-hash-table-sliding-window)
+      - [HashTable](#hashtable)
     - [79. Count Primes.java   Level: Easy Tags: [Hash Table, Math]](#79-count-primesjava---level-easy-tags-hash-table-math)
+      - [Prime number definition](#prime-number-definition)
+      - [Steps](#steps)
     - [80. Delete Node in a Linked List.java   Level : Easy Tags: [Linked List]](#80-delete-node-in-a-linked-listjava---level--easy-tags-linked-list)
+      - [Basic](#basic-1)
     - [81. Excel Sheet Column Number.java   Level: Easy Tags: [Math ]](#81-excel-sheet-column-numberjava---level-easy-tags-math-)
+      - [Math](#math)
     - [82. Excel Sheet Column Title.java   Level: Easy Tags: [Math ]](#82-excel-sheet-column-titlejava---level-easy-tags-math-)
+      - [Basic Conversion](#basic-conversion)
     - [83. Flip Game.java   Level: Easy Tags: [String]](#83-flip-gamejava---level-easy-tags-string)
+      - [String](#string)
     - [84. [Implement strStr () .java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20strStr () .java)   Level: Easy Tags: [String, Two Pointers]](#84-implement-strstr--java-httpsgithubcomawangdevlintcodeblobmasterjavaimplementstrstr--java---level-easy-tags-string-two-pointers)
+      - [Two Pointer](#two-pointer)
     - [85. Last Position of Target.java   Level: Easy Tags: [Binary Search]](#85-last-position-of-targetjava---level-easy-tags-binary-search)
     - [86. Length of Last Word.java   Level: Easy Tags: [String ]](#86-length-of-last-wordjava---level-easy-tags-string-)
+      - [basics](#basics)
     - [87. Longest Increasing Continuous subsequence.java   Level: Easy Tags: [Array , Coordinate DP, DP]](#87-longest-increasing-continuous-subsequencejava---level-easy-tags-array--coordinate-dp-dp)
     - [88. Maximum Subarray.java   Level: Easy Tags: [Array, DFS, DP, Divide and Conquer, PreSum, Sequence DP, Subarray]](#88-maximum-subarrayjava---level-easy-tags-array-dfs-dp-divide-and-conquer-presum-sequence-dp-subarray)
+      - [Sequence DP](#sequence-dp-2)
+      - [Divide and Conquer, DFS](#divide-and-conquer-dfs)
     - [89. Median.java   Level: Easy Tags: [Array, Quick Select, Quick Sort]](#89-medianjava---level-easy-tags-array-quick-select-quick-sort)
+      - [Quick Select](#quick-select)
     - [90. Middle of Linked List.java   Level: Easy Tags: [Linked List]](#90-middle-of-linked-listjava---level-easy-tags-linked-list)
     - [91. Singleton.java   Level: Easy Tags: [Design]](#91-singletonjava---level-easy-tags-design)
     - [92. Remove Linked List Elements.java   Level: Easy Tags: [Linked List]](#92-remove-linked-list-elementsjava---level-easy-tags-linked-list)
+      - [Basics](#basics)
     - [93. Fibonacci.java   Level: Easy Tags: [DP, Math, Memoization]](#93-fibonaccijava---level-easy-tags-dp-math-memoization)
+      - [Memoization](#memoization)
+      - [DP array.](#dp-array)
+      - [recursively calculate](#recursively-calculate)
     - [94. Palindrome Linked List.java   Level: Easy Tags: [Linked List, Two Pointers]](#94-palindrome-linked-listjava---level-easy-tags-linked-list-two-pointers)
+      - [Reverse Linked List](#reverse-linked-list)
+      - [Previous Note](#previous-note)
     - [95. Reverse Linked List.java   Level: Easy Tags: [Linked List]](#95-reverse-linked-listjava---level-easy-tags-linked-list)
+      - [Reverse List](#reverse-list)
     - [96. Intersection of Two Linked Lists.java   Level: Easy Tags : [Linked List]](#96-intersection-of-two-linked-listsjava---level-easy-tags--linked-list)
+      - [Basics](#basics-1)
     - [97. Palindrome Permutation.java   Level: Easy Tags: [Hash Table]](#97-palindrome-permutationjava---level-easy-tags-hash-table)
+      - [Hash, or ASCII array](#hash-or-ascii-array)
     - [98. Valid Palindrome.java   Level: Easy Tags: [String, Two Pointers]](#98-valid-palindromejava---level-easy-tags-string-two-pointers)
+      - [Check Palindrome](#check-palindrome)
+      - [filter alphanumeric](#filter-alphanumeric)
     - [99. Implement Stack using Queues.java   Level: Easy Tags: [Design , Stack]](#99-implement-stack-using-queuesjava---level-easy-tags-design--stack)
+      - [Queue, pouring water](#queue-pouring-water)
     - [100. Implement Stack.java   Level: Easy Tags: [Stack]](#100-implement-stackjava---level-easy-tags-stack)
+      - [Stack, first in, last out](#stack-first-in-last-out)
     - [101. Invert Binary Tree.java   Level: Easy Tags: [BFS, DFS, Tree]](#101-invert-binary-treejava---level-easy-tags-bfs-dfs-tree)
+      - [DFS](#dfs-3)
+      - [BFS](#bfs-3)
     - [102. Maximum Depth of Binary Tree.java   Level: Easy Tags : [DFS, Tree]](#102-maximum-depth-of-binary-treejava---level-easy-tags--dfs-tree)
+      - [DFS](#dfs-4)
+      - [Note](#note)
     - [103. Minimum Depth of Binary Tree.java   Level: Easy Tags : [BFS, DFS, Tree]](#103-minimum-depth-of-binary-treejava---level-easy-tags--bfs-dfs-tree)
+      - [BFS](#bfs-4)
+      - [DFS](#dfs-5)
     - [104. Symmetric Tree.java   Level: Easy Tags: [BFS, DFS, Tree]](#104-symmetric-treejava---level-easy-tags-bfs-dfs-tree)
+      - [DFS](#dfs-6)
+      - [Stack](#stack)
     - [105. Tweaked Identical Binary Tree.java   Level: Easy Tags: [DFS , Tree]](#105-tweaked-identical-binary-treejava---level-easy-tags-dfs--tree)
+      - [DFS](#dfs-7)
     - [106. Merge Two Binary Trees.java   Level: Easy Tags: [DFS , Tree]](#106-merge-two-binary-treesjava---level-easy-tags-dfs--tree)
+      - [DFS](#dfs-8)
     - [107. Subtree.java   Level: Easy Tags: [DFS, Tree]](#107-subtreejava---level-easy-tags-dfs-tree)
+      - [DFS](#dfs-9)
     - [108. Lowest Common Ancestor II.java   Level: Easy Tags: [Hash Table, Tree]](#108-lowest-common-ancestor-iijava---level-easy-tags-hash-table-tree)
+      - [Hash Set](#hash-set-1)
+      - [Save in lists](#save-in-lists)
+      - [Note](#note-1)
     - [109. Hash Function.java   Level: Easy Tags: [Hash Table]](#109-hash-functionjava---level-easy-tags-hash-table)
+      - [Hash Function](#hash-function)
     - [110. Merge Two Sorted Lists.java   Level: Easy Tags: [Linked List]](#110-merge-two-sorted-listsjava---level-easy-tags-linked-list)
+      - [Basics](#basics-2)
     - [111. Missing Number.java   Level: Easy Tags: [Array, Bit Manipulation, Math]](#111-missing-numberjava---level-easy-tags-array-bit-manipulation-math)
+      - [Swap](#swap)
+      - [Bit Manipulation](#bit-manipulation-2)
+      - [HastSet](#hastset)
+      - [sorting](#sorting)
     - [112. Remove Duplicates from Sorted Array.java   Level: Easy Tags : [Array, Two Pointers]](#112-remove-duplicates-from-sorted-arrayjava---level-easy-tags--array-two-pointers)
+      - [Two Pointers](#two-pointers)
+      - [Thinking Mode:](#thinking-mode)
     - [113. Remove Duplicates from Sorted List.java   Level: Easy Tags : [Linked List]](#113-remove-duplicates-from-sorted-listjava---level-easy-tags--linked-list)
+      - [Linked List](#linked-list)
     - [114. Longest Word in Dictionary.java   Level: Easy Tags: [Hash Table, Trie]](#114-longest-word-in-dictionaryjava---level-easy-tags-hash-table-trie)
+      - [Sort, HashSet](#sort-hashset)
+      - [Trie](#trie)
+      - [](#)
     - [115. Path Sum.java   Level: Easy Tags: [DFS, Tree]](#115-path-sumjava---level-easy-tags-dfs-tree)
+      - [DFS](#dfs-10)
     - [116. Path Sum II.java   Level: Easy Tags: [Backtracking, DFS, Tree]](#116-path-sum-iijava---level-easy-tags-backtracking-dfs-tree)
+      - [DFS, Backtracking](#dfs-backtracking)
+      - [Previous Notes:](#previous-notes)
     - [117. Path Sum III.java   Level: Easy Tags: [DFS, Double Recursive , Tree]](#117-path-sum-iiijava---level-easy-tags-dfs-double-recursive--tree)
+      - [DFS](#dfs-11)
+      - [Features](#features)
     - [118. Rotate String.java   Level: Easy Tags: [String]](#118-rotate-stringjava---level-easy-tags-string)
+      - [LeetCode](#leetcode)
+      - [LintCode](#lintcode)
     - [119. Longest Common Prefix.java   Level: Easy Tags: [String]](#119-longest-common-prefixjava---level-easy-tags-string)
+      - [Sort, compare string](#sort-compare-string)
+      - [Brutle](#brutle-1)
     - [120. Reverse Words in a String III.java   Level : Easy Tags: [String]](#120-reverse-words-in-a-string-iiijava---level--easy-tags-string)
+      - [Reverse function](#reverse-function)
     - [121. Merge Sorted Array II.java   Level: Easy Tags: [Array ]](#121-merge-sorted-array-iijava---level-easy-tags-array-)
     - [122. Nth to Last Node in List.java   Level : Easy Tags: [Linked List]](#122-nth-to-last-node-in-listjava---level--easy-tags-linked-list)
+      - [Linked List](#linked-list-1)
     - [123. Two Sum.java   Level: Easy Tags: [Array, Hash Table]](#123-two-sumjava---level-easy-tags-array-hash-table)
+      - [HashMap <value, index>](#hashmap-value-index)
+      - [Sort array, two pointer](#sort-array-two-pointer)
     - [124. Max Area of ​​Island.java   Level: Easy Tags: [Array , DFS]](#124-max-area-of-%E2%80%8B%E2%80%8Bislandjava---level-easy-tags-array--dfs)
+      - [DFS](#dfs-12)
     - [125. Subarray Sum.java   Level: Easy Tags: [Array, Hash Table, PreSum, Subarray]](#125-subarray-sumjava---level-easy-tags-array-hash-table-presum-subarray)
+      - [Hash Table](#hash-table-2)
+      - [Previous notes, same preSum + map solution](#previous-notes-same-presum--map-solution)
     - [126. Range Sum Query-Immutable.java   Level: Easy Tags: [DP, PreSum]](#126-range-sum-query-immutablejava---level-easy-tags-dp-presum)
+      - [PreSum](#presum)
     - [127. Longest Words.java   Level: Easy Tags: [Hash Table, String]](#127-longest-wordsjava---level-easy-tags-hash-table-string)
+      - [Hash Table](#hash-table-3)
     - [128. Unique Characters.java   Level: Easy Tags: [Array, String]](#128-unique-charactersjava---level-easy-tags-array-string)
+      - [HashSet](#hashset-2)
+      - [char []](#char-)
+      - [no additional data structure](#no-additional-data-structure)
     - [129. Binary Gap.java   Level: Easy Tags: [Bit Manipulation]](#129-binary-gapjava---level-easy-tags-bit-manipulation)
+      - [Bit Manipulation](#bit-manipulation-3)
     - [130. Maximize Distance to Closest Person.java   Level: Easy Tags : [Array]](#130-maximize-distance-to-closest-personjava---level-easy-tags--array)
     - [131. Paint Fence.java   Level: Easy Tags: [DP, Sequence DP]](#131-paint-fencejava---level-easy-tags-dp-sequence-dp)
+      - [DP](#dp-2)
+      - [Previous Notes](#previous-notes)
     - [132. Best Time to Buy and Sell Stock.java   Level: Easy Tags: [Array, DP, Sequence DP]](#132-best-time-to-buy-and-sell-stockjava---level-easy-tags-array-dp-sequence-dp)
+      - [Understanding meaning is key](#understanding-meaning-is-key)
+      - [DP](#dp-3)
+      - [Rolling array](#rolling-array)
+      - [Brutle Failed](#brutle-failed)
     - [133. [Best Time to Buy and Sell Stock II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II .java)   Level: Easy Tags: [Array, DP, Greedy, Sequence DP, Status DP]](#133-best-time-to-buy-and-sell-stock-iijava-httpsgithubcomawangdevlintcodeblobmasterjavabesttimetobuyandsellstockii-java---level-easy-tags-array-dp-greedy-sequence-dp-status-dp)
+      - [Several other different ideas:](#several-other-different-ideas)
+      - [Greedy](#greedy)
+      - [Find the range with the largest increase, buy and sell:](#find-the-range-with-the-largest-increase-buy-and-sell)
+      - [DP, sequence dp + status](#dp-sequence-dp--status)
     - [134. Minimum Subarray.java   Level: Easy Tags: [Array, DP, Greedy, Sequence DP, Subarray]](#134-minimum-subarrayjava---level-easy-tags-array-dp-greedy-sequence-dp-subarray)
+      - [DP](#dp-4)
     - [135. Subtree of Another Tree.java   Level: Easy Tags: [DFS , Divide and Conquer, Tree]](#135-subtree-of-another-treejava---level-easy-tags-dfs--divide-and-conquer-tree)
+      - [Tree](#tree)
     - [136. [Two Sum IV-Input is a BST.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Sum%20IV%20-%20Input%20is%20a% 20BST.java)   Level: Easy Tags: [Tree]](#136-two-sum-iv-input-is-a-bstjava-httpsgithubcomawangdevlintcodeblobmasterjavatwosumiv-inputisa%25-20bstjava---level-easy-tags-tree)
     - [137. Read N Characters Given Read4.java   Level: Easy Tags : [Enumeration, String]](#137-read-n-characters-given-read4java---level-easy-tags--enumeration-string)
+      - [String in char [] format](#string-in-char--format)
     - [138. Merge Sorted Array.java   Level: Easy Tags: [Array, Two Pointers ]](#138-merge-sorted-arrayjava---level-easy-tags-array-two-pointers-)
+      - [Basics](#basics-3)
     - [139. Valid Palindrome II.java   Level: Easy Tags: [String]](#139-valid-palindrome-iijava---level-easy-tags-string)
+      - [Palindrome String](#palindrome-string)
     - [140. Moving Average from Data Stream.java   Level: Easy Tags : [Design, Queue, Sliding Window]](#140-moving-average-from-data-streamjava---level-easy-tags--design-queue-sliding-window)
+      - [Queue](#queue)
     - [141. Move Zeroes.java   Level: Easy Tags: [Array, Two Pointers]](#141-move-zeroesjava---level-easy-tags-array-two-pointers)
+      - [Two Pointers](#two-pointers-1)
     - [142. Flood Fill.java   Level: Easy Tags: [DFS]](#142-flood-filljava---level-easy-tags-dfs)
+      - [DFS](#dfs-13)
     - [143. Diameter of Binary Tree.java   Level: Easy Tags: [Tree ]](#143-diameter-of-binary-treejava---level-easy-tags-tree-)
+      - [Singlepath, combined path](#singlepath-combined-path)
     - [144. Backspace String Compare.java   Level: Easy Tags: [Stack, Two Pointers ]](#144-backspace-string-comparejava---level-easy-tags-stack-two-pointers-)
     - [145. Roman to Integer.java   Level: Easy Tags: [Math, String]](#145-roman-to-integerjava---level-easy-tags-math-string)
+      - [String](#string-1)
     - [146. Intersection of Two Arrays.java   Level: Easy Tags: [Binary Search, Hash Table, Sort, Two Pointers]](#146-intersection-of-two-arraysjava---level-easy-tags-binary-search-hash-table-sort-two-pointers)
     - [147. Strobogrammatic Number.java   Level: Easy Tags: [Enumeration, Hash Table, Math]](#147-strobogrammatic-numberjava---level-easy-tags-enumeration-hash-table-math)
+      - [Alter input](#alter-input)
+      - [HashTable + Two Pointer](#hashtable--two-pointer)
     - [148. Valid Parentheses.java   Level: Easy Tags: [Stack, String]](#148-valid-parenthesesjava---level-easy-tags-stack-string)
     - [149. First Unique Character in a String.java   Level : Easy Tags: [Hash Table, String]](#149-first-unique-character-in-a-stringjava---level--easy-tags-hash-table-string)
     - [150. Add Binary.java   Level: Easy Tags: [Math, String, Two Pointers]](#150-add-binaryjava---level-easy-tags-math-string-two-pointers)
+      - [Two pointers](#two-pointers)
+      - [wrong: convert to int](#wrong-convert-to-int)
     - [151. Isomorphic Strings.java   Level: Easy Tags: [Hash Table]](#151-isomorphic-stringsjava---level-easy-tags-hash-table)
+      - [HashMap](#hashmap-1)
+      - [Previous note](#previous-note)
     - [152. Next Greater Element I.java   Level: Easy Tags: [Hash Table, Stack]](#152-next-greater-element-ijava---level-easy-tags-hash-table-stack)
+      - [stack?](#stack)
   - [Medium (247)](#medium-247)
     - [0. Evaluate Division.java   Level: Medium Tags: [BFS, DFS, Graph, Union Find]](#0-evaluate-divisionjava---level-medium-tags-bfs-dfs-graph-union-find)
+      - [DFS](#dfs-14)
+      - [BFS](#bfs-5)
     - [1. Fraction to Recurring Decimal.java   Level: Medium Tags: [Hash Table, Math]](#1-fraction-to-recurring-decimaljava---level-medium-tags-hash-table-math)
     - [2. Gray Code.java   Level: Medium Tags: [Backtracking]](#2-gray-codejava---level-medium-tags-backtracking)
     - [3. Majority Number II.java   Level: Medium Tags: [Enumeration, Greedy]](#3-majority-number-iijava---level-medium-tags-enumeration-greedy)
+      - [Array](#array)
     - [4. Majority Number III.java   Level: Medium Tags: [Hash Table, Linked List]](#4-majority-number-iiijava---level-medium-tags-hash-table-linked-list)
+      - [Hash Table](#hash-table-4)
     - [5. Minimum Height Trees.java   Level: Medium Tags: [BFS, Graph]](#5-minimum-height-treesjava---level-medium-tags-bfs-graph)
+      - [Graph + BFS](#graph--bfs)
+      - [Previous Solution](#previous-solution)
     - [6. Missing Ranges.java   Level: Medium Tags: [Array]](#6-missing-rangesjava---level-medium-tags-array)
+      - [Basic Implementation](#basic-implementation-2)
     - [7. Next Permutation.java   Level: Medium Tags: [Array]](#7-next-permutationjava---level-medium-tags-array)
     - [8. Palindrome Permutation II.java   Level: Medium Tags: [Backtracking, Permutation]](#8-palindrome-permutation-iijava---level-medium-tags-backtracking-permutation)
     - [9. Permutation Sequence.java   Level: Medium Tags: [Backtracking, Math]](#9-permutation-sequencejava---level-medium-tags-backtracking-math)
     - [10. Product of Array Exclude Itself.java   Level: Medium Tags : [Array]](#10-product-of-array-exclude-itselfjava---level-medium-tags--array)
     - [11. Remove Duplicates from Unsorted List.java   Level: Medium Tags : [Linked List]](#11-remove-duplicates-from-unsorted-listjava---level-medium-tags--linked-list)
     - [12. Rotate Image.java   Level: Medium Tags: [Array, Enumeration]](#12-rotate-imagejava---level-medium-tags-array-enumeration)
+      - [Find formulas](#find-formulas)
     - [13. Search in Rotated Sorted Array II.java   Level : Medium Tags: [Array, Binary Search]](#13-search-in-rotated-sorted-array-iijava---level--medium-tags-array-binary-search)
     - [14. Single Number II.java   Level: Medium Tags: [Bit Manipulation]](#14-single-number-iijava---level-medium-tags-bit-manipulation)
     - [15. Single Number III.java   Level: Medium Tags: [Bit Manipulation]](#15-single-number-iiijava---level-medium-tags-bit-manipulation)
@@ -183,333 +349,940 @@
     - [23. Wiggle Sort.java   Level: Medium Tags: [Array, Sort]](#23-wiggle-sortjava---level-medium-tags-array-sort)
     - [24. Queue Reconstruction by Height.java   Level: Medium Tags: [Greedy ]](#24-queue-reconstruction-by-heightjava---level-medium-tags-greedy-)
     - [25. [Two Sum II-Input array is sorted.java] (https://github.com/awangdev/LintCode/blob/master/Java/Two%20Sum%20II%20-%20Input%20array%20is% 20sorted.java)   Level: Medium Tags: [Array, Binary Search, Two Pointers]](#25-two-sum-ii-input-array-is-sortedjava-httpsgithubcomawangdevlintcodeblobmasterjavatwosumii-inputarrayis%25-20sortedjava---level-medium-tags-array-binary-search-two-pointers)
+      - [Two pointers](#two-pointers-1)
+      - [Binary Search, because it's already sorted](#binary-search-because-its-already-sorted)
     - [26. 2 Sum II.java   Level: Medium Tags: [Array, Binary Search , Two Pointers]](#26-2-sum-iijava---level-medium-tags-array-binary-search--two-pointers)
     - [27. Coin Change.java   Level: Medium Tags: [Backpack DP, DP, Memoization]](#27-coin-changejava---level-medium-tags-backpack-dp-dp-memoization)
+      - [DP](#dp-5)
+      - [Memoization](#memoization-1)
     - [28. Maximum Product Subarray.java   Level: Medium Tags: [Array, DP, Subarray]](#28-maximum-product-subarrayjava---level-medium-tags-array-dp-subarray)
+      - [DP](#dp-6)
+      - [Space optimization, rolling array](#space-optimization-rolling-array)
     - [29. 3 Sum Closest.java   Level: Medium Tags: [Array, Two Pointers ]](#29-3-sum-closestjava---level-medium-tags-array-two-pointers-)
     - [30. Triangle Count.java   Level: Medium Tags: [Array]](#30-triangle-countjava---level-medium-tags-array)
     - [31. 3Sum.java   Level: Medium Tags: [Array, Two Pointers]](#31-3sumjava---level-medium-tags-array-two-pointers)
+      - [sort array, for loop + two pointer. O (n ^ 2)](#sort-array-for-loop--two-pointer-o-n-%5E-2)
     - [32. Unique Binary Search Tree.java   Level: Medium Tags: [BST , DP, Tree]](#32-unique-binary-search-treejava---level-medium-tags-bst--dp-tree)
     - [33. Unique Paths II.java   Level: Medium Tags: [Array, Coordinate DP , DP]](#33-unique-paths-iijava---level-medium-tags-array-coordinate-dp--dp)
+      - [Coordinate DP](#coordinate-dp-1)
     - [34. Bomb Enemy.java   Level: Medium Tags: [Coordinate DP, DP]](#34-bomb-enemyjava---level-medium-tags-coordinate-dp-dp)
+      - [Corrdinate DP](#corrdinate-dp)
     - [35. 3Sum Smaller.java   Level: Medium Tags: [Array, Two Pointers]](#35-3sum-smallerjava---level-medium-tags-array-two-pointers)
     - [36. Update Bits.java   Level: Medium Tags: [Bit Manipulation]](#36-update-bitsjava---level-medium-tags-bit-manipulation)
     - [37. [Maximum XOR of Two Numbers in an Array.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20XOR%20of%20Two%20Numbers%20in%20an%20Array .java)   Level: Medium Tags: [Bit Manipulation, Trie]](#37-maximum-xor-of-two-numbers-in-an-arrayjava-httpsgithubcomawangdevlintcodeblobmasterjavamaximumxoroftwonumbersinanarray-java---level-medium-tags-bit-manipulation-trie)
     - [38. Perfect Squares.java   Level: Medium Tags: [BFS, DP, Math, Partition DP]](#38-perfect-squaresjava---level-medium-tags-bfs-dp-math-partition-dp)
+      - [Partition DP](#partition-dp)
+      - [time complexity](#time-complexity)
+      - [BFS](#bfs-6)
+      - [Previous Notes](#previous-notes-1)
     - [39. Backpack VI.java   Level: Medium Tags: [Backpack DP, DP]](#39-backpack-vijava---level-medium-tags-backpack-dp-dp)
+      - [Backpack DP](#backpack-dp)
     - [40. Binary Search Tree Iterator.java   Level: Medium Tags: [BST , Design, Stack, Tree]](#40-binary-search-tree-iteratorjava---level-medium-tags-bst--design-stack-tree)
     - [41. Flatten Nested List Iterator.java   Level: Medium Tags: [Design , Stack]](#41-flatten-nested-list-iteratorjava---level-medium-tags-design--stack)
     - [42. [Best Time to Buy and Sell Stock with Cooldown.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock% 20with% 20Cooldown.java)   Level: Medium Tags: [DP]](#42-best-time-to-buy-and-sell-stock-with-cooldownjava-httpsgithubcomawangdevlintcodeblobmasterjavabesttimetobuyandsellstock%25-20with%25-20cooldownjava---level-medium-tags-dp)
     - [43. Find Peak Element.java   Level: Medium Tags: [Array, Binary Search ]](#43-find-peak-elementjava---level-medium-tags-array-binary-search-)
     - [44. Longest Common Subsequence.java   Level: Medium Tags: [DP, Double Sequence DP, Sequence DP]](#44-longest-common-subsequencejava---level-medium-tags-dp-double-sequence-dp-sequence-dp)
+      - [Double Sequence DP](#double-sequence-dp)
     - [45. Letter Combinations of a Phone Number.java   Level : Medium Tags: [Backtracking, String]](#45-letter-combinations-of-a-phone-numberjava---level--medium-tags-backtracking-string)
     - [46. [Pow (x, n) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Pow (x,% 20n) .java)   Level: Medium Tags: [Binary Search, Math]](#46-pow-x-n-java-httpsgithubcomawangdevlintcodeblobmasterjavapow-x%25-20n-java---level-medium-tags-binary-search-math)
     - [47. [Construct Binary Tree from Preorder and Inorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal .java)   Level: Medium Tags: [Array, DFS, Divide and Conquer, Hash Table, Tree]](#47-construct-binary-tree-from-preorder-and-inorder-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavaconstructbinarytreefrompreorderandinordertraversal-java---level-medium-tags-array-dfs-divide-and-conquer-hash-table-tree)
+      - [DFS](#dfs-15)
     - [48. Add Two Numbers.java   Level: Medium Tags: [Linked List, Math ]](#48-add-two-numbersjava---level-medium-tags-linked-list-math-)
     - [49. Add Two Numbers II.java   Level: Medium Tags: [Linked List]](#49-add-two-numbers-iijava---level-medium-tags-linked-list)
     - [50. Balanced Binary Tree.java   Level: Medium Tags: [DFS, Tree]](#50-balanced-binary-treejava---level-medium-tags-dfs-tree)
+      - [DFS](#dfs-16)
+      - [DFS, maxDepth function](#dfs-maxdepth-function)
     - [51. Populating Next Right Pointers in Each Node.java   Level: Medium Tags: [DFS, Divide and Conquer, Tree]](#51-populating-next-right-pointers-in-each-nodejava---level-medium-tags-dfs-divide-and-conquer-tree)
+      - [DFS + Divide and Conquer](#dfs--divide-and-conquer)
+      - [BFS](#bfs-7)
     - [52. Validate Binary Search Tree.java   Level: Medium Tags: [BST , DFS, Divide and Conquer, Tree]](#52-validate-binary-search-treejava---level-medium-tags-bst--dfs-divide-and-conquer-tree)
+      - [DFS](#dfs-17)
     - [53. Convert Sorted List to Binary Search Tree.java   Level: Medium Tags: [BST, DFS, Divide and Conquer, Linked List]](#53-convert-sorted-list-to-binary-search-treejava---level-medium-tags-bst-dfs-divide-and-conquer-linked-list)
+      - [DFS](#dfs-18)
+      - [Details](#details)
     - [54. Flatten Binary Tree to Linked List.java   Level : Medium Tags: [Binary Tree, DFS]](#54-flatten-binary-tree-to-linked-listjava---level--medium-tags-binary-tree-dfs)
+      - [DFS](#dfs-19)
     - [55. Minimum Size Subarray Sum.java   Level: Medium Tags: [Array , Binary Search, Subarray, Two Pointers]](#55-minimum-size-subarray-sumjava---level-medium-tags-array--binary-search-subarray-two-pointers)
+      - [Two pointer](#two-pointer)
+      - [Binary Search](#binary-search-1)
+      - [Double For loop](#double-for-loop)
     - [56. Longest Substring Without Repeating Characters.java   Level: Medium Tags : [Hash Table, String, Two Pointers]](#56-longest-substring-without-repeating-charactersjava---level-medium-tags--hash-table-string-two-pointers)
     - [57. Remove Nth Node From End of List.java   Level: Medium Tags: [Linked List, Two Pointers]](#57-remove-nth-node-from-end-of-listjava---level-medium-tags-linked-list-two-pointers)
     - [58. Linked List Cycle II.java   Level: Medium Tags: [Linked List, Math, Two Pointers]](#58-linked-list-cycle-iijava---level-medium-tags-linked-list-math-two-pointers)
+      - [Slow, fast Pointer](#slow-fast-pointer)
+      - [Proof](#proof)
+      - [Hash Table, O (n) space](#hash-table-o-n-space)
     - [59. Kth Smallest Element in a Sorted Matrix.java   Level: Medium Tags: [Binary Search, Heap]](#59-kth-smallest-element-in-a-sorted-matrixjava---level-medium-tags-binary-search-heap)
+      - [PriorityQueue](#priorityqueue)
+      - [Binary Search](#binary-search-2)
     - [60. Find Minimum in Rotated Sorted Array.java   Level : Medium Tags: [Array, Binary Search]](#60-find-minimum-in-rotated-sorted-arrayjava---level--medium-tags-array-binary-search)
     - [61. Connecting Graph.java   Level: Medium Tags: [Union Find]](#61-connecting-graphjava---level-medium-tags-union-find)
     - [62. Connecting Graph II.java   Level: Medium Tags: [Union Find]](#62-connecting-graph-iijava---level-medium-tags-union-find)
     - [63. Connecting Graph III.java   Level: Medium Tags: [Union Find]](#63-connecting-graph-iiijava---level-medium-tags-union-find)
     - [64. Number of Islands.java   Level: Medium Tags: [BFS, DFS, Matrix DFS, Union Find]](#64-number-of-islandsjava---level-medium-tags-bfs-dfs-matrix-dfs-union-find)
+      - [DFS](#dfs-20)
+      - [Union Find](#union-find)
     - [65. Surrounded Regions.java   Level: Medium Tags: [BFS, DFS, Matrix DFS, Union Find]](#65-surrounded-regionsjava---level-medium-tags-bfs-dfs-matrix-dfs-union-find)
-    - [BFS](#bfs)
+      - [Union Find](#union-find-1)
+      - [DFS: mark all invalid 'O'](#dfs-mark-all-invalid-o)
+      - [DFS: mark all valid 'O'](#dfs-mark-all-valid-o)
+    - [BFS](#bfs-8)
     - [66. [Implement Trie (Prefix Tree) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Implement%20Trie%20 (Prefix% 20Tree) .java)   Level: Medium Tags: [Design, Trie]](#66-implement-trie-prefix-tree-java-httpsgithubcomawangdevlintcodeblobmasterjavaimplementtrie-prefix%25-20tree-java---level-medium-tags-design-trie)
+      - [Trie](#trie-1)
     - [67. [Add and Search Word-Data structure design.java] (https://github.com/awangdev/LintCode/blob/master/Java/Add%20and%20Search%20Word%20-%20Data%20structure% 20design.java)   Level: Medium Tags: [Backtracking, Design, Trie]](#67-add-and-search-word-data-structure-designjava-httpsgithubcomawangdevlintcodeblobmasterjavaaddandsearchword-datastructure%25-20designjava---level-medium-tags-backtracking-design-trie)
     - [68. Word Search.java   Level: Medium Tags: [Array, Backtracking, DFS]](#68-word-searchjava---level-medium-tags-array-backtracking-dfs)
+      - [DFS, Backtracking:](#dfs-backtracking)
+      - [Note: other ways of marking visited:](#note-other-ways-of-marking-visited)
     - [69. Decode String.java   Level: Medium Tags: [DFS, Divide and Conquer, Stack ]](#69-decode-stringjava---level-medium-tags-dfs-divide-and-conquer-stack-)
+      - [Stack, Iteratively](#stack-iteratively)
+      - [DFS](#dfs-21)
     - [70. Maximum Binary Tree.java   Level: Medium Tags: [Stack, Tree]](#70-maximum-binary-treejava---level-medium-tags-stack-tree)
+      - [Monotonous Stack](#monotonous-stack)
+      - [Previous notes](#previous-notes-1)
     - [71. Swap Nodes in Pairs.java   Level: Medium Tags: [Linked List]](#71-swap-nodes-in-pairsjava---level-medium-tags-linked-list)
+      - [enumurate](#enumurate)
+      - [Note](#note-2)
     - [72. Wood Cut.java   Level: Medium Tags: [Binary Search]](#72-wood-cutjava---level-medium-tags-binary-search)
     - [73. Find the Duplicate Number.java   Level: Medium Tags: [Array , Binary Search, Two Pointers]](#73-find-the-duplicate-numberjava---level-medium-tags-array--binary-search-two-pointers)
     - [74. Game of Life.java   Level: Medium Tags: [Array]](#74-game-of-lifejava---level-medium-tags-array)
+      - [basic](#basic)
+      - [follow up](#follow-up)
+      - [improvement: do it in place!](#improvement-do-it-in-place)
     - [75. Number of Airplane in the sky.java   Level : Medium Tags: [Array, Interval, PriorityQueue, Sort, Sweep Line]](#75-number-of-airplane-in-the-skyjava---level--medium-tags-array-interval-priorityqueue-sort-sweep-line)
+      - [Sweep Line](#sweep-line)
+      - [Note](#note-3)
     - [76. Meeting Rooms II.java   Level: Medium Tags: [Greedy, Heap, PriorityQueue, Sort, Sweep Line]](#76-meeting-rooms-iijava---level-medium-tags-greedy-heap-priorityqueue-sort-sweep-line)
+      - [PriorityQueue](#priorityqueue-1)
+      - [Method 2: Tried it with a sorted Array + HashMap](#method-2-tried-it-with-a-sorted-array--hashmap)
     - [77. Unique Path.java   Level: Medium Tags: [Array, Coordinate DP, DP]](#77-unique-pathjava---level-medium-tags-array-coordinate-dp-dp)
     - [78. Maximal Square.java   Level: Medium Tags: [Coordinate DP, DP]](#78-maximal-squarejava---level-medium-tags-coordinate-dp-dp)
+      - [DP](#dp-7)
     - [79. Coins in a Line.java   Level: Medium Tags: [DP , Game Theory, Greedy]](#79-coins-in-a-linejava---level-medium-tags-dp--game-theory-greedy)
+      - [DP, Game Theory](#dp-game-theory)
+      - [Rolling Array](#rolling-array-2)
     - [80. [Coins in a Line II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20II. java)   Level: Medium Tags: [Array, DP, Game Theory, Memoization, MiniMax]](#80-coins-in-a-line-iijava-httpsgithubcomawangdevlintcodeblobmasterjavacoinsinalineii-java---level-medium-tags-array-dp-game-theory-memoization-minimax)
+      - [DP, Game Theory The self-study process is relatively long](#dp-game-theory-the-self-study-process-is-relatively-long)
     - [81. Binary Tree Postorder Traversal.java   Level: Medium Tags: [Stack, Tree, Two Stacks]](#81-binary-tree-postorder-traversaljava---level-medium-tags-stack-tree-two-stacks)
+      - [Recursive](#recursive-3)
+      - [Stack](#stack-1)
     - [82. Compare Version Numbers.java   Level: Medium Tags: [String]](#82-compare-version-numbersjava---level-medium-tags-string)
+      - [divide and conquer](#divide-and-conquer)
+      - [Note](#note-4)
     - [83. Count Complete Tree Nodes.java   Level: Medium Tags: [Binary Search, Tree]](#83-count-complete-tree-nodesjava---level-medium-tags-binary-search-tree)
+      - [DFS + Optimization](#dfs--optimization)
   - [## Iteratively](#-iteratively)
     - [84. Course Schedule.java###  Level: Medium Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]](#84-course-schedulejava--level-medium-tags-bfs-backtracking-dfs-graph-topological-sort)
+      - [Topological the Sort](#topological-the-sort)
+      - [BFS](#bfs-9)
+      - [DFS](#dfs-22)
+      - [Notes:](#notes)
+      - [Previous notes is](#previous-notes-is)
     - [85. Course Schedule II.java   Level: Medium Tags: [BFS , DFS, Graph, Topological Sort]-A](#85-course-schedule-iijava---level-medium-tags-bfs--dfs-graph-topological-sort-a)
+      - [Topological Sort, Indegree, BFS](#topological-sort-indegree-bfs)
+      - [DFS](#dfs-23)
+      - [TreeSet](#treeset)
+      - [Note](#note-5)
     - [87. Jump Game .java   Level: Medium Tags: [Array, DP, Greedy]](#87-jump-game-java---level-medium-tags-array-dp-greedy)
+      - [Greedy-start from index = 0](#greedy-start-from-index--0)
+      - [Greedy-start from index = n-1](#greedy-start-from-index--n-1)
+      - [DP](#dp-8)
     - [88. [Coin Change 2.java] (https://github.com /awangdev/LintCode/blob/master/Java/Coin%20Change%202.java)###  Level: Medium Tags: [Backpack DP, DP]](#88-coin-change-2java-httpsgithubcom-awangdevlintcodeblobmasterjavacoinchange2java--level-medium-tags-backpack-dp-dp)
+      - [DP](#dp-9)
+      - [knapsack problem: backpack problem](#knapsack-problem-backpack-problem)
     - [89. [Decode Ways.java] (https://github.com/awangdev/LintCode/blob/ master / Java / Decode% 20Ways.java)   Level: Medium Tags: [DP, Partition DP, String]](#89-decode-waysjava-httpsgithubcomawangdevlintcodeblob-master--java--decode%25-20waysjava---level-medium-tags-dp-partition-dp-string)
+      - [Partition DP](#partition-dp-1)
+      - [Extension](#extension)
     - [90. Minimum Path Sum.java   Level: Medium Tags: [Array, Coordinate DP , DP]](#90-minimum-path-sumjava---level-medium-tags-array-coordinate-dp--dp)
+      - [DP](#dp-10)
+      - [Rolling Array](#rolling-array-3)
     - [91. [Counting Bits.java] (https://github.com/awangdev/LintCode /blob/master/Java/Counting%20Bits.java)###  Level: Medium Tags: [Bit Manipulation, Bitwise DP, DP]](#91-counting-bitsjava-httpsgithubcomawangdevlintcode-blobmasterjavacountingbitsjava--level-medium-tags-bit-manipulation-bitwise-dp-dp)
+      - [Bitwise DP](#bitwise-dp)
     - [92. [Continuous Subarray Sum.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Continuous%20Subarray%20Sum.java)   Level: Medium Tags: [Coordinate DP, DP, Math, Subarray]](#92-continuous-subarray-sumjava-https--githubcomawangdevlintcodeblobmasterjavacontinuoussubarraysumjava---level-medium-tags-coordinate-dp-dp-math-subarray)
+      - [DP](#dp-11)
+      - [Calculate results directly](#calculate-results-directly)
     - [93. [House Robber II.java] (https://github.com/ awangdev / LintCode / blob / master / Java / House% 20Robber% 20II.java)   Level: Medium Tags: [DP, Sequence DP, Status DP]](#93-house-robber-iijava-httpsgithubcom-awangdev--lintcode--blob--master--java--house%25-20robber%25-20iijava---level-medium-tags-dp-sequence-dp-status-dp)
+      - [Sequence DP](#sequence-dp-3)
+      - [Two states](#two-states)
+      - [Rolling array](#rolling-array-1)
     - [94. [House Robber III.java] (https : //github.com/awangdev/LintCode/blob/master/Java/House%20Robber%20III.java)   Level: Medium Tags: [DFS, DP, Status DP, Tree]](#94-house-robber-iiijava-https--githubcomawangdevlintcodeblobmasterjavahouserobberiiijava---level-medium-tags-dfs-dp-status-dp-tree)
+      - [DFS](#dfs-24)
   - [## DP, DFS](#-dp-dfs)
+      - [DP Features](#dp-features)
     - [95. Permutation in String.java   Level: Medium Tags: [Two Pointers]](#95-permutation-in-stringjava---level-medium-tags-two-pointers)
 - [### Two Pointer](#-two-pointer)
+      - [Backtracking](#backtracking)
     - [96. Permutations II.java   Level: Medium Tags: [Backtracking]](#96-permutations-iijava---level-medium-tags-backtracking)
+      - [Non-recursive, manuall swap](#non-recursive-manuall-swap)
+      - [Queue](#queue-1)
     - [97. Shuffle an Array.java * * Level: Medium Tags: [Permutation]](#97-shuffle-an-arrayjava---level-medium-tags-permutation)
+      - [Permutation](#permutation)
     - [98. [Group Anagrams.java] (https://github.com/awangdev/LintCode/blob /master/Java/Group%20Anagrams.java)###  Level: Medium Tags: [Hash Table, String]](#98-group-anagramsjava-httpsgithubcomawangdevlintcodeblob-masterjavagroupanagramsjava--level-medium-tags-hash-table-string)
+      - [Hash Table, key is character frequency](#hash-table-key-is-character-frequency)
+      - [Hash Table, key is a sorted string](#hash-table-key-is-a-sorted-string)
     - [99. [Backpack.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Backpack.java)   Level: Medium Tags: [Backpack DP, DP]](#99-backpackjava-httpsgithubcomawangdevlintcodeblobmaster-java--backpackjava---level-medium-tags-backpack-dp-dp)
+      - [Backpack DP 1](#backpack-dp-1)
+      - [Backpack DP 2](#backpack-dp-2)
     - [100. Backpack II.java   Level: Medium Tags: [Backpack DP, DP]](#100-backpack-iijava---level-medium-tags-backpack-dp-dp)
+      - [Backpack DP](#backpack-dp-1)
+      - [Previous DP Solution](#previous-dp-solution)
     - [101. Backpack V.java   Level: Medium Tags: [Backpack DP, DP]](#101-backpack-vjava---level-medium-tags-backpack-dp-dp)
   - [## Backpack DP](#-backpack-dp)
+      - [dimensionality reduction, ultimate optimization](#dimensionality-reduction-ultimate-optimization)
     - [102. Evaluate Reverse Polish Notation.java   Level: Medium Tags: [Stack ]](#102-evaluate-reverse-polish-notationjava---level-medium-tags-stack-)
+      - [Stack](#stack-2)
     - [103. [Insertion Sort List.java] (https://github.com/awangdev/LintCode/blob/master/Java/Insertion%20Sort%20List. java)   Level: Medium Tags: [Linked List, Sort]](#103-insertion-sort-listjava-httpsgithubcomawangdevlintcodeblobmasterjavainsertionsortlist-java---level-medium-tags-linked-list-sort)
+      - [Linked List](#linked-list-2)
     - [104. Interleaving Positive and Negative Numbers.java   Level : Medium Tags: [Two Pointers]](#104-interleaving-positive-and-negative-numbersjava---level--medium-tags-two-pointers)
+      - [Two pointer](#two-pointer-1)
+      - [extra space](#extra-space)
     - [105. Largest Number.java   Level: Medium Tags: [Sort]](#105-largest-numberjava---level-medium-tags-sort)
+      - [Sort, Comparator](#sort-comparator)
     - [106. Longest Common Substring.java   Level: Medium Tags: [DP, Double Sequence DP, Sequence DP, String]](#106-longest-common-substringjava---level-medium-tags-dp-double-sequence-dp-sequence-dp-string)
+      - [Double Sequence DP](#double-sequence-dp-1)
+      - [String](#string-2)
     - [107. Longest Increasing Continuous subsequence II.java   Level: Medium Tags : [Array, Coordinate DP, DP, Memoization]](#107-longest-increasing-continuous-subsequence-iijava---level-medium-tags--array-coordinate-dp-dp-memoization)
+      - [Coordinate DP](#coordinate-dp-2)
+      - [Memoization](#memoization-2)
   - [-O (mn) space for dp and flag. -](#-o-mn-space-for-dp-and-flag--)
     - [108. Maximum Subarray II.java   Level: Medium Tags: [Array, DP, Greedy, PreSum, Sequence DP, Subarray]](#108-maximum-subarray-iijava---level-medium-tags-array-dp-greedy-presum-sequence-dp-subarray)
+      - [DP](#dp-12)
+      - [preSum, minPreSum](#presum-minpresum)
     - [109. [Reverse Linked List II .java] (https://github.com/awangdev/LintCode/blob/master/Java/Reverse%20Linked%20List% 20II% 20.java)   Level: Medium Tags: [Linked List]](#109-reverse-linked-list-ii-java-httpsgithubcomawangdevlintcodeblobmasterjavareverselinkedlist%25-20ii%25-20java---level-medium-tags-linked-list)
+      - [Reverse linked list](#reverse-linked-list)
+      - [Previous notes](#previous-notes-2)
     - [110. [Lowest Common Ancestor of a Binary Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree .java)   Level: Medium Tags: [DFS, Tree]](#110-lowest-common-ancestor-of-a-binary-treejava-httpsgithubcomawangdevlintcodeblobmasterjavalowestcommonancestorofabinarytree-java---level-medium-tags-dfs-tree)
+      - [DFS](#dfs-25)
     - [111.  Lowest Common Ancestor of a Binary Search Tree.java   Level: Medium Tags: [BST, DFS, Tree]](#111--lowest-common-ancestor-of-a-binary-search-treejava---level-medium-tags-bst-dfs-tree)
+      - [Find path with BST](#find-path-with-bst)
+      - [DFS](#dfs-26)
     - [112. Remove Duplicates from Sorted Array II. java   Level: Medium Tags: [Array, Two Pointers]](#112-remove-duplicates-from-sorted-array-ii-java---level-medium-tags-array-two-pointers)
+      - [Two Pointers](#two-pointers-2)
     - [113. [Remove Duplicates from Sorted List II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicates% 20from% 20Sorted% 20List% 20II.java)   Level: Medium Tags: [Linked List]](#113-remove-duplicates-from-sorted-list-iijava-httpsgithubcomawangdevlintcodeblobmasterjavaremoveduplicates%25-20from%25-20sorted%25-20list%25-20iijava---level-medium-tags-linked-list)
   - [## Linked List](#-linked-list)
     - [114. QuickSort.java   Level: Medium Tags: [Quick Sort, Sort]](#114-quicksortjava---level-medium-tags-quick-sort-sort)
+      - [Quick Sort](#quick-sort)
     - [115. [MergeSort.java] (https: // github. com / awangdev / LintCode / blob / master / Java / MergeSort.java)   Level: Medium Tags: [Merge Sort, Sort]](#115-mergesortjava-https--github-com--awangdev--lintcode--blob--master--java--mergesortjava---level-medium-tags-merge-sort-sort)
+      - [Merge Sort](#merge-sort)
     - [116. Binary Tree Level Order Traversal.java   Level: Medium Tags : [BFS, DFS, Tree]](#116-binary-tree-level-order-traversaljava---level-medium-tags--bfs-dfs-tree)
+      - [BFS](#bfs-10)
+      - [BFS](#bfs-11)
+      - [DFS](#dfs-27)
     - [117. Binary Tree Level Order Traversal II.java   Level: Medium Tags: [BFS, Tree]](#117-binary-tree-level-order-traversal-iijava---level-medium-tags-bfs-tree)
   - [As the title, but the output must be](#as-the-title-but-the-output-must-be)
+      - [DFS](#dfs-28)
     - [118. Binary Tree Longest Consecutive Sequence II.java   Level : Medium Tags: [DFS, Divide and Conquer, Double Recursive, Tree]](#118-binary-tree-longest-consecutive-sequence-iijava---level--medium-tags-dfs-divide-and-conquer-double-recursive-tree)
+      - [DFS, Divide and Conquer](#dfs-divide-and-conquer)
     - [119. [Combinations.java] (https://github.com/awangdev/ LintCode / blob / master / Java / Combinations.java)   Level: Medium Tags: [Backtracking, Combination, DFS]](#119-combinationsjava-httpsgithubcomawangdev-lintcode--blob--master--java--combinationsjava---level-medium-tags-backtracking-combination-dfs)
   - [## DFS, Backtracking](#-dfs-backtracking)
     - [120. Combination Sum IV.java   Level: Medium Tags: [Array, Backpack DP , DP]](#120-combination-sum-ivjava---level-medium-tags-array-backpack-dp--dp)
+      - [Backpack DP](#backpack-dp-2)
+      - [DFS, backtracking](#dfs-backtracking-1)
     - [121. [Binary Tree Right Side View.java] (https: // github .com / awangdev / LintCode / blob / master / Java / Binary% 20Tree% 20Right% 20Side% 20View.java)   Level: Medium Tags: [BFS, DFS, Tree]](#121-binary-tree-right-side-viewjava-https--github-com--awangdev--lintcode--blob--master--java--binary%25-20tree%25-20right%25-20side%25-20viewjava---level-medium-tags-bfs-dfs-tree)
+      - [BFS](#bfs-12)
+      - [DFS](#dfs-29)
     - [122. Binary Tree Maximum Path Sum II.java   Level : Medium Tags: [DFS, Tree]](#122-binary-tree-maximum-path-sum-iijava---level--medium-tags-dfs-tree)
+      - [DFS](#dfs-30)
     - [123. Rotate List.java * * Level: Medium Tags: [Linked List, Two Pointers]](#123-rotate-listjava---level-medium-tags-linked-list-two-pointers)
+      - [Linked List basics](#linked-list-basics)
     - [124 [Binary Tree Longest the Consecutive Sequence.java] (https://github.com/awangdev/LintCode/blob/master/Java/. binary% 20Tree% 20Longest% 20Consecutive% 20Sequence.java)   Level: Medium Tags: [DFS, Divide and Conquer, Tree]](#124-binary-tree-longest-the-consecutive-sequencejava-httpsgithubcomawangdevlintcodeblobmasterjava-binary%25-20tree%25-20longest%25-20consecutive%25-20sequencejava---level-medium-tags-dfs-divide-and-conquer-tree)
+      - [the DFS](#the-dfs)
     - [125. Number of Connected Components in an Undirected Graph.java   Level: Medium Tags: [BFS, DFS, Graph, Union Find]](#125-number-of-connected-components-in-an-undirected-graphjava---level-medium-tags-bfs-dfs-graph-union-find)
+      - [Union Find](#union-find-2)
+      - [DFS](#dfs-31)
     - [126. Next Closest Time.java   Level: Medium Tags: [Basic Implementation, Enumeration , String]](#126-next-closest-timejava---level-medium-tags-basic-implementation-enumeration--string)
   - [## String](#-string)
+      - [Two Pointer](#two-pointer-1)
     - [127. Partition Array.java   Level: Medium Tags: [Array, Quick Sort, Sort, Two Pointers]](#127-partition-arrayjava---level-medium-tags-array-quick-sort-sort-two-pointers)
     - [128. Word Ladder.java   Level : Medium Tags: [BFS]](#128-word-ladderjava---level--medium-tags-bfs)
+      - [BFS](#bfs-13)
+      - [Trie](#trie-2)
     - [129. Unique Word Abbreviation.java    Level: Medium Tags: [Design, Hash Table]](#129-unique-word-abbreviationjava----level-medium-tags-design-hash-table)
+      - [HashMap <string, Set>](#hashmap-string-set)
     - [130. [Unique Binary Search Tree II.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Unique% 20Binary% 20Search% 20Tree% 20II.java)   Level: Medium Tags: [BST, DP, Divide and Conquer, Tree]](#130-unique-binary-search-tree-iijava-httpsgithubcomawangdevlintcodeblobmasterjava-unique%25-20binary%25-20search%25-20tree%25-20iijava---level-medium-tags-bst-dp-divide-and-conquer-tree)
+      - [BST](#bst)
   - [## DP? Memoization?](#-dp-memoization)
     - [131. Ugly Number.java   Level: Medium Tags : [Math]](#131-ugly-numberjava---level-medium-tags--math)
+      - [Math](#math-1)
     - [132. [Top K Frequent Words.java] (https://github.com/awangdev/LintCode/blob/master/Java/Top%20K%20Frequent% 20Words.java)   Level: Medium Tags: [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue, Trie]](#132-top-k-frequent-wordsjava-httpsgithubcomawangdevlintcodeblobmasterjavatopkfrequent%25-20wordsjava---level-medium-tags-hash-table-heap-maxheap-minheap-priorityqueue-trie)
   - [## PriorityQueue-Min Heap](#-priorityqueue-min-heap)
+      - [PriorityQueue-Max Heap](#priorityqueue-max-heap)
+      - [Trie && MinHeap 屌 炸 天-Can](#trie--minheap-%E5%B1%8C-%E7%82%B8-%E5%A4%A9-can)
+      - [HashMap + collections.sort ()](#hashmap--collectionssort-)
+      - [Segment Tree definition](#segment-tree-definition)
+      - [Segemnt Tree](#segemnt-tree)
     - [135. Segment Tree Query.java   Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]](#135-segment-tree-queryjava---level-medium-tags-binary-tree-dfs-divide-and-conquer-lint-segment-tree)
+      - [Segment Tree, Divide and Conquer](#segment-tree-divide-and-conquer)
     - [136. Segment Tree Modify.java   Level: Medium Tags: [ Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]](#136-segment-tree-modifyjava---level-medium-tags--binary-tree-dfs-divide-and-conquer-lint-segment-tree)
+      - [Segment Tree, Divide and Conquer](#segment-tree-divide-and-conquer-1)
     - [137. Segment Tree Query II.java   Level: Medium Tags: [Binary Tree, DFS, Divide and Conquer, Lint, Segment Tree]](#137-segment-tree-query-iijava---level-medium-tags-binary-tree-dfs-divide-and-conquer-lint-segment-tree)
+      - [Segment Tree](#segment-tree)
     - [138. [ColorGrid.java] (https: // github .com / awangdev / LintCode / blob / master / Java / ColorGrid.java)   Level: Medium Tags: [Design, Hash Table]](#138-colorgridjava-https--github-com--awangdev--lintcode--blob--master--java--colorgridjava---level-medium-tags-design-hash-table)
+      - [basic implementation](#basic-implementation)
     - [139. [Container With Most Water.java] (https://github.com/awangdev/LintCode/blob/master/Java /Container%20With%20Most%20Water.java)###  Level: Medium Tags: [Array, Two Pointers]](#139-container-with-most-waterjava-httpsgithubcomawangdevlintcodeblobmasterjava-containerwithmostwaterjava--level-medium-tags-array-two-pointers)
+      - [Two Pointers](#two-pointers-3)
     - [140. Copy List with Random Pointer.java   Level: Medium Tags : [Hash Table, Linked List]](#140-copy-list-with-random-pointerjava---level-medium-tags--hash-table-linked-list)
     - [141. Encode and Decode Strings.java   Level: Medium Tags: [String ]](#141-encode-and-decode-stringsjava---level-medium-tags-string-)
+      - [String](#string-3)
     - [142. [Fast Power.java] (https://github.com/awangdev /LintCode/blob/master/Java/Fast%20Power.java)###  Level: Medium Tags: [DFS, Divide and Conquer]](#142-fast-powerjava-httpsgithubcomawangdev-lintcodeblobmasterjavafastpowerjava--level-medium-tags-dfs-divide-and-conquer)
 - [### Divide and Conquer](#-divide-and-conquer)
+      - [DFS](#dfs-32)
     - [143. [Find the Connected Component in the Undirected Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Connected%20Component%20in%20the% 20Undirected% 20Graph.java)   Level: Medium Tags: [BFS, DFS]](#143-find-the-connected-component-in-the-undirected-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavafindtheconnectedcomponentinthe%25-20undirected%25-20graphjava---level-medium-tags-bfs-dfs)
+      - [BFS](#bfs-14)
+      - [Hash Table](#hash-table-5)
     - [145. [Interval Minimum Number.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Interval%20Minimum%20Number.java)###  Level: Medium Tags: [Binary Search, Divide and Conquer, Lint, Segment Tree]](#145-interval-minimum-numberjava-https--githubcomawangdevlintcodeblobmasterjavaintervalminimumnumberjava--level-medium-tags-binary-search-divide-and-conquer-lint-segment-tree)
+      - [Segment Tree](#segment-tree-1)
     - [146. Interval Sum.java * * Level: Medium Tags: [Binary Search, Lint, Segment Tree]](#146-interval-sumjava---level-medium-tags-binary-search-lint-segment-tree)
+      - [Segment Tree + Binary Search](#segment-tree--binary-search)
     - [147. [Kth Smallest Element in a BST.java] (https://github.com/awangdev/LintCode/blob/master /Java/Kth%20Smallest%20Element%20in%20a%20BST.java)###  Level: Medium Tags: [BST, DFS, Stack, Tree]](#147-kth-smallest-element-in-a-bstjava-httpsgithubcomawangdevlintcodeblobmaster-javakthsmallestelementinabstjava--level-medium-tags-bst-dfs-stack-tree)
+      - [Iterative + stack: inorder traversal](#iterative--stack-inorder-traversal)
+      - [Recursive + DFS](#recursive--dfs)
     - [148. Majority Element II.java   Level: Medium Tags: [Array]](#148-majority-element-iijava---level-medium-tags-array)
   - [## Sort + count](#-sort--count)
+      - [Two counters](#two-counters)
     - [149. Partition List.java   Level: Medium Tags: [Linked List, Two Pointers]](#149-partition-listjava---level-medium-tags-linked-list-two-pointers)
+      - [Linked List](#linked-list-3)
     - [150. Peeking Iterator.java   Level: Medium Tags: [Design]](#150-peeking-iteratorjava---level-medium-tags-design)
   - [## Use concept pre cache](#-use-concept-pre-cache)
+      - [Previous notes](#previous-notes-3)
     - [151. Rehashing.java   Level: Medium Tags: [Hash Table]](#151-rehashingjava---level-medium-tags-hash-table)
+      - [Hash Table](#hash-table-6)
+      - [Linked List](#linked-list-4)
     - [153. Restore IP Addresses.java   Level: Medium Tags: [Backtracking , DFS, String]](#153-restore-ip-addressesjava---level-medium-tags-backtracking--dfs-string)
+      - [Backtracking](#backtracking-1)
     - [154. Reverse Words in a String.java   Level: Medium Tags : [String]](#154-reverse-words-in-a-stringjava---level-medium-tags--string)
+      - [In-place reverse](#in-place-reverse)
+      - [Break by space, then flip](#break-by-space-then-flip)
+      - [Other methods](#other-methods)
     - [155. Reverse Words in a String II.java * * Level: Medium Tags: [String]](#155-reverse-words-in-a-string-iijava---level-medium-tags-string)
     - [156. [Search a 2D Matrix.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20a%202D%20Matrix.java)   Level: Medium Tags: [Array, Binary Search]](#156-search-a-2d-matrixjava-https--githubcomawangdevlintcodeblobmasterjavasearcha2dmatrixjava---level-medium-tags-array-binary-search)
+      - [2D matrix to 1D array](#2d-matrix-to-1d-array)
+      - [Binary Search](#binary-search-3)
+      - [Divide and Conquer?](#divide-and-conquer)
     - [158 [Search for A Range.java] (https://github.com/awangdev/. LintCode / blob / master / Java / Search% 20for% 20a% 20Range.java)   Level: Medium Tags: [Array, Binary Search]](#158-search-for-a-rangejava-httpsgithubcomawangdev-lintcode--blob--master--java--search%25-20for%25-20a%25-20rangejava---level-medium-tags-array-binary-search)
     - [# Binary Search](#-binary-search)
     - [159. [Search Range in Binary Search Tree .java] (https://github.com/awangdev /LintCode/blob/master/Java/Search%20Range%20in%20Binary%20Search%20Tree%20.java)###  Level: Medium Tags: [BST, Binary Tree]](#159-search-range-in-binary-search-tree-java-httpsgithubcomawangdev-lintcodeblobmasterjavasearchrangeinbinarysearchtreejava--level-medium-tags-bst-binary-tree)
+      - [BST](#bst-1)
     - [160. Sort List.java   Level: Medium Tags: [Divide and Conquer, Linked List, Merge Sort, Sort]](#160-sort-listjava---level-medium-tags-divide-and-conquer-linked-list-merge-sort-sort)
+      - [Merge sort](#merge-sort)
+      - [Quick sort](#quick-sort)
+      - [Basic implementation](#basic-implementation)
     - [162. Topological Sorting.java   Level: Medium Tags: [BFS, DFS, Topological Sort]](#162-topological-sortingjava---level-medium-tags-bfs-dfs-topological-sort)
+      - [Topological Sort BFS](#topological-sort-bfs)
+      - [Basics about graph](#basics-about-graph)
     - [163. [Spiral Matrix.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Spiral% 20Matrix.java)   Level: Medium Tags: [Array, Enumeration]](#163-spiral-matrixjava-httpsgithubcom-awangdev--lintcode--blob--master--java--spiral%25-20matrixjava---level-medium-tags-array-enumeration)
     - [# DX, DY](#-dx-dy)
     - [164. [Construct Binary Tree from Inorder and Postorder Traversal.java] (https://github.com/awangdev/LintCode/blob/master/Java/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal .java)   Level: Medium Tags: [Array, DFS, Divide and Conquer, Tree]](#164-construct-binary-tree-from-inorder-and-postorder-traversaljava-httpsgithubcomawangdevlintcodeblobmasterjavaconstructbinarytreefrominorderandpostordertraversal-java---level-medium-tags-array-dfs-divide-and-conquer-tree)
+      - [DFS, Divide and Conquer](#dfs-divide-and-conquer-1)
+      - [Improvement](#improvement)
     - [165. Generate Parentheses.java   Level : Medium Tags: [Backtracking, DFS, Sequence DFS, String]](#165-generate-parenthesesjava---level--medium-tags-backtracking-dfs-sequence-dfs-string)
+      - [DFS](#dfs-33)
+      - [bottom->up DFS](#bottom-up-dfs)
+      - [DFS](#dfs-34)
     - [167. Flip Game II.java   Level: Medium Tags: [Backtracking, DFS , DP]](#167-flip-game-iijava---level-medium-tags-backtracking-dfs--dp)
+      - [Backtracking](#backtracking-2)
+      - [DP of O (N ^ 2) -Requires](#dp-of-o-n-%5E-2--requires)
     - [168. Palindrome Partitioning.java   Level: Medium Tags: [Backtracking, DFS]](#168-palindrome-partitioningjava---level-medium-tags-backtracking-dfs)
+      - [DFS](#dfs-35)
+      - [DFS Top-> Bottom](#dfs-top--bottom)
+      - [Optimization](#optimization)
 - [### Complexity](#-complexity)
     - [169. [Submatrix Sum.java] (https: // github. com / awangdev / LintCode / blob / master / Java / Submatrix% 20Sum.java)   Level: Medium Tags: [Array, Hash Table, PreSum]](#169-submatrix-sumjava-https--github-com--awangdev--lintcode--blob--master--java--submatrix%25-20sumjava---level-medium-tags-array-hash-table-presum)
+      - [The idea of ​​PreSum](#the-idea-of-%E2%80%8B%E2%80%8Bpresum)
     - [170. [Longest Palindromic Substring.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Longest% 20Palindromic% 20Substring.java)   Level: Medium Tags: [DP, String]](#170-longest-palindromic-substringjava-httpsgithubcomawangdevlintcodeblobmaster-java--longest%25-20palindromic%25-20substringjava---level-medium-tags-dp-string)
+      - [String, Palindrome definition](#string-palindrome-definition)
+      - [DP: isPalin [] []-Exhaustive](#dp-ispalin---exhaustive)
+      - [O (n)](#o-n)
     - [171. Longest Palindromic Subsequence.java   Level: Medium Tags: [DFS, DP, Interval DP, Memoization]](#171-longest-palindromic-subsequencejava---level-medium-tags-dfs-dp-interval-dp-memoization)
+      - [Interval DP](#interval-dp)
+      - [Memoization](#memoization-3)
     - [172. [Gas Station.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Gas% 20Station.java)   Level: Medium Tags: [Greedy]](#172-gas-stationjava-httpsgithubcomawangdevlintcode-blob--master--java--gas%25-20stationjava---level-medium-tags-greedy)
+      - [Greedy](#greedy-1)
+      - [NOT DP](#not-dp)
+      - [DFS + Memoization](#dfs--memoization)
+      - [DP](#dp-13)
+      - [DP + O (n) space](#dp--o-n-space)
     - [174. Merge Intervals.java   Level: Medium Tags: [Array, PriorityQueue, Sort , Sweep Line]](#174-merge-intervalsjava---level-medium-tags-array-priorityqueue-sort--sweep-line)
+      - [Sweep Line with Priority Queue](#sweep-line-with-priority-queue)
+      - [Sort Interval](#sort-interval)
+      - [Sort Intervals and append end logically](#sort-intervals-and-append-end-logically)
     - [175. H-Index.java   Level: Medium Tags: [Bucket Sort, Hash Table, Sort]](#175-h-indexjava---level-medium-tags-bucket-sort-hash-table-sort)
+      - [Sort, find h from end](#sort-find-h-from-end)
+      - [Bucket count / Bucket Sort](#bucket-count--bucket-sort)
     - [176. H-Index II. java   Level: Medium Tags: [Binary Search]](#176-h-index-ii-java---level-medium-tags-binary-search)
+      - [Binary Search](#binary-search-4)
     - [177. Sort Colors.java   Level: Medium Tags: [Array, Partition, Quick Sort, Sort, Two Pointers]](#177-sort-colorsjava---level-medium-tags-array-partition-quick-sort-sort-two-pointers)
+      - [Array partition, the Base of Quick Sort](#array-partition-the-base-of-quick-sort)
+      - [One pass](#one-pass)
+      - [Counting sort](#counting-sort)
     - [178. Sort Colors II.java   Level: Medium Tags: [Partition, Quick Sort , Sort, Two Pointers]](#178-sort-colors-iijava---level-medium-tags-partition-quick-sort--sort-two-pointers)
+      - [Quick Sort](#quick-sort-1)
     - [179. Sort Letters by Case.java   Level: Medium Tags: [Partition, Sort, String, Two Pointers]](#179-sort-letters-by-casejava---level-medium-tags-partition-sort-string-two-pointers)
+      - [Partition + Two pointers](#partition--two-pointers)
+      - [Two pointers](#two-pointers-2)
     - [180. [Subarray Sum Closest.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20Closest.java)###  Level: Medium Tags: [PreSum, PriorityQueue, Sort, Subarray]](#180-subarray-sum-closestjava-https-githubcomawangdevlintcodeblobmasterjavasubarraysumclosestjava--level-medium-tags-presum-priorityqueue-sort-subarray)
+      - [PreSum + index in class](#presum--index-in-class)
+      - [Why didn't you use map <preSum, index>?](#why-didnt-you-use-map-presum-index)
     - [181. [Task Scheduler.java] (https://github.com/awangdev/LintCode/blob/master/Java/Task% 20Scheduler.java)   Level: Medium Tags: [Array, Enumeration, Greedy, PriorityQueue, Queue]](#181-task-schedulerjava-httpsgithubcomawangdevlintcodeblobmasterjavatask%25-20schedulerjava---level-medium-tags-array-enumeration-greedy-priorityqueue-queue)
+      - [Array, count frequency, enumerate](#array-count-frequency-enumerate)
+      - [PriorityQueue](#priorityqueue-2)
     - [182. Exam Room.java   Level: Medium Tags: [PriorityQueue, Sort]](#182-exam-roomjava---level-medium-tags-priorityqueue-sort)
+      - [PriorityQueue](#priorityqueue-3)
+      - [TreeSet](#treeset-1)
+      - [Map](#map)
     - [183.  Anagrams.java   Level: Medium Tags: [Array, Hash Table]](#183--anagramsjava---level-medium-tags-array-hash-table)
+      - [HashMap](#hashmap-2)
+      - [HashMap + Sort](#hashmap--sort)
+      - [Previous Notes](#previous-notes-2)
     - [184. Path Sum IV.java   Level: Medium Tags: [DFS, Hash Table , Tree]](#184-path-sum-ivjava---level-medium-tags-dfs-hash-table--tree)
+      - [DFS, Hash Table](#dfs-hash-table)
+      - [basic thinking + Math](#basic-thinking--math)
+      - [DP](#dp-14)
     - [186. [Palindromic Substrings.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Palindromic% 20Substrings.java)   Level: Medium Tags: [DP, String]](#186-palindromic-substringsjava-httpsgithubcomawangdevlintcode-blob--master--java--palindromic%25-20substringsjava---level-medium-tags-dp-string)
+      - [isPalin [] []-build](#ispalin---build)
+      - [odd / even split check](#odd--even-split-check)
     - [187. Multiply Strings.java   Level: Medium Tags: [Math, String]](#187-multiply-stringsjava---level-medium-tags-math-string)
+      - [String calculation, basic implementation](#string-calculation-basic-implementation)
+      - [Previous notes.](#previous-notes)
     - [188. Subsets.java   Level: Medium Tags: [Array, BFS , Backtracking, Bit Manipulation, DFS]](#188-subsetsjava---level-medium-tags-array-bfs--backtracking-bit-manipulation-dfs)
+      - [DFS](#dfs-36)
+      - [Bit Manipulation](#bit-manipulation-4)
+      - [Iterative, BFS](#iterative-bfs)
     - [189. [Subsets II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Subsets%20II. java)   Level: Medium Tags: [Array, BFS, Backtracking, DFS]](#189-subsets-iijava-httpsgithubcomawangdevlintcodeblobmasterjavasubsetsii-java---level-medium-tags-array-bfs-backtracking-dfs)
+      - [DFS](#dfs-37)
     - [# BFS](#-bfs)
+      - [Previous notes:](#previous-notes)
+      - [Note](#note-6)
     - [190. Combination Sum.java   Level: Medium Tags: [Array, Backtracking , Combination, DFS]](#190-combination-sumjava---level-medium-tags-array-backtracking--combination-dfs)
+      - [DFS, Backtracking](#dfs-backtracking-1)
     - [191. Combination Sum II.java   Level: Medium Tags: [Array, Backtracking, Combination, DFS]](#191-combination-sum-iijava---level-medium-tags-array-backtracking-combination-dfs)
+      - [DFS, Backtracking](#dfs-backtracking-2)
     - [192. [Combination Sum III.java] (https://github.com/awangdev/LintCode/blob/master/Java/Combination% 20Sum% 20III.java)   Level: Medium Tags: [Array, Backtracking, Combination, DFS]](#192-combination-sum-iiijava-httpsgithubcomawangdevlintcodeblobmasterjavacombination%25-20sum%25-20iiijava---level-medium-tags-array-backtracking-combination-dfs)
+      - [the DFS, backtracking](#the-dfs-backtracking)
+      - [Array, PreProduct](#array-preproduct)
     - [194. [Total Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Total%20Hamming%20Distance. java)   Level: Medium Tags: [Bit Manipulation]](#194-total-hamming-distancejava-httpsgithubcomawangdevlintcodeblobmasterjavatotalhammingdistance-java---level-medium-tags-bit-manipulation)
+      - [Bit Manipulation](#bit-manipulation-5)
     - [195. Smallest Subtree with all the Deepest Nodes.java   Level: Medium Tags: [DFS, Divide and Conquer, Tree]](#195-smallest-subtree-with-all-the-deepest-nodesjava---level-medium-tags-dfs-divide-and-conquer-tree)
+      - [DFS on tree](#dfs-on-tree)
+      - [BFS](#bfs-15)
     - [196. Subarray Sum Equals K. java   Level: Medium Tags: [Array, Hash Table, PreSum, Subarray]](#196-subarray-sum-equals-k-java---level-medium-tags-array-hash-table-presum-subarray)
+      - [Hash Table + PreSum](#hash-table--presum)
+      - [PreSum, O(n^2)](#presum-on%5E2)
     - [197. Simplify Path.java   Level: Medium Tags: [Stack, String]](#197-simplify-pathjava---level-medium-tags-stack-string)
+      - [Stack](#stack-3)
     - [198. [Convert Binary Search Tree to Sorted Doubly Linked List (extra space) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Binary%20Search%20Tree%20to% 20Sorted% 20Doubly% 20Linked% 20List% 20 (extra% 20space) .java)   Level: Medium Tags: [Linked List, Stack, Tree]](#198-convert-binary-search-tree-to-sorted-doubly-linked-list-extra-space-java-httpsgithubcomawangdevlintcodeblobmasterjavaconvertbinarysearchtreeto%25-20sorted%25-20doubly%25-20linked%25-20list%25-20-extra%25-20space-java---level-medium-tags-linked-list-stack-tree)
+      - [Inorder Traversal, Linked List](#inorder-traversal-linked-list)
+      - [# Iterative inorder traversal](#-iterative-inorder-traversal)
     - [199. Binary Tree Zigzag Level Order Traversal.java   Level: Medium Tags: [BFS, Stack, Tree]](#199-binary-tree-zigzag-level-order-traversaljava---level-medium-tags-bfs-stack-tree)
+      - [Queue](#queue-2)
     - [200. [Word Break.java] (https://github.com/ awangdev / LintCode / blob / master / Java / Word% 20Break.java)   Level: Medium Tags: [DP, Hash Table, Sequence DP]](#200-word-breakjava-httpsgithubcom-awangdev--lintcode--blob--master--java--word%25-20breakjava---level-medium-tags-dp-hash-table-sequence-dp)
+      - [Sequence DP](#sequence-dp-4)
+      - [Previous notes](#previous-notes-4)
     - [201. Longest Increasing Subsequence.java   Level: Medium Tags: [Binary Search, Coordinate DP, DP, Memoization]](#201-longest-increasing-subsequencejava---level-medium-tags-binary-search-coordinate-dp-dp-memoization)
+      - [DP, double for loop, O (n ^ 2) -When](#dp-double-for-loop-o-n-%5E-2--when)
   - [## O (nLogN)-Maintain](#-o-nlogn-maintain)
     - [202. [Best Time to Buy and Sell Stock with Transaction Fee.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock % 20with% 20Transaction% 20Fee.java)   Level: Medium Tags: [Array, DP, Greedy, Sequence DP, Status DP]](#202-best-time-to-buy-and-sell-stock-with-transaction-feejava-httpsgithubcomawangdevlintcodeblobmasterjavabesttimetobuyandsellstock-%25-20with%25-20transaction%25-20feejava---level-medium-tags-array-dp-greedy-sequence-dp-status-dp)
+      - [Sequence DP](#sequence-dp-5)
+      - [Reservior sampling](#reservior-sampling)
+      - [Knowledge](#knowledge)
+      - [Understand the property](#understand-the-property)
     - [205. Sparse Matrix Multiplication.java   Level: Medium Tags: [Hash Table]](#205-sparse-matrix-multiplicationjava---level-medium-tags-hash-table)
+      - [Hash Table](#hash-table-7)
+      - [Hash Table](#hash-table-8)
+      - [the Matrices](#the-matrices)
     - [206. Brick Wall.java   Level: Medium Tags: [Hash Table]](#206-brick-walljava---level-medium-tags-hash-table)
+      - [Stack](#stack-4)
     - [208. Friends Of Appropriate Ages.java   Level: Medium Tags : [Array, Math]](#208-friends-of-appropriate-agesjava---level-medium-tags--array-math)
+      - [Array, Math](#array-math)
     - [209. Target Sum.java   Level: Medium Tags: [DFS, DP]](#209-target-sumjava---level-medium-tags-dfs-dp)
+      - [Map<preSumValue, index>](#mappresumvalue-index)
     - [211. Contiguous Array.java   Level: Medium Tags: [Hash Table]](#211-contiguous-arrayjava---level-medium-tags-hash-table)
     - [212. Line Reflection.java   Level: Medium Tags : [Hash Table, Math]](#212-line-reflectionjava---level-medium-tags--hash-table-math)
+      - [Hash Table](#hash-table-9)
     - [213. [Insert Delete GetRandom O (1) .java] (https://github.com/awangdev/LintCode/blob/master/Java/Insert% 20Delete% 20GetRandom% 20O (1) .java)   Level: Medium Tags: [Array, Design, Hash Table]](#213-insert-delete-getrandom-o-1-java-httpsgithubcomawangdevlintcodeblobmasterjavainsert%25-20delete%25-20getrandom%25-20o-1-java---level-medium-tags-array-design-hash-table)
+      - [Hash Table](#hash-table-10)
     - [214. Number of Longest Increasing Subsequence.java   Level: Medium Tags : [Coordinate DP, DP]](#214-number-of-longest-increasing-subsequencejava---level-medium-tags--coordinate-dp-dp)
+      - [Coordinate DP](#coordinate-dp-3)
+      - [Related -Both are the originator of Coordiate DP, DP:-Longest](#related--both-are-the-originator-of-coordiate-dp-dp-longest)
     - [215. [Minimum Swaps To Make Sequences Increasing.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Minimum%20Swaps%20To%20Make%20Sequences%20Increasing.java)###  Level: Medium Tags: [Coordinate DP, DP, Status DP]](#215-minimum-swaps-to-make-sequences-increasingjava-https-githubcomawangdevlintcodeblobmasterjavaminimumswapstomakesequencesincreasingjava--level-medium-tags-coordinate-dp-dp-status-dp)
+      - [DP](#dp-15)
     - [216. Binary Tree Vertical Order Traversal.java   Level: Medium Tags : [BFS, DFS, Hash Table, Tree]](#216-binary-tree-vertical-order-traversaljava---level-medium-tags--bfs-dfs-hash-table-tree)
+      - [BFS](#bfs-16)
+      - [DFS](#dfs-38)
     - [217. [Populating Next Right Pointers in Each Node II.java] (https://github.com/awangdev/LintCode/blob/master/Java /Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.java)###  Level: Medium Tags: [DFS, Tree]](#217-populating-next-right-pointers-in-each-node-iijava-httpsgithubcomawangdevlintcodeblobmasterjava-populatingnextrightpointersineachnodeiijava--level-medium-tags-dfs-tree)
+      - [DFS](#dfs-39)
+      - [Binary Search](#binary-search-5)
 - [### Trick](#-trick)
     - [218. [Search in Rotated Sorted Array.java] (https : //github.com/awangdev/LintCode/blob/master/Java/Search%20in%20Rotated%20Sorted%20Array.java)   Level: Medium Tags: [Array, Binary Search]](#218-search-in-rotated-sorted-arrayjava-https--githubcomawangdevlintcodeblobmasterjavasearchinrotatedsortedarrayjava---level-medium-tags-array-binary-search)
+      - [binary search break point, then continue to binary search target](#binary-search-break-point-then-continue-to-binary-search-target)
     - [219. [Find the Weak Connected Component in the Directed Graph.java] (https://github.com/awangdev/LintCode/blob/master/Java/Find%20the%20Weak%20Connected%20Component%20in%20the% 20Directed% 20Graph.java)   Level: Medium Tags: [Union Find]](#219-find-the-weak-connected-component-in-the-directed-graphjava-httpsgithubcomawangdevlintcodeblobmasterjavafindtheweakconnectedcomponentinthe%25-20directed%25-20graphjava---level-medium-tags-union-find)
+      - [Union Find](#union-find-3)
+      - [Identify this is a union-find problem](#identify-this-is-a-union-find-problem)
     - [220. Accounts Merge.java   Level: Medium Tags: [DFS, Hash Table, Hash Table , Union Find]](#220-accounts-mergejava---level-medium-tags-dfs-hash-table-hash-table--union-find)
+      - [Union Find](#union-find-4)
+      - [Hash Table solution, passed but very slow](#hash-table-solution-passed-but-very-slow)
     - [221. Count of Smaller Number.java   Level: Medium Tags: [Binary Search, Lint, Segment Tree]](#221-count-of-smaller-numberjava---level-medium-tags-binary-search-lint-segment-tree)
+      - [Segment Tree](#segment-tree-2)
     - [222. My Calendar I.java   Level: Medium Tags: [Array , TreeMap]](#222-my-calendar-ijava---level-medium-tags-array--treemap)
+      - [Simply O(n) check on array](#simply-on-check-on-array)
+      - [TreeMap](#treemap)
+      - [Sweep line](#sweep-line)
+      - [Merge Sort](#merge-sort-1)
+      - [Segment tree](#segment-tree)
+      - [BST](#bst-2)
+      - [O(n^2)](#on%5E2)
+      - [PriorityQueue, MinHeap](#priorityqueue-minheap)
 - [### Quick Sort](#-quick-sort)
     - [225. [Merge k Sorted Lists.java] (https://github.com/awangdev/LintCode /blob/master/Java/Merge%20k%20Sorted%20Lists.java)###  Level: Medium Tags: [Divide and Conquer, Heap, Linked List, PriorityQueue]](#225-merge-k-sorted-listsjava-httpsgithubcomawangdevlintcode-blobmasterjavamergeksortedlistsjava--level-medium-tags-divide-and-conquer-heap-linked-list-priorityqueue)
+      - [PriorityQueue](#priorityqueue-4)
+      - [Divide and Conquer -always merge 2 list at a time](#divide-and-conquer--always-merge-2-list-at-a-time)
+      - [Followup](#followup)
     - [226. Merge k Sorted Arrays.java   Level: Medium Tags : [Heap, MinHeap, PriorityQueue]](#226-merge-k-sorted-arraysjava---level-medium-tags--heap-minheap-priorityqueue)
+      - [Priority Queue](#priority-queue)
     - [227. Heapify.java   Level: Medium Tags: [Heap, MinHeap]](#227-heapifyjava---level-medium-tags-heap-minheap)
   - [## Heap](#-heap)
+      - [What does Heapify / SiftDown do?-For](#what-does-heapify--siftdown-do-for)
+      - [Min-heap's judgment rules:](#min-heaps-judgment-rules)
     - [228. Top K Frequent Elements.java   Level: Medium Tags : [Hash Table, Heap, MaxHeap, MinHeap, PriorityQueue]](#228-top-k-frequent-elementsjava---level-medium-tags--hash-table-heap-maxheap-minheap-priorityqueue)
+      - [HashMap + bucket List []](#hashmap--bucket-list-)
+      - [PriorityQueue, MinHeap -Use regualr priorityQueue to sort by frequency ascendingly](#priorityqueue-minheap--use-regualr-priorityqueue-to-sort-by-frequency-ascendingly)
   - [## PriorityQueue, MaxHeap](#-priorityqueue-maxheap)
     - [229. Ugly Number II.java    Level: Medium Tags: [DP, Enumeration, Heap, Math, PriorityQueue]](#229-ugly-number-iijava----level-medium-tags-dp-enumeration-heap-math-priorityqueue)
+      - [DP](#dp-16)
+      - [PriorityQueue, DP](#priorityqueue-dp)
     - [230. Inorder Successor in BST.java   Level: Medium Tags: [BST , Tree]](#230-inorder-successor-in-bstjava---level-medium-tags-bst--tree)
+      - [Short Recursive and Iterative without Stack](#short-recursive-and-iterative-without-stack)
+      - [Previous Iterative + stack](#previous-iterative--stack)
+      - [Previous Recursive + Stack](#previous-recursive--stack)
     - [231. [Walls and Gates.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Walls%20and%20Gates.java)###  Level: Medium Tags: [BFS, DFS]](#231-walls-and-gatesjava-https-githubcomawangdevlintcodeblobmasterjavawallsandgatesjava--level-medium-tags-bfs-dfs)
+      - [DFS](#dfs-40)
+      - [BFS](#bfs-17)
     - [232. Convert Binary Search Tree to Sorted Doubly Linked List.java###  Level: Medium Tags: [BST, DFS , Divide and Conquer, Linked List, Tree]](#232-convert-binary-search-tree-to-sorted-doubly-linked-listjava--level-medium-tags-bst-dfs--divide-and-conquer-linked-list-tree)
   - [## Tree, In-order traversal](#-tree-in-order-traversal)
     - [233. [String to Integer (atoi) .java] (https: // github .com / awangdev / LintCode / blob / master / Java / String% 20to% 20Integer% 20 (atoi) .java)   Level: Medium Tags: [Math, String]](#233-string-to-integer-atoi-java-https--github-com--awangdev--lintcode--blob--master--java--string%25-20to%25-20integer%25-20-atoi-java---level-medium-tags-math-string)
+      - [String](#string-4)
+      - [regular expression](#regular-expression)
+      - [Idea](#idea)
+      - [DFS](#dfs-41)
+      - [BFS](#bfs-18)
     - [235. Permutations. java   Level: Medium Tags: [Backtracking, DFS, Permutation]](#235-permutations-java---level-medium-tags-backtracking-dfs-permutation)
+      - [Recursive: Backtracking](#recursive-backtracking)
+      - [the Iterative: insertion](#the-iterative-insertion)
+      - [Previous Notes](#previous-notes-3)
     - [236. One Edit Distance.java   Level: Medium Tags: [String]](#236-one-edit-distancejava---level-medium-tags-string)
+      - [Edit: Delete, add, and replace](#edit-delete-add-and-replace)
     - [237. 4Sum.java   Level: Medium Tags: [Hash Table]](#237-4sumjava---level-medium-tags-hash-table)
+      - [Based on 2sum](#based-on-2sum)
   - [http://lifexplorer.me/leetcode-3sum-4sum-and-k-sum/-Add](#httplifexplorermeleetcode-3sum-4sum-and-k-sum-add)
     - [238. [Redundant Connection.java] (https://github.com/awangdev/LintCode/blob/master/Java/Redundant % 20Connection.java)   Level: Medium Tags: [BFS, DFS, Graph, Tree, Union Find]](#238-redundant-connectionjava-httpsgithubcomawangdevlintcodeblobmasterjavaredundant-%25-20connectionjava---level-medium-tags-bfs-dfs-graph-tree-union-find)
+      - [unionFind](#unionfind)
+      - [Graph, DFS](#graph-dfs)
+      - [BFS](#bfs-19)
     - [239. Graph Valid Tree.java   Level: Medium Tags: [BFS, DFS, Graph, Union Find]](#239-graph-valid-treejava---level-medium-tags-bfs-dfs-graph-union-find)
+      - [Union Find](#union-find-5)
+      - [BFS-](#bfs-)
     - [240. [The Maze.java] (https://github.com/awangdev/LintCode/blob /master/Java/The%20Maze.java)###  Level: Medium Tags: [BFS, DFS]](#240-the-mazejava-httpsgithubcomawangdevlintcodeblob-masterjavathemazejava--level-medium-tags-bfs-dfs)
+      - [BFS](#bfs-20)
+      - [BFS](#bfs-21)
+      - [Priority Queue](#priority-queue-1)
     - [243. Group Shifted Strings.java   Level: Medium Tags: [Hash Table, String ]](#243-group-shifted-stringsjava---level-medium-tags-hash-table-string-)
+      - [Convert to orginal string](#convert-to-orginal-string)
+      - [Previous notes](#previous-notes-5)
     - [244. Delete Digits.java   Level: Medium Tags: [Greedy, Priority Queue ]](#244-delete-digitsjava---level-medium-tags-greedy-priority-queue-)
+      - [Greedy](#greedy-2)
     - [245. Flatten 2D Vector.java   Level: Medium Tags: [Design ]](#245-flatten-2d-vectorjava---level-medium-tags-design-)
+      - [Basic Implementation using x, y corrdinate](#basic-implementation-using-x-y-corrdinate)
+      - [Always return item at index 0, and remove from list?](#always-return-item-at-index-0-and-remove-from-list)
     - [246. The Spiral Matrix II.java   Level: Medium Tags: [Array ]](#246-the-spiral-matrix-iijava---level-medium-tags-array-)
+      - [Move forward till end](#move-forward-till-end)
   - [Hard (91)](#hard-91)
     - [0. Count of Smaller Number before itself.java   Level: Hard Tags: [] Is](#0-count-of-smaller-number-before-itselfjava---level-hard-tags--is)
     - [1. [Kth Smallest Sum In Two Sorted Arrays.java] (https: // github.com/awangdev/LintCode/blob/master/Java/Kth%20Smallest%20Sum%20In%20Two%20Sorted%20Arrays.java)###  Level: Hard Tags: []](#1-kth-smallest-sum-in-two-sorted-arraysjava-https--githubcomawangdevlintcodeblobmasterjavakthsmallestsumintwosortedarraysjava--level-hard-tags-)
     - [2. LFU Cache.java   Level: Hard Tags: [Design, Hash Table ]](#2-lfu-cachejava---level-hard-tags-design-hash-table-)
+      - [Hash Table](#hash-table-11)
     - [3. Prefix and Suffix Search.java   Level: Hard Tags : [Trie]](#3-prefix-and-suffix-searchjava---level-hard-tags--trie)
     - [4. [Remove Node in Binary Search Tree.java] (https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Node%20in%20Binary%20Search% 20Tree.java)   Level: Hard Tags: [BST]](#4-remove-node-in-binary-search-treejava-httpsgithubcomawangdevlintcodeblobmasterjavaremovenodeinbinarysearch%25-20treejava---level-hard-tags-bst)
     - [5. Subarray Sum II.java   Level: Hard Tags: [Array , Binary Search, Two Pointers]](#5-subarray-sum-iijava---level-hard-tags-array--binary-search-two-pointers)
     - [6. K Sum.java   Level: Hard Tags: [DP]](#6-k-sumjava---level-hard-tags-dp)
+      - [Partition DP](#partition-dp-2)
+      - [Binary Search](#binary-search-6)
     - [8. [Scramble String.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Scramble% 20String.java)   Level: Hard Tags: [DP, Interval DP, String]-Give](#8-scramble-stringjava-httpsgithubcomawangdevlintcodeblobmasterjava-scramble%25-20stringjava---level-hard-tags-dp-interval-dp-string-give)
+      - [Interval DP Interval-](#interval-dp-interval-)
     - [9. [Interleaving String.java] (https://github.com/awangdev/LintCode/blob/master/Java/Interleaving 20String.java%)   Level: Hard Tags: [DP, String]](#9-interleaving-stringjava-httpsgithubcomawangdevlintcodeblobmasterjavainterleaving-20stringjava%25---level-hard-tags-dp-string)
     - [10. Edit Distance.java   Level: Hard Tags: [DP, Double Sequence DP, Sequence DP, String]](#10-edit-distancejava---level-hard-tags-dp-double-sequence-dp-sequence-dp-string)
+      - [Double Sequence](#double-sequence)
+      - [Search](#search)
     - [11. Distinct Subsequences.java   Level : Hard Tags: [DP, String]](#11-distinct-subsequencesjava---level--hard-tags-dp-string)
     - [12. Ones and Zeroes.java   Level: Hard Tags: [DP]](#12-ones-and-zeroesjava---level-hard-tags-dp)
     - [13. Word Break II .java   Level: Hard Tags: [backtracking, DFS, DP, Hash Table, Memoization]](#13-word-break-ii-java---level-hard-tags-backtracking-dfs-dp-hash-table-memoization)
+      - [DFS + Memoization](#dfs--memoization-1)
+      - [Regular DPs](#regular-dps)
+      - [Timeout Note](#timeout-note)
     - [14. Minimum Window Substring.java   Level: Hard Tags: [Hash Table , String, Two Pointers] The](#14-minimum-window-substringjava---level-hard-tags-hash-table--string-two-pointers-the)
   - [meets the process as result candidate, the method of](#meets-the-process-as-result-candidate-the-method-of)
     - [15. [Longest Substring with At Most K Distinct Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java /Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters.java)###  Level: Hard Tags: [Hash Table, Sliding Window, String]](#15-longest-substring-with-at-most-k-distinct-charactersjava-httpsgithubcomawangdevlintcodeblobmasterjava-longestsubstringwithatmostkdistinctcharactersjava--level-hard-tags-hash-table-sliding-window-string)
     - [16. Find Minimum in Rotated Sorted Array II.java   Level: Hard Tags: [Array, Binary Search]](#16-find-minimum-in-rotated-sorted-array-iijava---level-hard-tags-array-binary-search)
     - [17. Number of Islands II.java   Level: Hard Tags: [Union Find]](#17-number-of-islands-iijava---level-hard-tags-union-find)
+      - [Union Find, model with int []](#union-find-model-with-int-)
+      - [Note:](#note)
+      - [Union Find, model with Hashmap](#union-find-model-with-hashmap)
     - [18. Word Search II.java   Level: Hard Tags : [Backtracking, DFS, Trie]](#18-word-search-iijava---level-hard-tags--backtracking-dfs-trie)
+      - [Trie, DFS](#trie-dfs)
+      - [Previous Notes](#previous-notes-4)
+      - [# About Trie](#-about-trie)
+      - [Regular DFS](#regular-dfs)
     - [19. Word Squares.java   Level: Hard Tags: [Backtracking, Trie]](#19-word-squaresjava---level-hard-tags-backtracking-trie)
     - [20. Trapping Rain Water.java   Level: Hard Tags: [Array , Stack, Two Pointers] There are](#20-trapping-rain-waterjava---level-hard-tags-array--stack-two-pointers-there-are)
+      - [Method 1](#method-1)
+      - [Method 2](#method-2-1)
+      - [Method 3](#method-3)
+      - [The](#the)
     - [21.  Largest Rectangle in Histogram.java   Level: Hard Tags: [Array, Monotonous Stack, Stack ]](#21--largest-rectangle-in-histogramjava---level-hard-tags-array-monotonous-stack-stack-)
     - [# Monotonous Stack](#-monotonous-stack)
+      - [knowledge](#knowledge)
     - [22. Find Peak Element II.java   Level: Hard Tags: [Binary Search, DFS, Divide and Conquer]](#22-find-peak-element-iijava---level-hard-tags-binary-search-dfs-divide-and-conquer)
+      - [DFS](#dfs-42)
 - [#### Time complexity](#-time-complexity)
+      - [Binary Search](#binary-search-7)
     - [23. [Palindrome Pairs.java] (https: // github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Pairs.java)###  Level: Hard Tags: [Hash Table, String, Trie]](#23-palindrome-pairsjava-https--githubcomawangdevlintcodeblobmasterjavapalindromepairsjava--level-hard-tags-hash-table-string-trie)
+      - [Method 1: Properties of Hash Table + Palindrome. Compound.](#method-1-properties-of-hash-table--palindrome-compound)
+      - [Method 2: Trie](#method-2-trie)
     - [24. [Maximal Rectangle.java] (https://github.com/awangdev/LintCode/blob/master/Java/Maximal%20Rectangle. java)   Level: Hard Tags: [Array, DP, Hash Table, Stack]](#24-maximal-rectanglejava-httpsgithubcomawangdevlintcodeblobmasterjavamaximalrectangle-java---level-hard-tags-array-dp-hash-table-stack)
+      - [Method 1: The monotonous stack is](#method-1-the-monotonous-stack-is)
+      - [Method 2: DP](#method-2-dp)
     - [25. Longest Increasing Path in a Matrix.java   Level : Hard Tags: [Coordinate DP, DFS, DP, Memoization, Topological Sort]](#25-longest-increasing-path-in-a-matrixjava---level--hard-tags-coordinate-dp-dfs-dp-memoization-topological-sort)
+      - [DFS, Memoization](#dfs-memoization)
+      - [Topological sort](#topological-sort)
     - [26. [Coins in a Line III.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20III.java)###  Level: Hard Tags: [Array, DP, Game Theory, Interval DP, Memoization]](#26-coins-in-a-line-iiijava-https--githubcomawangdevlintcodeblobmasterjavacoinsinalineiiijava--level-hard-tags-array-dp-game-theory-interval-dp-memoization)
+      - [Game + Interval DP, Interval DP](#game--interval-dp-interval-dp)
     - [27. Burst Balloons.java   Level: Hard Tags: [ DP, Divide and Conquer, Interval DP, Memoization]](#27-burst-balloonsjava---level-hard-tags--dp-divide-and-conquer-interval-dp-memoization)
+      - [Interval DP](#interval-dp-1)
     - [# Memoization](#-memoization)
     - [28. K Edit Distance.java   Level: Hard Tags: [DP, Double Sequence DP, Sequence DP, Trie]](#28-k-edit-distancejava---level-hard-tags-dp-double-sequence-dp-sequence-dp-trie)
+      - [Trie](#trie-3)
+      - [Double Sequence DP](#double-sequence-dp-2)
     - [29. [Paint House II.java] (https://github.com/awangdev/LintCode/blob/master /Java/Paint%20House%20II.java)###  Level: Hard Tags: [DP, Sequence DP, Status DP]](#29-paint-house-iijava-httpsgithubcomawangdevlintcodeblobmaster-javapainthouseiijava--level-hard-tags-dp-sequence-dp-status-dp)
+      - [DP](#dp-17)
+      - [Note](#note-7)
+      - [Optimization Solution](#optimization-solution)
     - [30. Best Time to Buy and Sell Stock III .java   Level: Hard Tags: [Array, DP, Sequence DP]](#30-best-time-to-buy-and-sell-stock-iii-java---level-hard-tags-array-dp-sequence-dp)
+      - [DP plus status](#dp-plus-status)
+      - [Find Peak](#find-peak)
   - [Awesome idea) -leftProfit is the largest Profit at each i point from left to right.](#awesome-idea--leftprofit-is-the-largest-profit-at-each-i-point-from-left-to-right)
     - [31. [Best Time to Buy and Sell Stock IV.java] (https://github.com/awangdev/LintCode/blob/master/Java/Best% 20Time% 20to% 20Buy% 20and% 20Sell% 20Stock% 20IV.java)   Level: Hard Tags: [DP, Sequence DP]](#31-best-time-to-buy-and-sell-stock-ivjava-httpsgithubcomawangdevlintcodeblobmasterjavabest%25-20time%25-20to%25-20buy%25-20and%25-20sell%25-20stock%25-20ivjava---level-hard-tags-dp-sequence-dp)
+      - [DP](#dp-18)
+      - [Method 2-](#method-2-)
     - [32. Russian Doll Envelopes.java   Level: Hard Tags: [Binary Search, Coordinate DP, DP]](#32-russian-doll-envelopesjava---level-hard-tags-binary-search-coordinate-dp-dp)
+      - [DP: 1D Coordinate](#dp-1d-coordinate)
+      - [DP: 2D Coordinate](#dp-2d-coordinate)
     - [33. Expression Tree Build .java   Level: Hard Tags: [Binary Tree, Expression Tree, Minimum Binary Tree, Stack]](#33-expression-tree-build-java---level-hard-tags-binary-tree-expression-tree-minimum-binary-tree-stack)
+      - [Monotonous Stack](#monotonous-stack-1)
+      - [Features](#features-1)
     - [34. Expression Evaluation.java   Level: Hard Tags: [Binary Tree, DFS, Expression Tree , Minimum Binary Tree, Stack]](#34-expression-evaluationjava---level-hard-tags-binary-tree-dfs-expression-tree--minimum-binary-tree-stack)
+      - [DFS on Expression Tree](#dfs-on-expression-tree)
+      - [Note](#note-8)
     - [35. Convert Expression to Polish Notation.java   Level: Hard Tags : [Binary Tree, DFS, Expression Tree, Stack]](#35-convert-expression-to-polish-notationjava---level-hard-tags--binary-tree-dfs-expression-tree-stack)
+      - [Expression Tree](#expression-tree)
     - [36. Convert Expression to Reverse Polish Notation.java   Level : Hard Tags: [Binary Tree, DFS, Expression Tree, Stack]](#36-convert-expression-to-reverse-polish-notationjava---level--hard-tags-binary-tree-dfs-expression-tree-stack)
+      - [Expression Tree](#expression-tree-1)
     - [37. Decode Ways II.java   Level: Hard Tags: [DP, Enumeration, Partition DP]](#37-decode-ways-iijava---level-hard-tags-dp-enumeration-partition-dp)
+      - [DP](#dp-19)
+      - [Partition DP](#partition-dp-3)
+      - [Calculating the optimization of Palindrome](#calculating-the-optimization-of-palindrome)
+      - [Previous Notes](#previous-notes-5)
   - [-The idea is smooth: we naturally think that it would be better to add the cut before i plus what happened between i ~ j.](#-the-idea-is-smooth-we-naturally-think-that-it-would-be-better-to-add-the-cut-before-i-plus-what-happened-between-i--j)
     - [39. Backpack III.java   Level: Hard Tags: [Backpack DP, DP]](#39-backpack-iiijava---level-hard-tags-backpack-dp-dp)
+      - [DP](#dp-20)
+      - [Optimization](#optimization-1)
+      - [Space optimized to 1-dimensional array](#space-optimized-to-1-dimensional-array)
     - [40 First Missing Positive.java   Level:. Hard Tags: [Array]](#40-first-missing-positivejava---level-hard-tags-array)
+      - [Array analysis, index trick](#array-analysis-index-trick)
+      - [Edge Case](#edge-case)
     - [41. N-Queens.java   Level: Hard Tags: [Backtracking]](#41-n-queensjava---level-hard-tags-backtracking)
+      - [Backtracking](#backtracking-3)
+      - [validate n queue at certain (x, y) -1. There](#validate-n-queue-at-certain-x-y--1-there)
     - [42. [N-Queens II.java] (https://github.com/awangdev /LintCode/blob/master/Java/N-Queens%20II.java)###  Level: Hard Tags: [backtracking ]](#42-n-queens-iijava-httpsgithubcomawangdev-lintcodeblobmasterjavan-queensiijava--level-hard-tags-backtracking-)
+      - [backtracking](#backtracking)
     - [43. [LRU Cache.java] (https://github.com/awangdev/LintCode/blob/master/Java/ LRU% 20Cache.java)   Level: Hard Tags: [Design, Hash Table, Linked List]](#43-lru-cachejava-httpsgithubcomawangdevlintcodeblobmasterjava-lru%25-20cachejava---level-hard-tags-design-hash-table-linked-list)
+      - [Double Linked List](#double-linked-list)
+      - [Kinda, Tree DP](#kinda-tree-dp)
+      - [O (n) Check for duplicates](#o-n-check-for-duplicates)
     - [44. Binary Tree Maximum Path Sum.java   Level : Hard Tags: [DFS, DP, Tree, Tree DP]](#44-binary-tree-maximum-path-sumjava---level--hard-tags-dfs-dp-tree-tree-dp)
+      - [DFS, PathSum object](#dfs-pathsum-object)
     - [45. Basic Calculator.java   Level: Hard Tags: [Binary Tree, Expression Tree, Math , Minimum Binary Tree, Stack]](#45-basic-calculatorjava---level-hard-tags-binary-tree-expression-tree-math--minimum-binary-tree-stack)
+      - [Expression Tree](#expression-tree-2)
     - [46. Longest Consecutive Sequence.java   Level: Hard Tags: [Array, Hash Table, Union Find]](#46-longest-consecutive-sequencejava---level-hard-tags-array-hash-table-union-find)
 - [### HashSet](#-hashset)
+      - [Union Find](#union-find-6)
     - [47. [Serialize and Deserialize Binary Tree.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Serialize% 20and% 20Deserialize% 20Binary% 20Tree.java)   Level: Hard Tags: [BFS, DFS, Deque, Design, Divide and Conquer, Tree]](#47-serialize-and-deserialize-binary-treejava-httpsgithubcomawangdevlintcode-blob--master--java--serialize%25-20and%25-20deserialize%25-20binary%25-20treejava---level-hard-tags-bfs-dfs-deque-design-divide-and-conquer-tree)
+      - [DFS , Divide and Conquer](#dfs--divide-and-conquer)
+      - [DFS, Recursive [previous note]](#dfs-recursive-previous-note)
+      - [BFS, Non-recursive](#bfs-non-recursive)
     - [48. Count of Smaller Numbers After Self.java   Level: Hard Tags: [BST, Binary Indexed Tree, Binary Search, Divide and Conquer, Segment Tree]](#48-count-of-smaller-numbers-after-selfjava---level-hard-tags-bst-binary-indexed-tree-binary-search-divide-and-conquer-segment-tree)
+      - [Binary Search](#binary-search-8)
+      - [Segment Tree based on actual value](#segment-tree-based-on-actual-value)
+      - [Binary Indexed Tree](#binary-indexed-tree)
     - [49. Remove Duplicate Letters.java   Level: Hard Tags: [Greedy, Hash Table, Stack]](#49-remove-duplicate-lettersjava---level-hard-tags-greedy-hash-table-stack)
+      - [Hash Table, Greedy](#hash-table-greedy)
+      - [Stack](#stack-5)
     - [50. [Expression Add Operators.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Expression% 20Add% 20Operators.java)   Level: Hard Tags: [Backtracking, DFS, Divide and Conquer, String]](#50-expression-add-operatorsjava-httpsgithubcomawangdevlintcodeblobmasterjava-expression%25-20add%25-20operatorsjava---level-hard-tags-backtracking-dfs-divide-and-conquer-string)
+      - [string dfs, use list to track steps (backtracking)](#string-dfs-use-list-to-track-steps-backtracking)
+      - [String dfs, use string as buffer](#string-dfs-use-string-as-buffer)
     - [51. Insert Interval.java   Level: Hard Tags: [Array, PriorityQueue, Sort]](#51-insert-intervaljava---level-hard-tags-array-priorityqueue-sort)
+      - [Sweep Line](#sweep-line-1)
+      - [Basic Implementation](#basic-implementation-3)
+      - [Also](#also)
     - [52. Shortest Palindrome.java   Level: Hard Tags: [KMP , String]](#52-shortest-palindromejava---level-hard-tags-kmp--string)
+      - [Divide by mid point, Brutle](#divide-by-mid-point-brutle)
+      - [KMP](#kmp)
+      - [BST](#bst-3)
+      - [Track slots of days](#track-slots-of-days)
     - [54. Count of Range Sum.java    Level: Hard Tags: [BST, Divide and Conquer, Merge Sort, PreSum]](#54-count-of-range-sumjava----level-hard-tags-bst-divide-and-conquer-merge-sort-presum)
+      - [Divide and Conquer + PreSum + MergeSort](#divide-and-conquer--presum--mergesort)
 - [#### How to count range?](#-how-to-count-range)
+      - [BST](#bst-4)
     - [55. Max Sum of Rectangle No Larger Than K.java   Level : Hard Tags: [Array, BST, Binary Search, DP, Queue, TreeSet]](#55-max-sum-of-rectangle-no-larger-than-kjava---level--hard-tags-array-bst-binary-search-dp-queue-treeset)
+      - [BST, Array, preSum](#bst-array-presum)
+      - [Idea](#idea-1)
     - [56. [Perfect Rectangle.java] (https://github.com /awangdev/LintCode/blob/master/Java/Perfect%20Rectangle.java)###  Level: Hard Tags: [Design, Geometry, Hash Table]](#56-perfect-rectanglejava-httpsgithubcom-awangdevlintcodeblobmasterjavaperfectrectanglejava--level-hard-tags-design-geometry-hash-table)
 - [### Drawing Features](#-drawing-features)
+      - [Observation](#observation)
+      - [Trick: prune parallel dots using greatest common divider](#trick-prune-parallel-dots-using-greatest-common-divider)
+      - [String](#string-5)
+      - [Observation](#observation-1)
+      - [Note](#note-9)
     - [60. Recover Binary Search Tree.java###  Level: Hard Tags: [BST, DFS, Tree]](#60-recover-binary-search-treejava--level-hard-tags-bst-dfs-tree)
+      - [dfs, O(1) extra space](#dfs-o1-extra-space)
+      - [O(n) space](#on-space)
     - [61. Jump Game II.java   Level: Hard Tags: [Array, Coordinate DP , DP, Greedy]](#61-jump-game-iijava---level-hard-tags-array-coordinate-dp--dp-greedy)
+      - [Greedy](#greedy-3)
+      - [Previous Notes, Greedy](#previous-notes-greedy)
+      - [Even simpler Greedy](#even-simpler-greedy)
+      - [DP](#dp-21)
     - [62. Longest Valid Parentheses.java   Level: Hard Tags: [Coordinate DP, Stack , String]](#62-longest-valid-parenthesesjava---level-hard-tags-coordinate-dp-stack--string)
+      - [1D Coordinate DP](#1d-coordinate-dp)
+      - [Stack](#stack-6)
     - [63. Rearrange String k Distance Apart.java   Level: Hard Tags: [ Greedy, Hash Table, Heap]](#63-rearrange-string-k-distance-apartjava---level-hard-tags--greedy-hash-table-heap)
+      - [PriorityQueue + HashTable](#priorityqueue--hashtable)
     - [64. [Valid Number.java] (https://github.com/awangdev/LintCode/blob/master /Java/Valid%20Number.java)###  Level: Hard Tags: [Enumeration, Math, String]](#64-valid-numberjava-httpsgithubcomawangdevlintcodeblobmaster-javavalidnumberjava--level-hard-tags-enumeration-math-string)
+      - [Summary of the situation](#summary-of-the-situation)
     - [65. Bricks Falling When Hit.java   Level: Hard Tags: [Union Find]](#65-bricks-falling-when-hitjava---level-hard-tags-union-find)
+      - [UnionFind](#unionfind)
+      - [DFS (timeout)](#dfs-timeout)
+      - [Segment Tree](#segment-tree-3)
     - [68. [Trapping Rain Water II.java] (https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain % 20Water% 20II.java)   Level: Hard Tags: [BFS, Heap, MinHeap, PriorityQueue]](#68-trapping-rain-water-iijava-httpsgithubcomawangdevlintcodeblobmasterjavatrappingrain-%25-20water%25-20iijava---level-hard-tags-bfs-heap-minheap-priorityqueue)
+      - [Min Heap](#min-heap)
     - [69. [Find Median from Data Stream.java] (https://github.com/awangdev/LintCode/blob/ master / Java / Find% 20Median% 20from% 20Data% 20Stream.java)   Level: Hard Tags: [Design, Heap, MaxHeap, MinHeap]](#69-find-median-from-data-streamjava-httpsgithubcomawangdevlintcodeblob-master--java--find%25-20median%25-20from%25-20data%25-20streamjava---level-hard-tags-design-heap-maxheap-minheap)
+      - [Principle](#principle)
+      - [Attention](#attention)
     - [70. [Sliding Window Median.java] (https://github.com/awangdev/LintCode/blob/master/Java/ Sliding% 20Window% 20Median.java)   Level: Hard Tags: [Design, Heap, MaxHeap, MinHeap, Sliding Window]](#70-sliding-window-medianjava-httpsgithubcomawangdevlintcodeblobmasterjava-sliding%25-20window%25-20medianjava---level-hard-tags-design-heap-maxheap-minheap-sliding-window)
+      - [MaxHeap, MinHeap](#maxheap-minheap)
+      - [Note -When using maxHeap, minHeap, it is customary to choose one more number for maxHeap:](#note--when-using-maxheap-minheap-it-is-customary-to-choose-one-more-number-for-maxheap)
     - [71. Design Search Autocomplete System.java   Level: Hard Tags: [Design , Hash Table, MinHeap, PriorityQueue, Trie]](#71-design-search-autocomplete-systemjava---level-hard-tags-design--hash-table-minheap-priorityqueue-trie)
+      - [Thinking direction](#thinking-direction)
+      - [Trie, PriorityQueue, HashMap](#trie-priorityqueue-hashmap)
+      - [String](#string-6)
+      - [Note](#note-10)
     - [73. [Alien Dictionary.java] (https: / /github.com/awangdev/LintCode/blob/master/Java/Alien%20Dictionary.java)###  Level: Hard Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]](#73-alien-dictionaryjava-https--githubcomawangdevlintcodeblobmasterjavaaliendictionaryjava--level-hard-tags-bfs-backtracking-dfs-graph-topological-sort)
+      - [Graph](#graph)
+      - [BFS](#bfs-22)
+      - [DFS](#dfs-43)
     - [74.  Word Ladder II.java   Level: Hard Tags: [Array, BFS, Backtracking, DFS, Hash Table, String]](#74--word-ladder-iijava---level-hard-tags-array-bfs-backtracking-dfs-hash-table-string)
+      - [BFS + Reverse Search](#bfs--reverse-search)
     - [## Search using DFS](#-search-using-dfs)
     - [75. Text Justification. java   Level: Hard Tags: [Enumeration, String]](#75-text-justification-java---level-hard-tags-enumeration-string)
+      - [String](#string-7)
+      - [Notes](#notes)
     - [76. [Read N Characters Given Read4 II-Call multiple times.java] (https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4%20II%20 -% 20Call% 20multiple% 20times.java)   Level: Hard Tags: [Enumeration, String]](#76-read-n-characters-given-read4-ii-call-multiple-timesjava-httpsgithubcomawangdevlintcodeblobmasterjavareadncharactersgivenread4ii--%25-20call%25-20multiple%25-20timesjava---level-hard-tags-enumeration-string)
   - [## String](#-string-1)
     - [77. [Frog Jump.java] (https://github.com/awangdev/LintCode/blob/ master / Java / Frog% 20Jump.java)   Level: Hard Tags: [DP, Hash Table]](#77-frog-jumpjava-httpsgithubcomawangdevlintcodeblob-master--java--frog%25-20jumpjava---level-hard-tags-dp-hash-table)
+      - [DP](#dp-22)
     - [## Note init](#-note-init)
     - [78. [Longest Substring with At Most Two Distinct Characters.java] (https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters .java)   Level: Hard Tags: [Hash Table, Sliding Window, String, Two Pointers]](#78-longest-substring-with-at-most-two-distinct-charactersjava-httpsgithubcomawangdevlintcodeblobmasterjavalongestsubstringwithatmosttwodistinctcharacters-java---level-hard-tags-hash-table-sliding-window-string-two-pointers)
+      - [Two Pointer + HashMap](#two-pointer--hashmap)
     - [79 Shortest Distance from All Buildings.java   Level: Hard Tags: [BFS ]](#79-shortest-distance-from-all-buildingsjava---level-hard-tags-bfs-)
+      - [BFS](#bfs-23)
     - [80. Sliding Window Maximum.java   Level: Hard Tags: [Deque, Heap, Sliding Window]](#80-sliding-window-maximumjava---level-hard-tags-deque-heap-sliding-window)
+      - [Deque, Monotonous queue](#deque-monotonous-queue)
     - [81. Median of Two Sorted Arrays.java   Level: Hard Tags : [Array, Binary Search, DFS, Divide and Conquer]](#81-median-of-two-sorted-arraysjava---level-hard-tags--array-binary-search-dfs-divide-and-conquer)
+      - [Divide and Conquer, recursive](#divide-and-conquer-recursive)
     - [82. [Bus Routes.java] (https://github.com/awangdev/LintCode/ blob / master / Java / Bus% 20Routes.java)   Level: Hard Tags: [BFS]](#82-bus-routesjava-httpsgithubcomawangdevlintcode-blob--master--java--bus%25-20routesjava---level-hard-tags-bfs)
     - [83. [Sliding Puzzle.java] (https://github.com/awangdev/LintCode/blob/master/Java /Sliding%20Puzzle.java)###  Level: Hard Tags: [BFS, Graph]](#83-sliding-puzzlejava-httpsgithubcomawangdevlintcodeblobmasterjava-slidingpuzzlejava--level-hard-tags-bfs-graph)
     - [84. [Cracking the Safe.java] (https://github.com/awangdev/LintCode/blob/master/ Java / Cracking% 20the% 20Safe.java)   Level: Hard Tags: [DFS, Greedy, Math]](#84-cracking-the-safejava-httpsgithubcomawangdevlintcodeblobmaster-java--cracking%25-20the%25-20safejava---level-hard-tags-dfs-greedy-math)
+      - [Greedy, Iterative](#greedy-iterative)
+      - [DFS](#dfs-44)
+      - [Union Find](#union-find-7)
+      - [BFS](#bfs-24)
     - [87. Regular Expression Matching.java   Level: Hard Tags: [Backtracking, DP, Double Sequence DP, Sequence DP, String]](#87-regular-expression-matchingjava---level-hard-tags-backtracking-dp-double-sequence-dp-sequence-dp-string)
     - [88. [Wildcard Matching.java] (https://github.com/awangdev/LintCode /blob/master/Java/Wildcard%20Matching.java)###  Level: Hard Tags: [Backtracking, DP, Double Sequence DP, Greedy, Sequence DP, String]](#88-wildcard-matchingjava-httpsgithubcomawangdevlintcode-blobmasterjavawildcardmatchingjava--level-hard-tags-backtracking-dp-double-sequence-dp-greedy-sequence-dp-string)
+      - [Double Sequence DP](#double-sequence-dp-3)
     - [89. [Robot Room Cleaner.java] (https: //github.com/awangdev/LintCode/blob/master/Java/Robot%20Room%20Cleaner.java)###  Level: Hard Tags: [Backtracking, DFS]](#89-robot-room-cleanerjava-https-githubcomawangdevlintcodeblobmasterjavarobotroomcleanerjava--level-hard-tags-backtracking-dfs)
+      - [DFS](#dfs-45)
   - [Review (5)](#review-5)
     - [1. Valid Perfect Square.java   Level: Review Tags: [Binary Search, Math ]](#1-valid-perfect-squarejava---level-review-tags-binary-search-math-)
     - [2. Maximum Average Subarray II.java   Level: Review Tags: [Array , Binary Search, PreSum]](#2-maximum-average-subarray-iijava---level-review-tags-array--binary-search-presum)
     - [3. The Skyline Problem.java   Level: Review Tags: [Binary Indexed Tree, Divide and Conquer, Heap, PriorityQueue, Segment Tree, Sweep Line] is](#3-the-skyline-problemjava---level-review-tags-binary-indexed-tree-divide-and-conquer-heap-priorityqueue-segment-tree-sweep-line-is)
+      - [Sweep Line, Time O (nLogN), Space O (n)-original](#sweep-line-time-o-nlogn-space-o-n-original)
+      - [Segment Tree](#segment-tree-4)
+      - [HashHeap](#hashheap)
     - [4. Remove Invalid Parentheses.java   Level: Review Tags: [BFS , DFS, DP]](#4-remove-invalid-parenthesesjava---level-review-tags-bfs--dfs-dp)
     - [# DFS and reduce input string](#-dfs-and-reduce-input-string)
+      - [BFS](#bfs-25)
+      - [DP](#dp-23)
   - [Hard (91)](#hard-91-1)
+    - [0. Count of Smaller Number before itself.java**       Level: Hard      Tags: []](#0-count-of-smaller-number-before-itselfjava-------level-hard------tags-)
+    - [1. Kth Smallest Sum In Two Sorted Arrays.java**       Level: Hard      Tags: []](#1-kth-smallest-sum-in-two-sorted-arraysjava-------level-hard------tags-)
+    - [2. LFU Cache.java**       Level: Hard      Tags: [Design, Hash Table]](#2-lfu-cachejava-------level-hard------tags-design-hash-table)
+    - [3. Prefix and Suffix Search.java**       Level: Hard      Tags: [Trie]](#3-prefix-and-suffix-searchjava-------level-hard------tags-trie)
+    - [4. Remove Node in Binary Search Tree.java**       Level: Hard      Tags: [BST]](#4-remove-node-in-binary-search-treejava-------level-hard------tags-bst)
+    - [5. Subarray Sum II.java**       Level: Hard      Tags: [Array, Binary Search, Two Pointers]](#5-subarray-sum-iijava-------level-hard------tags-array-binary-search-two-pointers)
+    - [6. k Sum.java**       Level: Hard      Tags: [DP]](#6-k-sumjava-------level-hard------tags-dp)
+    - [7. Copy Books.java**       Level: Hard      Tags: [Binary Search, DP, Partition DP]](#7-copy-booksjava-------level-hard------tags-binary-search-dp-partition-dp)
+      - [Init](#init)
+      - [Calculation order](#calculation-order)
+      - [Scrolling array](#scrolling-array)
+    - [8. Scramble String.java**       Level: Hard      Tags: [DP, Interval DP, String]](#8-scramble-stringjava-------level-hard------tags-dp-interval-dp-string)
+      - [Break down](#break-down)
+      - [Initialization](#initialization)
+    - [9. Interleaving String.java**       Level: Hard      Tags: [DP, String]](#9-interleaving-stringjava-------level-hard------tags-dp-string)
+    - [10. Edit Distance.java**       Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, String]](#10-edit-distancejava-------level-hard------tags-dp-double-sequence-dp-sequence-dp-string)
+      - [Detail analysis](#detail-analysis)
+      - [When to initialize](#when-to-initialize)
+    - [11. Distinct Subsequences.java**       Level: Hard      Tags: [DP, String]](#11-distinct-subsequencesjava-------level-hard------tags-dp-string)
+    - [0. DP size (n + 1): find the result of the previous nth, then the dp array needs to open n + 1, because the end needs to return dp [n] [m]](#0-dp-size-n--1-find-the-result-of-the-previous-nth-then-the-dp-array-needs-to-open-n--1-because-the-end-needs-to-return-dp-n-m)
+    - [1. Initialize dp [0] [j] dp [i] [0] in the for loop](#1-initialize-dp-0-j-dp-i-0-in-the-for-loop)
+    - [2. Rolling array is optimized to O (N): If dp [i] [j] is in the for loop, it is a good replacement for curr / prev](#2-rolling-array-is-optimized-to-o-n-if-dp-i-j-is-in-the-for-loop-it-is-a-good-replacement-for-curr--prev)
+    - [12. Ones and Zeroes.java**       Level: Hard      Tags: [DP]](#12-ones-and-zeroesjava-------level-hard------tags-dp)
+    - [13. Word Break II.java**       Level: Hard      Tags: [Backtracking, DFS, DP, Hash Table, Memoization]](#13-word-break-iijava-------level-hard------tags-backtracking-dfs-dp-hash-table-memoization)
+    - [14. Minimum Window Substring.java**       Level: Hard      Tags: [Hash Table, String, Two Pointers]](#14-minimum-window-substringjava-------level-hard------tags-hash-table-string-two-pointers)
+    - [15. Longest Substring with At Most K Distinct Characters.java**       Level: Hard      Tags: [Hash Table, Sliding Window, String]](#15-longest-substring-with-at-most-k-distinct-charactersjava-------level-hard------tags-hash-table-sliding-window-string)
+    - [16. Find Minimum in Rotated Sorted Array II.java**       Level: Hard      Tags: [Array, Binary Search]](#16-find-minimum-in-rotated-sorted-array-iijava-------level-hard------tags-array-binary-search)
+    - [17. Number of Islands II.java**       Level: Hard      Tags: [Union Find]](#17-number-of-islands-iijava-------level-hard------tags-union-find)
+    - [18. Word Search II.java**       Level: Hard      Tags: [Backtracking, DFS, Trie]](#18-word-search-iijava-------level-hard------tags-backtracking-dfs-trie)
+      - [About Trie](#about-trie)
+    - [19. Word Squares.java**       Level: Hard      Tags: [Backtracking, Trie]](#19-word-squaresjava-------level-hard------tags-backtracking-trie)
+    - [20. Trapping Rain Water.java**       Level: Hard      Tags: [Array, Stack, Two Pointers]](#20-trapping-rain-waterjava-------level-hard------tags-array-stack-two-pointers)
+    - [2 Pointers, double-sided pinch:](#2-pointers-double-sided-pinch)
+    - [1. Find the index of the highest bar in the middle](#1-find-the-index-of-the-highest-bar-in-the-middle)
+    - [2. Swipe to the center on both sides: add (topBarIndex-currIndex) * (elevation from previous index) each time. That is, add one horizontal bar at a time.](#2-swipe-to-the-center-on-both-sides-add-topbarindex-currindex--elevation-from-previous-index-each-time-that-is-add-one-horizontal-bar-at-a-time)
+    - [3. Every time you want to subtract the height of the block itself](#3-every-time-you-want-to-subtract-the-height-of-the-block-itself)
+    - [21. Largest Rectangle in Histogram.java**       Level: Hard      Tags: [Array, Monotonous Stack, Stack]](#21-largest-rectangle-in-histogramjava-------level-hard------tags-array-monotonous-stack-stack)
+    - [22. Find Peak Element II.java**       Level: Hard      Tags: [Binary Search, DFS, Divide and Conquer]](#22-find-peak-element-iijava-------level-hard------tags-binary-search-dfs-divide-and-conquer)
+    - [2Dmatrix, the value inside has some increasing and decreasing characteristics (the details are longer, see the original question). The goal is to find the peak element](#2dmatrix-the-value-inside-has-some-increasing-and-decreasing-characteristics-the-details-are-longer-see-the-original-question-the-goal-is-to-find-the-peak-element)
+      - [Fundamental](#fundamental)
+      - [Pruning / splitting quadrant](#pruning--splitting-quadrant)
+      - [time complexity](#time-complexity-1)
+    - [23. Palindrome Pairs.java**       Level: Hard      Tags: [Hash Table, String, Trie]](#23-palindrome-pairsjava-------level-hard------tags-hash-table-string-trie)
+      - [Ideas](#ideas)
+      - [Corner case](#corner-case)
+    - [24. Maximal Rectangle.java**       Level: Hard      Tags: [Array, DP, Hash Table, Stack]](#24-maximal-rectanglejava-------level-hard------tags-array-dp-hash-table-stack)
+    - [25. Longest Increasing Path in a Matrix.java**       Level: Hard      Tags: [Coordinate DP, DFS, DP, Memoization, Topological Sort]](#25-longest-increasing-path-in-a-matrixjava-------level-hard------tags-coordinate-dp-dfs-dp-memoization-topological-sort)
+    - [26. Coins in a Line III.java**       Level: Hard      Tags: [Array, DP, Game Theory, Interval DP, Memoization]](#26-coins-in-a-line-iiijava-------level-hard------tags-array-dp-game-theory-interval-dp-memoization)
+      - [Formula Derivation](#formula-derivation)
+      - [Note](#note-11)
+      - [Interval Dynamic Programming](#interval-dynamic-programming)
+    - [27. Burst Balloons.java**       Level: Hard      Tags: [DP, Divide and Conquer, Interval DP, Memoization]](#27-burst-balloonsjava-------level-hard------tags-dp-divide-and-conquer-interval-dp-memoization)
+      - [Interval DP Three Axes:](#interval-dp-three-axes)
+      - [Print the calculation process](#print-the-calculation-process)
+    - [28. K Edit Distance.java**       Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, Trie]](#28-k-edit-distancejava-------level-hard------tags-dp-double-sequence-dp-sequence-dp-trie)
+    - [29. Paint House II.java**       Level: Hard      Tags: [DP, Sequence DP, Status DP]](#29-paint-house-iijava-------level-hard------tags-dp-sequence-dp-status-dp)
+    - [30. Best Time to Buy and Sell Stock III.java**       Level: Hard      Tags: [Array, DP, Sequence DP]](#30-best-time-to-buy-and-sell-stock-iiijava-------level-hard------tags-array-dp-sequence-dp)
+      - [Partial profit](#partial-profit)
+      - [Rolling Array](#rolling-array-4)
+    - [31. Best Time to Buy and Sell Stock IV.java**       Level: Hard      Tags: [DP, Sequence DP]](#31-best-time-to-buy-and-sell-stock-ivjava-------level-hard------tags-dp-sequence-dp)
+      - [Note 1:](#note-1)
+      - [Note 2:](#note-2)
+      - [Local optimal solution vs. global optimal solution:](#local-optimal-solution-vs-global-optimal-solution)
+    - [32. Russian Doll Envelopes.java**       Level: Hard      Tags: [Binary Search, Coordinate DP, DP]](#32-russian-doll-envelopesjava-------level-hard------tags-binary-search-coordinate-dp-dp)
+    - [33. Expression Tree Build.java**       Level: Hard      Tags: [Binary Tree, Expression Tree, Minimum Binary Tree, Stack]](#33-expression-tree-buildjava-------level-hard------tags-binary-tree-expression-tree-minimum-binary-tree-stack)
+    - [34. Expression Evaluation.java**       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Minimum Binary Tree, Stack]](#34-expression-evaluationjava-------level-hard------tags-binary-tree-dfs-expression-tree-minimum-binary-tree-stack)
+    - [35. Convert Expression to Polish Notation.java**       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]](#35-convert-expression-to-polish-notationjava-------level-hard------tags-binary-tree-dfs-expression-tree-stack)
+    - [36. Convert Expression to Reverse Polish Notation.java**       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]](#36-convert-expression-to-reverse-polish-notationjava-------level-hard------tags-binary-tree-dfs-expression-tree-stack)
+    - [37. Decode Ways II.java**       Level: Hard      Tags: [DP, Enumeration, Partition DP]](#37-decode-ways-iijava-------level-hard------tags-dp-enumeration-partition-dp)
+      - [Features](#features-2)
+    - [38. Palindrome Partitioning II.java**       Level: Hard      Tags: [DP, Partition DP]](#38-palindrome-partitioning-iijava-------level-hard------tags-dp-partition-dp)
+    - [39. Backpack III.java**       Level: Hard      Tags: [Backpack DP, DP]](#39-backpack-iiijava-------level-hard------tags-backpack-dp-dp)
+    - [40. First Missing Positive.java**       Level: Hard      Tags: [Array]](#40-first-missing-positivejava-------level-hard------tags-array)
+    - [41. N-Queens.java**       Level: Hard      Tags: [Backtracking]](#41-n-queensjava-------level-hard------tags-backtracking)
+    - [42. N-Queens II.java**       Level: Hard      Tags: [Backtracking]](#42-n-queens-iijava-------level-hard------tags-backtracking)
+    - [43. LRU Cache.java**       Level: Hard      Tags: [Design, Hash Table, Linked List]](#43-lru-cachejava-------level-hard------tags-design-hash-table-linked-list)
+      - [Be smart](#be-smart)
+    - [44. Binary Tree Maximum Path Sum.java**       Level: Hard      Tags: [DFS, DP, Tree, Tree DP]](#44-binary-tree-maximum-path-sumjava-------level-hard------tags-dfs-dp-tree-tree-dp)
+    - [45. Basic Calculator.java**       Level: Hard      Tags: [Binary Tree, Expression Tree, Math, Minimum Binary Tree, Stack]](#45-basic-calculatorjava-------level-hard------tags-binary-tree-expression-tree-math-minimum-binary-tree-stack)
+      - [Thinking points](#thinking-points)
+    - [46. Longest Consecutive Sequence.java**       Level: Hard      Tags: [Array, Hash Table, Union Find]](#46-longest-consecutive-sequencejava-------level-hard------tags-array-hash-table-union-find)
+      - [Features](#features-3)
+    - [47. Serialize and Deserialize Binary Tree.java**       Level: Hard      Tags: [BFS, DFS, Deque, Design, Divide and Conquer, Tree]](#47-serialize-and-deserialize-binary-treejava-------level-hard------tags-bfs-dfs-deque-design-divide-and-conquer-tree)
+      - [Serilize](#serilize)
+      - [Deserialize](#deserialize)
+    - [48. Count of Smaller Numbers After Self.java**       Level: Hard      Tags: [BST, Binary Indexed Tree, Binary Search, Divide and Conquer, Segment Tree]](#48-count-of-smaller-numbers-after-selfjava-------level-hard------tags-bst-binary-indexed-tree-binary-search-divide-and-conquer-segment-tree)
+      - [Segment Tree solution - tricky part:](#segment-tree-solution---tricky-part)
+    - [49. Remove Duplicate Letters.java**       Level: Hard      Tags: [Greedy, Hash Table, Stack]](#49-remove-duplicate-lettersjava-------level-hard------tags-greedy-hash-table-stack)
+    - [50. Expression Add Operators.java**       Level: Hard      Tags: [Backtracking, DFS, Divide and Conquer, String]](#50-expression-add-operatorsjava-------level-hard------tags-backtracking-dfs-divide-and-conquer-string)
+    - [51. Insert Interval.java**       Level: Hard      Tags: [Array, PriorityQueue, Sort]](#51-insert-intervaljava-------level-hard------tags-array-priorityqueue-sort)
+    - [52. Shortest Palindrome.java**       Level: Hard      Tags: [KMP, String]](#52-shortest-palindromejava-------level-hard------tags-kmp-string)
+    - [53. K Empty Slots.java**       Level: Hard      Tags: [Array, BST, TreeSet]](#53-k-empty-slotsjava-------level-hard------tags-array-bst-treeset)
+    - [54. Count of Range Sum.java**       Level: Hard      Tags: [BST, Divide and Conquer, Merge Sort, PreSum]](#54-count-of-range-sumjava-------level-hard------tags-bst-divide-and-conquer-merge-sort-presum)
+      - [How to count range?](#how-to-count-range)
+      - [The magic point: why merge and sort](#the-magic-point-why-merge-and-sort)
+    - [55. Max Sum of Rectangle No Larger Than K.java**       Level: Hard      Tags: [Array, BST, Binary Search, DP, Queue, TreeSet]](#55-max-sum-of-rectangle-no-larger-than-kjava-------level-hard------tags-array-bst-binary-search-dp-queue-treeset)
+    - [56. Perfect Rectangle.java**       Level: Hard      Tags: [Design, Geometry, Hash Table]](#56-perfect-rectanglejava-------level-hard------tags-design-geometry-hash-table)
+    - [57. Max Points on a Line.java**       Level: Hard      Tags: [Array, Geometry, Hash Table, Math]](#57-max-points-on-a-linejava-------level-hard------tags-array-geometry-hash-table-math)
+    - [58. Number of Digit One.java**       Level: Hard      Tags: [Math]](#58-number-of-digit-onejava-------level-hard------tags-math)
+    - [59. Binary Representation.java**       Level: Hard      Tags: [Bit Manipulation, String]](#59-binary-representationjava-------level-hard------tags-bit-manipulation-string)
+    - [60. Recover Binary Search Tree.java**       Level: Hard      Tags: [BST, DFS, Tree]](#60-recover-binary-search-treejava-------level-hard------tags-bst-dfs-tree)
+    - [61. Jump Game II.java**       Level: Hard      Tags: [Array, Coordinate DP, DP, Greedy]](#61-jump-game-iijava-------level-hard------tags-array-coordinate-dp-dp-greedy)
+    - [62. Longest Valid Parentheses.java**       Level: Hard      Tags: [Coordinate DP, Stack, String]](#62-longest-valid-parenthesesjava-------level-hard------tags-coordinate-dp-stack-string)
+    - [63. Rearrange String k Distance Apart.java**       Level: Hard      Tags: [Greedy, Hash Table, Heap]](#63-rearrange-string-k-distance-apartjava-------level-hard------tags-greedy-hash-table-heap)
+    - [64. Valid Number.java**       Level: Hard      Tags: [Enumeration, Math, String]](#64-valid-numberjava-------level-hard------tags-enumeration-math-string)
+    - [65. Bricks Falling When Hit.java**       Level: Hard      Tags: [Union Find]](#65-bricks-falling-when-hitjava-------level-hard------tags-union-find)
+      - [Union Find variants](#union-find-variants)
+    - [66. Interval Sum II.java**       Level: Hard      Tags: [Binary Search, Lint, Segment Tree]](#66-interval-sum-iijava-------level-hard------tags-binary-search-lint-segment-tree)
+    - [67. HashHeap.java**       Level: Hard      Tags: [HashHeap, Heap]](#67-hashheapjava-------level-hard------tags-hashheap-heap)
+    - [68. Trapping Rain Water II.java**       Level: Hard      Tags: [BFS, Heap, MinHeap, PriorityQueue]](#68-trapping-rain-water-iijava-------level-hard------tags-bfs-heap-minheap-priorityqueue)
+      - [Note a few theories](#note-a-few-theories)
+      - [Steps](#steps-1)
+      - [Why use Heap (min-heap-priorityQueue)](#why-use-heap-min-heap-priorityqueue)
+      - [Why traverse from outside to inside](#why-traverse-from-outside-to-inside)
+    - [69. Find Median from Data Stream.java**       Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap]](#69-find-median-from-data-streamjava-------level-hard------tags-design-heap-maxheap-minheap)
+    - [70. Sliding Window Median.java**       Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap, Sliding Window]](#70-sliding-window-medianjava-------level-hard------tags-design-heap-maxheap-minheap-sliding-window)
+    - [71. Design Search Autocomplete System.java**       Level: Hard      Tags: [Design, Hash Table, MinHeap, PriorityQueue, Trie]](#71-design-search-autocomplete-systemjava-------level-hard------tags-design-hash-table-minheap-priorityqueue-trie)
+      - [Find all possible word / leaf, two options:](#find-all-possible-word--leaf-two-options)
+      - [Given k words, find top k frequent items. MinHeap is definitely used, but there are two solutions:](#given-k-words-find-top-k-frequent-items-minheap-is-definitely-used-but-there-are-two-solutions)
+      - [Train the system](#train-the-system)
+    - [72. Integer to English Words.java**       Level: Hard      Tags: [Enumeration, Math, String]](#72-integer-to-english-wordsjava-------level-hard------tags-enumeration-math-string)
+    - [73. Alien Dictionary.java**       Level: Hard      Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]](#73-alien-dictionaryjava-------level-hard------tags-bfs-backtracking-dfs-graph-topological-sort)
+    - [74. Word Ladder II.java**       Level: Hard      Tags: [Array, BFS, Backtracking, DFS, Hash Table, String]](#74-word-ladder-iijava-------level-hard------tags-array-bfs-backtracking-dfs-hash-table-string)
+      - [BFS Prep Step](#bfs-prep-step)
+      - [Search using DFS](#search-using-dfs)
+      - [Bi-directional BFS: Search using BFS](#bi-directional-bfs-search-using-bfs)
+    - [75. Text Justification.java**       Level: Hard      Tags: [Enumeration, String]](#75-text-justificationjava-------level-hard------tags-enumeration-string)
+    - [76. Read N Characters Given Read4 II - Call multiple times.java**       Level: Hard      Tags: [Enumeration, String]](#76-read-n-characters-given-read4-ii---call-multiple-timesjava-------level-hard------tags-enumeration-string)
+    - [77. Frog Jump.java**       Level: Hard      Tags: [DP, Hash Table]](#77-frog-jumpjava-------level-hard------tags-dp-hash-table)
+      - [Note init](#note-init)
+      - [Thought](#thought)
+    - [78. Longest Substring with At Most Two Distinct Characters.java**       Level: Hard      Tags: [Hash Table, Sliding Window, String, Two Pointers]](#78-longest-substring-with-at-most-two-distinct-charactersjava-------level-hard------tags-hash-table-sliding-window-string-two-pointers)
+    - [79. Shortest Distance from All Buildings.java**       Level: Hard      Tags: [BFS]](#79-shortest-distance-from-all-buildingsjava-------level-hard------tags-bfs)
+    - [80. Sliding Window Maximum.java**       Level: Hard      Tags: [Deque, Heap, Sliding Window]](#80-sliding-window-maximumjava-------level-hard------tags-deque-heap-sliding-window)
+    - [81. Median of Two Sorted Arrays.java**       Level: Hard      Tags: [Array, Binary Search, DFS, Divide and Conquer]](#81-median-of-two-sorted-arraysjava-------level-hard------tags-array-binary-search-dfs-divide-and-conquer)
+    - [82. Bus Routes.java**       Level: Hard      Tags: [BFS]](#82-bus-routesjava-------level-hard------tags-bfs)
+    - [83. Sliding Puzzle.java**       Level: Hard      Tags: [BFS, Graph]](#83-sliding-puzzlejava-------level-hard------tags-bfs-graph)
+    - [84. Cracking the Safe.java**       Level: Hard      Tags: [DFS, Greedy, Math]](#84-cracking-the-safejava-------level-hard------tags-dfs-greedy-math)
+    - [85. Redundant Connection II.java**       Level: Hard      Tags: [DFS, Graph, Tree, Union Find]](#85-redundant-connection-iijava-------level-hard------tags-dfs-graph-tree-union-find)
+    - [86. The Maze III.java**       Level: Hard      Tags: [BFS, DFS, PriorityQueue]](#86-the-maze-iiijava-------level-hard------tags-bfs-dfs-priorityqueue)
+    - [87. Regular Expression Matching.java**       Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Sequence DP, String]](#87-regular-expression-matchingjava-------level-hard------tags-backtracking-dp-double-sequence-dp-sequence-dp-string)
+    - [88. Wildcard Matching.java**       Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Greedy, Sequence DP, String]](#88-wildcard-matchingjava-------level-hard------tags-backtracking-dp-double-sequence-dp-greedy-sequence-dp-string)
+    - [89. Robot Room Cleaner.java**       Level: Hard      Tags: [Backtracking, DFS]](#89-robot-room-cleanerjava-------level-hard------tags-backtracking-dfs)
+    - [90. Maximum Vacation Days.java**       Level: Hard      Tags: [DP]](#90-maximum-vacation-daysjava-------level-hard------tags-dp)
   - [Review (5)](#review-5-1)
+    - [0. Maximum Subarray III.java**       Level: Review      Tags: []](#0-maximum-subarray-iiijava-------level-review------tags-)
+    - [1. Valid Perfect Square.java**       Level: Review      Tags: [Binary Search, Math]](#1-valid-perfect-squarejava-------level-review------tags-binary-search-math)
+    - [2. Maximum Average Subarray II.java**       Level: Review      Tags: [Array, Binary Search, PreSum]](#2-maximum-average-subarray-iijava-------level-review------tags-array-binary-search-presum)
+    - [3. The Skyline Problem.java**       Level: Review      Tags: [Binary Indexed Tree, Divide and Conquer, Heap, PriorityQueue, Segment Tree, Sweep Line]](#3-the-skyline-problemjava-------level-review------tags-binary-indexed-tree-divide-and-conquer-heap-priorityqueue-segment-tree-sweep-line)
+    - [4. Remove Invalid Parentheses.java**       Level: Review      Tags: [BFS, DFS, DP]](#4-remove-invalid-parenthesesjava-------level-review------tags-bfs-dfs-dp)
+      - [Core concept: reverse test](#core-concept-reverse-test)
+      - [Minor details](#minor-details)
+      - [Backtracking](#backtracking-4)
+      - [Complexity](#complexity)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -10272,7 +11045,7 @@ TODO
  
  
 ## Hard (91)
-0. [Count of Smaller Number before itself.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number%20before%20itself.java)###       Level: Hard      Tags: []
+### 0. [Count of Smaller Number before itself.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Number%20before%20itself.java)**       Level: Hard      Tags: []
       
 Very similar to Count of Smaller Number. The actual value is used to form the segment tree, and the leaf is stored (count of smaller number).
 
@@ -10289,7 +11062,7 @@ In modify: Check root.start <= index and index <= root.end. It was ignored in th
 
 ---
 
-1. [Kth Smallest Sum In Two Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Kth%20Smallest%20Sum%20In%20Two%20Sorted%20Arrays.java)###       Level: Hard      Tags: []
+### 1. [Kth Smallest Sum In Two Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Kth%20Smallest%20Sum%20In%20Two%20Sorted%20Arrays.java)**       Level: Hard      Tags: []
       
 
 Use priority queue. Each time the smallest expansion, shift. X + 1, or y + 1:   
@@ -10304,10 +11077,10 @@ Note that the uniqueness of HashSet can be solved by using an "x, y" string.
 
 ---
 
-2. [LFU Cache.java](https://github.com/awangdev/LintCode/blob/master/Java/LFU%20Cache.java)###       Level: Hard      Tags: [Design, Hash Table]
+### 2. [LFU Cache.java](https://github.com/awangdev/LintCode/blob/master/Java/LFU%20Cache.java)**       Level: Hard      Tags: [Design, Hash Table]
       
 
-#### Hash Table
+#** Hash Table
 -See thoughts specifically, use map in several different ways
 - `regular object map`: map of <key, item>, where `item : {int val; int count}`
 - Use a Map<frequency count, doubly-linked node> to track the frequency
@@ -10325,14 +11098,14 @@ Note that the uniqueness of HashSet can be solved by using an "x, y" string.
 
 ---
 
-3. [Prefix and Suffix Search.java](https://github.com/awangdev/LintCode/blob/master/Java/Prefix%20and%20Suffix%20Search.java)###       Level: Hard      Tags: [Trie]
+### 3. [Prefix and Suffix Search.java](https://github.com/awangdev/LintCode/blob/master/Java/Prefix%20and%20Suffix%20Search.java)**       Level: Hard      Tags: [Trie]
       
 
 
 
 ---
 
-4. [Remove Node in Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Node%20in%20Binary%20Search%20Tree.java)###       Level: Hard      Tags: [BST]
+### 4. [Remove Node in Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Node%20in%20Binary%20Search%20Tree.java)**       Level: Hard      Tags: [BST]
       
 
 Method 1: Brutle a little. Find the target and target's parent.    
@@ -10344,14 +11117,14 @@ Method 2: Analyze the rules, first find the target and parent, and then move the
 
 ---
 
-5. [Subarray Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20II.java)###       Level: Hard      Tags: [Array, Binary Search, Two Pointers]
+### 5. [Subarray Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Subarray%20Sum%20II.java)**       Level: Hard      Tags: [Array, Binary Search, Two Pointers]
       
 
 
 
 ---
 
-6. [k Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/k%20Sum.java)###       Level: Hard      Tags: [DP]
+### 6. [k Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/k%20Sum.java)**       Level: Hard      Tags: [DP]
       
 
 DP. How the formula comes to mind needs to be re-understood.
@@ -10366,14 +11139,14 @@ dp[i][j][m] = dp[i][j-1][m] + dp[i - A[j - 1]][j-1][m-1]
 
 ---
 
-7. [Copy Books.java](https://github.com/awangdev/LintCode/blob/master/Java/Copy%20Books.java)###       Level: Hard      Tags: [Binary Search, DP, Partition DP]
+### 7. [Copy Books.java](https://github.com/awangdev/LintCode/blob/master/Java/Copy%20Books.java)**       Level: Hard      Tags: [Binary Search, DP, Partition DP]
       
 
 Give a list of books pages [i], k people, pages [i] represents the number of pages in each book. K people start to copy at the same time from different points. 
 
 Q. When can I copy it as soon as possible?
 
-#### Partition DP
+#** Partition DP
 -The first step is to understand the problem required by the title: the first k individuals copy n books and find the least amount of time; it can also be translated into: `n books, let k individuals copy, that is, split into k segments`.
 -Finally, dp [n] [k] is required. On: int [n + 1] [k + 1]. 
 -Principle:
@@ -10383,7 +11156,7 @@ Q. When can I copy it as soon as possible?
 -4. The result of the loop is that dp [i] [k] = Math.min (Math.max (dp [j] [k-1], sum [j, i]), loop over i, k, j = [i ~ 0])
 - Time: O (kn ^ 2), space O (nk)
 
-##### Init
+#### Init
 -Init: dp [0] [0] = 0, 0 people 0 books
 -Use of Integer.MAX_VALUE:
 -When i = 1, k = 1, Expression: dp [i] [k] = Math.min (dp [i] [k], Math.max (dp [j] [k-1], sum)) ;
@@ -10392,16 +11165,16 @@ Q. When can I copy it as soon as possible?
 -When the case of i = 0, k = 0 is discussed, the above equation will calculate dp [i] [k] according to the actual situation
 -The init of this question is very important and tricky
 
-##### Calculation order
+#### Calculation order
 -k people, need a for loop; 
 -k people, starting from copy1 book, 2, 3, ... n-1, so i = [1, n], need a second for loop
 -On each i, the cutting method can be [0 ~ i], we have to calculate each worst time
 
-##### Scrolling array
+#### Scrolling array
 -[k] Only related to [k-1]
 - Space: O(n)
 
-#### Binary Search
+#** Binary Search
 -Based on: How much time does each person spend doing binary search: How long does it take each person to complete it in K people with the least amount of time?
 -The range of time variable is not index or page size. It is [minPage, pageSum]
 -Pay attention to 3 cases when validating: people are enough to use k> = 0, people are not enough so the ending is reduced to k <0, and there is a time (the time spent by each person) is less than the current page, return -1
@@ -10412,7 +11185,7 @@ Q. When can I copy it as soon as possible?
 
 ---
 
-8. [Scramble String.java](https://github.com/awangdev/LintCode/blob/master/Java/Scramble%20String.java)###       Level: Hard      Tags: [DP, Interval DP, String]
+### 8. [Scramble String.java](https://github.com/awangdev/LintCode/blob/master/Java/Scramble%20String.java)**       Level: Hard      Tags: [DP, Interval DP, String]
       
 
 -Give two strings S, T. Check if they are scramble string.
@@ -10420,16 +11193,16 @@ Q. When can I copy it as soon as possible?
 -After rotating a node that is not a leaf, a new substring is formed, which is the scramble of the original string.
 
 
-#### Interval DP Interval
+#** Interval DP Interval
 -Dimension reduction strike, split, dp by length.
 -dp [i] [j] [k]: array S starts at index i, T starts at index j, is a substring of length k, is it a scramble string
 
-##### Break down
+#### Break down
 -After two halves of everything, look at two cases:, or not rotate the two halves. For these substrings, verify whether they are scrambled.
 -Two halves without rotation: S [part1] corresponds to T [part1] && S [part2] corresponds to T [part2]. 
 -Rotate the two halves: S [part1] corresponds to T [part2] && S [part2] corresponds to T [part1]. 
 
-##### Initialization
+#### Initialization
 -When len == 1, it can't be rotated, that is, to see if the corresponding indexes of S and T are equal.
 -Initialization is very important. It ’s amazing. This initailization lays the foundation for DP, and the result is calculated with a mathematical expression.
 -input s1, s2 are hardly used in the main content of the entire problem, but only used in the initialization.
@@ -10439,7 +11212,7 @@ Q. When can I copy it as soon as possible?
 
 ---
 
-9. [Interleaving String.java](https://github.com/awangdev/LintCode/blob/master/Java/Interleaving%20String.java)###       Level: Hard      Tags: [DP, String]
+### 9. [Interleaving String.java](https://github.com/awangdev/LintCode/blob/master/Java/Interleaving%20String.java)**       Level: Hard      Tags: [DP, String]
       
 
 Double-sequence DP, consider from the last point.
@@ -10452,21 +11225,21 @@ Seeking existence, boolean
 
 ---
 
-10. [Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/Edit%20Distance.java)###       Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, String]
+### 10. [Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/Edit%20Distance.java)**       Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, String]
       
 time: O (MN)
 Space: O(N)
 
 Two strings, A must be B, you can insert / delete / replace to find the smallest change in operation count
 
-#### Double Sequence
+#** Double Sequence
 -Consider the end of two strings, index? S [i], t [j]: If you need to make these two characters the same, you might use the three operations given in the title: insert / delete / replace?
 -Calculate worst case first, 3 operation count + 1; then compare match case.
 -Note that when i or j is 0, the steps that become another number can only be fully changed.
 -First step, space time is O (MN), O (MN)
 -Rolling array optimization, space O (N)
 
-##### Detail analysis
+#### Detail analysis
 - insert: assume insert on s, `#ofOperation = (s[0 ~ i] to t[0 ~ j-1]) + 1;`
 - delete: assume delete on t, `#ofOperatoin = (s[0 ~ i - 1] to t[0 ~ j]) + 1;`
 - replace: replace both s and t, `#ofOperatoin = (s[0 ~ i - 1] to t[0 ~ j - 1]) + 1;`
@@ -10474,31 +11247,31 @@ Two strings, A must be B, you can insert / delete / replace to find the smallest
 -init: When i == 0, dp [0] [j] = j;? + j characters each time; Similarly, when j == 0, dp [i] [0] = i;
 -And dp [i] [j] has two cases: `s [i] == t [j]` or `s [i]! = T [j]`
 
-##### When to initialize
+#### When to initialize
 -This judgment depends on experience: if you know that initialization can be done together in a double for loop, then you can keep doing that
 -This belongs to `what is needed, initialize what`
 -When doing space optimization afterwards, you can easily do rolling array on 1st dimension
 
-#### Search
+#** Search
 -It can be done, but it is not recommended: this question needs to find min count, not search / find all solutions, so search will be more complicated, killing chickens.
 
 
 
 ---
 
-11. [Distinct Subsequences.java](https://github.com/awangdev/LintCode/blob/master/Java/Distinct%20Subsequences.java)###       Level: Hard      Tags: [DP, String]
+### 11. [Distinct Subsequences.java](https://github.com/awangdev/LintCode/blob/master/Java/Distinct%20Subsequences.java)**       Level: Hard      Tags: [DP, String]
       
 
 Double Sequence DP:
-0. DP size (n + 1): find the result of the previous nth, then the dp array needs to open n + 1, because the end needs to return dp [n] [m]
-1. Initialize dp [0] [j] dp [i] [0] in the for loop
-2. Rolling array is optimized to O (N): If dp [i] [j] is in the for loop, it is a good replacement for curr / prev
+### 0. DP size (n + 1): find the result of the previous nth, then the dp array needs to open n + 1, because the end needs to return dp [n] [m]
+### 1. Initialize dp [0] [j] dp [i] [0] in the for loop
+### 2. Rolling array is optimized to O (N): If dp [i] [j] is in the for loop, it is a good replacement for curr / prev
 
 
 
 ---
 
-12. [Ones and Zeroes.java](https://github.com/awangdev/LintCode/blob/master/Java/Ones%20and%20Zeroes.java)###       Level: Hard      Tags: [DP]
+### 12. [Ones and Zeroes.java](https://github.com/awangdev/LintCode/blob/master/Java/Ones%20and%20Zeroes.java)**       Level: Hard      Tags: [DP]
       
 
 Still Double Sequence, but consider the third state: the amount of string array given.
@@ -10513,14 +11286,14 @@ Also, pay attention to calcualte zeros and ones outside, saving time and complex
 
 ---
 
-13. [Word Break II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Break%20II.java)###       Level: Hard      Tags: [Backtracking, DFS, DP, Hash Table, Memoization]
+### 13. [Word Break II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Break%20II.java)**       Level: Hard      Tags: [Backtracking, DFS, DP, Hash Table, Memoization]
       
 
 Find all word break variations, given dictionary
 
 利用 memoization: `Map<prefix, List<suffix variations>>`
 
-#### DFS + Memoization
+#** DFS + Memoization
 - Realize the input s expands into a tree of possible prefixes.
 - We can do top->bottom(add candidate+backtracking) OR bottom->top(find list of candidates from subproblem, and cross-match)
 - DFS on string: find a valid word, dfs on the suffix. [NO backtraking in the solution]
@@ -10528,7 +11301,7 @@ Find all word break variations, given dictionary
 - IMPORANT: Memoization: `Map<prefix, List<suffix variations>>`, which reduces repeated calculation if the substring has been tried.
 - Time O(n!). Worst case, permutation of unique letters: `s= 'abcdef....'`, and `dict=[a,b,c,d,e,f...]`
 
-#### Regular DPs
+#** Regular DPs
 -Two DPs are used together to solve the problem of timeout: when a invalid case 'aaaaaaaaa' occurs, isValid [] stops dfs from occuring
 -1. Isword [i] [j], subString (i, j) exist in dict?
 -2. Use isWord to speed up isValid [i]: Can [i ~ end] find a reasonable solution from dict?      
@@ -10538,7 +11311,7 @@ Find all word break variations, given dictionary
 -(Looking back at Word Break I, there is also a practice of coordinate inversion)
 -3. dfs uses isValid and isWord for ordinary DFS.
 
-#### Timeout Note
+#** Timeout Note
 -Regarding regular solution: Without memoization or dp, 'aaaaa .... aaa' will repeatedly calculate the same substring
 -Regarding double DP solution: Set.contains (...) is used in Word Break, i is 0 in isValid. However, contains () itself is O (n); intead, use an isWord [i] [j], judge whether i ~ j exists in dictionary based on O (1)
 
@@ -10546,7 +11319,7 @@ Find all word break variations, given dictionary
 
 ---
 
-14. [Minimum Window Substring.java](https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Window%20Substring.java)###       Level: Hard      Tags: [Hash Table, String, Two Pointers]
+### 14. [Minimum Window Substring.java](https://github.com/awangdev/LintCode/blob/master/Java/Minimum%20Window%20Substring.java)**       Level: Hard      Tags: [Hash Table, String, Two Pointers]
       
 
 Basic idea: use a char [] to store the frequency of the string. Then 2pointer, end go to the end, and continue to validate.
@@ -10558,7 +11331,7 @@ HashMap is a bit more complicated to write than char [], but more generic
 
 ---
 
-15. [Longest Substring with At Most K Distinct Characters.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters.java)###       Level: Hard      Tags: [Hash Table, Sliding Window, String]
+### 15. [Longest Substring with At Most K Distinct Characters.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters.java)**       Level: Hard      Tags: [Hash Table, Sliding Window, String]
       
 
 Large cleaning O (nk)   
@@ -10570,7 +11343,7 @@ Once a char is to be cleared, the char between 1st and last appearance of this c
 
 ---
 
-16. [Find Minimum in Rotated Sorted Array II.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II.java)###       Level: Hard      Tags: [Array, Binary Search]
+### 16. [Find Minimum in Rotated Sorted Array II.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II.java)**       Level: Hard      Tags: [Array, Binary Search]
       
 
 A topic that requires rigorous thinking. Because duplicates cause constant translation, the time complexity is ultimately O (n)
@@ -10582,14 +11355,14 @@ But still write a Binary Search, but the worst result is O (n)
 
 ---
 
-17. [Number of Islands II.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Islands%20II.java)###       Level: Hard      Tags: [Union Find]
+### 17. [Number of Islands II.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Islands%20II.java)**       Level: Hard      Tags: [Union Find]
       
 
 给一个island grid[][], and list of operations to fill a particualr (x,y) position.
 
 count # of remaining island after each operation.
 
-#### Union Find, model with int[]
+#** Union Find, model with int[]
 -After converting the board into a 1D array, you can use union-find to determine it. 
 -Use int [] father's unionFind, need to convert 2D position into 1D index. This is relatively clean
 -When judging, one step is taken in each of the four directions to determine whether it is the same Land.
@@ -10597,23 +11370,23 @@ count # of remaining island after each operation.
 -The count addition and subtraction are all placed in UnionFind's own function, which is convenient for tracking. Just give a few helper functions.
 - Time: O (k * log (mn))
 
-#### Union Find, model with Hashmap 
+#** Union Find, model with Hashmap 
 -Union-find with HashMap.
 
 
-#### Note:
+#** Note:
 - Proof of UnionFind log(n) time: https://en.wikipedia.org/wiki/Proof_of_O(log*n)_time_complexity_of_union%E2%80%93find
 
 
 
 ---
 
-18. [Word Search II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Search%20II.java)###       Level: Hard      Tags: [Backtracking, DFS, Trie]
+### 18. [Word Search II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Search%20II.java)**       Level: Hard      Tags: [Backtracking, DFS, Trie]
       
 
 Give a string of words, and a 2D character matrix. Find all the words that can be formed. Condition: 2D matrix can only be positioned next to each other.
 
-#### Trie, DFS
+#** Trie, DFS
 -Compared with the previous implementation, there are some places that can be optimized:
 -1. During Backtracking, you can mark on board [] [] instead of opening a visited [] []
 -2. You don't need to implement all the equations of the trie, you don't need it: only insert is needed here.
@@ -10621,7 +11394,7 @@ Give a string of words, and a 2D character matrix. Find all the words that can b
 -That is: the search here is written by hand, not the traditional trie search () funcombination
 -3. When there is end in TrieNode, the string word is stored, which means the end. When the word = null is used up, the problem of repeated search is just truncated.
 
-##### About Trie
+#### About Trie
 - Build Trie with target words: insert, search, startWith. Sometimes, just: `buildTree(words)` and return root.
 -Still do DFS on the board matrix.
 -no for loop on words. Directly to board DFS:   
@@ -10632,11 +11405,11 @@ Give a string of words, and a 2D character matrix. Find all the words that can b
 - search: boardWidth * boardHeight * (4^wordMaxLength + wordMaxLength[Trie Search])
 
 
-#### Regular DFS
+#** Regular DFS
 - for loop on words: inside, do board DFS based on each word.     
 - Time cpmplexity: word[].length * boardWidth * boardHeight * (4^wordMaxLength)
 
-#### Previous Notes
+#** Previous Notes
 - Big improvement: use boolean visited on TrieNode!     
 -Don't use rst.contains (...), because this is O (n) and timeout in leetcode (lintcode can pass)!    
 -In the Trie search () method, mark any visits.  
@@ -10646,7 +11419,7 @@ Give a string of words, and a 2D character matrix. Find all the words that can b
 
 ---
 
-19. [Word Squares.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Squares.java)###       Level: Hard      Tags: [Backtracking, Trie]
+### 19. [Word Squares.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Squares.java)**       Level: Hard      Tags: [Backtracking, Trie]
       
 
 Can open Trie class, which uses TrieNode. Open Trie (words) can be directly initalized with for loop
@@ -10670,27 +11443,27 @@ I can think of this inverted structure to store prefix candidates in Trie, this 
 
 ---
 
-20. [Trapping Rain Water.java](https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water.java)###       Level: Hard      Tags: [Array, Stack, Two Pointers]
+### 20. [Trapping Rain Water.java](https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water.java)**       Level: Hard      Tags: [Array, Stack, Two Pointers]
       
 
 There are many ways to solve this problem.
-#### method 1
+#** method 1
 Array, maintaining a left-hand highest wall array, and a right-hand highest strength array.
 For each index, the maximum water column that can be stored vertically is determined by the left and right highest walls:
 min(leftHighestWall, rightHighestWall) - currHeight.
 
-#### Method 2
+#** Method 2
 The optimization above method 1, two pointers, still find the highest left and highest right. O (1) space.
 The idea used in method 3 is the same: the entire structure is divided by the highest bar in the middle:
 The left is calculated as maxLeft, and the right is calculated as maxRight.
 
-#### Method 3
-2 Pointers, double-sided pinch:
-1. Find the index of the highest bar in the middle    
-2. Swipe to the center on both sides: add (topBarIndex-currIndex) * (elevation from previous index) each time. That is, add one horizontal bar at a time.    
-3. Every time you want to subtract the height of the block itself
+#** Method 3
+### 2 Pointers, double-sided pinch:
+### 1. Find the index of the highest bar in the middle    
+### 2. Swipe to the center on both sides: add (topBarIndex-currIndex) * (elevation from previous index) each time. That is, add one horizontal bar at a time.    
+### 3. Every time you want to subtract the height of the block itself
 
-#### Method 4
+#** Method 4
 The main idea is the same as Method 3: On the basis of the downhill slope, the bottom has been stacked with stacks. 
 Before finally encountering the ascent, at this time the bottom can be used to compare with all the downhill indexes accumulated before the stack, which is the water that is different from their height.
 The idea of ​​using a stack to record downhill, and then dig to the end with a while loop is great.
@@ -10700,14 +11473,14 @@ The idea of ​​using a stack to record downhill, and then dig to the end with
 
 ---
 
-21. [Largest Rectangle in Histogram.java](https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Rectangle%20in%20Histogram.java)###       Level: Hard      Tags: [Array, Monotonous Stack, Stack]
+### 21. [Largest Rectangle in Histogram.java](https://github.com/awangdev/LintCode/blob/master/Java/Largest%20Rectangle%20in%20Histogram.java)**       Level: Hard      Tags: [Array, Monotonous Stack, Stack]
       
 
 Give n bars to form a histogram. Find the rectangle with the largest area that can be found in this row of histograms.
 
 Thinking: Finding the area of ​​a rectangle is nothing more than finding two indices, then the length of the bottom edge * height.
 
-#### Monotonous Stack
+#** Monotonous Stack
 -The main point is to maintain a monotonically increasing stack according to the nature of the rectangle in the Histogram.
 -When loop over indexes:
 -If the height is> = previous peek (), then for that peek, it means, go down, keep going higher, the previous peek can always continue to bottom
@@ -10718,7 +11491,7 @@ Thinking: Finding the area of ​​a rectangle is nothing more than finding two
 -Why use stack? Because you need to know the continuously increasing peek, stack.peek () O (1), easy to use
   In fact, instead of stack, you can record all heights in other ways, but it is inconvenient to find peek by O (n)
 
-#### Knowledge
+#** Knowledge
 -Understand how monotonous stack is maintained
 -Maintaining a monotonous stack is required for the problem, not the nature of the stack itself.It is a clever use of stack.peek () O (1).
 
@@ -10727,16 +11500,16 @@ Thinking: Finding the area of ​​a rectangle is nothing more than finding two
 
 ---
 
-22. [Find Peak Element II.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Peak%20Element%20II.java)###       Level: Hard      Tags: [Binary Search, DFS, Divide and Conquer]
+### 22. [Find Peak Element II.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Peak%20Element%20II.java)**       Level: Hard      Tags: [Binary Search, DFS, Divide and Conquer]
       
 
-2Dmatrix, the value inside has some increasing and decreasing characteristics (the details are longer, see the original question). The goal is to find the peak element
+### 2Dmatrix, the value inside has some increasing and decreasing characteristics (the details are longer, see the original question). The goal is to find the peak element
 
 peak: greater than the point value in the surrounding 4 directions
 
-#### DFS
+#** DFS
 
-##### Fundamental
+#### Fundamental
 -We can't locate (x, y) accurately at one go, but we can find the peak of 1D array in another row / col.
 -Based on this point, move in the remaining two directions
 -1. In the middle line i = midX, find y where peak is.
@@ -10745,7 +11518,7 @@ peak: greater than the point value in the surrounding 4 directions
 -4. According to the previously calculated midX, midY divide the board into 4 quadrants, and continue to find in each
 -This question LintCode did not do it, so the idea is correct, but the answer has not been verified again.
 
-##### Pruning / splitting quadrant
+#### Pruning / splitting quadrant
 -Just find a peak in row / col every time!
 -Finding this point is equivalent to cutting the board in half.
 -Then, compared with the remaining two adjacent positions, I know where the bigger one is, and where to find the peak, that is, I cut the second knife again.
@@ -10754,11 +11527,11 @@ peak: greater than the point value in the surrounding 4 directions
 - http://www.jiuzhang.com/solution/find-peak-element-ii/#tag-highlight-lang-java
 - http://courses.csail.mit.edu/6.006/spring11/lectures/lec02.pdf
 
-##### time complexity
+#### time complexity
 -Each level is halved
 - T(n) = n + T(n/2) = n + n/2 + n/4 + ... + 1 = n(1 + 1/2 + .... + 1/n) = 2n = O(n)
 
-#### Binary Search
+#** Binary Search
 - EVERYTHING
 - O (nLogN)
 
@@ -10766,40 +11539,40 @@ peak: greater than the point value in the surrounding 4 directions
 
 ---
 
-23. [Palindrome Pairs.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Pairs.java)###       Level: Hard      Tags: [Hash Table, String, Trie]
+### 23. [Palindrome Pairs.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Pairs.java)**       Level: Hard      Tags: [Hash Table, String, Trie]
       
 
 Obvious's method is to try it all, and judge, it becomes O (n ^ 2) * O (m) = O (mn ^ 2). O (m): isPalindrome () time.
 
 Of course not, then it depends on O (nlogN), or O (n)?
 
-#### Method 1: Properties of Hash Table + Palindrome. Compound.
+#** Method 1: Properties of Hash Table + Palindrome. Compound.
 O (mn)
 
-##### Ideas
+#### Ideas
 -Each word can be split into front + mid + end. If this word + other words can form palindrome, that is to say
 -Cut off (mid + end), front.reverse () should be in words [].
 -Cut off (front + mid), end.reverse () should be stored in words [].
 -We use HashMap to store all <word, index>, and then reverse, just find a match.
 
-##### Corner case
+#### Corner case
 -If there is an empty string "", then it can be paired with any palendrome word, and it can be converted back and forth according to the position to make 2 distinct indexes.
 -This has the logic of `if (reverseEnd.equals (" ")) {...}`.
 -Note: Although the two for loops that deal with beheading / chopping are repeating records based on the empty string, 
   But because "" itself cannot be used as a starting point, overall will only be recorded once when paired with other palendrome.
 
 
-#### Method 2: Trie
+#** Method 2: Trie
 Still have to do that.
 
 
 
 ---
 
-24. [Maximal Rectangle.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximal%20Rectangle.java)###       Level: Hard      Tags: [Array, DP, Hash Table, Stack]
+### 24. [Maximal Rectangle.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximal%20Rectangle.java)**       Level: Hard      Tags: [Array, DP, Hash Table, Stack]
       
 
-#### Method 1: monotonous stack
+#** Method 1: monotonous stack
 Decomposed, it is actually 'Largest Rectangle in Histogram', but here you have to build your own model heights.
 The rectangle in a 2D array is also finally made with height * width.
 The clever thing is, treat each line as the bottom edge, and calculate the height of the bottom edge to the top: 
@@ -10808,14 +11581,14 @@ The clever thing is, treat each line as the bottom edge, and calculate the heigh
 
 If you look at specific examples, some rows seem to be calculated in vain, but there is no way. This is a search process, and the optimal solution will eventually be compared.
 
-#### Method 2: DP
+#** Method 2: DP
 Coordinate DP?
 
 
 
 ---
 
-25. [Longest Increasing Path in a Matrix.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Path%20in%20a%20Matrix.java)###       Level: Hard      Tags: [Coordinate DP, DFS, DP, Memoization, Topological Sort]
+### 25. [Longest Increasing Path in a Matrix.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Increasing%20Path%20in%20a%20Matrix.java)**       Level: Hard      Tags: [Coordinate DP, DFS, DP, Memoization, Topological Sort]
       
 
 mxn's matrix, find the longest increasing sequence length. Here the default continuous sequence.
@@ -10825,7 +11598,7 @@ mxn's matrix, find the longest increasing sequence length. Here the default cont
 -Can't do according to coordinate DP, because the calculation order can go in 4 directions.
 -In the end, all nodes must be visited, so DFS search is more appropriate.
 
-#### DFS, Memoization
+#** DFS, Memoization
 - 简单版: longest path, only allow right/down direction: 
 - `dp[x][y] = Math.max(dp[prevUpX][prevUpY], or dp[prevUpX][prevUpY] + 1)`; and compare the other direction as well
 - This problem, just compare the direction from dfs result
@@ -10836,14 +11609,14 @@ mxn's matrix, find the longest increasing sequence length. Here the default cont
 -top level: O (mn), try to start from each (x, y)
 - O(m * n * k), where k is the longest path
 
-#### Topological sort
+#** Topological sort
 Not done yet
 
 
 
 ---
 
-26. [Coins in a Line III.java](https://github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20III.java)###       Level: Hard      Tags: [Array, DP, Game Theory, Interval DP, Memoization]
+### 26. [Coins in a Line III.java](https://github.com/awangdev/LintCode/blob/master/Java/Coins%20in%20a%20Line%20III.java)**       Level: Hard      Tags: [Array, DP, Game Theory, Interval DP, Memoization]
       
 
 LeetCode: Predict the Winner
@@ -10852,7 +11625,7 @@ Still 2 people take n coins, and coins can have different values.
 
 But this time the player can take from any side, but not restricted from one side. Will the first mover win?
 
-#### Memoization + Search
+#** Memoization + Search
 -Like Coins in a Line II, MaxiMin's idea: Find the maximum of my disadvantages
 -`dp [i] [j] represents the sum of values ​​that players can take in the [i, j] interval`
 -Similarly, sum [i] [j] represents the sum of values ​​between [i] and [j]
@@ -10860,7 +11633,7 @@ But this time the player can take from any side, but not restricted from one sid
 - dp[i][j] = sum[i][j] - Math.min(dp[i][j - 1], dp[i + 1][j]);
 -You need to search here, draw a tree to see how it is segmented according to before and after fetching.
 
-#### Game + Interval DP, Interval DP
+#** Game + Interval DP, Interval DP
 -Because it looks at the interval [i, j], it can be thought of as the interval DP
 -This method needs a review, and it is related to the inference of mathematical expressions: S (x) =-S (y) + m. Refer to the following formula for derivation.
 -dp [i] [j] indicates that from index (i) to index (j), the maximum value that the first player can get is different from the opponent's number. That is S (x).
@@ -10871,7 +11644,7 @@ But this time the player can take from any side, but not restricted from one sid
 -Finally judge dp [0] [n]> = 0, the difference between the maximum number sum is greater than 0, and you win.
 -Time / space O (n ^ 2)
 
-##### Formula Derivation
+#### Formula Derivation
 -S (x) = X-Y, find the difference between the largest number and sum, where X and Y are the total score of player X and the total score of player Y. 
 -For player X: If the maximum value of S (x) is greater than 0, you win; if the maximum value is less than 0, you must lose. 
 -Player Y: S (y) to indicate the difference between the largest number and sum for Y. S (y) = Y-X
@@ -10882,12 +11655,12 @@ But this time the player can take from any side, but not restricted from one sid
 -In this question, when we model X and Y, they are actually dp [i] [j], and the difference is first-hand / last-hand.
 -Apply the formula, a certain S (x) = a [i]-dp [i + 1] [j], which is m = a [i], and S (y '') = dp [i + 1] [j]
 
-##### Note
+#### Note
 -If you consider calculating the maximum value between the first hand [i, j], then two arrays may be needed, and finally used to compare the score size of the first hand and the opponent => then more dimensions are needed.
 -The number difference we consider here just happens to make people not need to calculate the total score of the first mover, very clever.
 -Trick: Using the difference formula, the derivation is a bit difficult to think of.
 
-##### Interval Dynamic Programming
+#### Interval Dynamic Programming
 -Find the properties within the [i, j] interval: dp [i] [j] The subscript indicates the interval range [i, j]
 -Sub-question: behead, tail, behead
 -loop should be based on the length of the interval
@@ -10898,30 +11671,30 @@ But this time the player can take from any side, but not restricted from one sid
 
 ---
 
-27. [Burst Balloons.java](https://github.com/awangdev/LintCode/blob/master/Java/Burst%20Balloons.java)###       Level: Hard      Tags: [DP, Divide and Conquer, Interval DP, Memoization]
+### 27. [Burst Balloons.java](https://github.com/awangdev/LintCode/blob/master/Java/Burst%20Balloons.java)**       Level: Hard      Tags: [DP, Divide and Conquer, Interval DP, Memoization]
       
 
 A volleyball, each ball has a value, each time you break one, you will score: left * middle * right value. Find, how to tie, the maximum?
 
 TODO: Need more thoughts on why using dp[n + 2][n + 2] for memoization, but dp[n][n] for interval DP.
 
-#### Interval DP
+#** Interval DP
 -Because the regularity of the array changes, it is difficult to find the 'first burst'. On the contrary, which one is the last burst?
 -The last burst becomes a wall: separate the two sides, consider separately, the principle of addition; finally add the middle.
 - dp[i][j] represent max value on range [i, j)
 - Need to calculate dp[i][j] incrementally, starting from range size == 3 ---> n
 - Use k to divide the range [i, j) and conquer each side.
 
-##### Interval DP Three Axes:
+#### Interval DP Three Axes:
 -Split in the middle
 -Cut off head or tail
 -Range as the basis of iteration
 
-##### Print the calculation process
+#### Print the calculation process
 - use pi[i][j] and print recursively.
 - Print k, using pi[i][j]: max value taken at k
 
-#### Memoization
+#** Memoization
 -In fact, it will be a DP that I think about afterwards
 -dp [i] [j] = max between balloons i ~ j. 
 -Then which point to start the burst? Set to x.
@@ -10935,15 +11708,15 @@ TODO: Need more thoughts on why using dp[n + 2][n + 2] for memoization, but dp[n
 
 ---
 
-28. [K Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/K%20Edit%20Distance.java)###       Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, Trie]
+### 28. [K Edit Distance.java](https://github.com/awangdev/LintCode/blob/master/Java/K%20Edit%20Distance.java)**       Level: Hard      Tags: [DP, Double Sequence DP, Sequence DP, Trie]
       
 
 Give a string of String, target string, int k. Find all the dates in the string array: change K times, can become target.
 
-#### Trie
+#** Trie
 EVERYTHING
 
-#### Double Sequence DP
+#** Double Sequence DP
 - Edit Distance的follow up.
 -In fact, it is to change the function of minEditDistance and bring K for comparison.
 -The main logic is exactly the same as Edit Distance.
@@ -10954,7 +11727,7 @@ EVERYTHING
 
 ---
 
-29. [Paint House II.java](https://github.com/awangdev/LintCode/blob/master/Java/Paint%20House%20II.java)###       Level: Hard      Tags: [DP, Sequence DP, Status DP]
+### 29. [Paint House II.java](https://github.com/awangdev/LintCode/blob/master/Java/Paint%20House%20II.java)**       Level: Hard      Tags: [DP, Sequence DP, Status DP]
       
 time: O (NK ^ 2):
 space: (NK)
@@ -10967,7 +11740,7 @@ Rule: two adjacent houses cannot be the same color
 
 Seek: the least cost 
 
-#### DP
+#** DP
 -It's almost the same as Paint House I, but with more paint colors: k colors.
 -First consider simply using dp [i] to represent the minimum cost of the first i houses
 -But what colors dp [i] and dp [i-1] index will affect each other, it is difficult to discuss, so add state: the sequence DP is added to the state to 2D. 
@@ -10978,12 +11751,12 @@ Seek: the least cost
 - Time O (NK ^ 2), space (NK)
 - Rolling array: reduce space to O(K)
 
-#### Note
+#** Note
 -The sequence type dp [i] represents the result of 'top i-1'. So dp is best set to int [n + 1] size. 
 -However, the color is the state here, so it remains in j: [0 ~ k)
 -[[8]] This edge case. Can't run into for loop, so special handle.
 
-#### Optimization Solution
+#** Optimization Solution
 - Team: O (NK)
 -If it is known that two different minimum costs must be selected from the cost each time, then the minimum two are selected first, and there is no need to have a third for loop to find min
 -Find each time in the series: min value except yourself, use min / min value
@@ -10997,28 +11770,28 @@ Seek: the least cost
 
 ---
 
-30. [Best Time to Buy and Sell Stock III.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.java)###       Level: Hard      Tags: [Array, DP, Sequence DP]
+### 30. [Best Time to Buy and Sell Stock III.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.java)**       Level: Hard      Tags: [Array, DP, Sequence DP]
       
 
 One more restriction than stock II: only 2 sell opportunities.
 
-#### DP plus status
+#** DP plus status
 -Sell only 2 times, split the sale into 5 status modules.
 -In state index 0, 2, 4: No stock is held. 1. Always in this state, max profit is unchanged; 2. Just sold, dp [i] [previous state] + profit
 -At state index 1, 3: Holding the stock. 1. Always in this state, daily profit. 2. Just bought, state changed, but no profit yet: dp [i] [previous state]
 
-##### Partial profit
+#### Partial profit
 -Adding daily partial profit (diff) together, the final overall profit is the same. The only thing that is better is that you don't need to record the time of the middle buy.
 -When will profit accumulate? 
 -1. The original stock is held. If there is no action, the status will not change and the profit diff will be accumulated. 
 -2. The stock was sold, the status changed, and profit diff accumulated.
 -Note: Only when the state index: 0, 2, 4, that is, the stock is sold, can you accumulate profit
 
-##### Rolling Array
+#### Rolling Array
 -[i] only deals with [i-1], reduce space
 - O (1) space, O (n) time
 
-#### Looking for the peak
+#** Looking for the peak
 -Find the peak; then look for another peak.
 -How about Optimize twice? Start looking for Max from both sides at the same time! (Awesome idea)
 -leftProfit is the maximum Profit at each i point from left to right.
@@ -11030,31 +11803,31 @@ One more restriction than stock II: only 2 sell opportunities.
 
 ---
 
-31. [Best Time to Buy and Sell Stock IV.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.java)###       Level: Hard      Tags: [DP, Sequence DP]
+### 31. [Best Time to Buy and Sell Stock IV.java](https://github.com/awangdev/LintCode/blob/master/Java/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.java)**       Level: Hard      Tags: [DP, Sequence DP]
       
 
 There are int [] price of stock, up to k transactions. Seeking maximum profit.
 
-#### DP
+#** DP
 -According to StockIII, it is not difficult to find that StockIV is to divide the state into 2k + 1 shares. Then the same code, transplant.
 
-##### Note 1: 
+#### Note 1: 
 -If k is large and k> n / 2, then there can be at most n / 2 transactions in an array of length n
 -Then the problem is simplified to stockII, giving n arrays, unlimited transactions.
 -Note that the number of status is 2k + 1
 - Time O(NK), Space O(2k+1) to store the status
 
-##### Note 2: 
+#### Note 2: 
 -The final status is 'no stock' should be considered, make a for loop to compare max. 
 -Of course, it is also possible to make a profit variable and keep comparing.
 
-#### Method 2
+#** Method 2
 -(previous notes, thinking about the first method is enough)
 -Remember to understand: Why did you sell and buy on day i-1, and you can make a transaction with the sale on day i?    
 -Because the price of daily transactions is fixed. So if you sell and buy, you are not selling! That's why you can merge. Be sensitive to prices.
 - Inspired from here: http://liangjiabin.com/blog/2015/04/leetcode-best-time-to-buy-and-sell-stock.html
 
-##### Local optimal solution vs. global optimal solution:     
+#### Local optimal solution vs. global optimal solution:     
 - local[i][j] = max(global[i – 1][j – 1] + diff, local[i – 1][j] + diff)    
 - global[i][j] = max(global[i – 1][j], local[i][j])     
 -local [i] [j]: On day i, profit of j-th transaction must be made on that day     
@@ -11075,14 +11848,14 @@ There are int [] price of stock, up to k transactions. Seeking maximum profit.
 
 ---
 
-32. [Russian Doll Envelopes.java](https://github.com/awangdev/LintCode/blob/master/Java/Russian%20Doll%20Envelopes.java)###       Level: Hard      Tags: [Binary Search, Coordinate DP, DP]
+### 32. [Russian Doll Envelopes.java](https://github.com/awangdev/LintCode/blob/master/Java/Russian%20Doll%20Envelopes.java)**       Level: Hard      Tags: [Binary Search, Coordinate DP, DP]
       
 
 Matryoshka, here is represented by envelope. For a string, each [x, y] is the length and width of envelope. [[5,4], [6,4], [6,7], [2,3 ]]. 
 
 Look at these sets of dolls, you can set a few at most.
 
-#### DP: 1D Coordinate
+#** DP: 1D Coordinate
 -Envelopes have no order, they are sorted first (mainly according to the first index)
 -Then observe: After sorting, it becomes 1D coordinate dynamic programming.
 -max number depends on the max value of the previous successful Russian doll + 1
@@ -11090,7 +11863,7 @@ Look at these sets of dolls, you can set a few at most.
 -The current state of index i depends on the state of previous index j, so iterate through two indexes.
 - O(n^2)的DP, n = envelopes.length;
 
-#### DP: 2D Coordinate
+#** DP: 2D Coordinate
 -This method came up by myself, but the time complexity is too large, timeout
 -Mark the envelop on the 2D grid, and then like a robot, find the maximum count max in the bottom right corner.
 -count how many Russian dolls can be present
@@ -11104,19 +11877,19 @@ Look at these sets of dolls, you can set a few at most.
 
 ---
 
-33. [Expression Tree Build.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Tree%20Build.java)###       Level: Hard      Tags: [Binary Tree, Expression Tree, Minimum Binary Tree, Stack]
+### 33. [Expression Tree Build.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Tree%20Build.java)**       Level: Hard      Tags: [Binary Tree, Expression Tree, Minimum Binary Tree, Stack]
       
 
 Give a string of characters, which is the formula expression. Turn the formula into an expression tree
 
-#### Monotonous Stack
+#** Monotonous Stack
 -Like Max-tree, https://leetcode.com/problems/maximum-binary-tree
 -A bottom-> top incremental stack is used: the lowest root is maintained as the smallest element.
 -This topic is Min-tree, the smallest on the head, Logic is the same as max-tree   
 - Space: O(n) 
 - Time on average: O(n).
 
-#### Features
+#** Features
 -TreeNode: Use a TreeNode that is not the final result, store the weight, and use it for sorting
 -Weigh the symbols on the same level with the concept of base weight, numerical order
 -Each character is a node and has its own weight. Use a TreeNode to store the weight value, and use weight to determine: 
@@ -11128,19 +11901,19 @@ Give a string of characters, which is the formula expression. Turn the formula i
 
 ---
 
-34. [Expression Evaluation.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Evaluation.java)###       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Minimum Binary Tree, Stack]
+### 34. [Expression Evaluation.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Evaluation.java)**       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Minimum Binary Tree, Stack]
       
 
 Give a formula expression, array of strings, and evaluate the result.
 
-#### DFS on Expression Tree
+#** DFS on Expression Tree
 -Calculate the value of expression: 1. Construct expression tree. 2. DFS calculation result
 - Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)
 -After building Min Tree, do PostTraversal. 
 -Divde and Conquer: first recursively find the size of left and right, then evaluate the symbol in the middle
 - Time, Space O(n), n = # expression nodes
 
-#### Note
+#** Note
 -1. When Handle number, if left && right Child is all Null, it must be our largest number node.   
 -2. If one child is null, then return another node.    
 -3. prevent Integer overflow during operation: Use a Long during the process, and the final result is cast back to int.
@@ -11149,12 +11922,12 @@ Give a formula expression, array of strings, and evaluate the result.
 
 ---
 
-35. [Convert Expression to Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Polish%20Notation.java)###       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]
+### 35. [Convert Expression to Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Polish%20Notation.java)**       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]
       
 
 Give a string of characters to represent the formula expression. Convert this expression to Polish Notation (PN).
 
-#### Expression Tree
+#** Expression Tree
 - Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)
 -After the Expression Tree is made according to the intent: After a Pre-order-traversal, you can record the Polish Notation
 -This question is not given to 'ExpressionTreeNode', so TreeNode is regarded as the node we need, and it can be expanded to have left / right child.
@@ -11164,12 +11937,12 @@ Give a string of characters to represent the formula expression. Convert this ex
 
 ---
 
-36. [Convert Expression to Reverse Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Reverse%20Polish%20Notation.java)###       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]
+### 36. [Convert Expression to Reverse Polish Notation.java](https://github.com/awangdev/LintCode/blob/master/Java/Convert%20Expression%20to%20Reverse%20Polish%20Notation.java)**       Level: Hard      Tags: [Binary Tree, DFS, Expression Tree, Stack]
       
 
 Give a string of characters to represent the formula expression. Convert this expression to Reverse Polish Notation (RPN).
 
-#### Expression Tree
+#** Expression Tree
 - Expression Tree: Minimum Binary Tree (https://lintcode.com/en/problem/expression-tree-build/)
 -After the Expression Tree is made according to the intent: Post-order-traversal can record Reverse Polish Notation
 -This question is not given to 'ExpressionTreeNode', so TreeNode is regarded as the node we need, and it can be expanded to have left / right child.
@@ -11178,21 +11951,21 @@ Give a string of characters to represent the formula expression. Convert this ex
 
 ---
 
-37. [Decode Ways II.java](https://github.com/awangdev/LintCode/blob/master/Java/Decode%20Ways%20II.java)###       Level: Hard      Tags: [DP, Enumeration, Partition DP]
+### 37. [Decode Ways II.java](https://github.com/awangdev/LintCode/blob/master/Java/Decode%20Ways%20II.java)**       Level: Hard      Tags: [DP, Enumeration, Partition DP]
       
 
 Given a string of numbers, you need to decode them into English letters. [1 ~ 26] Corresponding to the corresponding English letters. Find out how many ways you can decode.
 
 The characters may be "*", which can represent [1-9]
 
-#### DP
+#** DP
 -Multiplication principle
 -Same as decode way I, the principle of addition, and the cutting point: whether 1 digit or 2 digits is used to decode
 -Define dp [i] = how many ways to decode the first i digits. New dp [n + 1].
 -Different situations: In each partition, if there is "*", it will extend many different possibilities in itself.
 - 那么: dp[i] = dp[i - 1] * (#variations of ss[i]) + dp[i - 2] * (#variations of ss[i,i+1])
 
-##### Features
+#### Features
 -Ability to enumerate: specifically analyze where the '*' appears, enumerate numbers, basic skills. 
 -Note !! The title says * in [1, 9]. (It will be harder if 0 ~ 9)
 -Understand the reason for taking MOD: the number is too large, take the mod to give the final result: In fact, with a mod as large as 10 ^ 9 + 7, most examples can pass.
@@ -11203,12 +11976,12 @@ The characters may be "*", which can represent [1-9]
 
 ---
 
-38. [Palindrome Partitioning II.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning%20II.java)###       Level: Hard      Tags: [DP, Partition DP]
+### 38. [Palindrome Partitioning II.java](https://github.com/awangdev/LintCode/blob/master/Java/Palindrome%20Partitioning%20II.java)**       Level: Hard      Tags: [DP, Partition DP]
       
 
 Give a String s, find out how many cuts to use, so that each substring that is cut out is palindrome
 
-#### Partition DP
+#** Partition DP
 -Find minimum cut: Divide DP
 -dp [i]: How many knives to cut at least, so that the string of length i before the cut is all palindrome
 -You end up with dp [n], so int [n + 1]
@@ -11216,7 +11989,7 @@ Give a String s, find out how many cuts to use, so that each substring that is c
 -Consider whether [j, i-1] is a palindrome string, and if so, then: dp [i] = min (dp [i], d [j] + 1).
 -note: It is estimated that when traversing j, the reverse traversal is also possible.
 
-#### Computing Palindrome Optimization
+#** Computing Palindrome Optimization
 -Using the properties of palindrome, the situation of boolean palindrome [i, j] can be calculated. 
 -Find an arbitrary mid point:
 -1. Assuming that the palindrome is an odd length, then mid is a separate character, and the characters [mid-1], [mid + 1] on both sides should be exactly equal.
@@ -11225,7 +11998,7 @@ Give a String s, find out how many cuts to use, so that each substring that is c
 -This will reasonably reduce the dimensionality of our problem, currently it is time: O (n ^ 2). 
 -Otherwise, if we ask for palindrome once, that is n, it will become O (n ^ 3)
 
-#### Previous Notes
+#** Previous Notes
 -Double for loop checks each substring string (i ~ j). If i, j are adjacent or the same point, then isPal; otherwise, (i + 1, j-1) between i and j must be isPal.
 -It seems that when checking i, j, how can I know (i + 1, j-1) pressed in the middle first? Actually not .. When j grows up slowly, all 0 ~ j substrings are checked. So isPal [i + 1] [j-1] must already know the result.
 -okay. Then if any of the above is true, that is to say isPal [i] [j] == true. Then we have to judge how many ways to cut to the end point of the loop parameter j in the first layer?
@@ -11239,14 +12012,14 @@ Give a String s, find out how many cuts to use, so that each substring that is c
 
 ---
 
-39. [Backpack III.java](https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20III.java)###       Level: Hard      Tags: [Backpack DP, DP]
+### 39. [Backpack III.java](https://github.com/awangdev/LintCode/blob/master/Java/Backpack%20III.java)**       Level: Hard      Tags: [Backpack DP, DP]
       
 
 For n different items, int [] A weight, int [] V value, each item can be used unlimited times
 
 Ask the maximum value can be packed into a package of size m?
 
-#### DP
+#** DP
 -Items can be used indefinitely, losing the meaning of last i, last unique item: because it can be reused.
 -So you can convert an angle:
 -1. Use i   kinds of   items, spell w, and satisfy the max value. Here, item i can be used unlimited times, so consider how many times K is used.
@@ -11256,7 +12029,7 @@ Ask the maximum value can be packed into a package of size m?
 - Time O (nmk)
 -If k = 0 or 1, it is actually Backpack II: with or without
 
-#### Optimization
+#** Optimization
 -Optimize time complexity, draw and find:
 -Calculated (dp [i-1] [j-k * A [i-1]] + k * V [i-1]) 
 -In fact, the grid of dp [i] [jA [i-1]] on the same line has V [i-1]
@@ -11264,7 +12037,7 @@ Ask the maximum value can be packed into a package of size m?
 -Simplify: dp [i] [j] One of the possibilities is: dp [i] [j-A [i-1]] + V [i-1]
 - Time O (mn)
 
-#### Space optimized to 1-dimensional array
+#** Space optimized to 1-dimensional array
 -Draw a 2 rows grid according to the previous optimization
 -Found that dp [i] [j] depends on: 1. dp [i-1] [j], 2. dp [i] [j-A [i-1]]
 -Among them: dp [i-1] [j] is the settlement result of the previous round (i-1), it must be already calculated, ready to be used
@@ -11279,20 +12052,20 @@ Ask the maximum value can be packed into a package of size m?
 
 ---
 
-40. [First Missing Positive.java](https://github.com/awangdev/LintCode/blob/master/Java/First%20Missing%20Positive.java)###       Level: Hard      Tags: [Array]
+### 40. [First Missing Positive.java](https://github.com/awangdev/LintCode/blob/master/Java/First%20Missing%20Positive.java)**       Level: Hard      Tags: [Array]
       
 
 Give a string of unordered numbers with negative numbers: find the first missing positive integer in this array
 
 The missing positive integer is actually compared with [1, n].
 
-#### Array analysis, index tricks
+#** Array analysis, index tricks
 -With a while loop, keep trying to get the number to the place
 -If index = nums [i] exceeds nums.length, of course, it will not move
 -Note: check val! = Nums [val], avoid infinitely loop
 -Test: Is nums [i] equal to i, if not, then find the result
 
-#### Edge Case
+#** Edge Case
 -If nums == null, in fact missing positive integer is naturally 1
 -During validation, there may be no disconnected integers in the string, but the largest integer is in the first place (because the index exceeds the standard, it cannot be placed in the correct place)
 -At this time, n is placed at index 0. In fact, the next integer should be n + 1
@@ -11302,17 +12075,17 @@ The missing positive integer is actually compared with [1, n].
 
 ---
 
-41. [N-Queens.java](https://github.com/awangdev/LintCode/blob/master/Java/N-Queens.java)###       Level: Hard      Tags: [Backtracking]
+### 41. [N-Queens.java](https://github.com/awangdev/LintCode/blob/master/Java/N-Queens.java)**       Level: Hard      Tags: [Backtracking]
       
 
 N-Queen question, give numbers n, and nxn board, find all answers for N-queens.
 
-#### Backtracking
+#** Backtracking
 -Use dfs to find all situations, each iteration, pick the right point from the line, dfs
 -The selected points are added to the candidate list, remember to backtracking.
 -Each candidate needs validation, check if row, col, 2 diagnal is queen
 
-#### validate n queue at certain (x, y)
+#** validate n queue at certain (x, y)
 -1. array cannot have target row #
 -2. diagnal. Remember the formula:
 - row1 - row2 == col1 - col2.     Diagnal elelment.fail
@@ -11326,12 +12099,12 @@ N-Queen question, give numbers n, and nxn board, find all answers for N-queens.
 
 ---
 
-42. [N-Queens II.java](https://github.com/awangdev/LintCode/blob/master/Java/N-Queens%20II.java)###       Level: Hard      Tags: [Backtracking]
+### 42. [N-Queens II.java](https://github.com/awangdev/LintCode/blob/master/Java/N-Queens%20II.java)**       Level: Hard      Tags: [Backtracking]
       
 
 Like N-Queens, not all results, but how many results are counted.
 
-#### Backtracking
+#** Backtracking
 -When list.size () == n, it means that a solution was found.
 - 1. dfs function (List<Integer>, n)
 - 2. validate function
@@ -11340,15 +12113,15 @@ Like N-Queens, not all results, but how many results are counted.
 
 ---
 
-43. [LRU Cache.java](https://github.com/awangdev/LintCode/blob/master/Java/LRU%20Cache.java)###       Level: Hard      Tags: [Design, Hash Table, Linked List]
+### 43. [LRU Cache.java](https://github.com/awangdev/LintCode/blob/master/Java/LRU%20Cache.java)**       Level: Hard      Tags: [Design, Hash Table, Linked List]
       
 
-#### Double Linked List
+#** Double Linked List
 -Using a special bidirectional ListNode, with head and tail, this greatly speeds up the process.     
 -The main thing that speeds up is the process of updating the ranking. Finding the item hashmap O (1), and doing subtraction and transposition are O (1)
 - Overall O(1)
 
-##### Be smart
+#### Be smart
 -1. Head and tail are particularly clever: removing heads and tails, and adding heads and tails, are particularly fast.    
 -2. Use two-way pointers: pre and next. When you need to remove any node, just know which one to remove.     
 -Just patiently connect node.pre and node.next, and the node will be disconnected naturally.     
@@ -11357,7 +12130,7 @@ Like N-Queens, not all results, but how many results are counted.
 - insertHead()    
 - remove()      
 
-#### O (n) check for duplicates
+#** O (n) check for duplicates
 -timeout method, naive came an O (n) solution, and it turned out timeout.     
 -A map <key, value> stores the value. A queue <key> to hold the rank.     
 -Every time there is an update, put the latest one at the end; every time you exceed the capaticity, kill the big head. Very simple, but it took too long to run and failed.     
@@ -11367,42 +12140,42 @@ Like N-Queens, not all results, but how many results are counted.
 
 ---
 
-44. [Binary Tree Maximum Path Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum.java)###       Level: Hard      Tags: [DFS, DP, Tree, Tree DP]
+### 44. [Binary Tree Maximum Path Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Tree%20Maximum%20Path%20Sum.java)**       Level: Hard      Tags: [DFS, DP, Tree, Tree DP]
       
 
 Find max path sum, from any treeNode to any treeNode.
 
-#### Kinda, Tree DP
+#** Kinda, Tree DP
 -Two cases: 1. combo sum: left + right + root; 2. single path sum
 - Note1: the path needs to be continuous, curr node cannot be skipped
 - Note2: what about I want to skip curr node: handled by lower level of dfs(), where child branch max was compared.
 -Note3: skip left / right child branch sum, by comparing with 0. Less than 0, no need to record
 
-#### DP Thoughts
+#** DP Thoughts
 -tree gives us 2 branches, each branch is similar to dp [i-1], here is similar to dp [left], dp [right]
 -After finding dp [left], dp [right], combine with curr node. 
 -Because it is looking for max sum, and can skip nodes, the global variable max is required
 -Each time dfs () returns must be a path that can continue `continuously link ', so return` one single path sum + curr value`.
 
-#### DFS, PathSum object
+#** DFS, PathSum object
 - that just solves everything
 
 
 ---
 
-45. [Basic Calculator.java](https://github.com/awangdev/LintCode/blob/master/Java/Basic%20Calculator.java)###       Level: Hard      Tags: [Binary Tree, Expression Tree, Math, Minimum Binary Tree, Stack]
+### 45. [Basic Calculator.java](https://github.com/awangdev/LintCode/blob/master/Java/Basic%20Calculator.java)**       Level: Hard      Tags: [Binary Tree, Expression Tree, Math, Minimum Binary Tree, Stack]
       
 
 Give an expression String to evaluate the value of the expression.
 
 Expression strings include +,-, integers, opening and closing parentheses, and space.
 
-#### Expression Tree
+#** Expression Tree
 -Expression Tree is a weight-based min-tree 
 -Tree based on operation symbol + number: number is always in leaf, then symbol is tree node, brackets do not appear in tree
 -Use monotonuous stack to build this tree
 
-##### Thinking points
+#### Thinking points
 - Understand Expression Tree
 - Use stack to build the expression tree + understand the weight system
 - Use post-order traversal to evaluate the tree
@@ -11413,12 +12186,12 @@ Expression strings include +,-, integers, opening and closing parentheses, and s
 
 ---
 
-46. [Longest Consecutive Sequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Consecutive%20Sequence.java)###       Level: Hard      Tags: [Array, Hash Table, Union Find]
+### 46. [Longest Consecutive Sequence.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Consecutive%20Sequence.java)**       Level: Hard      Tags: [Array, Hash Table, Union Find]
       
 
 Give a string of numbers, unsorted, find the length of the sequence of consecutive elements in the string of numbers
 
-#### HashSet
+#** HashSet
 -To see continuous elements, you must search for num ++, num--
 -1. Need O (1) to find the element
 -2. Need to find num-1, num + 1.
@@ -11429,14 +12202,14 @@ Give a string of numbers, unsorted, find the length of the sequence of consecuti
 -overall O (n) time complexity
 
 
-#### Union Find
+#** Union Find
 -In the end, we need to calculate the total length of the connected elements. In fact, the elements are grouped together, and the connected groups are together, so I think of UnionFind
 -An `int [] size` is used here to help deal with the question of` parent` when merging: always go to a union with a large group
 -In the main function, there is a map to track, and each element is processed only once.
 - union的内容: current number - 1, current number + 1
 - https://www.jianshu.com/p/e6b955ca208f
 
-##### Features
+#### Features
 -Union Find seems easier to do on index
 - 其他union find function: `boolean connected(a,b){return find(a) == find(b)}`
 
@@ -11444,31 +12217,31 @@ Give a string of numbers, unsorted, find the length of the sequence of consecuti
 
 ---
 
-47. [Serialize and Deserialize Binary Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Serialize%20and%20Deserialize%20Binary%20Tree.java)###       Level: Hard      Tags: [BFS, DFS, Deque, Design, Divide and Conquer, Tree]
+### 47. [Serialize and Deserialize Binary Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Serialize%20and%20Deserialize%20Binary%20Tree.java)**       Level: Hard      Tags: [BFS, DFS, Deque, Design, Divide and Conquer, Tree]
       
 
 Serialize and Deserialize Binary Tree
 
-#### DFS, Divide and Conquer
-##### Serilize
+#** DFS, Divide and Conquer
+#### Serilize
 - Divide and conquer: Pre-order traversal to link all nodes together
 - build the string data: use '#' to represent null child. 
 - the preorder string, can be parsed apart by `split(',')`
 
-##### Deserialize
+#### Deserialize
 - Use a list (here we use `Deque` for the ease of get/remove in 1 function: remove()) 
 - to take all parts of the parsed sring data: dfs on the Deque
 - first node from the list is always the head
 - '#' will be a null child: this should break dfs
 - Deque is a global variable, so dfs(right child) will happen after dfs(left child) completes
 
-#### DFS, Recursive [previous note]
+#** DFS, Recursive [previous note]
 - serilize: divide and conquer, pre-order traversal
 -deserialize: slightly more complicated, use dfs. truncate input string each time: 
 -Keep dfs looking for left child, then right child until leaf is found.
 -Use a StringBuffer to hold the string, because string is primitive, we need a pass reference here
 
-#### BFS, Non-recursive
+#** BFS, Non-recursive
 -using queue. The idea is intuitive. level-order traversal. Save to a string.
 -When encountering a null child, instead of ignoring it directly, you assign an Integer.MIN_VALUE, and then mark as '#'
 -BFS requires track queue size, each time only a specific number of nodes
@@ -11477,20 +12250,20 @@ Serialize and Deserialize Binary Tree
 
 ---
 
-48. [Count of Smaller Numbers After Self.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Numbers%20After%20Self.java)###       Level: Hard      Tags: [BST, Binary Indexed Tree, Binary Search, Divide and Conquer, Segment Tree]
+### 48. [Count of Smaller Numbers After Self.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Smaller%20Numbers%20After%20Self.java)**       Level: Hard      Tags: [BST, Binary Indexed Tree, Binary Search, Divide and Conquer, Segment Tree]
       
 
 Give a string of numbers nums [], find a new array result, where result [i] = # of smaller items on right of nums [i]
 
-#### Binary Search
+#** Binary Search
 -sort and insert into a new list, the new list is sorted
 -Traverse nums [] from the end i = n-1
 -Each time insert nums [i] enters the list, it is # of smaller items on right side of nums [i]
 -Record result [i] every time
--###  Question  : The binary search here is done with `end = list.size (); while (start <end) {...}`, can it be replaced with `end = list.size ()- 1`?
+-**  Question  : The binary search here is done with `end = list.size (); while (start <end) {...}`, can it be replaced with `end = list.size ()- 1`?
 
 
-#### Segment Tree based on actual value
+#** Segment Tree based on actual value
 - Build segment tree based on min/max values of array: set each possible value into leaf
 - query(min, target - 1): return count # of smaller items within range [min, target - 1]
 - Very similar to `Count of Smaller Number`, where segment tree is built on actual value!!
@@ -11498,31 +12271,31 @@ Give a string of numbers nums [], find a new array result, where result [i] = # 
 - Use `modify(root, target, -1)` to remove element count from segment tree. Reuse function
 - time: `n * log(m)`, where m = Math.abs(max-min). log(m) is used to modify() the leaf element
 
-##### Segment Tree solution - tricky part:
+#### Segment Tree solution - tricky part:
 - negative nubmer works oddly with mid and generates endless loop in build(): `[-2, -1]` use case
 - build entire segment tree based on [min, max], where min must be >= 0. 
 - we can do this by adding Math.abs(min) onto both min/max, as well as +diff during accessing nums[i]
 
 
 
-#### Binary Indexed Tree
+#** Binary Indexed Tree
 - TODO, have code
 
 
 
 ---
 
-49. [Remove Duplicate Letters.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicate%20Letters.java)###       Level: Hard      Tags: [Greedy, Hash Table, Stack]
+### 49. [Remove Duplicate Letters.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Duplicate%20Letters.java)**       Level: Hard      Tags: [Greedy, Hash Table, Stack]
       
 
-#### Hash Table, Greedy
+#** Hash Table, Greedy
 -count [] = int [256], no `c-'a'` required
 -boolean visited []: Once a letter has fixed its position, when it encounters it again, it skips the used character directly
 -If the tail letter can be made smaller, delete the tail and reconnect with the new letter (prerequisite: the removed letter will appear again after the set letter, set visited [tail] = false)
 - Space: O(1) count[], visited[].
 - Time: Go through all letters O(n)
 
-#### Stack
+#** Stack
 - Use stack instead of stringBuffer: keep append/remove last added item
 - However, stringBuffer appears to be faster than stack.
 
@@ -11530,14 +12303,14 @@ Give a string of numbers nums [], find a new array result, where result [i] = # 
 
 ---
 
-50. [Expression Add Operators.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Add%20Operators.java)###       Level: Hard      Tags: [Backtracking, DFS, Divide and Conquer, String]
+### 50. [Expression Add Operators.java](https://github.com/awangdev/LintCode/blob/master/Java/Expression%20Add%20Operators.java)**       Level: Hard      Tags: [Backtracking, DFS, Divide and Conquer, String]
       
 
 Give a number String, the numbers come from `0-9`, give 3 operators` + `,` -`, `*`, see how to piece together, you can make the result target.
 
 output 所有 expression
 
-#### string dfs, use list to track steps (backtracking)
+#** string dfs, use list to track steps (backtracking)
 -Related to string, it may be a little tedious to write
 -Numbers have dfs ([1,2,3 ...]) combination method
 -operator has [`+`, `-`,` * `] 3 combinations
@@ -11549,7 +12322,7 @@ output 所有 expression
 - T(n-1) = 3 * T(n-2) + 3 * T(n-3) + ... 3 * T(1);
 - Thus T(n) = 4T(n-1) = 4^2 * T(n - 1) = .... O(4^n)
 
-#### String dfs, use string as buffer
+#** String dfs, use string as buffer
 -The logic is the same, the code is shorter, but instead of doing a list, pass `buffer +" + "+ curr` directly
 -It is slightly slower because new strings are created each time. Same as Time complexity
 
@@ -11557,25 +12330,25 @@ output 所有 expression
 
 ---
 
-51. [Insert Interval.java](https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Interval.java)###       Level: Hard      Tags: [Array, PriorityQueue, Sort]
+### 51. [Insert Interval.java](https://github.com/awangdev/LintCode/blob/master/Java/Insert%20Interval.java)**       Level: Hard      Tags: [Array, PriorityQueue, Sort]
       
 
-#### Sweep Line
+#** Sweep Line
 -Interval teardown point, PriorityQueue rank point
 -Merge with count == 0 as the judgment point
 -Note, be sure to compare curr `px == queue.peek (). X` to ensure that all coincident points are processed by process:` count + = px`
 -PriorityQueue: O (logN). Scan n points, total: O (nLogn)
 
 
-#### Basic Implementation
--###  sorted   intervals by start point have been given here.
+#** Basic Implementation
+-**  sorted   intervals by start point have been given here.
 -Directly find the seat where insert newInterval can be inserted. Insert
 - 然后loop to merge entire interval array
 -Because it is a list, it is convenient for `intervals.remove (i)`
 -pre.end will be reasserted before remove to ensure that the removed node.end is captured
 -O (n) 
 
-#### Also
+#** Also
 -Because interval has been sorted, I wanted to use Binary Search O (logn). 
 -But to find the interval insert position, the final merge still uses O (n), so it is not necessary to use binary search
 
@@ -11583,36 +12356,36 @@ output 所有 expression
 
 ---
 
-52. [Shortest Palindrome.java](https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Palindrome.java)###       Level: Hard      Tags: [KMP, String]
+### 52. [Shortest Palindrome.java](https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Palindrome.java)**       Level: Hard      Tags: [KMP, String]
       
 
-#### Divide by mid point, Brutle
+#** Divide by mid point, Brutle
 - check (mid, mid+1), or (mid-1, mid+1).
 - If the two position matches, that is a palindrome candidate
 -Compare whether front string is a substring of end string
 -O (n ^ 2)
 - timeout on last case: ["aaaaaa....aaaacdaaa...aaaaaa"]
 
-#### KMP
+#** KMP
 - EVERYTHING
 
 
 
 ---
 
-53. [K Empty Slots.java](https://github.com/awangdev/LintCode/blob/master/Java/K%20Empty%20Slots.java)###       Level: Hard      Tags: [Array, BST, TreeSet]
+### 53. [K Empty Slots.java](https://github.com/awangdev/LintCode/blob/master/Java/K%20Empty%20Slots.java)**       Level: Hard      Tags: [Array, BST, TreeSet]
       
 
 题目解析后: find 2 number, that: 1. k slots between the 2 number, 2. no slots taken between the two number.
 
-#### BST
+#** BST
 - BST structure not given, use TreeSet to build BST with each node
 - Every time find last/next inorder element 
 - `treeSet.lower(x)`, `treeSet.higher(x)`
 -Once the positions are separated (k + 1), the subject conditions are met
 - O(nlogn), good enough
 
-#### Track slots of days
+#** Track slots of days
 - Reverse the array, save days index into days[], where the new index is slot.
 - days[i]: at slot i, which day a flower will be planted
 -O (n)
@@ -11622,12 +12395,12 @@ output 所有 expression
 
 ---
 
-54. [Count of Range Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Range%20Sum.java)###       Level: Hard      Tags: [BST, Divide and Conquer, Merge Sort, PreSum]
+### 54. [Count of Range Sum.java](https://github.com/awangdev/LintCode/blob/master/Java/Count%20of%20Range%20Sum.java)**       Level: Hard      Tags: [BST, Divide and Conquer, Merge Sort, PreSum]
       
 
 TODO: Write the code + merge function
 
-#### Divide and Conquer + PreSum + MergeSort
+#** Divide and Conquer + PreSum + MergeSort
 -The algorithm is very powerful: presum [], then sum range [i, j] is equal to preSum [j + 1]-preSum [i]
 -Divide and conquer: Consider the results in [start, mid] range, and then the results in [mid, end] range. (MergeSort separately)
 -Finally consider [low, high] overall results
@@ -11635,14 +12408,14 @@ TODO: Write the code + merge function
 - NOTE: should write merge() function, but that is minor, just use `Arrays.sort(nums, start, end)`, OJ passed
 - Every mergeSort() has a for loop => O(n log n)
 
-##### How to count range?
+#### How to count range?
 -A special method here: find a preSum after i and mid in [low, mid] for comparison (explained from: https://blog.csdn.net/qq508618087/article/details/51435944)
 -Find two boundaries in the right array, set to `m, n`, 
 -Where m is the first in the array on the right such that `sum [m]-sum [i]> = lower`, 
 -n is the first position that makes `sum [n]-sum [i]> upper`, 
 -In this way, `nm` is the number of intervals in the` [lower, upper] `range formed by the element i on the left. 
 
-##### The magic point: why merge and sort
+#### The magic point: why merge and sort
 -The borders [lower, higher] are compared in the sorted array. Once the national borders, the calculation can be stopped and unnecessary calculations can be reduced.
 -The premise of n, m above is feasible: preSum [] has two ranges [low, mid], [mid, high] before and after sorted
 -In other words, when recursively mergeSort (), you really need to merge sorted 2 partitions
@@ -11654,19 +12427,19 @@ TODO: Write the code + merge function
 -The most important thing at this time is that `[A, B, C]` and sorting are good, then when the `lower` boundary is compared, once the boundary is crossed, the calculation can be stopped (reduce unnecessary calculations)
 
 
-#### BST
+#** BST
 - EVERYTHING?
 
 
 
 ---
 
-55. [Max Sum of Rectangle No Larger Than K.java](https://github.com/awangdev/LintCode/blob/master/Java/Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K.java)###       Level: Hard      Tags: [Array, BST, Binary Search, DP, Queue, TreeSet]
+### 55. [Max Sum of Rectangle No Larger Than K.java](https://github.com/awangdev/LintCode/blob/master/Java/Max%20Sum%20of%20Rectangle%20No%20Larger%20Than%20K.java)**       Level: Hard      Tags: [Array, BST, Binary Search, DP, Queue, TreeSet]
       
 
 Given a non-empty two-dimensional matrix matrix and an integer k, find the largest rectangular sum of sums not greater than k within the matrix.
 
-#### BST, Array, preSum
+#** BST, Array, preSum
 -Reduce the problem to: row of values, find 1st value> = target.
 - 1. loop over startingRow; 2. loop over [startingRow, m - 1]; 3. Use TreeSet to track areas and find boundary defined by k.
 - When building more rows/cols the rectangle, total sum could be over k: 
@@ -11677,7 +12450,7 @@ Given a non-empty two-dimensional matrix matrix and an integer k, find the large
 -Why use TreeSet: the size of the area is irregular, and find the first value of> = any value. Give a string of non-sorted numbers, find the number of> = target, if you do not write binary search, then BST is the most suitable
 - O (m ^ 2 * nlogn)
 
-#### Thought
+#** Thought
 -Considering the most basic O (m ^ 2 * n ^ 2): traversing startingRow / startingCol
 -rectangle? layer by layer? You can think of the idea of ​​Presum. When it is larger than the required sum, subtract the extra part.
 -How to find extra areas? Then search: Save the content you need to search, you can think of using BST (TreeSet), or write Binary Search yourself.
@@ -11686,12 +12459,12 @@ Given a non-empty two-dimensional matrix matrix and an integer k, find the large
 
 ---
 
-56. [Perfect Rectangle.java](https://github.com/awangdev/LintCode/blob/master/Java/Perfect%20Rectangle.java)###       Level: Hard      Tags: [Design, Geometry, Hash Table]
+### 56. [Perfect Rectangle.java](https://github.com/awangdev/LintCode/blob/master/Java/Perfect%20Rectangle.java)**       Level: Hard      Tags: [Design, Geometry, Hash Table]
       
 
 See if the list of coordinates can form a perfect rectangle and does not allow overlap area.
 
-#### Drawing features
+#** Drawing features
 -Feature 1: All the given points (find out the diagonal points without specifying), if the perfect rectangle is formed at the end, they should be eliminated from each other, and finally there are 4 corners left
 -Feature 2: Find the min / max (x, y) in all points, and the final maxArea should be equal to the area accumulate in the process
 -Feature 1 Make sure there is no hollow part in the middle, ensure that all coincident points will be eliminated from each other, and finally there are 4 vertices left
@@ -11701,17 +12474,17 @@ See if the list of coordinates can form a perfect rectangle and does not allow o
 
 ---
 
-57. [Max Points on a Line.java](https://github.com/awangdev/LintCode/blob/master/Java/Max%20Points%20on%20a%20Line.java)###       Level: Hard      Tags: [Array, Geometry, Hash Table, Math]
+### 57. [Max Points on a Line.java](https://github.com/awangdev/LintCode/blob/master/Java/Max%20Points%20on%20a%20Line.java)**       Level: Hard      Tags: [Array, Geometry, Hash Table, Math]
       
 
 给list of (x,y) coordinates. Determine  # of points on the same line
 
-#### Observation
+#** Observation
 - If given n points, we can calculate all possible slopes. O(n^2) times
-- For the two dots that generates the same slope, these dots could be on  parallel###  slopes
+- For the two dots that generates the same slope, these dots could be on  parallel**  slopes
 - figure out how to prune the parallel dots
 
-#### Trick: prune parallel dots using greatest common divider
+#** Trick: prune parallel dots using greatest common divider
 - GCD: greatest common divider
 - Devide the x and y by their greatest common divider, such that x and y can be reduced to minimum value
 - All other x and y can be reduced to such condition as well
@@ -11722,7 +12495,7 @@ See if the list of coordinates can form a perfect rectangle and does not allow o
 
 ---
 
-58. [Number of Digit One.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Digit%20One.java)###       Level: Hard      Tags: [Math]
+### 58. [Number of Digit One.java](https://github.com/awangdev/LintCode/blob/master/Java/Number%20of%20Digit%20One.java)**       Level: Hard      Tags: [Math]
       
 
 Pure math problem, not quite representative
@@ -11734,17 +12507,17 @@ https://leetcode.com/problems/number-of-digit-one/discuss/64381/4+-lines-O(log-n
 
 ---
 
-59. [Binary Representation.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Representation.java)###       Level: Hard      Tags: [Bit Manipulation, String]
+### 59. [Binary Representation.java](https://github.com/awangdev/LintCode/blob/master/Java/Binary%20Representation.java)**       Level: Hard      Tags: [Bit Manipulation, String]
       
 
-#### String
+#** String
 -First we need to solve in two halves, the breakpoint is '.': Str.split ("\\.");
 -The half of Integer is easy to handle, in the while loop: num% 2, num / 2. Make a `parseInteger ()` function
 -Decimal is more complicated. Make a `parseDecimal ()` function:
 -bit == 1 Mathematical condition: Now num * 2> = 1. Update: num = num * 2-1;
 -Math condition for bit == 0: num * 2 <1. Update: num = num * 2
 
-#### Note
+#** Note
 -num is double, decimals may loop infinitely under the formula `num = num * 2-1`
 -Therefore check: num repeatability, and binary code <32 bit.
 -So the title also has a 32BIT requirement!
@@ -11753,23 +12526,23 @@ https://leetcode.com/problems/number-of-digit-one/discuss/64381/4+-lines-O(log-n
 
 ---
 
-60. [Recover Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Recover%20Binary%20Search%20Tree.java)###       Level: Hard      Tags: [BST, DFS, Tree]
+### 60. [Recover Binary Search Tree.java](https://github.com/awangdev/LintCode/blob/master/Java/Recover%20Binary%20Search%20Tree.java)**       Level: Hard      Tags: [BST, DFS, Tree]
       
 
 There are 2 node misplaces in BST, which are classified as: Requirement: O (1) extra space
 
-#### Observation
+#** Observation
 - BST inorder traversal should give small -> large sequence
-- misplaced means: a  large->small item would occur, and later a large>small###  would occur. 
+- misplaced means: a  large->small item would occur, and later a large>small**  would occur. 
 - The first large && second small item are the 2 candidates. Example
 - [1, 5,  7, 10,    12, 15, 18]
 - [1, 5, `15, 10`, `12,  7`, 18]
 
-#### dfs, O(1) extra space
+#** dfs, O(1) extra space
 - traverse, and take note of the candidate
 - at the end, swap value of the 2 candidates
 
-#### O(n) space
+#** O(n) space
 - inorder traversal the nodes and save in array, find the 2 items misplanced and swap them
 - But O(n) space should not be allowed
 
@@ -11778,12 +12551,12 @@ There are 2 node misplaces in BST, which are classified as: Requirement: O (1) e
 
 ---
 
-61. [Jump Game II.java](https://github.com/awangdev/LintCode/blob/master/Java/Jump%20Game%20II.java)###       Level: Hard      Tags: [Array, Coordinate DP, DP, Greedy]
+### 61. [Jump Game II.java](https://github.com/awangdev/LintCode/blob/master/Java/Jump%20Game%20II.java)**       Level: Hard      Tags: [Array, Coordinate DP, DP, Greedy]
       
 
 Giving a string of numbers is the distance that can be jumped. Goal: the minimum number of jumps to the last index possible.
 
-#### Greedy
+#** Greedy
 - always aiming for the `farest can go`
 - if the `farest can go` breaches the end, return steps
 - otherwise, send `start=end+1`, `end=farest` and keep stepping from here
@@ -11791,14 +12564,14 @@ Giving a string of numbers is the distance that can be jumped. Goal: the minimum
 - But on average should be jumpping through the array without looking back
 - time: average O(n)
 
-#### Previous Notes, Greedy
+#** Previous Notes, Greedy
 -Maintain a range, the farthest we can go. 
 -index / i is step by step, each time when i <= range, make a while loop, find the farthest reach in it maxRange
 -Then update range = maxRange
 -Where step is the same as index, step by step.
 -The final check condition is that the range you can walk the farthest is> = nums.length-1, indicating that the focus has been reached with the least steps. Good.
 
-#### Even simpler Greedy
+#** Even simpler Greedy
 -Graphic http://www.cnblogs.com/lichen782/p/leetcode_Jump_Game_II.html
 - track the farest point
 - whenver curr index reachest the farest point, that means we are making a nother move, so count++
@@ -11806,7 +12579,7 @@ Giving a string of numbers is the distance that can be jumped. Goal: the minimum
 -In fact, it is exactly the same thinking pattern as the first greedy.
 
 
-#### DP 
+#** DP 
 -DP [i]: record at point i, the minimum number of jumps to point i
 - dp[i] = Math.min(dp[i], dp[j] + 1);
 - condition (j + nums[j] >= i)
@@ -11817,12 +12590,12 @@ Giving a string of numbers is the distance that can be jumped. Goal: the minimum
 
 ---
 
-62. [Longest Valid Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Valid%20Parentheses.java)###       Level: Hard      Tags: [Coordinate DP, Stack, String]
+### 62. [Longest Valid Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Valid%20Parentheses.java)**       Level: Hard      Tags: [Coordinate DP, Stack, String]
       
 
 Give a string with only `(`, `)` in it. Find the length of the longest valid parentheses.
 
-#### 1D Coordinate DP
+#** 1D Coordinate DP
 - use dp[i] track local max, maintain global max
 - int[] dp. dp[i]: longest valid string that ends on i.
 -The ending is ')', 2 cases: 1. s [i-1] is just '('; 2. s [i] 's' is the beginning of a '('
@@ -11831,7 +12604,7 @@ Give a string with only `(`, `)` in it. Find the length of the longest valid par
 -Calculation order: from left to right, find local max, maintain global max
 - O(n) space, O(n) runtime
 
-#### Stack
+#** Stack
 -Store all open / close parentheses in the Stack.
 -If stack.top () happens to open and close, just stack.pop ().
 -The rest are unreasonable elements.
@@ -11845,14 +12618,14 @@ Give a string with only `(`, `)` in it. Find the length of the longest valid par
 
 ---
 
-63. [Rearrange String k Distance Apart.java](https://github.com/awangdev/LintCode/blob/master/Java/Rearrange%20String%20k%20Distance%20Apart.java)###       Level: Hard      Tags: [Greedy, Hash Table, Heap]
+### 63. [Rearrange String k Distance Apart.java](https://github.com/awangdev/LintCode/blob/master/Java/Rearrange%20String%20k%20Distance%20Apart.java)**       Level: Hard      Tags: [Greedy, Hash Table, Heap]
       
 
 Give a string, all lowercase letters, and ask for rearrangement: then each unique character must have k distance apart.
 
 It's similar to Task Scheduler, except that you can use other methods to find the count in Task. This problem requires the ranking results.
 
-#### PriorityQueue + HashTable
+#** PriorityQueue + HashTable
 -A classic usage of PriorityQueue sorting + distribution sorting.
 - Count frequency and store in pq.
 - Consume element of pq for k rounds, each time pick one element from queue.
@@ -11864,13 +12637,13 @@ It's similar to Task Scheduler, except that you can use other methods to find th
 
 ---
 
-64. [Valid Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Number.java)###       Level: Hard      Tags: [Enumeration, Math, String]
+### 64. [Valid Number.java](https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Number.java)**       Level: Hard      Tags: [Enumeration, Math, String]
       
 team: O (n)
 
 Analyze edge cases, and various situations, and then determine whether it is a valid number
 
-#### Situation summary
+#** Situation summary
 -Several different cases of `.`,` e`, `+/-`, `int`
 -The results are different when the order of encounter is different.
 -This question is more about analyzing the situation, and then enumerating the edge case, the algorithm has less significance.
@@ -11879,12 +12652,12 @@ Analyze edge cases, and various situations, and then determine whether it is a v
 
 ---
 
-65. [Bricks Falling When Hit.java](https://github.com/awangdev/LintCode/blob/master/Java/Bricks%20Falling%20When%20Hit.java)###       Level: Hard      Tags: [Union Find]
+### 65. [Bricks Falling When Hit.java](https://github.com/awangdev/LintCode/blob/master/Java/Bricks%20Falling%20When%20Hit.java)**       Level: Hard      Tags: [Union Find]
       
 
 Give a matrix of 1 and 0, `1` stands for brick. The brick connected to ceiling will not drop. Give a string of coordinate hits [] [], record how many drops each time you take down 1 brick.
 
-#### UnionFind
+#** UnionFind
 -1. We know that most bricks may be connected to ceiling, so every forward check is traverse all and timeout
 -2. Can I use union to install the connectors together, and then drop the connected ones when I drop the brick? Difficult: Because I still have to check all the current status of the brick.
 -Inspired by other people's answers, since it is counting counts, we can `think backwards`: 
@@ -11892,14 +12665,14 @@ Give a matrix of 1 and 0, `1` stands for brick. The brick connected to ceiling w
 -The remaining ones that are not connected to ceiling are isolated islands
 -Method: Add the hit-bricks one by one, and then make a union again to see how many are eventually connected to ceiling. The increased count is the number of dropped bricks in forward thinking!
 
-##### Union Find variants
+#### Union Find variants
 -I still use the number index to do the union find, but I increase each index by +1, shift it to the right, and [0] is reserved for special purposes:
 -Use union at 0 to count the total remaining count of ceiling-connected bricks, where `x = 0`. 
 -If you are on other topics, the condition may not be `x = 0`, but you can also use this union index = 0 to make a root statistic
 -The key: add the last hit brick back, and then re-union around this hit-brick: the increase in count is not the number of drops when the hit-brick is missing
 
 
-#### DFS (timeout)
+#** DFS (timeout)
 -Consider the surroundings of each hit, all traverse, all without the ceiling: 
 -For example, a matrix of 200 x 200 all 1s, the traverse must reach the top every time; the calculation is repeated, so timeout
 -The algorithm is correct, but it is not efficient.
@@ -11910,12 +12683,12 @@ Give a matrix of 1 and 0, `1` stands for brick. The brick connected to ceiling w
 
 ---
 
-66. [Interval Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Interval%20Sum%20II.java)###       Level: Hard      Tags: [Binary Search, Lint, Segment Tree]
+### 66. [Interval Sum II.java](https://github.com/awangdev/LintCode/blob/master/Java/Interval%20Sum%20II.java)**       Level: Hard      Tags: [Binary Search, Lint, Segment Tree]
       
 
 SegmentTree large collection. Methods: `build, query, modify`. Not difficult. Just remember to make no mistakes.
 
-#### Segment Tree
+#** Segment Tree
 - build: recursively build children based on index-mid and link to curr node
 - query: recursively try to find `node.start == targetStart && node.end == targetEnd`. Compare with node.mid
 - modify: recursively try to find `node.start == targetStart && node.end == targetEnd`; modify and recursively assign upper interval with updated interval property.
@@ -11924,7 +12697,7 @@ SegmentTree large collection. Methods: `build, query, modify`. Not difficult. Ju
 
 ---
 
-67. [HashHeap.java](https://github.com/awangdev/LintCode/blob/master/Java/HashHeap.java)###       Level: Hard      Tags: [HashHeap, Heap]
+### 67. [HashHeap.java](https://github.com/awangdev/LintCode/blob/master/Java/HashHeap.java)**       Level: Hard      Tags: [HashHeap, Heap]
       
 
 No. It is a HashHeap implementation found from Chapter 9.
@@ -11933,21 +12706,21 @@ No. It is a HashHeap implementation found from Chapter 9.
 
 ---
 
-68. [Trapping Rain Water II.java](https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water%20II.java)###       Level: Hard      Tags: [BFS, Heap, MinHeap, PriorityQueue]
+### 68. [Trapping Rain Water II.java](https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water%20II.java)**       Level: Hard      Tags: [BFS, Heap, MinHeap, PriorityQueue]
       
 
 Give a 2Dmap, each position has height. Find Trapping water sum.
 
 
-#### Min Heap
+#** Min Heap
 -Use PriorityQueue to sort the selected height for the position, create class Cell (x, y, height).
 
-##### Note a few theories
+#### Note a few theories
 -1. Start thinking around the matrix and find that the water that the matrix can hold depends on the low-height block
 -2. It must be considered from the outside, because the water is wrapped inside, and at least one layer must be existing outside
 -The above two points prompted us to use min-heap: the PriorityQueue <Cell> of natural order.
 
-##### Steps
+#### Steps
 -1. During the process, you can draw a picture to make it clear: that is to walk in all four directions, subtract the height of the surrounding cells from the height of the curr cell.
 -2. If it is greater than zero, then the surrounding cells will have standing water: because the cell is already the lowest on the periphery, so the inside is lower, there must be standing water.
 -3. Every visited cell must be marked, avoid revisit
@@ -11956,11 +12729,11 @@ Give a 2Dmap, each position has height. Find Trapping water sum.
 -Same idea as trapping water I. Just from the periphery, it can only be added to the horizontal plane with the same height as the peripheral cell. Going inside, it is likely that the cell height changes.   
 -Attach the maximum height of curr cell and move-to cell here.
 
-##### Why use Heap (min-heap-priorityQueue)
+#### Why use Heap (min-heap-priorityQueue)
 -To find the shortest board of a bucket
 -The shortest one needs to be processed first (on top)
 
-##### Why traverse from outside to inside
+#### Why traverse from outside to inside
 -Wooden barrel theory
 -Peel onions and discard
 
@@ -11968,15 +12741,15 @@ Give a 2Dmap, each position has height. Find Trapping water sum.
 
 ---
 
-69. [Find Median from Data Stream.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Median%20from%20Data%20Stream.java)###       Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap]
+### 69. [Find Median from Data Stream.java](https://github.com/awangdev/LintCode/blob/master/Java/Find%20Median%20from%20Data%20Stream.java)**       Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap]
       
 
-#### Principle
+#** Principle
 -Think of the input stream as an upward slope. The middle point of the slope is naturally median.
 -In the first half, as maxHeap, the focus is on the peak of PriorityQueue, which is actually median.   
 -The second half, as minHeap, normal PriorityQueue. The beginning is minimal.
 
-#### Note
+#** Note
 -First set here, which queue stores one more element. Here select maxHeap: maxHeap.size () == minHeap.size () + 1 || minHeap.size ()
 -You must first maintain an element in maxHeap, otherwise it will cause problems when comparing sizes.
 
@@ -11984,12 +12757,12 @@ Give a 2Dmap, each position has height. Find Trapping water sum.
 
 ---
 
-70. [Sliding Window Median.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Median.java)###       Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap, Sliding Window]
+### 70. [Sliding Window Median.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Median.java)**       Level: Hard      Tags: [Design, Heap, MaxHeap, MinHeap, Sliding Window]
       
 
 The same problem of Data Stream Median: not only increasing sequence, but also removing item (maintain a window size)
 
-#### MaxHeap, MinHeap
+#** MaxHeap, MinHeap
 -Median still uses min-heap and max-heap. Time (logN)
 -Add / subtract: prioirtyQueue, log (n)
 -findMedian: O (1)
@@ -11997,7 +12770,7 @@ The same problem of Data Stream Median: not only increasing sequence, but also r
 -It is optimistic when adding or subtracting, whether it is drawn from the maxheap in the front or the minHeap behind.
 -Finish the balance.
 
-#### Note
+#** Note
 -When using maxHeap, minHeap, it is customary to choose one more number for maxHeap:
 -The maxHeap on the left always has x + 1 or x numbers
 -MinHeap behind should always have x numbers
@@ -12006,7 +12779,7 @@ The same problem of Data Stream Median: not only increasing sequence, but also r
 
 ---
 
-71. [Design Search Autocomplete System.java](https://github.com/awangdev/LintCode/blob/master/Java/Design%20Search%20Autocomplete%20System.java)###       Level: Hard      Tags: [Design, Hash Table, MinHeap, PriorityQueue, Trie]
+### 71. [Design Search Autocomplete System.java](https://github.com/awangdev/LintCode/blob/master/Java/Design%20Search%20Autocomplete%20System.java)**       Level: Hard      Tags: [Design, Hash Table, MinHeap, PriorityQueue, Trie]
       
 time: input: O(x), where x = possible words, constructor: O(mn) m = max length, n = # of words
 space: O(n^2), n = # of possible words, n = # of trie levels; mainlay saving the `Map<S, freq>`
@@ -12017,25 +12790,25 @@ Best problem to review Trie (prefix search), Top K frequent elements (Hash Map),
 
 Easier to revisit https://leetcode.com/problems/design-search-autocomplete-system/description/
 
-#### Thinking direction
+#** Thinking direction
 -For text search, there is no doubt to use Prefix tree, trie.
 
-##### Find all possible word / leaf, two options:
+#### Find all possible word / leaf, two options:
 -? After Trie is done, do prefix search, then DFS / BFS return all leaf items. [High runtime complexity]
 -Store all possible words in TrieNode. [High space usage]
 -Shouldn't it be in memory space? Big question, so we can choose store all? possible words
 
-##### Given k words, find top k frequent items. MinHeap is definitely used, but there are two solutions:
+#### Given k words, find top k frequent items. MinHeap is definitely used, but there are two solutions:
 -? Store MinHeap with TrieNode: Because it will continue to search for new articles, the same prefix (especially at higher level) will be searched multiple times.
 - [complexity: need to update heaps across all visited TrieNodes once new sentence is completed]
 -Compute MinHeap on the fly: Of course we can't come to DFS every time? Otherwise it will be slow, so we must store list of possible candidates in TrieNode.
 -Here we use `Map <String, freq>` in `Top K Frequent Words`, so O (m) is actually very convenient to build min-heap.
 
-##### Train the system
+#### Train the system
 -Each time a `#` is marked, an entry is added to the search history. Then `insert it into trie`.
 -This one can be done at the end when `#` is met, very concise
 
-#### Trie, PriorityQueue, HashMap
+#** Trie, PriorityQueue, HashMap
 - Trie Prefix Search + maintain top k frequent items
 - 
 
@@ -12043,19 +12816,19 @@ Easier to revisit https://leetcode.com/problems/design-search-autocomplete-syste
 
 ---
 
-72. [Integer to English Words.java](https://github.com/awangdev/LintCode/blob/master/Java/Integer%20to%20English%20Words.java)###       Level: Hard      Tags: [Enumeration, Math, String]
+### 72. [Integer to English Words.java](https://github.com/awangdev/LintCode/blob/master/Java/Integer%20to%20English%20Words.java)**       Level: Hard      Tags: [Enumeration, Math, String]
       
 
 Give a number less than Integer.MAX_VALUE (2 ^ 31-1), convert to English. (No need to add 'and')
 
-#### String
+#** String
 -Basic implementation
 -`Classification Discussion`: thounsand, million, billion.` 3 numbers per division`.
 -Enumerate tokens with array
 -Use% and / to find English translation for each segment
 -3-digit part, you can use a helper funtion to find the result, the processing method of each segment is the same
 
-#### Note
+#** Note
 -StringBuffer is more efficient! `Sb.insert (0, xxx)` append before sb
 -Note that when adding "", if it is unnecessary, try "trim ()"
 -Note that numbers less than 20 have their own special writing and require additional handles
@@ -12066,21 +12839,21 @@ Give a number less than Integer.MAX_VALUE (2 ^ 31-1), convert to English. (No ne
 
 ---
 
-73. [Alien Dictionary.java](https://github.com/awangdev/LintCode/blob/master/Java/Alien%20Dictionary.java)###       Level: Hard      Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]
+### 73. [Alien Dictionary.java](https://github.com/awangdev/LintCode/blob/master/Java/Alien%20Dictionary.java)**       Level: Hard      Tags: [BFS, Backtracking, DFS, Graph, Topological Sort]
       
 
 Give an array of strings: If the array is sorted according to a new alphabet dictionary, you need to find the alphabet.
 
 It is possible to have multiple sorting methods, just give one.
 
-#### Graph
+#** Graph
 -Essence: two strings above and below, corresponding to the same index, if the letters are different, the letter on the first line is more advanced in the alphabet
 -Turn string array into graph of topological sort: `map <char, list <char >>`
 -Also `List [26] edges` (Course Schedule problem)
 - Build edges: find char diff between two row, and store the order indication into graph
 -Note: indegree is always reversed (established in the opposite way to node to neighbors)
 
-#### BFS
+#** BFS
 -topological sort itself is well written, but first understand the nature of alphabetical sorting in the title
 -In fact, the nature of the above sorting is very imaginary, but it will be a bit difficult to think of it as the code for constructing the graph.
 -Calculate indegree, then use BFS to find nodes with inDegree == 0
@@ -12090,7 +12863,7 @@ It is possible to have multiple sorting methods, just give one.
 - ex: cycle nodes from input, where inDegree of a one node would never reduce to 0, and will not be added to result
 - In this case, it will be treated as invalid input, and return ""
 
-#### DFS
+#** DFS
 -It is exactly the same as the process of setting up grpah by BFS
 -The difference in DFS is: use visited map to mark the places you pass
 -When you get to leaf, add to result: but only add because you have reached the end, the final order should be reversed (or, sb.insert (0, x) directly add in reverse order)
@@ -12099,20 +12872,20 @@ It is possible to have multiple sorting methods, just give one.
 
 ---
 
-74. [Word Ladder II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder%20II.java)###       Level: Hard      Tags: [Array, BFS, Backtracking, DFS, Hash Table, String]
+### 74. [Word Ladder II.java](https://github.com/awangdev/LintCode/blob/master/Java/Word%20Ladder%20II.java)**       Level: Hard      Tags: [Array, BFS, Backtracking, DFS, Hash Table, String]
       
 
 Give a string of string, start word, end word. Find all shortest path list from startWord-> endWord. 
 
 Variation: mutate 1 letter at a time.
 
-#### BFS + Reverse Search
+#** BFS + Reverse Search
 -Find the shortest path with BFS.
 - 问题: how to effectively store the path, if the number of paths are really large? 
 - If we store Queue<List<String candidates>>: all possibilities will very large and not maintainable
 -Make a reverse structure with BFS, and then reverse search
 
-##### BFS Prep Step
+#### BFS Prep Step
 -BFS finds all the places where the start string can go and put it in an overall structure: Note, the way to store Map <s, list of sources>
 -BFS changes by 1 step each time, so recording the distance is actually the shortest path candidate (stop here)
 - 1. 反向mutation map: `destination/end string -> all source candidates` using queue: `Mutation Map`
@@ -12121,11 +12894,11 @@ Variation: mutate 1 letter at a time.
 - Distance Map<s, possible/shortest distance>: shortest distance from to mutate into target key string.
 -BFS prep step didn't solve the problem, even did not use end string. We need to use the reverse mapping structure built by BFS for search
 
-##### Search using DFS
+#### Search using DFS
 -Scan from end string, find all candidate dates && only visit candidate that is 1 step away
 -dfs until start string is found.
 
-##### Bi-directional BFS: Search using BFS
+#### Bi-directional BFS: Search using BFS
 -The reversed structure is ready, now you can search: you can also use bfs.
 - `Queue<List<String>>` to store candidates, searching from end-> start
 
@@ -12133,21 +12906,21 @@ Variation: mutate 1 letter at a time.
 
 ---
 
-75. [Text Justification.java](https://github.com/awangdev/LintCode/blob/master/Java/Text%20Justification.java)###       Level: Hard      Tags: [Enumeration, String]
+### 75. [Text Justification.java](https://github.com/awangdev/LintCode/blob/master/Java/Text%20Justification.java)**       Level: Hard      Tags: [Enumeration, String]
       
 
 Adjust the text according to the rules. It is in Word: there is a line too long, adjust the space in the middle of the word, and then ensure the total width of each line.
 
 There are some detailed rules, see the original question
 
-#### String
+#** String
 - Summing space = `width + (size-1)`. maintain: 1. list of candidates, 2. width of actual words
 - calculate space in between: `remain/(size - 1)`
 - overall for loop; clean up list: 1. over size; 2. last item
 -It's not difficult at all, but be careful: when dealing with list of string, pay attention to the clean sum size of list <string>.
 -`Clean processing space`: only (n-1) items are processed, then the last one is taken out of the for loop, special processing.
 
-#### Notes
+#** Notes
 - Clarification, observation:
 - can start with greedy approach to stack as many words as possible
 - once exceed the length, pop the top, and justify the added words (untouched words tracked by index)
@@ -12161,12 +12934,12 @@ There are some detailed rules, see the original question
 
 ---
 
-76. [Read N Characters Given Read4 II - Call multiple times.java](https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times.java)###       Level: Hard      Tags: [Enumeration, String]
+### 76. [Read N Characters Given Read4 II - Call multiple times.java](https://github.com/awangdev/LintCode/blob/master/Java/Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times.java)**       Level: Hard      Tags: [Enumeration, String]
       
 
 Read N Character using `Read4 (char [] buf)` enhanced version: can read continuously read (buf, n)
 
-#### String 
+#** String 
 -Pay attention to the index handle of String, slowly write edge case
 -Understand the meaning of the title: `read4 (char [] buf)` like `populate input object` has slightly less functionality. 
 -When you come across, carefully understand the function usage, don't panic. In fact, the way of thinking is very simple, just carefully handle the string and edge case.
@@ -12175,24 +12948,24 @@ Read N Character using `Read4 (char [] buf)` enhanced version: can read continuo
 
 ---
 
-77. [Frog Jump.java](https://github.com/awangdev/LintCode/blob/master/Java/Frog%20Jump.java)###       Level: Hard      Tags: [DP, Hash Table]
+### 77. [Frog Jump.java](https://github.com/awangdev/LintCode/blob/master/Java/Frog%20Jump.java)**       Level: Hard      Tags: [DP, Hash Table]
       
 
 The question of Frog jump needs a little understanding: each grid can jump k-1, k, k + 1 steps, and k depends on the number of steps jumped in the previous step. By default, 0-> 1 must be a step.
 
 Note: int [] stones is the unit where stone is located (not the number of steps that can be skipped, don't understand it wrong).
 
-#### DP
+#** DP
 -I originally wanted to do it according to the corrdiante dp, but found many problems, and needed to track different possible previous starting spots.
 -According to jiuzhang answer: By definition, use a map of <stone, Set <possible # steps to reach stone >>
 -Each time a stone is processed, it takes three steps according to its own set of <previous steps>: k-1, k, or k + 1 steps.
 -Take a step each time to see if stone + step exists; if it exists, add it to the hash set of next position: `stone + step`
 
-##### Note init
+#### Note init
 -`dp.put (stone, new HashSet <> ())` mark the existence of each stone
 -`dp.get (0) .add (0)` init condition, used for dp.put (1, 1)
 
-##### Thought
+#### Thought
 -In the end, think mode, more like BFS mode: starting from (0,0), add all possible ways 
 - 然后again, try next stone with all possible future ways ... etc
 
@@ -12200,12 +12973,12 @@ Note: int [] stones is the unit where stone is located (not the number of steps 
 
 ---
 
-78. [Longest Substring with At Most Two Distinct Characters.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters.java)###       Level: Hard      Tags: [Hash Table, Sliding Window, String, Two Pointers]
+### 78. [Longest Substring with At Most Two Distinct Characters.java](https://github.com/awangdev/LintCode/blob/master/Java/Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters.java)**       Level: Hard      Tags: [Hash Table, Sliding Window, String, Two Pointers]
       
 
 As the title.
 
-#### Two Pointer + HashMap
+#** Two Pointer + HashMap
 -Originally wanted to use DP, but the idea of ​​practical sliding window
 -Cutting of sliding window: use hashmap to store last occurrance of char index; 
 -After map.remove (c), that section is completely cut off; then map.get (c) + 1 is the new left window border
@@ -12214,12 +12987,12 @@ As the title.
 
 ---
 
-79. [Shortest Distance from All Buildings.java](https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Distance%20from%20All%20Buildings.java)###       Level: Hard      Tags: [BFS]
+### 79. [Shortest Distance from All Buildings.java](https://github.com/awangdev/LintCode/blob/master/Java/Shortest%20Distance%20from%20All%20Buildings.java)**       Level: Hard      Tags: [BFS]
       
 
 It is very similar to Walls and Gates, except that this question is to choose a coordinate, having shortest sum distance to all buildings (marked as 1).
 
-#### BFS
+#** BFS
 - BFS 可以 mark shortest distance from bulding -> any possible spot.
 - Try each building (marked as 1) -> BFS cover all 0. 
 - time: O(n^2) * # of building; use new visited[][] to mark visited for each building.
@@ -12232,10 +13005,10 @@ It is very similar to Walls and Gates, except that this question is to choose a 
 
 ---
 
-80. [Sliding Window Maximum.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Maximum.java)###       Level: Hard      Tags: [Deque, Heap, Sliding Window]
+### 80. [Sliding Window Maximum.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Window%20Maximum.java)**       Level: Hard      Tags: [Deque, Heap, Sliding Window]
       
 
-#### Deque, Monotonous tail
+#** Deque, Monotonous tail
 - 维持monotonuous queue: one end is always at max and the other end is min. Always need to return the max end of queue.
 - when adding new elements x: start from small-end of the queue, drop all smaller elements and append to first element larger than x.
 -when sliding window: queue curr window max-end, remove it if needed.
@@ -12247,7 +13020,7 @@ It is very similar to Walls and Gates, except that this question is to choose a 
 
 ---
 
-81. [Median of Two Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Median%20of%20Two%20Sorted%20Arrays.java)###       Level: Hard      Tags: [Array, Binary Search, DFS, Divide and Conquer]
+### 81. [Median of Two Sorted Arrays.java](https://github.com/awangdev/LintCode/blob/master/Java/Median%20of%20Two%20Sorted%20Arrays.java)**       Level: Hard      Tags: [Array, Binary Search, DFS, Divide and Conquer]
       
 
 Famously find the median of two sorted arrays. Definition of median: if the total length of two arrays is even, take the average.
@@ -12256,7 +13029,7 @@ The problem requires to be solved in log (m + n) time
 -When you see log (m + n), I think of binary search, or recursive.
 -The two sorted arrays are jagged, and certainly not a simple binary search
 
-#### Divide and Conquer, recursive
+#** Divide and Conquer, recursive
 -Here is a mathematical exclusion idea: consider the intermediate points of A and B respectively.
 -If A [mid] <B [mid], then A [0 ~ mid-1] is not in the range of median, which can be excluded. This is how divide / conquer comes.
 -See the code for the specific logic, which roughly means: compare the positions of A and B [x + k / 2-1] each time, and then do the range exclusion method
@@ -12270,31 +13043,31 @@ The problem requires to be solved in log (m + n) time
 
 ---
 
-82. [Bus Routes.java](https://github.com/awangdev/LintCode/blob/master/Java/Bus%20Routes.java)###       Level: Hard      Tags: [BFS]
+### 82. [Bus Routes.java](https://github.com/awangdev/LintCode/blob/master/Java/Bus%20Routes.java)**       Level: Hard      Tags: [BFS]
       
 
 
 
 ---
 
-83. [Sliding Puzzle.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Puzzle.java)###       Level: Hard      Tags: [BFS, Graph]
+### 83. [Sliding Puzzle.java](https://github.com/awangdev/LintCode/blob/master/Java/Sliding%20Puzzle.java)**       Level: Hard      Tags: [BFS, Graph]
       
 
 
 
 ---
 
-84. [Cracking the Safe.java](https://github.com/awangdev/LintCode/blob/master/Java/Cracking%20the%20Safe.java)###       Level: Hard      Tags: [DFS, Greedy, Math]
+### 84. [Cracking the Safe.java](https://github.com/awangdev/LintCode/blob/master/Java/Cracking%20the%20Safe.java)**       Level: Hard      Tags: [DFS, Greedy, Math]
       
 
-#### Greedy, Iterative
+#** Greedy, Iterative
 - For 2 passwords, the shortest situation is both passwords overlap for n-1 chars.
 - We can use a window to cut out last (n-1) substring and append with new candidate char from [k-1 ~ 0]
 - Track the newly formed string; if new, add the new char to overall result
 - Note: this operation will run for k^n times: for all spots of [0 ~ n - 1] each spot tries all k values [k-1 ~ 0]
 - Same concept as dfs
 
-#### DFS
+#** DFS
 - Same concept: use window to cut out tail, and append with new candidate
 - do this for k^n = Math.pow(k, n) times
 
@@ -12302,10 +13075,10 @@ The problem requires to be solved in log (m + n) time
 
 ---
 
-85. [Redundant Connection II.java](https://github.com/awangdev/LintCode/blob/master/Java/Redundant%20Connection%20II.java)###       Level: Hard      Tags: [DFS, Graph, Tree, Union Find]
+### 85. [Redundant Connection II.java](https://github.com/awangdev/LintCode/blob/master/Java/Redundant%20Connection%20II.java)**       Level: Hard      Tags: [DFS, Graph, Tree, Union Find]
       
 
-#### Union Find
+#** Union Find
 -Discuss 3 situations
 - http://www.cnblogs.com/grandyang/p/8445733.html
 
@@ -12313,10 +13086,10 @@ The problem requires to be solved in log (m + n) time
 
 ---
 
-86. [The Maze III.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Maze%20III.java)###       Level: Hard      Tags: [BFS, DFS, PriorityQueue]
+### 86. [The Maze III.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Maze%20III.java)**       Level: Hard      Tags: [BFS, DFS, PriorityQueue]
       
 
-#### BFS
+#** BFS
 -Similar to Maze I, II, use a Node [] [] to store each (x, y) state.
 - Different from traditional BFS(shortest path): `it terminates BFS when good solution exists (distance), but will finish all possible routes`
 - 1. `Termination condition`: if we already have a good/better solution on nodeMap[x][y], no need to add a new one
@@ -12328,7 +13101,7 @@ The problem requires to be solved in log (m + n) time
 
 ---
 
-87. [Regular Expression Matching.java](https://github.com/awangdev/LintCode/blob/master/Java/Regular%20Expression%20Matching.java)###       Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Sequence DP, String]
+### 87. [Regular Expression Matching.java](https://github.com/awangdev/LintCode/blob/master/Java/Regular%20Expression%20Matching.java)**       Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Sequence DP, String]
       
 
 As with WildCard Matching, discuss the situation clearly with string p last char is '*' and not '*'
@@ -12341,12 +13114,12 @@ The difference here is that '*' needs to have a preceding element, then:
 
 ---
 
-88. [Wildcard Matching.java](https://github.com/awangdev/LintCode/blob/master/Java/Wildcard%20Matching.java)###       Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Greedy, Sequence DP, String]
+### 88. [Wildcard Matching.java](https://github.com/awangdev/LintCode/blob/master/Java/Wildcard%20Matching.java)**       Level: Hard      Tags: [Backtracking, DP, Double Sequence DP, Greedy, Sequence DP, String]
       
 
 Double sequence DP. Much like regular expression.
 
-#### Double Sequence DP
+#** Double Sequence DP
 -Analyze the true meaning of the characters?, * And write the expression.
 -Dp [i] [0] should always be false when initializing. When p is an empty string, it cannot be matched anyway (unless s = "" as well)
 -At the same time dp [0] [j] is not necessarily false. For example, s = "", p = "*" is a matching.
@@ -12362,10 +13135,10 @@ Double sequence DP. Much like regular expression.
 
 ---
 
-89. [Robot Room Cleaner.java](https://github.com/awangdev/LintCode/blob/master/Java/Robot%20Room%20Cleaner.java)###       Level: Hard      Tags: [Backtracking, DFS]
+### 89. [Robot Room Cleaner.java](https://github.com/awangdev/LintCode/blob/master/Java/Robot%20Room%20Cleaner.java)**       Level: Hard      Tags: [Backtracking, DFS]
       
 
-#### DFS
+#** DFS
 - Different from regular dfs to visit all, the robot move() function need to be called, backtrack needs to move() manually and backtracking path shold not be blocked by visited positions
 - IMPORTANT: Mark on the way in using set, but `backtrack directly without re-check against set`
 - Mark coordinate 'x@y'
@@ -12377,7 +13150,7 @@ Double sequence DP. Much like regular expression.
 
 ---
 
-90. [Maximum Vacation Days.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Vacation%20Days.java)###       Level: Hard      Tags: [DP]
+### 90. [Maximum Vacation Days.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Vacation%20Days.java)**       Level: Hard      Tags: [DP]
       
 
 
@@ -12391,13 +13164,13 @@ Double sequence DP. Much like regular expression.
  
  
 ## Review (5)
-0. [Maximum Subarray III.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray%20III.java)###       Level: Review      Tags: []
+### 0. [Maximum Subarray III.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Subarray%20III.java)**       Level: Review      Tags: []
       
 
 
 ---
 
-1. [Valid Perfect Square.java](https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Perfect%20Square.java)###       Level: Review      Tags: [Binary Search, Math]
+### 1. [Valid Perfect Square.java](https://github.com/awangdev/LintCode/blob/master/Java/Valid%20Perfect%20Square.java)**       Level: Review      Tags: [Binary Search, Math]
       
 
 Binary looks for sqrt. Basic mid + 1, mid-1 template.
@@ -12407,7 +13180,7 @@ Binary looks for sqrt. Basic mid + 1, mid-1 template.
 
 ---
 
-2. [Maximum Average Subarray II.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Average%20Subarray%20II.java)###       Level: Review      Tags: [Array, Binary Search, PreSum]
+### 2. [Maximum Average Subarray II.java](https://github.com/awangdev/LintCode/blob/master/Java/Maximum%20Average%20Subarray%20II.java)**       Level: Review      Tags: [Array, Binary Search, PreSum]
       
 
 Give int [] nums and window min size k. The window size can be greater than K. Find the largest continuous series of average value.
@@ -12422,12 +13195,12 @@ Need to read the notes below carefully.
 
 ---
 
-3. [The Skyline Problem.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Skyline%20Problem.java)###       Level: Review      Tags: [Binary Indexed Tree, Divide and Conquer, Heap, PriorityQueue, Segment Tree, Sweep Line]
+### 3. [The Skyline Problem.java](https://github.com/awangdev/LintCode/blob/master/Java/The%20Skyline%20Problem.java)**       Level: Review      Tags: [Binary Indexed Tree, Divide and Conquer, Heap, PriorityQueue, Segment Tree, Sweep Line]
       
 
 Also called skyline. O (nLogN) with Sweep Line, but it seems that there are many ways: segement tree, hashheap, treeSet?
 
-#### Sweep Line, Time O(nLogN), Space O(n)
+#** Sweep Line, Time O(nLogN), Space O(n)
 - original reference http://codechen.blogspot.com/2015/06/leetcode-skyline-problem.html?_sm_au_=isVmHvFmFs40TWRt
 - 画图分析: 需要找到 non-overlaping height point at current index; also height needs to be different than prev height peek to be visible.
 -Divide all points, each point has index x, plus a height.         
@@ -12437,10 +13210,10 @@ Also called skyline. O (nLogN) with Sweep Line, but it seems that there are many
 -Use max-heap (reversed priorityqueue) in processes, and then iterate heightPoints to save the maximum height. In the case of peek, it is a reasonable solution.    
 -Add 0 to heightQueue to close it at the end
 
-#### Segment Tree
+#** Segment Tree
 -After reading some practices, the segment tree is complicated to write. It is estimated that it is difficult to write segment tree in the interview: https://www.cnblogs.com/tiezhibieek/p/5021202.html
 
-#### HashHeap
+#** HashHeap
 -HashHeap template can be considered: https://www.jiuzhang.com/solution/building-outline/#tag-highlight-lang-java
 
 Binary Indexed Tree?
@@ -12451,44 +13224,42 @@ Binary Indexed Tree?
 
 ---
 
-4. [Remove Invalid Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Invalid%20Parentheses.java)###       Level: Review      Tags: [BFS, DFS, DP]
+### 4. [Remove Invalid Parentheses.java](https://github.com/awangdev/LintCode/blob/master/Java/Remove%20Invalid%20Parentheses.java)**       Level: Review      Tags: [BFS, DFS, DP]
       
 
 Give a string with parentheses and other characters. Cut out the valid string with the least amount of knife, find all such strings.
 
 There are multiple solutions to this problem, the strongest is O (n) space and time
 
-#### DFS and reduce input string
+#** DFS and reduce input string
 - in dfs: remove the incorrect parentheses one at a time
 - detect the incorrect parentheses by tracking/counting (similar to validation of the parentheses string): `if(count<0)`
 - once detected, remove the char from middle of s, and dfs on the rest of the s that has not been tested yet.
 
-##### Core concept: reverse test
+#### Core concept: reverse test
 - `if a parenthese string is valid, the reverse of it should also be valid`
 - Test s with open='(', close=')' first;  reverse s, and test it with open=')', close='('
 
-##### Minor details
+#### Minor details
 - only procceed to remove invalid parenthese when `count<0`, and also break && return dfs after the recursive calls.
 - The above 2 facts eliminates all the redundant results.
 - Reverse string before alternating open and close parentheses, so when returning final result, it will return the correct order.
 - Open questions: how does it guarantee minimum removals?
 
-##### Backtracking
+#### Backtracking
 -If you use a stringbuffer, you will not create a new string every time, but you need to maintain the string buffer, and you will backtracking
 
-##### Complexity
+#### Complexity
 - Seems to be O(n), but need to derive
 
-#### BFS
+#** BFS
 EVERYTHING
 
-#### DP
+#** DP
 
 
 
 ---
-
-
 
 
 
