@@ -1,4 +1,5 @@
-
+* auto-gen TOC:
+{:toc}
 
 
 ## Easy (153)
