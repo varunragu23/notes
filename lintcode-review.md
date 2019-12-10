@@ -514,8 +514,6 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
-[[TOC]]
-
 ## Easy (153)
 ###  0. [Hamming Distance.java] (https://github.com/awangdev/LintCode/blob/master/Java/Hamming%20Distance.java)   Level: Easy Tags: []
       
